@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW5-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW5-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 103 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 107 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 5 Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 126 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 128 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 140 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 142 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 150 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 152 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 161 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 163 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 165 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 173 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 175 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 177 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 188 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 190 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 197 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 4, Problem 18.</span>
+</p><!-- l. 201 --><p class='noindent'>A fair coin is tossed repeatedly, until it has landed Heads at least once and has landed Tails at least
+once.
+</p><!-- l. 203 --><p class='noindent'>Find the expected number of tosses.
+</p><!-- l. 207 --><p class='noindent'><span class='cmti-10x-x-109'>Hint</span>: Define \(T\) to be the total number of tosses required. After the first toss, only one outcome remains to be
+observed. Write \[ T=1+X, \] where \(X\) is the number of additional tosses needed to obtain the outcome opposite to the
+first toss. \(X\) follows a well-known distribution! So if you find that, the rest is to use the linearity of
+expectation.
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 250 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 218 --><p class='noindent'>Let \(T\) denote the total number of tosses required until both Heads and Tails have appeared at least
+once.
+</p><!-- l. 221 --><p class='noindent'>After the first toss, exactly one of the two outcomes has appeared. Define \[ X=T-1, \] so that \(X\) is the number
+of additional tosses needed to observe the outcome opposite to the first toss.
+</p><!-- l. 228 --><p class='noindent'>Conditional on the outcome of the first toss, each subsequent toss produces the opposite outcome
+with probability \(1/2\), independently of all previous tosses. Therefore, \[ X\sim \operatorname {Geom}\left (\frac 12\right ), \] where \(X\) counts the number of
+trials up to and including the first success. Hence \[ E(X)=\frac {1}{1/2}=2. \]
+</p><!-- l. 240 --><p class='noindent'>Since \[ T=1+X, \] linearity of expectation gives \[ E(T)=1+E(X)=1+2=3. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 257 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 4, Problem 30.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Use LOTUS to show that for \(X\sim \operatorname {Pois}(\lambda )\) and any function \(g\), \[ E\bigl (Xg(X)\bigr )=\lambda E\bigl (g(X+1)\bigr ), \] assuming that both sides exist. This is called
+    the <span class='cmti-10x-x-109'>Stein–Chen identity </span>for the Poisson.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the third moment \(E(X^3)\) for \(X\sim \operatorname {Pois}(\lambda )\) by using the identity from part (a) and a bit of algebra to reduce the
+    calculation to the fact that \(X\) has mean \(\lambda \) and variance \(\lambda \).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 313 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 272 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>By LOTUS and the Poisson PMF, \[ E\bigl (Xg(X)\bigr ) = \sum _{x=0}^{\infty }xg(x)e^{-\lambda }\frac {\lambda ^x}{x!}. \] The term for \(x=0\) is zero, so \[ E\bigl (Xg(X)\bigr ) = \sum _{x=1}^{\infty }g(x)e^{-\lambda }\frac {\lambda ^x}{(x-1)!}. \] Letting \(y=x-1\), we get \[ E\bigl (Xg(X)\bigr ) = \lambda \sum _{y=0}^{\infty }g(y+1)e^{-\lambda }\frac {\lambda ^y}{y!} = \lambda E\bigl (g(X+1)\bigr ). \]
+</p><!-- l. 294 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>To find \(E(X^3)\), take \(g(x)=x^2\). Then the identity gives \[ E(X^3)=\lambda E\bigl ((X+1)^2\bigr ). \] Expanding the square, \[ E(X^3)=\lambda \{E(X^2)+2E(X)+1\}. \] For a Poisson random variable,
+\(E(X)=\lambda \) and \(\operatorname {Var}(X)=\lambda \), so \[ E(X^2)=\operatorname {Var}(X)+\{E(X)\}^2=\lambda +\lambda ^2. \] Therefore \[ E(X^3)=\lambda (\lambda ^2+\lambda +2\lambda +1) = \lambda ^3+3\lambda ^2+\lambda . \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 327 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 4, Problem 54.</span>
+</p><!-- l. 331 --><p class='noindent'><span class='cmbx-10x-x-109'>Note. </span>This problem introduces several fundamental ideas in data analysis, including sampling, estimation,
+uncertainty, bias, and statistical precision. Pay particular attention to this problem, specially if you’d
+like to smile, remembering this course, years later in a job that contains data collection/analysis.
+:)
+</p><!-- l. 336 --><p class='noindent'>A population consists of \(N\) people, with ID numbers \(1,\dots ,N\). For each person \(j\), let \(y_j\) be the value of some numerical
+variable, and define the population mean by \[ \bar y=\frac {1}{N}\sum _{j=1}^N y_j. \]
+</p><!-- l. 343 --><p class='noindent'>A quantity such as \(\bar y\) is called a <span class='cmti-10x-x-109'>population parameter</span>. Once the population is fixed, its value is fixed, although
+it may be unknown to us. Population parameters are often denoted by symbols such as \(\theta \), \(\mu \), or
+\(\bar y\).
+</p><!-- l. 348 --><p class='noindent'>In contrast, a quantity computed from a random sample is called a <span class='cmti-10x-x-109'>sample statistic</span>. For example, if \(W_1,\dots ,W_n\) are the
+values observed in a random sample, then \[ \bar W = \frac {1}{n}\sum _{r=1}^n W_r \] is a sample statistic. Since the selected sample is random, \(\bar W\) is a
+random variable whose value may vary from one sample to another. More generally, a statistic may be written
+as \[ T=T(W_1,\dots ,W_n), \] emphasizing that it is a function of the observed sample.
+</p><!-- l. 364 --><p class='noindent'>One of the primary goals of statistics is to use sample statistics to estimate unknown population
+parameters.
+</p><!-- l. 367 --><p class='noindent'>Suppose a researcher wants to estimate the population parameter \[ \theta :=\bar y, \] but it is not feasible to measure every
+person in the population (which is required for computing \(\bar y\) based on its formula). The researcher therefore
+selects a simple random sample of size \(n\), where \(n\ll N\), without replacement. Thus, every subset of \(n\) people is equally
+likely to be selected.
+</p><!-- l. 376 --><p class='noindent'>Let \(W_1,\dots ,W_n\) denote the values observed for the selected people, where the sampled people are listed in a uniformly
+random order, and let \[ \bar W=\frac {1}{n}\sum _{r=1}^n W_r \] be the sample mean.
+</p><!-- l. 383 --><p class='noindent'>For each population member \(1\leq j\leq N\), define \[ I_j= \begin {cases} 1, &amp; \text {if person \(j\) is included in the sample},\\ 0, &amp; \text {otherwise}. \end {cases} \]
+</p><!-- l. 392 --><p class='noindent'>Define the finite-population variance by \[ S_y^2 = \frac {1}{N-1}\sum _{j=1}^N (y_j-\bar y)^2. \]
+</p><!-- l. 399 --><p class='noindent'>Answer the following questions.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Explain carefully why \(y_1,\dots ,y_N\) are not random variables, while \(W_1,\dots ,W_n\), \(I_1,\dots ,I_N\), and \(\bar W\) are random variables.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Show by symmetry that, for every sample position \(r\), \[ P(W_r=y_j)=\frac {1}{N}, \qquad j=1,\dots ,N. \] Use this fact to prove that \[ E(\bar W)=\bar y. \]
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Show that \[ \bar W=\frac {1}{n}\sum _{j=1}^N I_jy_j. \] Then compute \(E(I_j)\) and use linearity of expectation to give a second proof that \[ E(\bar W)=\bar y. \]
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Since the sample contains exactly \(n\) people, show that \[ \sum _{j=1}^N I_j=n \] with probability \(1\). Explain why this identity
+    does not imply that the individual indicators \(I_1,\dots ,I_N\) are constants.
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>Compute \(\operatorname {Var}(I_j)\). Then use the indicator representation of \(\bar W\) and the definition of variance to show that \[ \operatorname {Var}(\bar W) = \frac {N-n}{Nn}S_y^2 = \left (1-\frac {n}{N}\right )\frac {S_y^2}{n}. \]
+    You may use the fact that, for \(i\neq j\), \[ P(I_i=1 \text { and } I_j=1) = \frac {n(n-1)}{N(N-1)}. \] The factor \[ 1-\frac {n}{N} \] is called the <span class='cmti-10x-x-109'>finite-population correction</span>.
+    </dd><dt class='enumerate-enumitem'>
+ (f) </dt><dd class='enumerate-enumitem'>Explain what the variance formula predicts in each of the following cases:
+                                                                                              
+                                                                                              
+         <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+     (i) </dt><dd class='enumerate-enumitem'>\(n=1\);
+         </dd><dt class='enumerate-enumitem'>
+     (ii) </dt><dd class='enumerate-enumitem'>\(n=N\);
+         </dd><dt class='enumerate-enumitem'>
+    (iii) </dt><dd class='enumerate-enumitem'>all population values are equal;
+         </dd><dt class='enumerate-enumitem'>
+    (iv) </dt><dd class='enumerate-enumitem'>\(n\) increases while the population remains fixed.</dd></dl>
+    </dd><dt class='enumerate-enumitem'>
+ (g) </dt><dd class='enumerate-enumitem'>Suppose instead that the researcher samples \(n\) people independently <span class='cmti-10x-x-109'>with replacement</span>. Let \(\bar W_{\mathrm {rep}}\) be the resulting
+    sample mean. Show that \[ \operatorname {Var}(\bar W_{\mathrm {rep}}) = \frac {N-1}{N}\frac {S_y^2}{n}. \] Compare this with the variance under sampling without replacement. Why is
+    sampling without replacement more precise?
+    </dd><dt class='enumerate-enumitem'>
+ (h) </dt><dd class='enumerate-enumitem'>The bias and mean squared error of an estimator \(T\) for a population parameter \(\theta \) are defined by \[ \operatorname {Bias}(T)=E(T)-\theta \] and \[ \operatorname {MSE}(T)=E\bigl [(T-\theta )^2\bigr ]. \] Show
+    that \[ \operatorname {MSE}(T) = \operatorname {Var}(T)+\operatorname {Bias}(T)^2. \] Use this identity to find \(\operatorname {Bias}(\bar W)\) and \(\operatorname {MSE}(\bar W)\).
+    </dd><dt class='enumerate-enumitem'>
+ (i) </dt><dd class='enumerate-enumitem'>A researcher says:
+         <blockquote class='quote'>
+         <!-- l. 502 --><p class='noindent'>“Because  \(\bar W\)  is  unbiased,  the  sample  mean  must  equal  the  population  mean  for  every
+         possible sample.”</p></blockquote>
+    <!-- l. 505 --><p class='noindent'>Explain why this statement is false. What does unbiasedness actually mean?
+</p>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+                                                                                              
+                                                                                              
+<!-- l. 989 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 511 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>The population values \(y_1,\dots ,y_N\) are fixed characteristics of the population. Once the population is
+specified, these values do not depend on which sample is selected. Therefore, under the sampling
+procedure, they are constants rather than random variables.
+</p><!-- l. 517 --><p class='noindent'>By contrast, \(W_r\) depends on which population member appears in sample position \(r\), and \(I_j\) depends on
+whether person \(j\) is selected. Therefore, their values can vary across possible random samples. Since
+\(\bar W\) is computed from the random observations \(W_1,\dots ,W_n\), it is also a random variable.
+</p><!-- l. 525 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>By symmetry, every population member is equally likely to appear in sample position \(r\). Therefore, \[ P(W_r=y_j)=\frac {1}{N}, \qquad j=1,\dots ,N. \] By
+LOTUS, \[ E(W_r) = \sum _{j=1}^N y_jP(W_r=y_j) = \frac {1}{N}\sum _{j=1}^N y_j = \bar y. \] Using linearity of expectation, \begin {align*}  E(\bar W) &amp;= E\left (\frac {1}{n}\sum _{r=1}^n W_r\right )\\ &amp;= \frac {1}{n}\sum _{r=1}^n E(W_r)\\ &amp;= \frac {1}{n}\sum _{r=1}^n \bar y\\ &amp;= \bar y.  \end {align*}
+</p><!-- l. 554 --><p class='noindent'>Thus, the sample mean is an unbiased estimator of the population mean.
+</p><!-- l. 558 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>For each \(j\), the product \(I_jy_j\) equals \(y_j\) if person \(j\) is selected and equals \(0\) otherwise. Therefore, \[ \sum _{j=1}^N I_jy_j \] is exactly the
+sum of the values belonging to the sampled people. Hence \[ \sum _{r=1}^n W_r = \sum _{j=1}^N I_jy_j, \] and therefore \[ \bar W = \frac {1}{n}\sum _{j=1}^N I_jy_j. \]
+</p><!-- l. 577 --><p class='noindent'>Every population member has the same probability of being included in a simple random sample of size \(n\).
+Thus, \[ P(I_j=1) = \frac {\binom {N-1}{n-1}}{\binom {N}{n}} = \frac {n}{N}. \] Since \(I_j\) is an indicator, \[ E(I_j)=P(I_j=1)=\frac {n}{N}. \] Consequently, \begin {align*}  E(\bar W) &amp;= E\left (\frac {1}{n}\sum _{j=1}^N I_jy_j\right )\\ &amp;= \frac {1}{n}\sum _{j=1}^N y_jE(I_j)\\ &amp;= \frac {1}{n}\sum _{j=1}^N y_j\frac {n}{N}\\ &amp;= \frac {1}{N}\sum _{j=1}^N y_j\\ &amp;= \bar y.  \end {align*}
+</p><!-- l. 607 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>Every possible sample contains exactly \(n\) people. Since \(I_j=1\) precisely when person \(j\) is selected, the
+number of selected people is \[ \sum _{j=1}^N I_j. \] Therefore, \[ \sum _{j=1}^N I_j=n \] for every possible sample, and hence with probability
+\(1\).
+</p><!-- l. 619 --><p class='noindent'>This does not imply that the individual indicators are constants. For example, one sample may have \(I_1=1\),
+while another may have \(I_1=0\). The indicators vary across samples, but they vary in a coordinated way so that
+their sum is always \(n\).
+</p><!-- l. 625 --><p class='noindent'><span class='cmbx-10x-x-109'>(e) </span>Since \(I_j\) is Bernoulli with success probability \(n/N\), \[ \operatorname {Var}(I_j) = \frac {n}{N}\left (1-\frac {n}{N}\right ) = \frac {n(N-n)}{N^2}. \]
+</p><!-- l. 635 --><p class='noindent'>To find the variance of the sample mean, begin with \[ \bar W-\bar y = \frac {1}{n}\sum _{j=1}^N I_jy_j-\bar y. \] Since \[ \sum _{j=1}^N I_j=n \] for every possible sample, we may write \[ \bar y = \frac {1}{n}\sum _{j=1}^N I_j\bar y. \]
+Therefore, \[ \bar W-\bar y = \frac {1}{n}\sum _{j=1}^N I_j(y_j-\bar y). \]
+</p><!-- l. 658 --><p class='noindent'>Because \(E(\bar W)=\bar y\), \[ \operatorname {Var}(\bar W) = E\bigl [(\bar W-\bar y)^2\bigr ]. \] Thus, \begin {align*}  \operatorname {Var}(\bar W) &amp;= \frac {1}{n^2} E\left [ \left ( \sum _{j=1}^N I_j(y_j-\bar y) \right )^2 \right ]\\ &amp;= \frac {1}{n^2} E\left [ \sum _{j=1}^N I_j^2(y_j-\bar y)^2 + 2\sum _{1\leq i&lt;j\leq N} I_iI_j(y_i-\bar y)(y_j-\bar y) \right ].  \end {align*}
+</p><!-- l. 684 --><p class='noindent'>Since \(I_j^2=I_j\), \[ E(I_j^2)=E(I_j)=\frac {n}{N}. \] Also, for \(i\neq j\), \[ E(I_iI_j) = P(I_i=1 \text { and } I_j=1) = \frac {\binom {N-2}{n-2}}{\binom {N}{n}} = \frac {n(n-1)}{N(N-1)}. \] Hence \begin {align*}  \operatorname {Var}(\bar W) &amp;= \frac {1}{n^2} \left [ \frac {n}{N} \sum _{j=1}^N (y_j-\bar y)^2 + \frac {2n(n-1)}{N(N-1)} \sum _{i&lt;j}(y_i-\bar y)(y_j-\bar y) \right ].  \end {align*}
+</p><!-- l. 712 --><p class='noindent'>Now, \[ \sum _{j=1}^N (y_j-\bar y)=0. \] Squaring this identity gives \[ 0 = \sum _{j=1}^N (y_j-\bar y)^2 + 2\sum _{i&lt;j}(y_i-\bar y)(y_j-\bar y). \] Therefore, \[ 2\sum _{i&lt;j}(y_i-\bar y)(y_j-\bar y) = -\sum _{j=1}^N (y_j-\bar y)^2. \]
+</p><!-- l. 731 --><p class='noindent'>Substituting, \begin {align*}  \operatorname {Var}(\bar W) &amp;= \frac {1}{n^2} \left [ \frac {n}{N} - \frac {n(n-1)}{N(N-1)} \right ] \sum _{j=1}^N (y_j-\bar y)^2\\ &amp;= \frac {1}{n^2} \frac {n(N-n)}{N(N-1)} \sum _{j=1}^N (y_j-\bar y)^2.  \end {align*}
+</p><!-- l. 748 --><p class='noindent'>Since \[ S_y^2 = \frac {1}{N-1} \sum _{j=1}^N (y_j-\bar y)^2, \] we conclude that \[ \operatorname {Var}(\bar W) = \frac {N-n}{Nn}S_y^2. \] Equivalently, \[ \operatorname {Var}(\bar W) = \left (1-\frac {n}{N}\right )\frac {S_y^2}{n}. \]
+</p><!-- l. 769 --><p class='noindent'><span class='cmbx-10x-x-109'>(f)</span>
+     </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (i) </dt><dd class='enumerate-enumitem'>If \(n=1\), then \[ \operatorname {Var}(\bar W) = \frac {N-1}{N}S_y^2. \] In this case, the sample mean consists of only one observation and generally has
+      substantial variability.
+      </dd><dt class='enumerate-enumitem'>
+ (ii) </dt><dd class='enumerate-enumitem'>If \(n=N\), then \[ \operatorname {Var}(\bar W)=0. \] The entire population is observed, so \[ \bar W=\bar y \] for every possible sample.
+      </dd><dt class='enumerate-enumitem'>
+(iii) </dt><dd class='enumerate-enumitem'>If all population values are equal, then \[ S_y^2=0, \] and hence \[ \operatorname {Var}(\bar W)=0. \] Every possible sample has the same sample
+      mean.
+      </dd><dt class='enumerate-enumitem'>
+(iv) </dt><dd class='enumerate-enumitem'>As \(n\) increases, both \(1/n\) and the finite-population correction \[ 1-\frac {n}{N} \] decrease. Therefore, the variance of
+      the sample mean decreases as a larger fraction of the population is observed.
+      </dd></dl>
+<!-- l. 813 --><p class='noindent'><span class='cmbx-10x-x-109'>(g) </span>Under sampling with replacement, the observations \[ W_1,\dots ,W_n \] are independent and identically distributed, with \[ P(W_r=y_j)=\frac {1}{N}, \qquad j=1,\dots ,N. \]
+Therefore, \[ E(W_r)=\bar y. \] Also, \begin {align*}  \operatorname {Var}(W_r) &amp;= E\bigl [(W_r-\bar y)^2\bigr ]\\ &amp;= \frac {1}{N}\sum _{j=1}^N (y_j-\bar y)^2\\ &amp;= \frac {N-1}{N}S_y^2.  \end {align*}
+</p><!-- l. 837 --><p class='noindent'>Since the observations are independent, \begin {align*}  \operatorname {Var}(\bar W_{\mathrm {rep}}) &amp;= \operatorname {Var}\left ( \frac {1}{n}\sum _{r=1}^n W_r \right )\\ &amp;= \frac {1}{n^2} \sum _{r=1}^n\operatorname {Var}(W_r)\\ &amp;= \frac {1}{n}\frac {N-1}{N}S_y^2.  \end {align*}
+</p><!-- l. 851 --><p class='noindent'>Under sampling without replacement, \[ \operatorname {Var}(\bar W) = \frac {N-n}{Nn}S_y^2. \] Since \[ N-n\leq N-1, \] we have \[ \operatorname {Var}(\bar W) \leq \operatorname {Var}(\bar W_{\mathrm {rep}}). \] In fact, when \(n&gt;1\), the inequality is strict unless
+\(S_y^2=0\).
+</p><!-- l. 869 --><p class='noindent'>Sampling without replacement is more precise because it avoids duplicate observations. For a fixed sample
+size, it therefore gathers information from more distinct population members.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 879 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (g)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 878 --><p class='noindent'>\[ \operatorname {Var}(\bar W_{\mathrm {rep}}) = \frac {N-1}{N}\frac {S_y^2}{n}. \] </p> 
+</div> 
+</div>
+<!-- l. 883 --><p class='noindent'><span class='cmbx-10x-x-109'>(h) </span>Let \(\theta \) be the parameter being estimated. Write \[ T-\theta = \bigl (T-E(T)\bigr ) + \bigl (E(T)-\theta \bigr ). \] Squaring both sides gives \begin {align*}  (T-\theta )^2 &amp;= \bigl (T-E(T)\bigr )^2\\ &amp;\quad + 2\bigl (T-E(T)\bigr )\bigl (E(T)-\theta \bigr )\\ &amp;\quad + \bigl (E(T)-\theta \bigr )^2.  \end {align*}
+</p><!-- l. 904 --><p class='noindent'>Taking expectations, \begin {align*}  E\bigl [(T-\theta )^2\bigr ] &amp;= E\bigl [(T-E(T))^2\bigr ]\\ &amp;\quad + 2\bigl (E(T)-\theta \bigr ) E\bigl [T-E(T)\bigr ]\\ &amp;\quad + \bigl (E(T)-\theta \bigr )^2.  \end {align*}
+</p><!-- l. 917 --><p class='noindent'>Since \[ E\bigl [T-E(T)\bigr ]=0, \] the middle term vanishes. Hence \[ \operatorname {MSE}(T) = \operatorname {Var}(T) + \operatorname {Bias}(T)^2. \]
+</p><!-- l. 930 --><p class='noindent'>For the sample mean, \[ \operatorname {Bias}(\bar W) = E(\bar W)-\bar y = 0. \] Therefore, \[ \operatorname {MSE}(\bar W) = \operatorname {Var}(\bar W) = \frac {N-n}{Nn}S_y^2. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+<!-- l. 957 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (h)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 950 --><p class='noindent'>\[ \operatorname {Bias}(\bar W)=0, \] and \[ \operatorname {MSE}(\bar W) = \frac {N-n}{Nn}S_y^2. \] </p> 
+</div> 
+</div>
+<!-- l. 961 --><p class='noindent'><span class='cmbx-10x-x-109'>(i) </span>The statement is false. Unbiasedness is a statement about the average value of an estimator over all
+possible random samples, not about the value obtained from every individual sample.
+</p><!-- l. 966 --><p class='noindent'>A particular sample may contain an unusually large number of people with high values, in which case \[ \bar W&gt;\bar y. \]
+Another sample may contain an unusually large number of people with low values, in which case
+\[ \bar W&lt;\bar y. \]
+</p><!-- l. 977 --><p class='noindent'>The equality \[ E(\bar W)=\bar y \] means that if the sampling procedure were repeated many times, the average of the
+resulting sample means would equal the population mean. It does not imply that \[ \bar W=\bar y \] for every possible
+sample.
+</p>
+ 
+</div> 
+</div>                                                                                      
+                                                                                              
+ 
+</body> 
+</html>

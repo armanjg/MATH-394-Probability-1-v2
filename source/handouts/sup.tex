@@ -1,0 +1,3438 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{enumitem}
+
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Sample}{S}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\N}{\mathbb{N}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+
+
+\title{
+{\Huge\bfseries MATH 394: Probability I}
+
+
+
+\vspace{0.4cm}
+
+{\large Supplementary Notes}
+
+
+{\Large
+Department of Mathematics\\
+University of Washington
+}
+
+\vspace{0.8cm}
+
+{\large
+Summer 2026
+}
+
+\vspace{0.8cm}
+
+{\large
+\textsc{Arman Jahangiri}
+}
+}
+
+\author{}
+\date{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\section{Continuity of Probability}
+
+\subsection*{Motivation}
+
+In probability, we often describe complicated events as limits of simpler events. For example, suppose we have events
+\[
+A_1,A_2,\dots,A_n,\dots
+\]
+and we want to understand the probability of an event obtained by taking an infinite union or an infinite intersection. The key fact is that the probability function $\mathbb{P}(\cdot)$ behaves continuously under limits of certain sequences of events, in a precise mathematical sense. This is called the \textbf{continuity of probability}, which we will prove here. Before that, we revisit the probability axioms.
+\subsection*{Probability Space}
+
+A \emph{probability space} is a triple
+\[
+(\Sample,\F,\Prob),
+\]
+where
+
+\begin{enumerate}[label=(\arabic*)]
+
+\item \textbf{Sample space.}
+
+$\Sample$ is the set of all possible outcomes of the experiment.
+
+\item \textbf{Sigma-algebra.}
+
+$\F$ is a collection of subsets of $\Sample$, called \emph{events}, satisfying:
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+\Sample\in\F.
+\]
+
+\item
+If $A\in\F$, then
+\[
+A^c\in\F.
+\]
+
+\item
+If
+\[
+A_1,A_2,\ldots,A_n,\ldots\in\F,
+\]
+then
+\[
+\bigcup_{n=1}^{\infty}A_n\in\F.
+\]
+
+\end{enumerate}
+
+A collection satisfying these three properties is called a
+\emph{$\sigma$-algebra} (or \emph{sigma-field}).
+
+\item \textbf{Probability measure.}
+
+$\Prob:\F\to[0,1]$ is a function that assigns a probability to every event in $\F$. Such a function is called a
+\emph{probability measure} and satisfies the following axioms.
+
+\end{enumerate}
+
+
+\begin{enumerate}[label=(A\arabic*)]
+
+\item \textbf{Nonnegativity:}
+\[
+\Prob(A)\ge0,
+\qquad
+\text{for every }A\in\F.
+\]
+
+\item \textbf{Normalization:}
+\[
+\Prob(\Sample)=1.
+\]
+
+\item \textbf{Countable additivity:}
+
+If
+\[
+A_1,A_2,\ldots,A_n,\ldots
+\]
+are pairwise disjoint events, then
+\[
+\Prob\left(\bigcup_{n=1}^{\infty}A_n\right)
+=
+\sum_{n=1}^{\infty}\Prob(A_n).
+\]
+
+\end{enumerate}
+
+\subsection*{Increasing and Decreasing Sequences of Events}
+
+\begin{definition}[Increasing sequence of events]
+A sequence of events $(A_n)_{n\ge 1}$ is called \textbf{increasing} if
+\[
+A_1\subseteq A_2\subseteq \cdots \subseteq A_n\subseteq \cdots.
+\]
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.30\textwidth]{assets/figures/increasing_set.png}
+\caption{An increasing sequence of events,
+\(
+A_1\subseteq A_2\subseteq \cdots \subseteq A_n\subseteq \cdots,
+\)
+whose limit is
+\(
+\displaystyle \bigcup_{n=1}^{\infty}A_n.
+\)}
+\label{fig:increasing-events}
+\end{figure}
+In this case, we write
+\[
+A_n \uparrow \bigcup_{n=1}^{\infty} A_n,
+\]
+and we define
+\[
+\lim_{n\to \infty }A_n := \bigcup_{n=1}^{\infty} A_n.
+\]
+\end{definition}
+So $A_n\uparrow \lim_{n\to\infty }A_n$ means that the events are getting larger and their limiting event is the union.
+
+\begin{definition}[Decreasing sequence of events]
+A sequence of events $(A_n)_{n\ge 1}$ is called \textbf{decreasing} if
+\[
+A_1\supseteq A_2\supseteq \cdots \supseteq A_n\supseteq \cdots.
+\]
+
+
+
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.30\textwidth]{assets/figures/decreasing_set.png}
+\caption{A decreasing sequence of events,
+\(
+A_1\supseteq A_2\supseteq \cdots \supseteq A_n\supseteq \cdots,
+\)
+whose limit is
+\(
+\displaystyle \bigcap_{n=1}^{\infty}A_n.
+\)}
+\label{fig:decreasing-events}
+\end{figure}
+In this case, we write
+\[
+A_n \downarrow \bigcap_{n=1}^{\infty} A_n,
+\]
+where
+\[
+\lim_{n\to \infty }A_n : = \bigcap_{n=1}^{\infty} A_n.
+\]
+\end{definition}
+
+So $A_n\downarrow \bigcap_{n=1}^{\infty} A_n$ means that the events are getting smaller and their limiting event is the intersection.
+
+\subsection*{Continuity of the probability function from Below}
+
+\begin{theorem}[Continuity from below] \label{conbel}
+Suppose $(A_n)_{n\geq 1}$ is a sequence of events in $\mathcal{F}$, and
+\[
+A_1\subseteq A_2\subseteq \cdots \subseteq A_n\subseteq \cdots.
+\]
+Then
+\[
+\Prob\left(\lim_{n\to \infty }A_n \right)
+=
+\lim_{n\to\infty} \Prob(A_n).
+\]
+Equivalently, if $A_n\uparrow A$, then
+\[
+\Prob(A_n)\uparrow \Prob(A).
+\]
+\end{theorem}
+
+\begin{proof}
+Define disjoint pieces
+\[
+B_1=A_1, \qquad B_n=A_n\setminus A_{n-1}\quad \text{for } n\ge 2.
+\]
+These are disjoint as for any $m<n$, we have
+\begin{equation*}
+    B_n\cap B_m=(A_n - A_{n-1})\cap (A_m - A_{m-1}) =A_n\cap A_{n-1}^c \cap A_m\cap A_{m-1}^c
+\end{equation*}
+Since $m<n$, we have $A_m \subseteq A_n$, and $A_{m-1}\subseteq A_{n-1}$, and therefore, $A_{n-1}^c\subseteq A_{m-1}^c$. This implies that $A_n\cap A_m=A_m$ and $A_{n-1}^c\cap A_{m-1}^c=A_{n-1}^c$. Now, since $n-1\leq m$, $A_{n-1}\subseteq A_m$ and therefore, $A_m\cap A_{n-1}^c=\emptyset$. Hence, we have shown
+\begin{equation*}
+    A_n\cap A_{n-1}^c \cap A_m\cap A_{m-1}^c=A_m \cap A_{n-1}^c=\emptyset
+\end{equation*}
+So $B_n\cap B_m=\emptyset$.
+
+
+
+
+
+
+Next, we claim (please show) that for every $n\geq1$,
+\[
+A_n = \bigcup_{k=1}^n B_k.
+\]
+
+Also,
+\[
+\bigcup_{n=1}^{\infty} A_n
+=
+\bigcup_{n=1}^{\infty} B_n.
+\]
+
+Therefore, by countable additivity,
+\[
+\Prob\left(\bigcup_{n=1}^{\infty} A_n\right)
+=
+\Prob\left(\bigcup_{n=1}^{\infty} B_n\right)
+=
+\sum_{n=1}^{\infty}\Prob(B_n).
+\]
+
+On the other hand, for each fixed $n$,
+\[
+\Prob(A_n)
+=
+\Prob\left(\bigcup_{k=1}^n B_k\right)
+=
+\sum_{k=1}^n \Prob(B_k).
+\]
+
+Taking the limit as $n\to\infty$, we get
+\[
+\lim_{n\to\infty}\Prob(A_n)
+=
+\lim_{n\to\infty}\sum_{k=1}^n \Prob(B_k)
+=
+\sum_{k=1}^{\infty}\Prob(B_k).
+\]
+
+Thus,
+\[
+\lim_{n\to\infty}\Prob(A_n)
+=
+\Prob\left(\bigcup_{n=1}^{\infty} A_n\right).
+\]
+\end{proof}
+
+\begin{remark}[Analogy with left-continuity of functions] Suppose $f:\mathbb{R}\to\mathbb{R}$ is continuous from the left at a point $a$. If
+\[
+a_n\uparrow a,
+\]
+meaning
+\[
+a_1\le a_2\le \cdots \le a_n\le \cdots
+\qquad \text{and} \qquad
+a_n\to a,
+\]
+then
+\[
+f(a_n)\to f(a).
+\]
+Equivalently,
+\[
+\lim_{n\to\infty} f(a_n)
+=
+f\left(\lim_{n\to\infty}a_n\right)
+=
+f(a).
+\]
+
+Continuity from below for probability says something very similar. If
+\[
+A_n\uparrow A,
+\]
+then
+\[
+\Prob(A_n)\to \Prob(A).
+\]
+Equivalently,
+\begin{equation*}
+    \lim_{n\to \infty}\mathbb{P}(A_n) = \mathbb{P}(\lim_{n\to \infty} A_n)
+\end{equation*}
+
+In this sense, probability is continuous along increasing sequences of events. The role of ``approaching from the left'' is played by the inclusions
+\[
+A_1\subseteq A_2\subseteq \cdots \subseteq A_n\subseteq \cdots \subseteq \bigcup_{i=1}^\infty A_i.
+\]
+\end{remark}
+
+\subsection*{Continuity of the probability function from Above}
+
+\begin{theorem}[Continuity from above] \label{conabov}
+Suppose $(A_n)_{n\geq 1}$ is a sequence of events in $\mathcal{F}$, and
+\[
+A_1\supseteq A_2\supseteq \cdots \supseteq A_n\supseteq \cdots.
+\]
+Then
+\[
+\Prob\left(\bigcap_{n=1}^{\infty} A_n\right)
+=
+\lim_{n\to\infty} \Prob(A_n).
+\]
+Equivalently, if $A_n\downarrow A$, then
+\[
+\Prob(A_n)\downarrow \Prob(A).
+\]
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+A=\bigcap_{n=1}^{\infty} A_n.
+\]
+
+Since $A_n\downarrow A$, the complements satisfy
+\[
+A_1^c\subseteq A_2^c\subseteq \cdots \subseteq A_n^c\subseteq \cdots.
+\]
+
+Also, by De Morgan's law,
+\[
+\bigcup_{n=1}^{\infty} A_n^c
+=
+\left(\bigcap_{n=1}^{\infty} A_n\right)^c
+=
+A^c.
+\]
+
+By continuity from below,
+\[
+\Prob(A^c)
+=
+\Prob\left(\bigcup_{n=1}^{\infty} A_n^c\right)
+=
+\lim_{n\to\infty}\Prob(A_n^c).
+\]
+
+Using complements,
+\[
+\Prob(A_n^c)=1-\Prob(A_n),
+\]
+and
+\[
+\Prob(A^c)=1-\Prob(A).
+\]
+
+Therefore,
+\[
+1-\Prob(A)
+=
+\lim_{n\to\infty}\left(1-\Prob(A_n)\right).
+\]
+
+Hence,
+\[
+\Prob(A)
+=
+\lim_{n\to\infty}\Prob(A_n).
+\]
+\end{proof}
+
+\begin{remark}[Analogy with right-continuity of functions] Suppose $f:\mathbb{R}\to\mathbb{R}$ is continuous from the right at a point $a$. If
+\[
+a_n\downarrow a,
+\]
+meaning
+\[
+a_1\ge a_2\ge \cdots \ge a_n\ge \cdots
+\qquad \text{and} \qquad
+a_n\to a,
+\]
+then
+\[
+f(a_n)\to f(a).
+\]
+
+Equivalently,
+\[
+\lim_{n\to\infty} f(a_n)
+=
+f\left(\lim_{n\to\infty}a_n\right)
+=
+f(a).
+\]
+
+Continuity from above for probability says the analogous statement for decreasing sequences of events. If
+\[
+A_n\downarrow A,
+\]
+then
+\[
+\Prob(A_n)\to \Prob(A).
+\]
+
+Here, the role of ``approaching from the right'' is played by
+\[
+A_1\supseteq A_2\supseteq \cdots \supseteq A_n\supseteq \cdots \supseteq A.
+\]
+\end{remark}
+
+
+
+
+
+
+
+
+
+
+
+```latex
+\subsection*{Properties of a Cumulative Distribution Function}
+
+Let $X$ be a random variable on the probability space
+\[
+(\Sample,\F,\Prob).
+\]
+The \textbf{cumulative distribution function}, or \textbf{CDF}, of $X$ is the function
+\[
+F:\mathbb{R}\to[0,1]
+\]
+defined by
+\[
+F(x)=\Prob(X\le x).
+\]
+
+More precisely,
+\[
+F(x)=\Prob(\{\omega\in\Sample:X(\omega)\le x\}).
+\]
+
+In fact, for any $B\subseteq \mathbb{R}$, we write $\{X \in B\}$ instead of  $\{\omega\in\Sample:X(\omega) \in B\}.$
+
+
+
+
+\begin{proposition}[Basic properties of a CDF]
+Let $F$ be the CDF of a random variable $X$. Then:
+
+\begin{enumerate}[label=(\arabic*)]
+
+\item
+\[
+0\le F(x)\le 1
+\qquad
+\text{for every }x\in\mathbb{R}.
+\]
+
+\item
+\[
+\lim_{x\to-\infty}F(x)=0.
+\]
+
+\item
+\[
+\lim_{x\to\infty}F(x)=1.
+\]
+
+\item $F$ is increasing. That is, if $x\le y$, then
+\[
+F(x)\le F(y).
+\]
+
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We prove each property separately.
+
+\medskip
+
+\noindent
+\textbf{(1) Proof that $F(x)\in[0,1]$.}
+
+Fix $x\in\mathbb{R}$. By definition,
+\[
+F(x)=\Prob(X\le x).
+\]
+The set $\{X\le x\}$ is an event in $\F$. Since $\Prob$ is a probability measure, every event has probability between $0$ and $1$. Therefore,
+\[
+0\le \Prob(X\le x)\le 1.
+\]
+Hence,
+\[
+0\le F(x)\le 1.
+\]
+
+\medskip
+
+\noindent
+\textbf{(2) Proof that $\displaystyle \lim_{x\to-\infty}F(x)=0$.}
+
+For each $n\in\N$, define
+\[
+A_n=\{X\le -n\}.
+\]
+As $n$ increases, the number $-n$ becomes smaller. Therefore, the events become smaller, and thus, we have a decreasing chain of events.
+\[
+A_1\supseteq A_2\supseteq A_3\supseteq \cdots.
+\]
+Reason: If $\omega\in A_{n+1}$, then $X(\omega)\le -(n+1)<-n,$ so  $X(\omega)\le -n.
+$ Thus, $\omega\in A_n.
+$, and hence, $A_{n+1}\subseteq A_n.
+$
+
+Now consider the intersection
+\[
+\bigcap_{n=1}^{\infty}A_n
+=
+\bigcap_{n=1}^{\infty}\{X\le -n\}.
+\]
+This event means that $X$ is less than or equal to $-n$ for every positive integer $n$. But no real number can be less than or equal to every number
+\[
+-1,-2,-3,\ldots.
+\]
+Since $X$ is real-valued, this is impossible. Therefore,
+\[
+\bigcap_{n=1}^{\infty}A_n=\emptyset.
+\]
+
+By Theorem $\ref{conabov}$,
+\[
+\Prob\left(\bigcap_{n=1}^{\infty}A_n\right)
+=
+\lim_{n\to\infty}\Prob(A_n).
+\]
+Thus,
+\[
+\Prob(\emptyset)
+=
+\lim_{n\to\infty}\Prob(X\le -n).
+\]
+Since $\Prob(\emptyset)=0$, we get
+\[
+\lim_{n\to\infty}F(-n)=0.
+\]
+
+This shows that along the sequence $x=-n$,
+\[
+F(x)\to0.
+\]
+Since $F$ is increasing, this implies the full limit
+\[
+\lim_{x\to-\infty}F(x)=0.
+\]
+
+\medskip
+
+\noindent
+\textbf{(3) Proof that $\displaystyle \lim_{x\to\infty}F(x)=1$.}
+
+For each $n\in\N$, define
+\[
+B_n=\{X\le n\}.
+\]
+As $n$ increases, the number $n$ becomes larger. Therefore, the events become larger:
+\[
+B_1\subseteq B_2\subseteq B_3\subseteq \cdots.
+\]
+Reason: If $\omega\in B_n$, then $X(\omega)\le n<n+1,
+$, so $X(\omega)\le n+1.
+$ Thus, $\omega\in B_{n+1}.
+$. Hence, $B_n\subseteq B_{n+1}.
+$
+Now consider the union.
+\[
+\bigcup_{n=1}^{\infty}B_n
+=
+\bigcup_{n=1}^{\infty}\{X\le n\}.
+\]
+Since $X$ is real-valued, for every outcome $\omega\in\Sample$, the number $X(\omega)$ is a real number. Therefore, there exists some positive integer $n$ such that
+\[
+X(\omega)\le n.
+\]
+Hence every $\omega\in\Sample$ belongs to at least one of the events $B_n$. Therefore,
+\[
+\bigcup_{n=1}^{\infty}B_n=\Sample.
+\]
+
+By Theorem \ref{conbel},
+\[
+\Prob\left(\bigcup_{n=1}^{\infty}B_n\right)
+=
+\lim_{n\to\infty}\Prob(B_n).
+\]
+Thus,
+\[
+\Prob(\Sample)
+=
+\lim_{n\to\infty}\Prob(X\le n).
+\]
+Since $\Prob(\Sample)=1$, we get
+\[
+\lim_{n\to\infty}F(n)=1.
+\]
+
+This shows that along the sequence $x=n$,
+\[
+F(x)\to1.
+\]
+Since $F$ is increasing and bounded above by $1$, this implies the full limit
+\[
+\lim_{x\to\infty}F(x)=1.
+\]
+
+\medskip
+
+\noindent
+\textbf{(4) Proof that $F$ is increasing.}
+
+Let $x,y\in\mathbb{R}$ and suppose
+\[
+x\le y.
+\]
+We claim that
+\[
+\{X\le x\}\subseteq \{X\le y\}.
+\]
+Indeed, if $\omega\in\{X\le x\}$, then
+\[
+X(\omega)\le x.
+\]
+Since $x\le y$, we have
+\[
+X(\omega)\le y.
+\]
+Therefore,
+\[
+\omega\in\{X\le y\}.
+\]
+So,
+\[
+\{X\le x\}\subseteq \{X\le y\}.
+\]
+
+By monotonicity of probability,
+\[
+\Prob(X\le x)\le \Prob(X\le y).
+\]
+Therefore,
+\[
+F(x)\le F(y).
+\]
+Hence $F$ is increasing.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ============================================================
+\section{Linear Algebra Background}
+% ============================================================
+
+The expectation of a random vector will itself be a vector, while its
+variances and covariances will be organized into a matrix called the
+\emph{covariance matrix}.
+
+We first review the basic linear algebra notation that we will need.
+
+
+% ------------------------------------------------------------
+\subsection*{Vectors}
+% ------------------------------------------------------------
+
+A \textbf{vector} in $\mathbb{R}^n$ is an ordered collection of $n$
+real numbers. We usually write vectors as column vectors
+\[
+\mathbf{x}
+=
+\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix}\in \mathbb{R}^n.
+\]
+
+For example,
+\[
+\mathbf{x}
+=
+\begin{pmatrix}
+2\\
+-1\\
+4
+\end{pmatrix}
+\in\mathbb{R}^3.
+\]
+
+Two vectors are equal if and only if all of their corresponding
+components are equal:
+\[
+\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix}
+\quad\Longleftrightarrow\quad
+x_i=y_i
+\quad\text{for every }i.
+\]
+
+Vectors can be added componentwise:
+\[
+\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}
++
+\begin{pmatrix}
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+x_1+y_1\\
+\vdots\\
+x_n+y_n
+\end{pmatrix}.
+\]
+
+Similarly, multiplication by a scalar $c\in\mathbb{R}$ is defined by
+\[
+c
+\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}
+=
+\begin{pmatrix}
+cx_1\\
+\vdots\\
+cx_n
+\end{pmatrix}.
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Matrices}
+% ------------------------------------------------------------
+
+A \textbf{matrix} is a rectangular array of numbers. For example,
+\[
+A=
+\begin{pmatrix}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{pmatrix}
+\]
+has $2$ rows and $3$ columns, so we say that $A$ is a
+\[
+2\times 3
+\]
+matrix, or belongs to $\mathbb{R}^{2\times 3}$.
+
+More generally, an $m\times n$ matrix has the form
+\[
+A=
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}.
+\]
+
+The notation $a_{ij}$ denotes the entry in row $i$ and column $j$.
+
+Thus, if
+\[
+A=
+\begin{pmatrix}
+2&5&7\\
+1&3&4
+\end{pmatrix},
+\]
+then
+\[
+a_{11}=2,\qquad
+a_{12}=5,\qquad
+a_{23}=4.
+\]
+
+A matrix with the same number of rows and columns is called a
+\textbf{square matrix}.
+
+For example,
+\[
+\begin{pmatrix}
+1&2\\
+3&4
+\end{pmatrix}
+\]
+is a $2\times2$ square matrix.
+
+
+% ------------------------------------------------------------
+\subsection*{Matrix Addition and Scalar Multiplication}
+% ------------------------------------------------------------
+
+Two matrices can be added only when they have the same dimensions.
+Addition is performed entry by entry.
+
+For example,
+\[
+\begin{pmatrix}
+1&2\\
+3&4
+\end{pmatrix}
++
+\begin{pmatrix}
+5&6\\
+7&8
+\end{pmatrix}
+=
+\begin{pmatrix}
+6&8\\
+10&12
+\end{pmatrix}.
+\]
+
+Similarly,
+\[
+cA
+\]
+means that every entry of $A$ is multiplied by $c$. For example,
+\[
+3
+\begin{pmatrix}
+1&-2\\
+4&5
+\end{pmatrix}
+=
+\begin{pmatrix}
+3&-6\\
+12&15
+\end{pmatrix}.
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Transpose of a Matrix}
+% ------------------------------------------------------------
+
+\begin{definition}[Transpose]
+If $A$ is an $m\times n$ matrix, its \textbf{transpose}, denoted by
+$A^T$, is the $n\times m$ matrix obtained by turning the rows of $A$
+into columns.
+
+Equivalently,
+\[
+(A^T)_{ij}=A_{ji}.
+\]
+\end{definition}
+
+For example, if
+\[
+A=
+\begin{pmatrix}
+1&2&3\\
+4&5&6
+\end{pmatrix},
+\]
+then
+\[
+A^T=
+\begin{pmatrix}
+1&4\\
+2&5\\
+3&6
+\end{pmatrix}.
+\]
+
+In particular, if
+\[
+\mathbf{x}
+=
+\begin{pmatrix}
+x_1\\
+x_2\\
+x_3
+\end{pmatrix},
+\]
+then
+\[
+\mathbf{x}^T
+=
+\begin{pmatrix}
+x_1&x_2&x_3
+\end{pmatrix}.
+\]
+
+Thus, transposing a column vector turns it into a row vector.
+
+\textbf{Note}: Vectors are special cases of matrices, i.e., $\mathbb{x}\in \mathbb{R}^n=\mathbb{R}^{n\times 1}$, meaning that a vector with $n$ entries is a matrix with n columns and 1 row.
+% ------------------------------------------------------------
+\subsection*{Multiplication of Vectors}
+% ------------------------------------------------------------
+There are two ways to multiply $\mathbf{x}, \mathbf{y}\in\mathbb{R}^n$, namely, the inner product (defined by $\mathbf{x}\cdot\mathbf{y}=\mathbf{x}^T\mathbf{y}$) and the outer product (define by $\mathbf{x}\times \mathbf{y} = \mathbf{x}\mathbf{y}^T$).
+
+Suppose
+\[
+\mathbf{x}
+=
+\begin{pmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{pmatrix},
+\qquad
+\mathbf{y}
+=
+\begin{pmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{pmatrix}.
+\]
+
+Since $\mathbf{x}\in\mathbb{R}^n$ is an $n\times 1$ column vector, its transpose $\mathbf{x}^T$ is a $1\times n$ row vector. Therefore, $\mathbf{x}^T$ can be multiplied by the $n\times 1$ vector $\mathbf{y}$, and the result has dimension
+\[
+(1\times n)(n\times 1)=(1\times 1),
+\]
+which is a scalar.
+
+Thus,
+\[
+{\mathbf{x}\cdot\mathbf{y}
+=\mathbf{x}^T\mathbf{y}
+=\sum_{i=1}^n x_i y_i.}
+\]
+This is called the \textbf{dot product} or \textbf{inner product}.
+
+For example,
+\[
+\begin{pmatrix}
+1\\
+2\\
+3
+\end{pmatrix}^{T}
+\begin{pmatrix}
+4\\
+5\\
+6
+\end{pmatrix}
+=
+1(4)+2(5)+3(6)
+=
+32.
+\]
+
+Notice, however, that reversing the multiplication produces something
+completely different:
+\[
+\mathbf{x}\mathbf{y}^T.
+\]
+
+This is an $n\times n$ matrix:
+\[
+{
+\mathbf{x}\mathbf{y}^T
+=
+\begin{pmatrix}
+x_1y_1 & x_1y_2 & \cdots & x_1y_n\\
+x_2y_1 & x_2y_2 & \cdots & x_2y_n\\
+\vdots & \vdots & \ddots & \vdots\\
+x_ny_1 & x_ny_2 & \cdots & x_ny_n
+\end{pmatrix}.
+}
+\]
+
+This is called the \textbf{outer product}.
+
+For example,
+\[
+\begin{pmatrix}
+1\\
+2
+\end{pmatrix}
+\begin{pmatrix}
+3&4
+\end{pmatrix}
+=
+\begin{pmatrix}
+3&4\\
+6&8
+\end{pmatrix}.
+\]
+
+This distinction will be especially important when we define the
+covariance matrix of a random vector.
+
+
+% ------------------------------------------------------------
+\subsection*{Matrix Multiplication}
+% ------------------------------------------------------------
+
+Matrix multiplication is not performed entry by entry.
+
+Suppose $A$ is an $m\times n$ matrix and $B$ is an $n\times p$
+matrix. Then the product
+\[
+AB
+\]
+is defined and is an $m\times p$ matrix.
+
+Matrix multiplication is not always performable. It can only be done when the number of columns of $A$ is equal to the number of rows of $B$. Schematically,
+\[
+{
+(m\times n)(n\times p)
+\longrightarrow
+(m\times p).
+}
+\]
+
+The two \emph{inside dimensions} must agree.
+
+For example,
+\[
+(2\times3)(3\times4)
+\longrightarrow
+(2\times4).
+\]
+
+However,
+\[
+(2\times3)(2\times4)
+\]
+is not defined because the inside dimensions $3$ and $2$ do not
+agree.
+
+To compute the $(i,j)^{th}$ entry of  $AB$ (the cell in $i^{th}$ row and $j^{th}$ column), multiply (inner product) the $i^{th}$ row of $A$
+by the $j^{th}$ column of $B$.
+
+For example,
+\[
+A=
+\begin{pmatrix}
+1&2\\
+3&4
+\end{pmatrix},
+\qquad
+B=
+\begin{pmatrix}
+5&6\\
+7&8
+\end{pmatrix}.
+\]
+
+Then
+\[
+AB
+=
+\begin{pmatrix}
+1(5)+2(7) & 1(6)+2(8)\\
+3(5)+4(7) & 3(6)+4(8)
+\end{pmatrix},
+\]
+so
+\[
+AB
+=
+\begin{pmatrix}
+19&22\\
+43&50
+\end{pmatrix}.
+\]
+
+In general, if
+\[
+A=(a_{ij})_{m\times n},
+\qquad
+B=(b_{ij})_{n\times p},
+\]
+and
+\[
+C=AB,
+\]
+then
+\[
+{
+c_{ij}
+=
+\sum_{k=1}^{n}a_{ik}b_{kj}.
+}
+\]
+
+This is exactly the dot product of row $i$ of $A$
+with column $j$ of $B$.
+
+
+% ------------------------------------------------------------
+\subsection*{Matrix--Vector Multiplication}
+% ------------------------------------------------------------
+
+A particularly important case occurs when a matrix is multiplied by
+a vector.
+
+If
+\[
+A=
+\begin{pmatrix}
+a_{11}&a_{12}\\
+a_{21}&a_{22}
+\end{pmatrix},
+\qquad
+\mathbf{x}
+=
+\begin{pmatrix}
+x_1\\
+x_2
+\end{pmatrix},
+\]
+then
+\[
+A\mathbf{x}
+=
+\begin{pmatrix}
+a_{11}x_1+a_{12}x_2\\
+a_{21}x_1+a_{22}x_2
+\end{pmatrix}.
+\]
+
+More generally, if $A$ is $m\times n$ and $\mathbf{x}\in\mathbb{R}^n$,
+then
+\[
+A\mathbf{x}\in\mathbb{R}^m.
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Some Important Rules for Matrix Multiplication}
+% ------------------------------------------------------------
+
+Whenever the dimensions are appropriate,
+\[
+A(B+C)=AB+AC,
+\]
+and
+\[
+(A+B)C=AC+BC.
+\]
+
+Matrix multiplication is also associative:
+\[
+A(BC)=(AB)C.
+\]
+
+However, matrix multiplication is generally \textbf{not commutative}.
+That is,
+\[
+{
+AB\neq BA
+}
+\]
+in general.
+
+In fact, it is possible for $AB$ to be defined while $BA$ is not
+defined.
+
+For transposes,
+\[
+(A^T)^T=A
+\]
+and
+\[
+{
+(AB)^T=B^TA^T.
+}
+\]
+
+Notice that the order is reversed when taking the transpose of a
+product.
+
+
+% ============================================================
+\subsection*{Determinants}
+% ============================================================
+
+The \textbf{determinant} is a number associated with a square matrix.
+For a square matrix $A$, we denote its determinant by
+\[
+\det(A)
+\qquad\text{or}\qquad
+|A|.
+\]
+
+We begin with the $2\times2$ case.
+
+
+% ------------------------------------------------------------
+\subsubsection*{Determinant of a $2\times2$ Matrix}
+% ------------------------------------------------------------
+
+If
+\[
+A=
+\begin{pmatrix}
+a&b\\
+c&d
+\end{pmatrix},
+\]
+then
+\[
+{
+\det(A)=ad-bc.
+}
+\]
+
+For example,
+\[
+A=
+\begin{pmatrix}
+2&3\\
+1&4
+\end{pmatrix}.
+\]
+
+Then
+\[
+\det(A)
+=
+2(4)-3(1)
+=
+8-3
+=
+5.
+\]
+
+
+% ------------------------------------------------------------
+\subsubsection*{Determinant of a $3\times3$ Matrix}
+% ------------------------------------------------------------
+
+Consider
+\[
+A=
+\begin{pmatrix}
+a&b&c\\
+d&e&f\\
+g&h&i
+\end{pmatrix}.
+\]
+
+There are multiple ways to compute the determinnat of a 3 by 3 matrix. One way is to expand along the first row, i.e.,
+\[
+\det(A)
+=
+a
+\begin{vmatrix}
+e&f\\
+h&i
+\end{vmatrix}
+-
+b
+\begin{vmatrix}
+d&f\\
+g&i
+\end{vmatrix}
++
+c
+\begin{vmatrix}
+d&e\\
+g&h
+\end{vmatrix}.
+\]
+
+Using the $2\times2$ determinant formula,
+\[
+{
+\det(A)
+=
+a(ei-fh)
+-
+b(di-fg)
++
+c(dh-eg).
+}
+\]
+
+This method gives a recursive rule to compute the determinant of any $n\times n$ matrix to a $2\times 2$ matrix (by expanding on the first row with alternating signs).
+
+Notice the alternating signs
+\[
++,\quad -,\quad +.
+\]
+
+For example, let
+\[
+A=
+\begin{pmatrix}
+1&2&3\\
+0&4&5\\
+1&0&6
+\end{pmatrix}.
+\]
+
+Expanding along the first row gives
+\begin{align*}
+\det(A)
+&=
+1
+\begin{vmatrix}
+4&5\\
+0&6
+\end{vmatrix}
+-
+2
+\begin{vmatrix}
+0&5\\
+1&6
+\end{vmatrix}
++
+3
+\begin{vmatrix}
+0&4\\
+1&0
+\end{vmatrix}
+\\
+&=
+1(24)
+-
+2(0-5)
++
+3(0-4)
+\\
+&=
+24+10-12
+\\
+&=
+22.
+\end{align*}
+
+
+% ------------------------------------------------------------
+\subsubsection*{Minors and Cofactors}
+% ------------------------------------------------------------
+
+
+Let $A$ be an $n\times n$ matrix.
+
+For an entry $a_{ij}$, delete row $i$ and column $j$. The resulting
+$(n-1)\times(n-1)$ matrix is denoted by
+\[
+A_{ij}.
+\]
+
+The number
+\[
+M_{ij}=\det(A_{ij})
+\]
+is called the \textbf{minor} corresponding to $a_{ij}$.
+
+The \textbf{cofactor} of $a_{ij}$ is
+\[
+{
+C_{ij}=(-1)^{i+j}M_{ij}.
+}
+\]
+
+The signs therefore follow the checkerboard pattern
+\[
+\begin{pmatrix}
++&-&+&-\cdots\\
+-&+&-&+\cdots\\
++&-&+&-\cdots\\
+-&+&-&+\cdots\\
+\vdots&\vdots&\vdots&\vdots
+\end{pmatrix}.
+\]
+
+
+% ------------------------------------------------------------
+\subsubsection*{Determinant of an $n\times n$ Matrix}
+% ------------------------------------------------------------
+
+For an $n\times n$ matrix
+\[
+A=(a_{ij}),
+\]
+the determinant can be calculated by expanding along any row or any
+column.
+
+For example, expanding along row $i$ gives
+\[
+{
+\det(A)
+=
+\sum_{j=1}^n a_{ij}C_{ij}
+=
+\sum_{j=1}^n
+(-1)^{i+j}a_{ij}\det(A_{ij}).
+}
+\]
+
+Thus, computing an $n\times n$ determinant reduces to computing
+$(n-1)\times(n-1)$ determinants, which reduce to
+$(n-2)\times(n-2)$ determinants, and so on, until we reach the
+$2\times2$ formula.
+
+Similarly, expanding along column $j$ gives
+\[
+\det(A)
+=
+\sum_{i=1}^n
+(-1)^{i+j}a_{ij}\det(A_{ij}).
+\]
+
+\begin{remark}
+When computing a determinant by cofactor expansion, it is usually
+convenient to choose a row or column containing many zeros.
+\end{remark}
+
+
+% ============================================================
+\section{Random Vectors, Expectations, and Covariance Matrices}
+% ============================================================
+
+We now use the preceding notation to describe several random
+variables simultaneously.
+
+
+% ------------------------------------------------------------
+\subsection*{Random Vectors}
+% ------------------------------------------------------------
+
+\begin{definition}[Random vector]
+Let
+\[
+X_1,X_2,\ldots,X_n
+\]
+be random variables defined on the same probability space. The
+column vector
+\[
+{
+\mathbf{X}
+=
+\begin{pmatrix}
+X_1\\
+X_2\\
+\vdots\\
+X_n
+\end{pmatrix}
+}
+\]
+is called an $n$-dimensional \textbf{random vector}.
+\end{definition}
+
+For example,
+\[
+\mathbf{X}
+=
+\begin{pmatrix}
+X\\
+Y
+\end{pmatrix}
+\]
+is a two-dimensional random vector.
+
+For each outcome $\omega\in\Sample$,
+\[
+\mathbf{X}(\omega)
+=
+\begin{pmatrix}
+X_1(\omega)\\
+\vdots\\
+X_n(\omega)
+\end{pmatrix}
+\in\mathbb{R}^n.
+\]
+
+Thus, instead of producing one random number, a random vector
+produces a vector of random numbers.
+
+
+% ------------------------------------------------------------
+\subsection*{Expected Value of a Random Vector}
+% ------------------------------------------------------------
+
+Recall that the expectation of a single random variable $X$ is a
+number $E(X)$.
+
+For a random vector, we simply take the expectation of each
+component.
+
+\begin{definition}[Expected value of a random vector]
+Let
+\[
+\mathbf{X}
+=
+\begin{pmatrix}
+X_1\\
+X_2\\
+\vdots\\
+X_n
+\end{pmatrix},
+\]
+where each $X_i$ has a finite expectation. Then
+\[
+{
+E(\mathbf{X})
+=
+\begin{pmatrix}
+E(X_1)\\
+E(X_2)\\
+\vdots\\
+E(X_n)
+\end{pmatrix}.
+}
+\]
+
+We often denote this vector by
+\[
+\boldsymbol{\mu}=E(\mathbf{X}).
+\]
+\end{definition}
+
+Thus,
+\[
+\boldsymbol{\mu}
+=
+\begin{pmatrix}
+\mu_1\\
+\vdots\\
+\mu_n
+\end{pmatrix},
+\qquad
+\mu_i=E(X_i).
+\]
+
+For example, if
+\[
+E(X)=2,
+\qquad
+E(Y)=-1,
+\]
+then
+\[
+E
+\begin{pmatrix}
+X\\
+Y
+\end{pmatrix}
+=
+\begin{pmatrix}
+2\\
+-1
+\end{pmatrix}.
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Linearity of Expectation in Matrix Form}
+% ------------------------------------------------------------
+
+Suppose $A$ is a fixed $m\times n$ matrix and
+$\mathbf{X}\in\mathbb{R}^n$ is a random vector. Then
+\[
+A\mathbf{X}
+\]
+is another random vector.
+
+By linearity of expectation,
+\[
+{
+E(A\mathbf{X})=A\,E(\mathbf{X}).
+}
+\]
+
+More generally, for a fixed vector $\mathbf{b}$,
+\[
+{
+E(A\mathbf{X}+\mathbf{b})
+=
+A\,E(\mathbf{X})+\mathbf{b}.
+}
+\]
+
+
+% ============================================================
+\subsection*{From Variance to the Covariance Matrix}
+% ============================================================
+
+For a single random variable $X$, recall that
+\[
+Var(X)
+=
+E\left[(X-E(X))^2\right].
+\]
+
+We would like to generalize this definition to a random vector
+\[
+\mathbf{X}
+=
+\begin{pmatrix}
+X_1\\
+\vdots\\
+X_n
+\end{pmatrix}.
+\]
+
+Let
+\[
+\boldsymbol{\mu}=E(\mathbf{X}).
+\]
+
+Then the centered random vector is
+\[
+\mathbf{X}-\boldsymbol{\mu}
+=
+\begin{pmatrix}
+X_1-\mu_1\\
+X_2-\mu_2\\
+\vdots\\
+X_n-\mu_n
+\end{pmatrix}.
+\]
+
+A tempting expression would be
+\[
+(\mathbf{X}-\boldsymbol{\mu})^T
+(\mathbf{X}-\boldsymbol{\mu}),
+\]
+but notice its dimensions:
+\[
+(1\times n)(n\times1)
+=
+1\times1.
+\]
+
+Therefore, this produces only one number:
+\[
+\sum_{i=1}^n(X_i-\mu_i)^2.
+\]
+
+Instead, reverse the order:
+\[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}-\boldsymbol{\mu})^T.
+\]
+
+Now the dimensions are
+\[
+(n\times1)(1\times n)
+=
+n\times n,
+\]
+so the result is a matrix containing every pairwise product:
+\[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}-\boldsymbol{\mu})^T
+=
+\begin{pmatrix}
+(X_1-\mu_1)^2
+&
+(X_1-\mu_1)(X_2-\mu_2)
+&
+\cdots
+&
+(X_1-\mu_1)(X_n-\mu_n)
+\\
+(X_2-\mu_2)(X_1-\mu_1)
+&
+(X_2-\mu_2)^2
+&
+\cdots
+&
+(X_2-\mu_2)(X_n-\mu_n)
+\\
+\vdots&\vdots&\ddots&\vdots\\
+(X_n-\mu_n)(X_1-\mu_1)
+&
+(X_n-\mu_n)(X_2-\mu_2)
+&
+\cdots
+&
+(X_n-\mu_n)^2
+\end{pmatrix}.
+\]
+
+Taking expectations entry by entry gives exactly the variances and
+covariances.
+
+
+% ------------------------------------------------------------
+\subsection*{Covariance Matrix}
+% ------------------------------------------------------------
+
+\begin{definition}[Covariance matrix]
+Let
+\[
+\mathbf{X}
+=
+\begin{pmatrix}
+X_1\\
+X_2\\
+\vdots\\
+X_n
+\end{pmatrix}
+\]
+be a random vector with finite second moments, and let
+\[
+\boldsymbol{\mu}=E(\mathbf{X}).
+\]
+
+The \textbf{covariance matrix} of $\mathbf{X}$ is
+\[
+{
+Cov(\mathbf{X})
+=
+E\left[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}-\boldsymbol{\mu})^T
+\right].
+}
+\]
+
+It is also commonly denoted by
+\[
+\Sigma.
+\]
+\end{definition}
+
+The $(i,j)$ entry of this matrix is
+\[
+E\left[(X_i-\mu_i)(X_j-\mu_j)\right].
+\]
+
+But this is exactly
+\[
+Cov(X_i,X_j).
+\]
+
+Therefore,
+\[
+{
+\Sigma
+=
+Cov(\mathbf{X})
+=
+\begin{pmatrix}
+Var(X_1)
+&
+Cov(X_1,X_2)
+&
+\cdots
+&
+Cov(X_1,X_n)
+\\
+Cov(X_2,X_1)
+&
+Var(X_2)
+&
+\cdots
+&
+Cov(X_2,X_n)
+\\
+\vdots&\vdots&\ddots&\vdots\\
+Cov(X_n,X_1)
+&
+Cov(X_n,X_2)
+&
+\cdots
+&
+Var(X_n)
+\end{pmatrix}.
+}
+\]
+
+Thus:
+
+\begin{itemize}
+
+\item The \textbf{diagonal entries} are the variances:
+\[
+\Sigma_{ii}=Var(X_i).
+\]
+
+\item The \textbf{off-diagonal entries} are the covariances:
+\[
+\Sigma_{ij}=Cov(X_i,X_j),
+\qquad i\neq j.
+\]
+
+\end{itemize}
+
+
+% ------------------------------------------------------------
+\subsection*{The Two-Dimensional Case}
+% ------------------------------------------------------------
+
+For
+\[
+\mathbf{X}
+=
+\begin{pmatrix}
+X\\
+Y
+\end{pmatrix},
+\qquad
+E(\mathbf{X})
+=
+\begin{pmatrix}
+\mu_X\\
+\mu_Y
+\end{pmatrix},
+\]
+we have
+\[
+\mathbf{X}-E(\mathbf{X})
+=
+\begin{pmatrix}
+X-\mu_X\\
+Y-\mu_Y
+\end{pmatrix}.
+\]
+
+Therefore,
+\begin{align*}
+&
+(\mathbf{X}-E(\mathbf{X}))
+(\mathbf{X}-E(\mathbf{X}))^T
+\\[0.3cm]
+&=
+\begin{pmatrix}
+X-\mu_X\\
+Y-\mu_Y
+\end{pmatrix}
+\begin{pmatrix}
+X-\mu_X & Y-\mu_Y
+\end{pmatrix}
+\\[0.3cm]
+&=
+\begin{pmatrix}
+(X-\mu_X)^2
+&
+(X-\mu_X)(Y-\mu_Y)
+\\
+(Y-\mu_Y)(X-\mu_X)
+&
+(Y-\mu_Y)^2
+\end{pmatrix}.
+\end{align*}
+
+Taking expectations,
+\[
+{
+Cov(\mathbf{X})
+=
+\begin{pmatrix}
+Var(X) & Cov(X,Y)\\
+Cov(Y,X) & Var(Y)
+\end{pmatrix}.
+}
+\]
+
+Since
+\[
+Cov(X,Y)=Cov(Y,X),
+\]
+this becomes
+\[
+{
+Cov(\mathbf{X})
+=
+\begin{pmatrix}
+Var(X) & Cov(X,Y)\\
+Cov(X,Y) & Var(Y)
+\end{pmatrix}.
+}
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{An Equivalent Formula for the Covariance Matrix}
+% ------------------------------------------------------------
+
+Recall the scalar identity
+\[
+Var(X)=E(X^2)-[E(X)]^2.
+\]
+
+There is an analogous matrix identity.
+
+\begin{proposition}
+Let
+\[
+\boldsymbol{\mu}=E(\mathbf{X}).
+\]
+Then
+\[
+{
+Cov(\mathbf{X})
+=
+E(\mathbf{X}\mathbf{X}^T)
+-
+\boldsymbol{\mu}\boldsymbol{\mu}^T.
+}
+\]
+Equivalently,
+\[
+{
+Cov(\mathbf{X})
+=
+E(\mathbf{X}\mathbf{X}^T)
+-
+E(\mathbf{X})E(\mathbf{X})^T.
+}
+\]
+\end{proposition}
+
+\begin{proof}
+Starting from the definition,
+\begin{align*}
+Cov(\mathbf{X})
+&=
+E\left[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}-\boldsymbol{\mu})^T
+\right]
+\\
+&=
+E\left[
+(\mathbf{X}-\boldsymbol{\mu})
+(\mathbf{X}^T-\boldsymbol{\mu}^T)
+\right]
+\\
+&=
+E\left[
+\mathbf{X}\mathbf{X}^T
+-
+\mathbf{X}\boldsymbol{\mu}^T
+-
+\boldsymbol{\mu}\mathbf{X}^T
++
+\boldsymbol{\mu}\boldsymbol{\mu}^T
+\right].
+\end{align*}
+
+Since $\boldsymbol{\mu}$ is a fixed vector,
+\begin{align*}
+Cov(\mathbf{X})
+&=
+E(\mathbf{X}\mathbf{X}^T)
+-
+E(\mathbf{X})\boldsymbol{\mu}^T
+-
+\boldsymbol{\mu}E(\mathbf{X})^T
++
+\boldsymbol{\mu}\boldsymbol{\mu}^T.
+\end{align*}
+
+But
+\[
+E(\mathbf{X})=\boldsymbol{\mu},
+\]
+so
+\begin{align*}
+Cov(\mathbf{X})
+&=
+E(\mathbf{X}\mathbf{X}^T)
+-
+\boldsymbol{\mu}\boldsymbol{\mu}^T
+-
+\boldsymbol{\mu}\boldsymbol{\mu}^T
++
+\boldsymbol{\mu}\boldsymbol{\mu}^T
+\\
+&=
+E(\mathbf{X}\mathbf{X}^T)
+-
+\boldsymbol{\mu}\boldsymbol{\mu}^T.
+\end{align*}
+\end{proof}
+
+
+% ------------------------------------------------------------
+\subsection*{Symmetry of the Covariance Matrix}
+% ------------------------------------------------------------
+
+\begin{proposition}
+The covariance matrix is symmetric:
+\[
+{
+Cov(\mathbf{X})^T=Cov(\mathbf{X}).
+}
+\]
+\end{proposition}
+
+\begin{proof}
+The $(i,j)$ entry of $Cov(\mathbf{X})$ is
+\[
+Cov(X_i,X_j).
+\]
+But
+\[
+Cov(X_i,X_j)=Cov(X_j,X_i).
+\]
+Therefore,
+\[
+\Sigma_{ij}=\Sigma_{ji},
+\]
+which means that $\Sigma$ is symmetric.
+\end{proof}
+
+
+% ------------------------------------------------------------
+\subsection*{Covariance Matrix Under Linear Transformations}
+% ------------------------------------------------------------
+
+The matrix notation becomes especially useful when we transform a
+random vector.
+
+\begin{proposition}
+Let $\mathbf{X}\in\mathbb{R}^n$ be a random vector with covariance
+matrix
+\[
+\Sigma=Cov(\mathbf{X}),
+\]
+let $A$ be a fixed $m\times n$ matrix, and let
+$\mathbf{b}\in\mathbb{R}^m$ be fixed. Then
+\[
+{
+Cov(A\mathbf{X}+\mathbf{b})
+=
+A\Sigma A^T.
+}
+\]
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+\mathbf{Y}=A\mathbf{X}+\mathbf{b}.
+\]
+Then
+\[
+E(\mathbf{Y})
+=
+AE(\mathbf{X})+\mathbf{b}.
+\]
+
+Hence,
+\begin{align*}
+\mathbf{Y}-E(\mathbf{Y})
+&=
+A\mathbf{X}+\mathbf{b}
+-
+AE(\mathbf{X})
+-
+\mathbf{b}
+\\
+&=
+A\bigl(\mathbf{X}-E(\mathbf{X})\bigr).
+\end{align*}
+
+Therefore,
+\begin{align*}
+Cov(\mathbf{Y})
+&=
+E\left[
+(\mathbf{Y}-E(\mathbf{Y}))
+(\mathbf{Y}-E(\mathbf{Y}))^T
+\right]
+\\
+&=
+E\left[
+A(\mathbf{X}-E(\mathbf{X}))
+\left(
+A(\mathbf{X}-E(\mathbf{X}))
+\right)^T
+\right].
+\end{align*}
+
+Using
+\[
+(AB)^T=B^TA^T,
+\]
+we obtain
+\begin{align*}
+Cov(\mathbf{Y})
+&=
+E\left[
+A(\mathbf{X}-E(\mathbf{X}))
+(\mathbf{X}-E(\mathbf{X}))^T A^T
+\right]
+\\
+&=
+A
+E\left[
+(\mathbf{X}-E(\mathbf{X}))
+(\mathbf{X}-E(\mathbf{X}))^T
+\right]
+A^T
+\\
+&=
+A\Sigma A^T.
+\end{align*}
+\end{proof}
+
+
+% ------------------------------------------------------------
+\subsection*{Variance of a Linear Combination}
+% ------------------------------------------------------------
+
+An important special case is a linear combination
+\[
+Y=a_1X_1+\cdots+a_nX_n.
+\]
+
+Define
+\[
+\mathbf{a}
+=
+\begin{pmatrix}
+a_1\\
+\vdots\\
+a_n
+\end{pmatrix}.
+\]
+
+Then
+\[
+Y=\mathbf{a}^T\mathbf{X}.
+\]
+
+Since $\mathbf{a}^T$ is a $1\times n$ matrix, the preceding
+proposition gives
+\[
+{
+Var(\mathbf{a}^T\mathbf{X})
+=
+\mathbf{a}^T\Sigma\mathbf{a}.
+}
+\]
+
+Expanding this expression,
+\[
+{
+Var\left(\sum_{i=1}^n a_iX_i\right)
+=
+\sum_{i=1}^n a_i^2Var(X_i)
++
+2\sum_{i<j}a_ia_jCov(X_i,X_j).
+}
+\]
+
+For two random variables,
+\[
+{
+Var(aX+bY)
+=
+a^2Var(X)
++
+b^2Var(Y)
++
+2abCov(X,Y).
+}
+\]
+
+Thus, the familiar variance formula for a linear combination is
+contained naturally inside the covariance-matrix notation.
+
+
+
+
+
+
+
+
+
+
+% ============================================================
+\section{The Central Limit Theorem}
+% ============================================================
+
+The Central Limit Theorem is one of the most important results in
+probability. It explains why the normal distribution appears so
+frequently when we study sums and averages of many independent random
+variables.
+
+The interesting part of it is that the individual random variables do
+\emph{not} need to be normally distributed. Under suitable assumptions,
+their properly standardized sum becomes approximately normal as the
+number of terms becomes large.
+
+
+% ------------------------------------------------------------
+\subsection*{Convergence in Distribution}
+% ------------------------------------------------------------
+
+Before stating the Central Limit Theorem, we recall the relevant notion
+of convergence.
+
+\begin{definition}[Convergence in distribution]
+Let $X_1,X_2,\ldots$ and $X$ be random variables with CDFs
+$F_{X_1},F_{X_2},\ldots$ and $F_X$, respectively.
+
+We say that
+\[
+X_n \xrightarrow{d} X
+\]
+if
+\[
+\lim_{n\to\infty}F_{X_n}(x)
+=
+F_X(x)
+\]
+for every $x\in\mathbb{R}$ at which $F_X$ is continuous.
+\end{definition}
+
+In particular, since the CDF of a normal random variable is continuous
+everywhere,
+\[
+X_n\xrightarrow{d}N(0,1)
+\]
+means that
+\[
+\lim_{n\to\infty}\Prob(X_n\le x)
+=
+\Phi(x)
+\qquad
+\text{for every }x\in\mathbb{R},
+\]
+where $\Phi$ is the CDF of the standard normal distribution.
+
+
+% ------------------------------------------------------------
+\subsection*{The Lindeberg--L\'evy Central Limit Theorem}
+% ------------------------------------------------------------
+
+\begin{theorem}[Central Limit Theorem]
+\label{thm:clt}
+Let
+\[
+X_1,X_2,\ldots
+\]
+be independent and identically distributed random variables satisfying
+\[
+E(X_i)=\mu
+\]
+and
+\[
+Var(X_i)=\sigma^2,
+\qquad
+0<\sigma^2<\infty.
+\]
+
+Define
+\[
+S_n=X_1+\cdots+X_n.
+\]
+
+Then
+\[
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+\xrightarrow{d}
+N(0,1).
+\]
+
+Equivalently, if
+\[
+\overline{X}_n
+=
+\frac{1}{n}\sum_{i=1}^n X_i,
+\]
+then
+\[
+\frac{\sqrt{n}(\overline{X}_n-\mu)}{\sigma}
+\xrightarrow{d}
+N(0,1).
+\]
+
+That is, for every $x\in\mathbb{R}$,
+\[
+\lim_{n\to\infty}
+\Prob\left(
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+\le x
+\right)
+=
+\Phi(x).
+\]
+\end{theorem}
+
+\begin{remark}[Assumptions of the theorem]
+The theorem requires the following assumptions.
+
+\begin{enumerate}[label=(\arabic*)]
+
+\item The random variables
+\[
+X_1,X_2,\ldots
+\]
+are independent.
+
+\item They are identically distributed.
+
+\item Their common mean exists and is finite:
+\[
+E(X_i)=\mu\in\mathbb{R}.
+\]
+
+\item Their common variance exists, is finite, and is positive:
+\[
+0<Var(X_i)=\sigma^2<\infty.
+\]
+
+\end{enumerate}
+
+No assumption is made that the $X_i$ themselves are normally
+distributed.
+\end{remark}
+
+
+% ============================================================
+\subsection*{Characteristic Functions}
+% ============================================================
+
+We prove the Central Limit Theorem using characteristic functions.
+
+\begin{definition}[Characteristic function]
+The \textbf{characteristic function} of a random variable $X$ is
+\[
+\varphi_X(t)
+=
+E\left(e^{itX}\right),
+\qquad
+t\in\mathbb{R},
+\]
+where
+\[
+i=\sqrt{-1}.
+\]
+\end{definition}
+
+Since
+\[
+|e^{itX}|=1,
+\]
+the expectation
+\[
+E(e^{itX})
+\]
+always exists. Thus, unlike an MGF, a characteristic function exists for
+every random variable.
+
+Using Euler's formula,
+\[
+e^{itX}
+=
+\cos(tX)+i\sin(tX),
+\]
+we may also write
+\[
+\varphi_X(t)
+=
+E[\cos(tX)]
++
+iE[\sin(tX)].
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Characteristic Functions and Independence}
+% ------------------------------------------------------------
+
+\begin{proposition}
+If $X$ and $Y$ are independent, then
+\[
+\varphi_{X+Y}(t)
+=
+\varphi_X(t)\varphi_Y(t).
+\]
+\end{proposition}
+
+\begin{proof}
+By definition,
+\begin{align*}
+\varphi_{X+Y}(t)
+&=
+E\left(e^{it(X+Y)}\right)
+\\
+&=
+E\left(e^{itX}e^{itY}\right).
+\end{align*}
+
+Since $X$ and $Y$ are independent, the random variables
+\[
+e^{itX}
+\qquad\text{and}\qquad
+e^{itY}
+\]
+are also independent. Therefore,
+\begin{align*}
+E\left(e^{itX}e^{itY}\right)
+&=
+E(e^{itX})E(e^{itY})
+\\
+&=
+\varphi_X(t)\varphi_Y(t).
+\end{align*}
+
+Hence,
+\[
+\varphi_{X+Y}(t)
+=
+\varphi_X(t)\varphi_Y(t).
+\]
+\end{proof}
+
+More generally, if
+\[
+X_1,\ldots,X_n
+\]
+are independent, then
+\[
+\varphi_{X_1+\cdots+X_n}(t)
+=
+\prod_{j=1}^n\varphi_{X_j}(t).
+\]
+
+If, in addition, the random variables are identically distributed, then
+\[
+\varphi_{X_1+\cdots+X_n}(t)
+=
+[\varphi_{X_1}(t)]^n.
+\]
+
+
+% ------------------------------------------------------------
+\subsection*{Characteristic Functions Under Linear Transformations}
+% ------------------------------------------------------------
+
+\begin{proposition}
+If
+\[
+Y=aX+b,
+\]
+where $a,b\in\mathbb{R}$, then
+\[
+\varphi_Y(t)
+=
+e^{itb}\varphi_X(at).
+\]
+\end{proposition}
+
+\begin{proof}
+By definition,
+\begin{align*}
+\varphi_Y(t)
+&=
+E(e^{itY})
+\\
+&=
+E(e^{it(aX+b)})
+\\
+&=
+E(e^{itb}e^{iatX})
+\\
+&=
+e^{itb}E(e^{i(at)X})
+\\
+&=
+e^{itb}\varphi_X(at).
+\end{align*}
+\end{proof}
+
+
+% ============================================================
+\subsection*{A Second-Order Expansion of a Characteristic Function}
+% ============================================================
+
+The following proposition is the main ingredient in the proof of the
+Central Limit Theorem.
+
+\begin{proposition}
+\label{prop:cf-expansion}
+Suppose $Y$ satisfies
+\[
+E(Y)=0
+\]
+and
+\[
+E(Y^2)=1.
+\]
+
+Then, as $t\to0$,
+\[
+\varphi_Y(t)
+=
+1-\frac{t^2}{2}+o(t^2).
+\]
+\end{proposition}
+
+\begin{proof}
+We begin with the second-order Taylor expansion of the complex
+exponential:
+\[
+e^{ix}
+=
+1+ix-\frac{x^2}{2}+o(x^2)
+\qquad
+\text{as }x\to0.
+\]
+
+To use this expansion inside an expectation, we make the remainder
+precise.
+
+Define
+\[
+g(x)
+=
+\begin{cases}
+\dfrac{
+e^{ix}-1-ix+\frac{x^2}{2}
+}{
+x^2
+},
+&
+x\neq0,
+\\[0.4cm]
+0,
+&
+x=0.
+\end{cases}
+\]
+
+Since
+\[
+e^{ix}
+=
+1+ix-\frac{x^2}{2}+o(x^2),
+\]
+we have
+\[
+\lim_{x\to0}g(x)=0.
+\]
+
+Therefore,
+\[
+e^{ix}
+=
+1+ix-\frac{x^2}{2}
++
+x^2g(x),
+\]
+where
+\[
+g(x)\to0
+\qquad
+\text{as }x\to0.
+\]
+
+We also need the fact that $g$ is bounded.
+
+For $|x|\ge1$,
+\begin{align*}
+|g(x)|
+&\le
+\frac{
+|e^{ix}|+1+|x|+\frac{x^2}{2}
+}{
+x^2
+}
+\\
+&=
+\frac{
+2+|x|+\frac{x^2}{2}
+}{
+x^2
+}
+\\
+&\le
+2+1+\frac12
+\\
+&=
+\frac72.
+\end{align*}
+
+Near zero, $g$ is continuous and converges to zero, so it is also
+bounded on a neighborhood of zero. Hence, there exists some constant
+$C<\infty$ such that
+\[
+|g(x)|\le C
+\qquad
+\text{for every }x\in\mathbb{R}.
+\]
+
+Now substitute
+\[
+x=tY.
+\]
+
+We obtain
+\[
+e^{itY}
+=
+1+itY-\frac{t^2Y^2}{2}
++
+t^2Y^2g(tY).
+\]
+
+Taking expectations gives
+\begin{align*}
+\varphi_Y(t)
+&=
+E(e^{itY})
+\\
+&=
+1
++
+itE(Y)
+-
+\frac{t^2}{2}E(Y^2)
++
+t^2E\left[Y^2g(tY)\right].
+\end{align*}
+
+Since
+\[
+E(Y)=0
+\]
+and
+\[
+E(Y^2)=1,
+\]
+this becomes
+\[
+\varphi_Y(t)
+=
+1-\frac{t^2}{2}
++
+t^2E\left[Y^2g(tY)\right].
+\]
+
+We now show that
+\[
+E\left[Y^2g(tY)\right]\to0
+\qquad
+\text{as }t\to0.
+\]
+
+For every fixed value of $Y$,
+\[
+tY\to0,
+\]
+and therefore
+\[
+g(tY)\to0.
+\]
+
+Hence,
+\[
+Y^2g(tY)\to0
+\]
+pointwise.
+
+Furthermore, since $g$ is bounded,
+\[
+|Y^2g(tY)|
+\le
+CY^2.
+\]
+
+But
+\[
+E(Y^2)=1<\infty.
+\]
+
+Therefore, by the Dominated Convergence Theorem,
+\[
+E\left[Y^2g(tY)\right]
+\to0.
+\]
+
+Thus,
+\[
+E\left[Y^2g(tY)\right]
+=
+o(1),
+\]
+and consequently,
+\[
+t^2E\left[Y^2g(tY)\right]
+=
+o(t^2).
+\]
+
+We conclude that
+\[
+\varphi_Y(t)
+=
+1-\frac{t^2}{2}+o(t^2).
+\]
+\end{proof}
+
+
+% ============================================================
+\subsection*{Characteristic Function of the Standard Normal}
+% ============================================================
+
+We will also need the characteristic function of a standard normal
+random variable.
+
+\begin{proposition}
+If
+\[
+Z\sim N(0,1),
+\]
+then
+\[
+\varphi_Z(t)
+=
+e^{-t^2/2}.
+\]
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+Z\sim N(0,1),
+\]
+its density is
+\[
+f_Z(z)
+=
+\frac{1}{\sqrt{2\pi}}e^{-z^2/2}.
+\]
+
+Define
+\[
+\varphi_Z(t)
+=
+E(e^{itZ}).
+\]
+
+We differentiate with respect to $t$:
+\[
+\varphi_Z'(t)
+=
+E\left(iZe^{itZ}\right).
+\]
+
+Therefore,
+\[
+\varphi_Z'(t)
+=
+\frac{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+z e^{itz}e^{-z^2/2}\,dz.
+\]
+
+Notice that
+\[
+\frac{d}{dz}e^{-z^2/2}
+=
+-ze^{-z^2/2}.
+\]
+
+Thus,
+\[
+ze^{-z^2/2}
+=
+-\frac{d}{dz}e^{-z^2/2}.
+\]
+
+Hence,
+\[
+\varphi_Z'(t)
+=
+-\frac{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+e^{itz}
+\frac{d}{dz}
+\left(e^{-z^2/2}\right)
+\,dz.
+\]
+
+Using integration by parts,
+\begin{align*}
+\varphi_Z'(t)
+&=
+-\frac{i}{\sqrt{2\pi}}
+\left[
+e^{itz}e^{-z^2/2}
+\right]_{-\infty}^{\infty}
+\\
+&\qquad
++
+\frac{i}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+it e^{itz}e^{-z^2/2}\,dz.
+\end{align*}
+
+Since
+\[
+e^{-z^2/2}\to0
+\qquad
+\text{as }|z|\to\infty,
+\]
+the boundary term is zero. Therefore,
+\begin{align*}
+\varphi_Z'(t)
+&=
+\frac{i^2t}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+e^{itz}e^{-z^2/2}\,dz
+\\
+&=
+-\frac{t}{\sqrt{2\pi}}
+\int_{-\infty}^{\infty}
+e^{itz}e^{-z^2/2}\,dz
+\\
+&=
+-t\varphi_Z(t).
+\end{align*}
+
+Thus, $\varphi_Z$ satisfies the differential equation
+\[
+\varphi_Z'(t)
+=
+-t\varphi_Z(t).
+\]
+
+Equivalently,
+\[
+\frac{\varphi_Z'(t)}{\varphi_Z(t)}
+=
+-t.
+\]
+
+Integrating,
+\[
+\log\varphi_Z(t)
+=
+-\frac{t^2}{2}+C.
+\]
+
+Since every characteristic function satisfies
+\[
+\varphi_Z(0)=1,
+\]
+we have
+\[
+0=C.
+\]
+
+Therefore,
+\[
+\varphi_Z(t)
+=
+e^{-t^2/2}.
+\]
+\end{proof}
+
+
+% ============================================================
+\subsection*{The Characteristic-Function Convergence Theorem}
+% ============================================================
+
+We use the following standard result.
+
+\begin{theorem}[L\'evy's Continuity Theorem]
+\label{thm:levy-continuity}
+Let $Y_1,Y_2,\ldots$ be random variables with characteristic functions
+\[
+\varphi_{Y_1},\varphi_{Y_2},\ldots.
+\]
+
+Suppose there exists a random variable $Y$ with characteristic function
+$\varphi_Y$ such that
+\[
+\varphi_{Y_n}(t)
+\longrightarrow
+\varphi_Y(t)
+\]
+for every $t\in\mathbb{R}$.
+
+Then
+\[
+Y_n\xrightarrow{d}Y.
+\]
+\end{theorem}
+
+Thus, to prove convergence in distribution, it is enough to prove
+pointwise convergence of the corresponding characteristic functions.
+
+
+% ============================================================
+\subsection*{Proof of the Central Limit Theorem}
+% ============================================================
+
+\begin{proof}[Proof of Theorem \ref{thm:clt}]
+Let
+\[
+X_1,X_2,\ldots
+\]
+be independent and identically distributed with
+\[
+E(X_i)=\mu
+\]
+and
+\[
+Var(X_i)=\sigma^2,
+\qquad
+0<\sigma^2<\infty.
+\]
+
+We want to prove that
+\[
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+\xrightarrow{d}
+N(0,1),
+\]
+where
+\[
+S_n=X_1+\cdots+X_n.
+\]
+
+\medskip
+
+\noindent
+\textbf{Step 1: Standardize the individual random variables.}
+
+Define
+\[
+Y_i
+=
+\frac{X_i-\mu}{\sigma}.
+\]
+
+Because the $X_i$ are independent and identically distributed, the
+$Y_i$ are also independent and identically distributed.
+
+Moreover,
+\begin{align*}
+E(Y_i)
+&=
+E\left(
+\frac{X_i-\mu}{\sigma}
+\right)
+\\
+&=
+\frac{1}{\sigma}
+\left(E(X_i)-\mu\right)
+\\
+&=
+0.
+\end{align*}
+
+Also,
+\begin{align*}
+Var(Y_i)
+&=
+Var\left(
+\frac{X_i-\mu}{\sigma}
+\right)
+\\
+&=
+\frac{1}{\sigma^2}Var(X_i)
+\\
+&=
+1.
+\end{align*}
+
+Since
+\[
+E(Y_i)=0,
+\]
+we therefore have
+\[
+E(Y_i^2)
+=
+Var(Y_i)
+=
+1.
+\]
+
+Now observe that
+\begin{align*}
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+&=
+\frac{
+\sum_{i=1}^n X_i-n\mu
+}{
+\sigma\sqrt{n}
+}
+\\
+&=
+\frac{
+\sum_{i=1}^n(X_i-\mu)
+}{
+\sigma\sqrt{n}
+}
+\\
+&=
+\frac{1}{\sqrt{n}}
+\sum_{i=1}^n
+\frac{X_i-\mu}{\sigma}
+\\
+&=
+\frac{1}{\sqrt{n}}
+\sum_{i=1}^nY_i.
+\end{align*}
+
+Define
+\[
+Z_n
+=
+\frac{1}{\sqrt{n}}
+\sum_{i=1}^nY_i.
+\]
+
+Thus, it is enough to prove that
+\[
+Z_n\xrightarrow{d}N(0,1).
+\]
+
+\medskip
+
+\noindent
+\textbf{Step 2: Find the characteristic function of $Z_n$.}
+
+Let
+\[
+\varphi_Y(t)
+=
+E(e^{itY_1})
+\]
+denote the common characteristic function of the $Y_i$.
+
+Then
+\begin{align*}
+\varphi_{Z_n}(t)
+&=
+E\left[
+\exp\left(
+it\frac{Y_1+\cdots+Y_n}{\sqrt{n}}
+\right)
+\right]
+\\
+&=
+E\left[
+\exp\left(
+i\frac{t}{\sqrt{n}}Y_1
+\right)
+\cdots
+\exp\left(
+i\frac{t}{\sqrt{n}}Y_n
+\right)
+\right].
+\end{align*}
+
+Because
+\[
+Y_1,\ldots,Y_n
+\]
+are independent,
+\begin{align*}
+\varphi_{Z_n}(t)
+&=
+\prod_{j=1}^n
+E\left[
+\exp\left(
+i\frac{t}{\sqrt{n}}Y_j
+\right)
+\right].
+\end{align*}
+
+Because the $Y_j$ are identically distributed,
+\[
+\varphi_{Z_n}(t)
+=
+\left[
+\varphi_Y
+\left(
+\frac{t}{\sqrt{n}}
+\right)
+\right]^n.
+\]
+
+\medskip
+
+\noindent
+\textbf{Step 3: Apply the second-order expansion.}
+
+From Proposition \ref{prop:cf-expansion},
+\[
+\varphi_Y(u)
+=
+1-\frac{u^2}{2}+o(u^2)
+\qquad
+\text{as }u\to0.
+\]
+
+Set
+\[
+u=\frac{t}{\sqrt{n}}.
+\]
+
+For each fixed $t$,
+\[
+\frac{t}{\sqrt{n}}\to0.
+\]
+
+Therefore,
+\begin{align*}
+\varphi_Y\left(\frac{t}{\sqrt{n}}\right)
+&=
+1
+-
+\frac{1}{2}
+\left(\frac{t}{\sqrt{n}}\right)^2
++
+o\left(
+\left(\frac{t}{\sqrt{n}}\right)^2
+\right)
+\\
+&=
+1-\frac{t^2}{2n}
++
+o\left(\frac{1}{n}\right).
+\end{align*}
+
+Hence,
+\[
+\varphi_{Z_n}(t)
+=
+\left[
+1-\frac{t^2}{2n}
++
+o\left(\frac{1}{n}\right)
+\right]^n.
+\]
+
+We now evaluate this limit.
+
+Write
+\[
+a_n
+=
+-\frac{t^2}{2n}
++
+o\left(\frac{1}{n}\right).
+\]
+
+Then
+\[
+a_n\to0
+\]
+and
+\[
+na_n\to-\frac{t^2}{2}.
+\]
+
+Also,
+\[
+a_n=O\left(\frac{1}{n}\right),
+\]
+so
+\[
+na_n^2
+=
+O\left(\frac{1}{n}\right)
+\to0.
+\]
+
+Using the expansion
+\[
+\log(1+x)
+=
+x+o(x)
+\qquad
+\text{as }x\to0,
+\]
+or, more precisely,
+\[
+\log(1+x)
+=
+x+O(x^2),
+\]
+we obtain
+\begin{align*}
+\log\left[(1+a_n)^n\right]
+&=
+n\log(1+a_n)
+\\
+&=
+n\left[a_n+O(a_n^2)\right]
+\\
+&=
+na_n+O(na_n^2).
+\end{align*}
+
+Taking the limit,
+\[
+na_n\to-\frac{t^2}{2}
+\]
+and
+\[
+na_n^2\to0.
+\]
+
+Therefore,
+\[
+\log\left[(1+a_n)^n\right]
+\to
+-\frac{t^2}{2}.
+\]
+
+Exponentiating,
+\[
+(1+a_n)^n
+\to
+e^{-t^2/2}.
+\]
+
+Consequently,
+\[
+\lim_{n\to\infty}\varphi_{Z_n}(t)
+=
+e^{-t^2/2}.
+\]
+
+\medskip
+
+\noindent
+\textbf{Step 4: Identify the limiting distribution.}
+
+We proved above that if
+\[
+Z\sim N(0,1),
+\]
+then
+\[
+\varphi_Z(t)
+=
+e^{-t^2/2}.
+\]
+
+Thus,
+\[
+\varphi_{Z_n}(t)
+\longrightarrow
+\varphi_Z(t)
+\qquad
+\text{for every }t\in\mathbb{R}.
+\]
+
+By L\'evy's Continuity Theorem,
+\[
+Z_n\xrightarrow{d}Z.
+\]
+
+Since
+\[
+Z\sim N(0,1),
+\]
+we obtain
+\[
+Z_n\xrightarrow{d}N(0,1).
+\]
+
+Finally,
+\[
+Z_n
+=
+\frac{S_n-n\mu}{\sigma\sqrt{n}},
+\]
+so
+\[
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+\xrightarrow{d}
+N(0,1).
+\]
+
+This proves the result.
+\end{proof}
+
+
+% ------------------------------------------------------------
+\subsection*{Equivalent Form in Terms of the Sample Mean}
+% ------------------------------------------------------------
+
+Since
+\[
+\overline{X}_n
+=
+\frac{S_n}{n},
+\]
+we have
+\begin{align*}
+\frac{S_n-n\mu}{\sigma\sqrt{n}}
+&=
+\frac{
+n\overline{X}_n-n\mu
+}{
+\sigma\sqrt{n}
+}
+\\
+&=
+\frac{
+n(\overline{X}_n-\mu)
+}{
+\sigma\sqrt{n}
+}
+\\
+&=
+\frac{
+\sqrt{n}(\overline{X}_n-\mu)
+}{
+\sigma
+}.
+\end{align*}
+
+Therefore, the Central Limit Theorem may equivalently be written as
+\[
+\frac{
+\sqrt{n}(\overline{X}_n-\mu)
+}{
+\sigma
+}
+\xrightarrow{d}
+N(0,1).
+\]
+
+Another equivalent way to express the approximation is
+\[
+\overline{X}_n
+\approx
+N\left(
+\mu,\frac{\sigma^2}{n}
+\right)
+\]
+for large $n$.
+
+Similarly,
+\[
+S_n
+\approx
+N(n\mu,n\sigma^2)
+\]
+for large $n$.
+
+
+\end{document}

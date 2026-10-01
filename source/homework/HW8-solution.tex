@@ -1,0 +1,723 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\hypersetup{colorlinks=true, linkcolor=uwpurple, urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 8 Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+\newcommand{\dd}{\,d}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{solutionbox}[1][]{
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][]{
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\newcommand{\source}[2]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter #1, Problem #2.}}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 8 Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[width=0.86\textwidth,colback=white,colframe=uwgold,boxrule=0.8pt,arc=3mm]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.}
+\end{problemheader}
+\source{8}{1--5}
+
+Find the following PDFs.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the PDF of $e^{-X}$ for $X\sim \operatorname{Exp}(1)$.
+
+    \item Find the PDF of $X^7$ for $X\sim \operatorname{Exp}(\lambda)$.
+
+    \item Find the PDF of $Z^3$ for $Z\sim N(0,1)$.
+
+    \item Find the PDF of $Z^4$ for $Z\sim N(0,1)$.
+
+    \item Find the PDF of $|Z|$ for $Z\sim N(0,1)$.
+\end{enumerate}
+
+\begin{solutionbox}
+Let $\phi(z)=(2\pi)^{-1/2}e^{-z^2/2}$ denote the standard normal density.
+
+\textbf{(a)} Put $Y=e^{-X}$. Since $X>0$, we have $0<Y<1$. The inverse transformation is $x=-\log y$, and
+\[
+\left|\frac{dx}{dy}\right|=\frac1y.
+\]
+Thus
+\[
+f_Y(y)=e^{-(-\log y)}\frac1y=1,
+\qquad 0<y<1.
+\]
+ 
+
+\textbf{(b)} Put $Y=X^7$. The inverse is $x=y^{1/7}$ for $y>0$, and
+\[
+\left|\frac{dx}{dy}\right|=\frac{1}{7}y^{-6/7}.
+\]
+Therefore
+\[
+f_Y(y)=\frac{\lambda}{7}y^{-6/7}e^{-\lambda y^{1/7}},
+\qquad y>0.
+\]
+
+ 
+
+\textbf{(c)} Put $Y=Z^3$. This transformation is one-to-one. For $y\ne0$, the inverse is $z=y^{1/3}$ and
+\[
+\left|\frac{dz}{dy}\right|=\frac{1}{3|y|^{2/3}}.
+\]
+Hence
+\[
+f_Y(y)=\frac{\phi(y^{1/3})}{3|y|^{2/3}},
+\qquad y\ne0.
+\]
+The value assigned to the density at the single point $y=0$ is immaterial.
+
+ 
+
+\textbf{(d)} Put $Y=Z^4$. The support is $y>0$. For each $y>0$, the two preimages are $y^{1/4}$ and $-y^{1/4}$. Adding the two contributions gives
+\[
+f_Y(y)
+=
+\phi(y^{1/4})\frac{1}{4y^{3/4}}
++
+\phi(-y^{1/4})\frac{1}{4y^{3/4}}
+=
+\frac{\phi(y^{1/4})}{2y^{3/4}},
+\qquad y>0.
+\]
+
+ 
+
+\textbf{(e)} Put $Y=|Z|$. For $y>0$, the two preimages are $y$ and $-y$, and therefore
+\[
+f_Y(y)=\phi(y)+\phi(-y)=2\phi(y),
+\qquad y>0.
+\]
+
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2. }
+\end{problemheader}
+\source{8}{13}
+
+Let $X$ and $Y$ be i.i.d. $\operatorname{Exp}(\lambda)$, and let
+\[
+T=\log(X/Y).
+\]
+Find the CDF and PDF of $T$.
+
+\begin{solutionbox}
+For real $t$,
+\[
+F_T(t)=P\!\left(\log(X/Y)\le t\right)=P(X\le e^tY).
+\]
+Conditioning on $Y=y$ gives
+\[
+F_T(t)=\int_0^\infty P(X\le e^t y)\lambda e^{-\lambda y}\dd y.
+\]
+Since $X\sim\operatorname{Exp}(\lambda)$,
+\[
+P(X\le e^t y)=1-e^{-\lambda e^t y}.
+\]
+Thus
+\[
+F_T(t)=\int_0^\infty \left(1-e^{-\lambda e^t y}\right)\lambda e^{-\lambda y}\dd y
+=1-\frac{1}{1+e^t}
+=\frac{e^t}{1+e^t}.
+\]
+Differentiating the CDF gives
+\[
+f_T(t)=\frac{e^t}{(1+e^t)^2},
+\qquad -\infty<t<\infty.
+\]
+The parameter $\lambda$ disappears because only the ratio $X/Y$ matters.
+
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.  }
+\end{problemheader}
+\source{8}{14}
+
+Let $X$ and $Y$ have joint PDF $f_{X,Y}(x,y)$, and transform $(X,Y)\mapsto (T,W)$ linearly by letting
+\[
+T=aX+bY,
+\qquad
+W=cX+dY,
+\]
+where $a,b,c,d$ are constants such that
+\[
+ad-bc\ne0.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the joint PDF $f_{T,W}(t,w)$ in terms of $f_{X,Y}$, though your answer should be written as a function of $t$ and $w$.
+
+    \item For the case where
+    \[
+    T=X+Y,
+    \qquad
+    W=X-Y,
+    \]
+    show that
+    \[
+    f_{T,W}(t,w)
+    =
+    \frac12
+    f_{X,Y}\left(\frac{t+w}{2},\frac{t-w}{2}\right).
+    \]
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} Let
+\[
+D=ad-bc.
+\]
+Solving the linear system gives
+\[
+x=\frac{dt-bw}{D},
+\qquad
+ y=\frac{-ct+aw}{D}.
+\]
+The Jacobian determinant of the inverse transformation is
+\[
+\left|\frac{\partial(x,y)}{\partial(t,w)}\right|=\frac{1}{|D|}.
+\]
+Therefore
+\[
+f_{T,W}(t,w)
+=
+\frac{1}{|ad-bc|}
+ f_{X,Y}\left(\frac{dt-bw}{ad-bc},\frac{-ct+aw}{ad-bc}\right),
+\]
+for all $(t,w)$ whose inverse point lies in the support of $(X,Y)$.
+
+ 
+
+\textbf{(b)} Here $a=1$, $b=1$, $c=1$, and $d=-1$, so
+\[
+ad-bc=-2.
+\]
+Also
+\[
+x=\frac{t+w}{2},
+\qquad
+ y=\frac{t-w}{2}.
+\]
+Thus
+\[
+f_{T,W}(t,w)
+=
+\frac12 f_{X,Y}\left(\frac{t+w}{2},\frac{t-w}{2}\right).
+\]
+
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4. }
+\end{problemheader}
+\source{10}{2}
+
+For i.i.d. random variables $X_1,\dots,X_n$ with mean $\mu$ and variance $\sigma^2$, give a value of $n$, as a specific number, that will ensure that there is at least a $99\%$ chance that the sample mean will be within $2$ standard deviations of the true mean $\mu$.
+
+\begin{solutionbox}
+The sample mean has
+\[
+E(\bar X_n)=\mu,
+\qquad
+\Var(\bar X_n)=\frac{\sigma^2}{n}.
+\]
+Chebyshev's inequality gives
+\[
+P(|\bar X_n-\mu|\ge 2\sigma)
+\le
+\frac{\Var(\bar X_n)}{(2\sigma)^2}
+=
+\frac{1}{4n}.
+\]
+To make the probability of being outside the interval at most $0.01$, it is enough to require
+\[
+\frac{1}{4n}\le0.01.
+\]
+Thus $n\ge25$ is sufficient. With $n=25$, Chebyshev gives
+\[
+P(|\bar X_n-\mu|<2\sigma)\ge 0.99.
+\]
+
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{10}{4}
+
+The famous arithmetic mean--geometric mean inequality says that for any positive numbers
+\[
+a_1,a_2,\dots,a_n,
+\]
+we have
+\[
+\frac{a_1+a_2+\cdots+a_n}{n}
+\ge
+(a_1a_2\cdots a_n)^{1/n}.
+\]
+
+Show that this inequality follows from Jensen's inequality, by considering $E(\log X)$ for a random variable $X$ whose possible values are $a_1,\dots,a_n$. You should specify the PMF of $X$.
+
+\begin{solutionbox}
+Let $X$ take the values $a_1,a_2,\dots,a_n$ with equal probabilities:
+\[
+P(X=a_j)=\frac1n,
+\qquad j=1,\dots,n.
+\]
+Then
+\[
+E(X)=\frac{a_1+\cdots+a_n}{n}
+\]
+and
+\[
+E(\log X)=\frac1n\sum_{j=1}^n \log a_j
+=
+\log\left((a_1a_2\cdots a_n)^{1/n}\right).
+\]
+Since $\log x$ is concave, Jensen's inequality gives
+\[
+E(\log X)\le \log(E X).
+\]
+Therefore
+\[
+\log\left((a_1a_2\cdots a_n)^{1/n}\right)
+\le
+\log\left(\frac{a_1+\cdots+a_n}{n}\right).
+\]
+Because the logarithm is increasing, Expnentiating both sides gives
+\[
+(a_1a_2\cdots a_n)^{1/n}
+\le
+\frac{a_1+a_2+\cdots+a_n}{n}.
+\]
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6.  }
+\end{problemheader}
+\source{10}{7}
+
+Let $X$ and $Y$ be i.i.d. positive random variables, and let $c>0$. For each part below, fill in the appropriate equality or inequality symbol.
+
+Write $=$ if the two sides are always equal, $\le$ if the left-hand side is less than or equal to the right-hand side but not necessarily equal, and similarly for $\ge$. If no relation holds in general, write $?$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item $E(\log X)\ \underline{\hspace{1cm}}\ \log(E X)$
+    \item $E(X)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)}$
+    \item $E(\sin^2 X)+E(\cos^2 X)\ \underline{\hspace{1cm}}\ 1$
+    \item $E(|X|)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)}$
+    \item $P(X>c)\ \underline{\hspace{1cm}}\ \dfrac{E(X^3)}{c^3}$
+    \item $P(X\le Y)\ \underline{\hspace{1cm}}\ P(X\ge Y)$
+    \item $E(XY)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)E(Y^2)}$
+    \item $P(X+Y>10)\ \underline{\hspace{1cm}}\ P(X>5\text{ or }Y>5)$
+    \item $E(\min(X,Y))\ \underline{\hspace{1cm}}\ \min(EX,EY)$
+    \item $E(X/Y)\ \underline{\hspace{1cm}}\ \dfrac{EX}{EY}$
+    \item $E\!\left(X^2(X^2+1)\right)\ \underline{\hspace{1cm}}\ E\!\left(X^2(Y^2+1)\right)$
+    \item $E\!\left(\dfrac{X^3}{X^3+Y^3}\right)\ \underline{\hspace{1cm}}\ E\!\left(\dfrac{Y^3}{X^3+Y^3}\right)$
+\end{enumerate}
+
+\begin{solutionbox}
+The answers are as follows.
+\[
+\begin{array}{c|c|l}
+\text{Part} & \text{Symbol} & \text{Reason}\\ \hline
+(a) & \le & \log x\text{ is concave, by Jensen.}\\
+(b) & \le & (E X)^2\le E(X^2).\\
+(c) & = & \sin^2 X+\cos^2 X=1\text{ pointwise.}\\
+(d) & \le & (E|X|)^2\le E(X^2).\\
+(e) & \le & \text{Markov applied to }X^3.\\
+(f) & = & \text{Symmetry of i.i.d. }X,Y.\\
+(g) & \le & \text{Cauchy--Schwarz.}\\
+(h) & \le & X+Y>10\text{ implies }X>5\text{ or }Y>5.\\
+(i) & \le & \min(X,Y)\le X\text{ and }\min(X,Y)\le Y.\\
+(j) & ? & \text{No fixed relation holds in general.}\\
+(k) & \ge & E(X^4)\ge (E X^2)^2.\\
+(l) & = & \text{Symmetry, and the two fractions exchange when }X,Y\text{ are swapped.}
+\end{array}
+\]
+
+For part (k), independence gives
+\[
+E\!\left(X^2(Y^2+1)\right)=(E X^2)^2+E(X^2),
+\]
+while the left-hand side is $E(X^4)+E(X^2)$, so the comparison reduces to $E(X^4)\ge (E X^2)^2$.
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 7.}
+\end{problemheader}
+\source{10}{22}
+
+Let
+\[
+U_1,U_2,\dots,U_{60}
+\]
+be i.i.d. $\operatorname{Unif}(0,1)$ and let
+\[
+X=U_1+U_2+\cdots+U_{60}.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Which important distribution is the distribution of $X$ very close to? Specify what the parameters are, and state which theorem justifies your choice.
+
+    \item Give a simple but accurate approximation for
+    \[
+    P(X>17).
+    \]
+    Justify briefly.
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} For one $\operatorname{Unif}(0,1)$ random variable,
+\[
+E(U_j)=\frac12,
+\qquad
+\Var(U_j)=\frac1{12}.
+\]
+Therefore
+\[
+E(X)=60\cdot\frac12=30,
+\qquad
+\Var(X)=60\cdot\frac1{12}=5.
+\]
+By the Central Limit Theorem, the distribution of $X$ is very close to
+\[
+N(30,5).
+\]
+ 
+
+\textbf{(b)} Using the normal approximation,
+\[
+P(X>17)
+\approx
+P\left(N(30,5)>17\right)
+=
+P\left(Z>\frac{17-30}{\sqrt5}\right).
+\]
+The standardized value is
+\[
+\frac{17-30}{\sqrt5}\approx -5.81.
+\]
+Thus
+\[
+P(X>17)\approx P(Z>-5.81)=\Phi(5.81),
+\]
+which is essentially $1$.
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 8.}
+\end{problemheader}
+\source{10}{25}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Let
+    \[
+    Y=e^X,
+    \qquad
+    X\sim \operatorname{Exp}(3).
+    \]
+    Find the mean and variance of $Y$.
+
+    \item For $Y_1,\dots,Y_n$ i.i.d. with the same distribution as $Y$ from part (a), what is the approximate distribution of the sample mean
+    \[
+    \bar Y_n=\frac1n\sum_{j=1}^{n}Y_j
+    \]
+    when $n$ is large?
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} Since $X\sim\operatorname{Exp}(3)$, its MGF is
+\[
+M_X(t)=\frac{3}{3-t},
+\qquad t<3.
+\]
+Because $Y=e^X$,
+\[
+E(Y)=E(e^X)=M_X(1)=\frac32.
+\]
+Also
+\[
+E(Y^2)=E(e^{2X})=M_X(2)=3.
+\]
+Therefore
+\[
+\Var(Y)=E(Y^2)-[E(Y)]^2
+=3-\frac94
+=\frac34.
+\]
+ 
+
+\textbf{(b)} By the Central Limit Theorem, when $n$ is large,
+\[
+\bar Y_n\approx N\left(E(Y),\frac{\Var(Y)}{n}\right)
+=
+N\left(\frac32,\frac{3}{4n}\right).
+\]
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 9. }
+\end{problemheader}
+\source{10}{27}
+
+Consider i.i.d. $\operatorname{Pois}(\lambda)$ random variables
+\[
+X_1,X_2,\dots.
+\]
+The MGF of $X_j$ is
+\[
+M(t)=e^{\lambda(e^t-1)}.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the MGF $M_n(t)$ of the sample mean
+    \[
+    \bar X_n=\frac1n\sum_{j=1}^{n}X_j.
+    \]
+
+    \item Find the limit of $M_n(t)$ as $n\to\infty$. You can do this with almost no calculation using a relevant theorem, or you can use part (a) and the fact that $e^x\approx 1+x$ if $x$ is very small.
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} We compute
+\[
+M_n(t)=E\left(e^{t\bar X_n}\right)
+=E\left(e^{(t/n)(X_1+\cdots+X_n)}\right).
+\]
+By independence,
+\[
+M_n(t)=\prod_{j=1}^n E\left(e^{(t/n)X_j}\right)
+=\left[M\left(\frac tn\right)\right]^n.
+\]
+Using the Poisson MGF,
+\[
+M_n(t)=\left[e^{\lambda(e^{t/n}-1)}\right]^n
+=
+\exp\left(n\lambda(e^{t/n}-1)\right).
+\]
+ 
+
+\textbf{(b)} As $n\to\infty$,
+\[
+e^{t/n}-1\sim \frac tn.
+\]
+Therefore
+\[
+n\lambda(e^{t/n}-1)\to \lambda t.
+\]
+It follows that
+\[
+M_n(t)\to e^{\lambda t}.
+\]
+This is the MGF of the constant random variable equal to $\lambda$, which agrees with the Law of Large Numbers.
+ 
+\end{solutionbox}
+
+\end{document}

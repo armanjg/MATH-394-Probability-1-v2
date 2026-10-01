@@ -1,0 +1,771 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Practice Midterm Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics\\}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{colback=softpurple,colframe=uwpurple,boxrule=0.8pt,arc=2mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+
+\newtcolorbox{solutionbox}[1][]{
+    breakable,enhanced,colback=softgold,colframe=deepgold,coltitle=white,
+    colbacktitle=uwpurple,fonttitle=\bfseries,title={Solution #1},boxrule=0.85pt,
+    arc=2mm,left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={colback=uwpurple,colframe=uwpurple,arc=1.5mm,boxrule=0pt,left=1.6mm,right=1.6mm,top=0.6mm,bottom=0.6mm}
+}
+
+\newtcolorbox{finalanswerbox}[1][]{
+    colback=white,colframe=uwpurple,boxrule=0.75pt,arc=2mm,left=2mm,right=2mm,
+    top=1mm,bottom=1mm,title={\textbf{Final Answer #1}},coltitle=uwpurple,
+    colbacktitle=softpurple,fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+{\Large \textbf{\university}}\\
+{\large \department}
+\vspace{1.4cm}
+{\Huge \color{uwpurple}\textbf{Practice Midterm Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Summer 2026 \quad \\ \quad Instructor: \instructor}
+\vspace{1cm}
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Recommended time:} 60 minutes
+
+\textbf{Total:} 60 points
+\end{tcolorbox}
+\end{titlepage}
+
+\begin{problemheader}
+\textbf{Problem 1. } \hfill \textbf{10 points}
+\end{problemheader}
+
+
+
+A university student ID consists of three uppercase English letters followed by four digits. Letters and digits may repeat. The first letter cannot be \texttt{X}, and at least one of the four digits must be even.
+
+How many such student IDs are possible? Justify your counting.
+
+
+\begin{solutionbox}
+There are $25$ choices for the first letter because it cannot be \texttt{X}. Each of the next two letters has $26$ choices.
+
+For the four digits, count all digit strings and subtract those containing only odd digits. There are $10^4$ total digit strings and $5^4$ strings in which all four digits are odd. Therefore the number of digit strings containing at least one even digit is
+\[
+10^4-5^4.
+\]
+By the multiplication principle, the required number is
+\[
+25\cdot 26^2\bigl(10^4-5^4\bigr).
+\]
+Since $10^4-5^4=9375$, this equals
+\[
+25\cdot 676\cdot 9375=158{,}437{,}500.
+\]
+
+\end{solutionbox}
+
+\newpage
+\begin{problemheader}
+\textbf{Problem 2. } \hfill \textbf{10 points}
+\end{problemheader}
+
+
+
+A warehouse receives items from three factories. Factory $A$ supplies $40\%$ of the items and has a defect rate of $2\%$. Factory $B$ supplies $35\%$ of the items and has a defect rate of $5\%$. Factory $C$ supplies $25\%$ of the items and has a defect rate of $8\%$.
+
+An item is selected uniformly at random from the warehouse and is found to be defective. 
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.7em]
+    \item Find the probability that the item came from Factory $C$. \hfill \textbf{(6 points)}
+    \item Find the probability that the item did not come from Factory $A$. \hfill \textbf{(4 points)}
+\end{enumerate}
+
+ 
+
+
+
+
+
+
+
+\begin{solutionbox}
+Let $D$ be the event that the selected item is defective. The given probabilities are
+\[
+P(A)=0.40,\qquad P(B)=0.35,\qquad P(C)=0.25,
+\]
+and
+\[
+P(D\mid A)=0.02,\qquad P(D\mid B)=0.05,\qquad P(D\mid C)=0.08.
+\]
+By the law of total probability,
+\begin{align*}
+P(D)
+&=P(D\mid A)P(A)+P(D\mid B)P(B)+P(D\mid C)P(C)\\
+&=(0.02)(0.40)+(0.05)(0.35)+(0.08)(0.25)\\
+&=0.008+0.0175+0.020=0.0455.
+\end{align*}
+
+\textbf{(a)} By Bayes' rule,
+\[
+P(C\mid D)=\frac{P(D\mid C)P(C)}{P(D)}
+=\frac{(0.08)(0.25)}{0.0455}
+=\frac{40}{91}.
+\]
+
+\textbf{(b)} Since the factories are mutually exclusive,
+\begin{align*}
+P(A^c\mid D)
+&=1-P(A\mid D)\\
+&=1-\frac{P(D\mid A)P(A)}{P(D)}\\
+&=1-\frac{0.008}{0.0455}
+=1-\frac{16}{91}
+=\frac{75}{91}.
+\end{align*}
+ 
+\end{solutionbox}
+
+\newpage
+\begin{problemheader}
+\textbf{Problem 3.  } \hfill \textbf{10 points}
+\end{problemheader}
+
+
+
+
+Let $A$, $B$, and $C$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.75em]
+    \item Prove that
+    \[
+    P(A\cup B\cup C)
+    =P(A)+P(B)+P(C)
+    -P(A\cap B)-P(A\cap C)-P(B\cap C)
+    +P(A\cap B\cap C).
+    \]
+    \hfill \textbf{(6 points)}
+
+    \item Deduce that
+    \[
+    P(A\cup B\cup C)\leq P(A)+P(B)+P(C).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item Give a simple necessary and sufficient condition for equality in part (b). \hfill \textbf{(2 points)}
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} Apply the two-event addition rule to $(A\cup B)$ and $C$:
+\[
+P(A\cup B\cup C)=P(A\cup B)+P(C)-P\bigl((A\cup B)\cap C\bigr).
+\]
+Now
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B),
+\]
+and, by distributivity,
+\[
+(A\cup B)\cap C=(A\cap C)\cup(B\cap C).
+\]
+Applying the addition rule again,
+\begin{align*}
+P\bigl((A\cup B)\cap C\bigr)
+&=P\bigl((A\cap C)\cup(B\cap C)\bigr)\\
+&=P(A\cap C)+P(B\cap C)-P(A\cap B\cap C).
+\end{align*}
+Substitution gives
+\begin{align*}
+P(A\cup B\cup C)
+&=P(A)+P(B)+P(C)\\
+&\quad-P(A\cap B)-P(A\cap C)-P(B\cap C)\\
+&\quad+P(A\cap B\cap C).
+\end{align*}
+
+\textbf{(b)} Either the proof provided in the lecture (much better), or this boring proof I have written below. (I feel like I used a tank for killing a mosquito.)\\
+Pointwise, $\mathbf{1}_{A\cup B\cup C}\leq \mathbf{1}_A+\mathbf{1}_B+\mathbf{1}_C$. Reason: If $1_{A\cup B \cup C}=1$, then at least one of the indicators on the right hand side is 1. So the left hand side is always less than or equal to the right hand side. 
+Taking expectations of both sides, we obtain
+\[
+\mathbb{E}\!\left[\mathbf{1}_{A\cup B\cup C}\right]
+\le
+\mathbb{E}\!\left[\mathbf{1}_A+\mathbf{1}_B+\mathbf{1}_C\right].
+\]
+Using the fact that $\mathbb{E}[\mathbf{1}_E]=P(E)$ for any event $E$, together with the linearity of expectation, gives
+\[
+P(A\cup B\cup C)
+\le
+P(A)+P(B)+P(C).
+\]
+
+
+
+
+\textbf{(c)} Can we shown using the same method of indicator functions, but I like the following better, which utilizes part (a):
+
+
+\textbf{(c)} From part (a), equality in part (b) holds if and only if
+\[
+P(A\cap B)+P(A\cap C)+P(B\cap C)
+=
+P(A\cap B\cap C).
+\]
+
+We show that this is equivalent to
+\[
+P(A\cap B)=P(A\cap C)=P(B\cap C)=0.
+\]
+
+First, suppose equality holds in part (b). Then
+\[
+P(A\cap B)+P(A\cap C)+P(B\cap C)
+=
+P(A\cap B\cap C).
+\]
+Since
+\[
+A\cap B\cap C\subseteq A\cap B,\qquad
+A\cap B\cap C\subseteq A\cap C,\qquad
+A\cap B\cap C\subseteq B\cap C,
+\]
+we have
+\[
+P(A\cap B)+P(A\cap C)+P(B\cap C)
+\geq 3P(A\cap B\cap C).
+\]
+Therefore,
+\[
+3P(A\cap B\cap C)
+\leq P(A\cap B\cap C),
+\]
+which implies
+\[
+P(A\cap B\cap C)=0.
+\]
+Consequently,
+\[
+P(A\cap B)+P(A\cap C)+P(B\cap C)=0.
+\]
+Because all three terms are nonnegative, each one must be zero:
+\[
+P(A\cap B)=P(A\cap C)=P(B\cap C)=0.
+\]
+
+Conversely, suppose
+\[
+P(A\cap B)=P(A\cap C)=P(B\cap C)=0.
+\]
+Since \(A\cap B\cap C\subseteq A\cap B\), we also have
+\[
+P(A\cap B\cap C)=0.
+\]
+Thus, by the formula in part (a),
+\[
+P(A\cup B\cup C)=P(A)+P(B)+P(C).
+\]
+
+Hence, equality holds in part (b) if and only if \(A\), \(B\), and \(C\)
+are pairwise disjoint up to events of probability zero.
+
+\end{solutionbox}
+
+
+
+
+
+
+
+\newpage
+\begin{problemheader}
+\textbf{Problem 4.} \hfill \textbf{15 points}
+\end{problemheader}
+
+The cumulative distribution function of a continuous random variable $X$ is
+\[
+F_X(x)=
+\begin{cases}
+0, & x<0,\\[1mm]
+\dfrac{x^2}{4}, & 0\leq x<1,\\[2mm]
+\dfrac{2x-1}{4}, & 1\leq x<2,\\[2mm]
+1-\dfrac{(3-x)^2}{4}, & 2\leq x<3,\\[2mm]
+1, & x\geq 3.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.75em]
+    \item Find the probability density function $f_X(x)$. 
+    \hfill \textbf{(4 points)}
+    
+    \item Prove that $f_X(x)$ found in part (a) is a PDF. 
+    \hfill \textbf{(3 points)}
+    
+    \item Find $P\!\left(\frac12<X\leq\frac52\right)$. 
+    \hfill \textbf{(3 points)}
+    
+    \item Find $\mathbb{E}[X]$. 
+    \hfill \textbf{(5 points)}
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a)}
+
+Since $X$ is continuous, its density is obtained by differentiating the CDF
+at every point at which the derivative exists:
+\[
+f_X(x)=F_X'(x).
+\]
+
+Therefore,
+\[
+f_X(x)=
+\begin{cases}
+0, & x<0,\\[1mm]
+\dfrac{x}{2}, & 0<x<1,\\[2mm]
+\dfrac12, & 1<x<2,\\[2mm]
+\dfrac{3-x}{2}, & 2<x<3,\\[2mm]
+0, & x>3.
+\end{cases}
+\]
+
+The values of a density at the individual points $x=0,1,2,3$ do not affect
+any probabilities. Thus, for example, we may define
+\[
+f_X(x)=
+\begin{cases}
+\dfrac{x}{2}, & 0\leq x<1,\\[2mm]
+\dfrac12, & 1\leq x<2,\\[2mm]
+\dfrac{3-x}{2}, & 2\leq x<3,\\[2mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\textbf{(b)}
+
+To prove that $f_X$ is a PDF, we must verify that
+
+\[
+f_X(x)\geq 0
+\qquad\text{for every }x,
+\]
+and
+\[
+\int_{-\infty}^{\infty}f_X(x)\,dx=1.
+\]
+
+First, $f_X(x)\geq0$ on every interval in its definition. In particular,
+$x/2\geq0$ for $0\leq x<1$, $1/2>0$, and
+$(3-x)/2\geq0$ for $2\leq x<3$.
+
+Next,
+\begin{align*}
+\int_{-\infty}^{\infty}f_X(x)\,dx
+&=
+\int_0^1\frac{x}{2}\,dx
++
+\int_1^2\frac12\,dx
++
+\int_2^3\frac{3-x}{2}\,dx\\
+&=
+\left[\frac{x^2}{4}\right]_0^1
++
+\left[\frac{x}{2}\right]_1^2
++
+\left[\frac{3x}{2}-\frac{x^2}{4}\right]_2^3\\
+&=
+\frac14+\frac12+\frac14\\
+&=1.
+\end{align*}
+
+Therefore, $f_X$ is a valid probability density function.
+
+\textbf{(c)}
+
+Using the CDF,
+\[
+P\left(\frac12<X\leq\frac52\right)
+=
+F_X\left(\frac52\right)-F_X\left(\frac12\right).
+\]
+
+We have
+\begin{align*}
+F_X\left(\frac52\right)
+&=
+1-\frac{\left(3-\frac52\right)^2}{4}\\
+&=
+1-\frac{\left(\frac12\right)^2}{4}\\
+&=
+1-\frac{1}{16}
+=
+\frac{15}{16},
+\end{align*}
+and
+\[
+F_X\left(\frac12\right)
+=
+\frac{\left(\frac12\right)^2}{4}
+=
+\frac{1}{16}.
+\]
+
+Therefore,
+\[
+P\left(\frac12<X\leq\frac52\right)
+=
+\frac{15}{16}-\frac{1}{16}
+=
+ {\frac78}.
+\]
+
+\textbf{(d)}
+
+By the definition of expectation for a continuous random variable,
+\[
+\mathbb{E}[X]
+=
+\int_{-\infty}^{\infty}x f_X(x)\,dx.
+\]
+
+Thus,
+\begin{align*}
+\mathbb{E}[X]
+&=
+\int_0^1 x\left(\frac{x}{2}\right)\,dx
++
+\int_1^2 x\left(\frac12\right)\,dx
++
+\int_2^3 x\left(\frac{3-x}{2}\right)\,dx\\
+&=
+\frac12\int_0^1x^2\,dx
++
+\frac12\int_1^2x\,dx
++
+\frac12\int_2^3(3x-x^2)\,dx.
+\end{align*}
+
+Evaluating the three integrals,
+\[
+\frac12\int_0^1x^2\,dx
+=
+\frac12\left[\frac{x^3}{3}\right]_0^1
+=
+\frac16,
+\]
+\[
+\frac12\int_1^2x\,dx
+=
+\frac12\left[\frac{x^2}{2}\right]_1^2
+=
+\frac34,
+\]
+and
+\begin{align*}
+\frac12\int_2^3(3x-x^2)\,dx
+&=
+\frac12
+\left[
+\frac{3x^2}{2}-\frac{x^3}{3}
+\right]_2^3\\
+&=
+\frac{7}{12}.
+\end{align*}
+
+Therefore,
+\begin{align*}
+\mathbb{E}[X]
+&=
+\frac16+\frac34+\frac{7}{12}\\
+&=
+\frac{2}{12}+\frac{9}{12}+\frac{7}{12}\\
+&=
+ {\frac32}.
+\end{align*}
+
+\end{solutionbox}
+```
+
+
+
+
+
+
+
+
+
+ 
+\newpage
+\begin{problemheader}
+\textbf{Problem 5. } 
+\hfill \textbf{15 points}
+\end{problemheader}
+
+A city operates a large bike-share system. Assume that the outcomes of
+different rides are independent.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.9em]
+
+    \item On a typical day, \(8000\) rides are completed. Each ride results
+    in a serious mechanical failure with probability \(0.0005\).
+
+    Let \(X\) be the number of serious mechanical failures during the day.
+
+    Determine whether a Poisson approximation or a Normal approximation to
+    the distribution of \(X\) is more appropriate. Verify the relevant
+    conditions and state the approximating distribution, including its
+    parameter.
+    \hfill \textbf{(3 points)}
+
+    \item Use the approximation from part (a) to estimate the probability
+    that at least \(3\) serious mechanical failures occur during the day.
+    \hfill \textbf{(3 points)}
+ 
+
+    \item At one busy station, \(300\) bikes are rented during the afternoon.
+    Each bike is returned late with probability \(0.35\).
+
+    Let \(Y\) be the number of bikes returned late.
+
+    Determine whether a Poisson approximation or a Normal approximation to
+    the distribution of \(Y\) is more appropriate. Verify the relevant
+    conditions and state the approximating distribution, including its mean
+    and variance.
+    \hfill \textbf{(3 points)}
+
+    \item Using the approximation from part (d), estimate
+    \[
+    P(95\leq Y\leq115).
+    \]
+    \hfill \textbf{(3 points)}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+\textbf{(a)}
+
+Each of the \(8000\) rides independently results in a serious mechanical
+failure with probability \(0.0005\). Therefore,
+\[
+X\sim\operatorname{Bin}(8000,0.0005).
+\]
+
+For the Normal approximation, we would need both
+\[
+np
+\qquad\text{and}\qquad
+n(1-p)
+\]
+to be sufficiently large. However,
+\[
+np=8000(0.0005)=4,
+\]
+which is less than \(10\). Thus, the usual Normal approximation is not
+appropriate.
+
+For a Poisson approximation, \(n\) should be large and \(p\) should be
+small. Here,
+\[
+n=8000
+\]
+is large and
+\[
+p=0.0005
+\]
+is very small. Therefore, the Poisson approximation is appropriate.
+
+Its parameter is
+\[
+\lambda=np=8000(0.0005)=4.
+\]
+
+Thus,
+\[
+X\approx W,
+\qquad
+W\sim\operatorname{Pois}(4).
+\]
+
+
+\textbf{(b)}
+
+We want
+\[
+P(X\geq3).
+\]
+
+Using the Poisson approximation,
+\[
+P(X\geq3)
+\approx
+P(W\geq3).
+\]
+
+It is easier to use the complement:
+\[
+P(W\geq3)
+=
+1-P(W\leq2).
+\]
+
+Therefore,
+\begin{align*}
+P(W\geq3)
+&=
+1-\left[
+P(W=0)+P(W=1)+P(W=2)
+\right]\\
+&=
+1-\left[
+e^{-4}
++
+e^{-4}\frac{4}{1!}
++
+e^{-4}\frac{4^2}{2!}
+\right]\\
+&=
+1-e^{-4}(1+4+8)\\
+&=
+1-13e^{-4}\\
+&\approx
+ {0.7619}.
+\end{align*}
+
+ 
+
+
+\textbf{(c)}
+
+Each of the \(300\) bikes is independently returned late with probability
+\(0.35\). Therefore,
+\[
+Y\sim\operatorname{Bin}(300,0.35).
+\]
+
+A Poisson approximation is not appropriate because
+\[
+p=0.35
+\]
+is not small.
+
+For the Normal approximation, we compute
+\[
+np=300(0.35)=105
+\]
+and
+\[
+n(1-p)=300(0.65)=195.
+\]
+
+Since both quantities are greater than \(10\), the Normal approximation is
+appropriate.
+
+The mean is
+\[
+\mu=np=105,
+\]
+and the variance is
+\[
+\sigma^2=np(1-p)
+=
+300(0.35)(0.65)
+=
+68.25.
+\]
+
+Thus,
+\[
+Y\approx V,
+\qquad
+V\sim N(105,68.25),
+\]
+where
+\[
+\sigma=\sqrt{68.25}\approx8.26.
+\]
+
+
+\textbf{(d)}
+
+We want to approximate
+\[
+P(95\leq Y\leq115).
+\]
+
+Using the continuity correction,
+\[
+P(95\leq Y\leq115)
+\approx
+P(94.5<V<115.5).
+\]
+
+Standardizing,
+\begin{align*}
+P(94.5<V<115.5)
+&=
+P\left(
+\frac{94.5-105}{\sqrt{68.25}}
+<
+Z
+<
+\frac{115.5-105}{\sqrt{68.25}}
+\right)\\
+&\approx
+P(-1.27<Z<1.27).
+\end{align*}
+
+Using the standard Normal table,
+\[
+\Phi(1.27)=0.8980.
+\]
+
+By symmetry,
+\[
+\Phi(-1.27)=1-\Phi(1.27)=0.1020.
+\]
+
+Therefore,
+\begin{align*}
+P(95\leq Y\leq115)
+&\approx
+\Phi(1.27)-\Phi(-1.27)\\
+&=
+0.8980-0.1020\\
+&=
+ {0.7960}.
+\end{align*}
+
+ 
+
+\end{solutionbox}
+\end{document}

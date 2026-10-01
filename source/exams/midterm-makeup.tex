@@ -1,0 +1,374 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Makeup Midterm}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+
+
+\newtcolorbox{policybox}{
+    breakable,
+    colback=softgold,
+    colframe=deepgold,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm
+}
+
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{0.05cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{0.28cm}
+
+{\LARGE \color{uwpurple}\textbf{Makeup Midterm Examination}}\\[0.15cm]
+{\Large \textbf{\course}}\\[0.15cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{0.22cm}
+
+% ------------------------------------------------------------
+% EXAM INFORMATION
+% ------------------------------------------------------------
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\bfseries}p{0.19\textwidth}p{0.68\textwidth}}
+Date: & \rule{0.35\textwidth}{0.4pt} \\
+Answering time: & 60 minutes \\
+Total points: & 55 \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.18cm}
+
+% ------------------------------------------------------------
+% STUDENT INFORMATION
+% ------------------------------------------------------------
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\bfseries}p{0.22\textwidth}p{0.67\textwidth}}
+Name: & \hrulefill \\
+Student ID: & \hrulefill \\
+Signature: & \hrulefill \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.15cm}
+
+% ------------------------------------------------------------
+% EXAM POLICIES
+% ------------------------------------------------------------
+
+\begin{policybox}
+\small
+
+\textbf{Instructions}
+
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.15em,parsep=0pt]
+    \item This examination contains \textbf{five problems}. Verify that your copy is complete.
+    \item Show all work and justify your answers. Unsupported answers may receive little or no credit.
+    \item Clearly define any events or random variables that you introduce.
+    \item Give exact answers unless an approximation is requested.
+    \item Do not remove pages from the examination booklet.
+\end{itemize}
+
+\medskip
+
+\textbf{Permitted materials}
+
+The examination is closed-book and closed-notes. Students may use:
+
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.12em,parsep=0pt]
+    \item one handwritten 8.5 $\times$ 11 inch reference sheet (front and back),
+    \item a non-programmable, non-graphing calculator capable of standard
+    exponential and logarithmic computations (e.g.\ TI-30X IIS), and
+    \item a standard normal table.
+\end{itemize}
+
+No other electronic devices, calculators, communication devices, or
+external resources may be used during the examination.
+
+\end{policybox}
+
+\vspace{0.10cm}
+
+% ------------------------------------------------------------
+% SCORE TABLE
+% ------------------------------------------------------------
+
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{
+|>{\centering\arraybackslash}p{0.16\textwidth}|
+ >{\centering\arraybackslash}p{0.16\textwidth}|
+}
+\hline
+\textbf{Problem} & \textbf{Score} \\
+\hline
+1 & /10 \\
+\hline
+2 & /10 \\
+\hline
+3 & /10 \\
+\hline
+4 & /15 \\
+\hline
+5 & /15 \\
+\hline
+\textbf{Total} & \textbf{/60} \\
+\hline
+\end{tabular}
+
+\vspace{0.08cm}
+
+{\footnotesize
+By signing above, you affirm that the work is your own and that you followed
+the examination rules.
+}
+
+\end{titlepage}
+% ============================================================
+% PROBLEM 1
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 1.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A box contains 6 red balls, 5 blue balls, and 4 green balls. Five balls
+are selected uniformly at random without replacement.
+
+Find the probability that the selection contains exactly 2 red balls,
+exactly 2 blue balls, and exactly 1 green ball.
+
+Give an exact answer. A correct expression involving binomial coefficients
+is acceptable.
+
+\vspace{7cm}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 2
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 2.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A company purchases computer chips from three suppliers.
+
+Supplier $A$ provides $50\%$ of the chips, Supplier $B$ provides $30\%$,
+and Supplier $C$ provides the remaining $20\%$.
+
+The probabilities that a chip is defective are
+\[
+P(D\mid A)=0.01,\qquad
+P(D\mid B)=0.03,\qquad
+P(D\mid C)=0.06,
+\]
+where $D$ denotes the event that a chip is defective.
+
+A chip is selected at random and is found to be defective.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Find the probability that the defective chip came from
+    Supplier $B$.
+    \hfill \textbf{(6 points)}
+
+    \item Find the probability that the defective chip came from
+    either Supplier $B$ or Supplier $C$.
+    \hfill \textbf{(4 points)}
+
+\end{enumerate}
+
+\vspace{7cm}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 3
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 3.} \hfill \textbf{10 points}
+\end{problemheader}
+
+Let $A$ and $B$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1em]
+
+    \item Suppose
+    \[
+    P(A)=0.7,
+    \qquad
+    P(B)=0.6.
+    \]
+    What is the smallest possible value of $P(A\cap B)$?
+    Justify your answer.
+    \hfill \textbf{(3 points)}
+
+    \item Suppose $A$ and $B$ are disjoint and
+    \[
+    P(A)>0,
+    \qquad
+    P(B)>0.
+    \]
+    Can $A$ and $B$ be independent? Justify your answer using the
+    definition of independence.
+    \hfill \textbf{(3 points)}
+
+    \item Suppose $A$ and $B$ are independent. Prove that
+    $A$ and $B^c$ are also independent.
+    \hfill \textbf{(4 points)}
+
+\end{enumerate}
+
+\vspace{6cm}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 4
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 4.} \hfill \textbf{15 points}
+\end{problemheader}
+
+Suppose that $X$ has probability density function
+\[
+f_X(x)=
+\begin{cases}
+c(1+x), & 0<x<2,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+where $c$ is a constant.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Find $c$.
+    \hfill \textbf{(3 points)}
+
+    \item Find the cumulative distribution function $F_X(x)$
+    for all real $x$.
+    \hfill \textbf{(5 points)}
+
+    \item Find
+    \[
+    P\left(\frac12<X<\frac32\right).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item Find $\mathbb{E}[X]$ and $\operatorname{Var}(X)$.
+    \hfill \textbf{(5 points)}
+
+\end{enumerate}
+
+
+\newpage
+
+
+% ============================================================
+% PROBLEM 5
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 5.} \hfill \textbf{15 points}
+\end{problemheader}
+
+A factory produces two types of electronic components. Each component is
+independently classified as Type I with probability \(0.5\) and Type II
+with probability \(0.5\).
+
+Suppose that \(60\) components are produced.
+
+Let \(X\) denote the number of Type I components among the \(60\)
+components.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.9em]
+
+    \item State the distribution of \(X\).
+
+    Determine whether a normal approximation is appropriate by verifying
+    the required conditions. Then state the approximating normal
+    distribution, including its mean and variance.
+
+    \hfill \textbf{(6 points)}
+
+    \item Using the normal approximation with an appropriate continuity
+    correction, approximate the probability that among the \(60\)
+    components there are \textbf{at least \(27\) components of each type}.
+
+    \hfill \textbf{(9 points)}
+
+\end{enumerate}
+
+\end{document}

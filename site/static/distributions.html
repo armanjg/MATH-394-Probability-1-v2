@@ -1,0 +1,682 @@
+<!DOCTYPE html> 
+<html lang="en-US" xml:lang="en-US" > 
+<head><title></title> 
+<meta  charset="utf-8" /> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+<link rel="stylesheet" type="text/css" href="distributions.css" /> 
+<meta name="src" content="distributions.tex" /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script type="text/javascript" async="async" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>  
+</head><body 
+>
+                                                                                                             
+                                                                                                             
+<span class="rotatebox" style="transform: rotate(-90deg);">                                                                                                             <div class="center" 
+>
+<!--l. 83--><p class="noindent" >
+</p><!--l. 84--><p class="noindent" ><span 
+class="cmbx-12x-x-120">Probability Distribution Reference Sheet</span><br />
+MATH 394: Probability I (Summer 2026)<br />
+<span 
+class="cmr-10">Instructor: Arman Jahangiri, Department of Mathematics @ University of Washington</span></p></div>
+     <div class="tcolorbox distbox" id="tcolobox-1">     
+<div class="tcolorbox-title">
+                                                                                                                                                                                                                                 </span>
+                                                                                                             
+                                                                                                             
+<span class="rotatebox" style="transform: rotate(-90deg);">                                                                                                             <!--l. 188--><p class="indent" >     <span 
+class="cmbx-10x-x-109">Discrete Distributions</span></p></div> 
+<div class="tcolorbox-content"><a 
+ id="x1-2r1"></a><!--l. 97--><div class="longtable"> <table id="TBL-1" class="longtable" 
+ 
+><colgroup id="TBL-1-1g"><col 
+id="TBL-1-1" /><col 
+id="TBL-1-2" /><col 
+id="TBL-1-3" /><col 
+id="TBL-1-4" /><col 
+id="TBL-1-5" /><col 
+id="TBL-1-6" /><col 
+id="TBL-1-7" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-1-1-"><td colspan="3" style="white-space:normal; text-align:left;" id="TBL-1-1-1"  
+class="td01"></td><span class="cmidrule"><!-- enable post-processing of cmidrule--></span>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-2-"><td  style="white-space:normal; text-align:left;" id="TBL-1-2-1"  
+class="td01">
+<!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Name</span>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-2"  
+class="td11">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Parameters</span>     </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-3"  
+class="td11">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Probability</span>
+ <span 
+class="cmbx-10">Mass</span>
+ <span 
+class="cmbx-10">Function</span>                         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-4"  
+class="td11">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Support</span>        </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-5"  
+class="td11">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Mean</span>          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-6"  
+class="td11">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">Variance</span>                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-2-7"  
+class="td10">
+ <!--l. 97--><p class="noindent" ><span 
+class="cmbx-10">MGF</span>                              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-3-"><td colspan="3" style="white-space:normal; text-align:left;" id="TBL-1-3-1"  
+class="td01"></td><span class="cmidrule"><!-- enable post-processing of cmidrule--></span>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-4-"><td  style="white-space:normal; text-align:left;" id="TBL-1-4-1"  
+class="td01">
+<!--l. 99--><p class="noindent" >             </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-5-"><td  style="white-space:normal; text-align:left;" id="TBL-1-5-1"  
+class="td01">             </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-2"  
+class="td11">               </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-3"  
+class="td11">                           </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-4"  
+class="td11">              </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-5"  
+class="td11">             </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-6"  
+class="td11">                            </td><td  style="white-space:normal; text-align:left;" id="TBL-1-5-7"  
+class="td10"></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-6-"><td  style="white-space:normal; text-align:left;" id="TBL-1-6-1"  
+class="td01">
+<!--l. 101--><p class="noindent" ><span 
+class="cmr-10">Bernoulli</span>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-2"  
+class="td11">
+ <!--l. 102--><p class="noindent" >\(0\le p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-3"  
+class="td11">
+ <!--l. 103--><p class="noindent" >\(P(X=k)=p^k(1-p)^{1-k}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-4"  
+class="td11">
+ <!--l. 104--><p class="noindent" >\(x=0,1\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-5"  
+class="td11">
+ <!--l. 105--><p class="noindent" >\(p\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-6"  
+class="td11">
+ <!--l. 106--><p class="noindent" >\(p(1-p)\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-6-7"  
+class="td10">
+ <!--l. 107--><p class="noindent" >\(1-p+pe^t\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:11.38092pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-7-"><td  style="white-space:normal; text-align:left;" id="TBL-1-7-1"  
+class="td01">
+<!--l. 110--><p class="noindent" ><span 
+class="cmr-10">Binomial</span>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-2"  
+class="td11">
+ <!--l. 111--><p class="noindent" >\(n\ge 1,\ 0\le p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-3"  
+class="td11">
+ <!--l. 112--><p class="noindent" >\(P(X=k)=\binom {n}{k}p^k(1-p)^{n-k}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-4"  
+class="td11">
+ <!--l. 113--><p class="noindent" >\(k=0,\dots ,n\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-5"  
+class="td11">
+ <!--l. 114--><p class="noindent" >\(np\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-6"  
+class="td11">
+ <!--l. 115--><p class="noindent" >\(np(1-p)\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-7-7"  
+class="td10">
+ <!--l. 116--><p class="noindent" >\((1-p+pe^t)^n\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:11.38092pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-8-"><td  style="white-space:normal; text-align:left;" id="TBL-1-8-1"  
+class="td01">
+<!--l. 119--><p class="noindent" ><span 
+class="cmr-10">Poisson</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-2"  
+class="td11">
+ <!--l. 120--><p class="noindent" >\(\lambda &gt;0\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-3"  
+class="td11">
+ <!--l. 121--><p class="noindent" >\(P(X=k)=e^{-\lambda }\dfrac {\lambda ^k}{k!}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-4"  
+class="td11">
+ <!--l. 122--><p class="noindent" >\(k=0,1,2,\dots \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-5"  
+class="td11">
+ <!--l. 123--><p class="noindent" >\(\lambda \)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-6"  
+class="td11">
+ <!--l. 124--><p class="noindent" >\(\lambda \)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-8-7"  
+class="td10">
+ <!--l. 125--><p class="noindent" >\(\exp \{\lambda (e^t-1)\}\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:11.38092pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-9-"><td  style="white-space:normal; text-align:left;" id="TBL-1-9-1"  
+class="td01">
+<!--l. 128--><p class="noindent" ><span 
+class="cmr-10">Geometric</span>       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-2"  
+class="td11">
+ <!--l. 129--><p class="noindent" >\(0&lt;p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-3"  
+class="td11">
+ <!--l. 130--><p class="noindent" >\(P(X=k)=p(1-p)^{k-1}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-4"  
+class="td11">
+ <!--l. 131--><p class="noindent" >\(k=1,2,\dots \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-5"  
+class="td11">
+ <!--l. 132--><p class="noindent" >\(\dfrac {1}{p}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-6"  
+class="td11">
+ <!--l. 133--><p class="noindent" >\(\dfrac {1-p}{p^2}\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-9-7"  
+class="td10">
+ <!--l. 134--><p class="noindent" >\(\dfrac {pe^t}{1-(1-p)e^t}\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-10-"><td  style="white-space:normal; text-align:left;" id="TBL-1-10-1"  
+class="td01">
+<!--l. 137--><p class="noindent" ><span 
+class="cmr-10">Geometric,</span>
+<span 
+class="cmr-10">zero-based</span>       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-2"  
+class="td11">
+ <!--l. 138--><p class="noindent" >\(0&lt;p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-3"  
+class="td11">
+ <!--l. 139--><p class="noindent" >\(P(X=k)=p(1-p)^k\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-4"  
+class="td11">
+ <!--l. 140--><p class="noindent" >\(k=0,1,2,\dots \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-5"  
+class="td11">
+ <!--l. 141--><p class="noindent" >\(\dfrac {1-p}{p}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-6"  
+class="td11">
+ <!--l. 142--><p class="noindent" >\(\dfrac {1-p}{p^2}\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-10-7"  
+class="td10">
+ <!--l. 143--><p class="noindent" >\(\dfrac {p}{1-(1-p)e^t}\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-11-"><td  style="white-space:normal; text-align:left;" id="TBL-1-11-1"  
+class="td01">
+<!--l. 146--><p class="noindent" ><span 
+class="cmr-10">Negative</span>
+<span 
+class="cmr-10">Binomial</span>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-2"  
+class="td11">
+ <!--l. 147--><p class="noindent" >\(r\ge 1,\ 0&lt;p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-3"  
+class="td11">
+ <!--l. 148--><p class="noindent" >\(P(X=k)=\binom {k-1}{r-1}p^r(1-p)^{k-r}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-4"  
+class="td11">
+ <!--l. 149--><p class="noindent" >\(k=r,r+1,\dots \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-5"  
+class="td11">
+ <!--l. 150--><p class="noindent" >\(\dfrac {r}{p}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-6"  
+class="td11">
+ <!--l. 151--><p class="noindent" >\(\dfrac {r(1-p)}{p^2}\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-11-7"  
+class="td10">
+ <!--l. 152--><p class="noindent" >\(\left (\dfrac {pe^t}{1-(1-p)e^t}\right )^r\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-12-"><td  style="white-space:normal; text-align:left;" id="TBL-1-12-1"  
+class="td01">
+<!--l. 155--><p class="noindent" ><span 
+class="cmr-10">Negative</span>
+<span 
+class="cmr-10">Binomial,</span>
+<span 
+class="cmr-10">failures</span>
+<span 
+class="cmr-10">before</span>
+\(r\)
+<span 
+class="cmr-10">successes</span>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-2"  
+class="td11">
+ <!--l. 156--><p class="noindent" >\(r\ge 1,\ 0&lt;p\le 1\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-3"  
+class="td11">
+ <!--l. 157--><p class="noindent" >\(P(X=k)=\binom {r+k-1}{r-1}p^r(1-p)^k\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-4"  
+class="td11">
+ <!--l. 158--><p class="noindent" >\(k=0,1,2,\dots \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-5"  
+class="td11">
+ <!--l. 159--><p class="noindent" >\(\dfrac {r(1-p)}{p}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-6"  
+class="td11">
+ <!--l. 160--><p class="noindent" >\(\dfrac {r(1-p)}{p^2}\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-12-7"  
+class="td10">
+ <!--l. 161--><p class="noindent" >\(\left (\dfrac {p}{1-(1-p)e^t}\right )^r\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-13-"><td  style="white-space:normal; text-align:left;" id="TBL-1-13-1"  
+class="td01">
+<!--l. 164--><p class="noindent" ><span 
+class="cmr-10">Hypergeometric</span> </p> </td> <td  style="white-space:normal; text-align:left;" id="TBL-1-13-2"  
+class="td11">
+ <!--l. 165--><p class="noindent" >\(w,b,n\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-13-3"  
+class="td11">
+ <!--l. 166--><p class="noindent" >\(P(X=k)=\dfrac {\binom {w}{k}\binom {b}{n-k}}{\binom {w+b}{n}}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-13-4"  
+class="td11">
+ <!--l. 167--><p class="noindent" >\(\max (0,n-b)\le k\le \min (n,w)\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-13-5"  
+class="td11">
+ <!--l. 168--><p class="noindent" >\(\dfrac {nw}{w+b}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-13-6"  
+class="td11">
+ <!--l. 169--><p class="noindent" >\(\dfrac {w+b-n}{w+b-1}\,n\dfrac {w}{w+b}\left (1-\dfrac {w}{w+b}\right )\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-13-7"  
+class="td10">
+ <!--l. 170--><p class="noindent" >\(\displaystyle \sum _k e^{tk} \dfrac {\binom {w}{k}\binom {b}{n-k}}{\binom {w+b}{n}}\)                           </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-14-"><td  style="white-space:normal; text-align:left;" id="TBL-1-14-1"  
+class="td01">
+<!--l. 175--><p class="noindent" ><span 
+class="cmr-10">Negative</span>
+<span 
+class="cmr-10">Hypergeometric</span> </p> </td> <td  style="white-space:normal; text-align:left;" id="TBL-1-14-2"  
+class="td11">
+ <!--l. 176--><p class="noindent" >\(w,b,r\)               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-14-3"  
+class="td11">
+ <!--l. 177--><p class="noindent" >\(P(X=k)=\dfrac {\binom {r+k-1}{r-1}\binom {w+b-r-k}{w-r}}{\binom {w+b}{w}}\)                           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-14-4"  
+class="td11">
+ <!--l. 178--><p class="noindent" >\(k=0,1,\dots ,b\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-14-5"  
+class="td11">
+ <!--l. 179--><p class="noindent" >\(\dfrac {rb}{w+1}\)            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-14-6"  
+class="td11">
+ <!--l. 180--><p class="noindent" >\(\dfrac {rb(w+b+1)(w-r+1)}{(w+1)^2(w+2)}\)                            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-1-14-7"  
+class="td10">
+ <!--l. 181--><p class="noindent" >\(\displaystyle \sum _{k=0}^{b} e^{tk} \dfrac {\binom {r+k-1}{r-1}\binom {w+b-r-k}{w-r}}{\binom {w+b}{w}}\)                           </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-15-"><td  style="white-space:normal; text-align:left;" id="TBL-1-15-1"  
+class="td01">             </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-16-"><td  style="white-space:normal; text-align:left;" id="TBL-1-16-1"  
+class="td01">             </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-17-"><td  style="white-space:normal; text-align:left;" id="TBL-1-17-1"  
+class="td01">
+<!--l. 186--><p class="noindent" >             </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-18-"><td  style="white-space:normal; text-align:left;" id="TBL-1-18-1"  
+class="td01">
+<!--l. 186--><p class="noindent" >             </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-1-19-"><td  style="white-space:normal; text-align:left;" id="TBL-1-19-1"  
+class="td01">
+<!--l. 186--><p class="noindent" >             </p></td>
+</tr>
+</table></div>
+ 
+</div> 
+</div>
+<div class="center" 
+>
+<!--l. 192--><p class="noindent" >
+</p><!--l. 194--><p class="noindent" ><span 
+class="tcrm-0900">© </span><span 
+class="cmr-9">2026 Arman Jahangiri — Department of Mathematics @ University of Washington.</span><br />
+                                                                                                                                                                                                                                                    </span>
+                                                                                                             
+                                                                                                             
+<span class="rotatebox" style="transform: rotate(-90deg);">                                                                                                             <span 
+class="cmr-9">For educational use in MATH 394: Probability I</span> </p></div>
+                                                                                                                                                                                                                                                    </span>
+                                                                                                             
+                                                                                                             
+                                                                                                             
+                                                                                                             
+<span class="rotatebox" style="transform: rotate(-90deg);">                                                                                                                   <div class="tcolorbox distbox" id="tcolobox-2">     
+<div class="tcolorbox-title">
+<!--l. 300--><p class="indent" >      <span 
+class="cmbx-10x-x-109">Continuous Distributions</span></p></div> 
+<div class="tcolorbox-content"><a 
+ id="x1-3r2"></a><!--l. 211--><div class="longtable"> <table id="TBL-2" class="longtable" 
+ 
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1" /><col 
+id="TBL-2-2" /><col 
+id="TBL-2-3" /><col 
+id="TBL-2-4" /><col 
+id="TBL-2-5" /><col 
+id="TBL-2-6" /><col 
+id="TBL-2-7" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td colspan="3" style="white-space:normal; text-align:left;" id="TBL-2-1-1"  
+class="td11"></td><span class="cmidrule"><!-- enable post-processing of cmidrule--></span>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:normal; text-align:left;" id="TBL-2-2-1"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Name</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-2"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Parameters</span>    </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-3"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Probability</span>
+  <span 
+class="cmbx-10">Density</span>
+  <span 
+class="cmbx-10">Function</span>                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-4"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Support</span>         </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-5"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Mean</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-6"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">Variance</span>        </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-2-7"  
+class="td11">
+ <!--l. 211--><p class="noindent" ><span 
+class="cmbx-10">MGF</span>                           </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td colspan="3" style="white-space:normal; text-align:left;" id="TBL-2-3-1"  
+class="td11"></td><span class="cmidrule"><!-- enable post-processing of cmidrule--></span>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:normal; text-align:left;" id="TBL-2-4-1"  
+class="td11">
+ <!--l. 213--><p class="noindent" >              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:normal; text-align:left;" id="TBL-2-5-1"  
+class="td11">               </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-2"  
+class="td11">               </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-3"  
+class="td11">                              </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-4"  
+class="td11">               </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-5"  
+class="td11">              </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-6"  
+class="td11">               </td><td  style="white-space:normal; text-align:left;" id="TBL-2-5-7"  
+class="td11"></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:normal; text-align:left;" id="TBL-2-6-1"  
+class="td11">
+ <!--l. 215--><p class="noindent" ><span 
+class="cmr-10">Uniform</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-2"  
+class="td11">
+ <!--l. 216--><p class="noindent" >\(a&lt;b\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-3"  
+class="td11">
+ <!--l. 217--><p class="noindent" >\(f_X(x)=\dfrac {1}{b-a}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-4"  
+class="td11">
+ <!--l. 218--><p class="noindent" >\(a&lt;x&lt;b\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-5"  
+class="td11">
+ <!--l. 219--><p class="noindent" >\(\dfrac {a+b}{2}\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-6"  
+class="td11">
+ <!--l. 220--><p class="noindent" >\(\dfrac {(b-a)^2}{12}\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-6-7"  
+class="td11">
+ <!--l. 221--><p class="noindent" >\(\dfrac {e^{tb}-e^{ta}}{t(b-a)}\)                         </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:normal; text-align:left;" id="TBL-2-7-1"  
+class="td11">
+ <!--l. 224--><p class="noindent" ><span 
+class="cmr-10">Normal</span>            </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-2"  
+class="td11">
+ <!--l. 225--><p class="noindent" >\(\mu \in \mathbb {R},\ \sigma ^2&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-3"  
+class="td11">
+ <!--l. 226--><p class="noindent" >\(f_X(x)=\dfrac {1}{\sqrt {2\pi \sigma ^2}}\exp \left \{-\dfrac {(x-\mu )^2}{2\sigma ^2}\right \}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-4"  
+class="td11">
+ <!--l. 227--><p class="noindent" >\(-\infty &lt;x&lt;\infty \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-5"  
+class="td11">
+ <!--l. 228--><p class="noindent" >\(\mu \)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-6"  
+class="td11">
+ <!--l. 229--><p class="noindent" >\(\sigma ^2\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-7-7"  
+class="td11">
+ <!--l. 230--><p class="noindent" >\(\exp \left \{\mu t+\dfrac {\sigma ^2t^2}{2}\right \}\)                         </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:normal; text-align:left;" id="TBL-2-8-1"  
+class="td11">
+ <!--l. 233--><p class="noindent" ><span 
+class="cmr-10">Log-Normal</span>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-2"  
+class="td11">
+ <!--l. 234--><p class="noindent" >\(\mu \in \mathbb {R},\ \sigma ^2&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-3"  
+class="td11">
+ <!--l. 235--><p class="noindent" >\(f_X(x)=\dfrac {1}{x\sigma \sqrt {2\pi }}\exp \left \{-\dfrac {(\log x-\mu )^2}{2\sigma ^2}\right \}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-4"  
+class="td11">
+ <!--l. 236--><p class="noindent" >\(x&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-5"  
+class="td11">
+ <!--l. 237--><p class="noindent" >\(e^{\mu +\sigma ^2/2}\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-6"  
+class="td11">
+ <!--l. 238--><p class="noindent" >\(e^{2\mu +\sigma ^2}(e^{\sigma ^2}-1)\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-8-7"  
+class="td11">
+ <!--l. 239--><p class="noindent" ><span 
+class="cmr-10">DNE</span>                                 </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:normal; text-align:left;" id="TBL-2-9-1"  
+class="td11">
+ <!--l. 242--><p class="noindent" ><span 
+class="cmr-10">Exponential</span>      </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-2"  
+class="td11">
+ <!--l. 243--><p class="noindent" >\(\lambda &gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-3"  
+class="td11">
+ <!--l. 244--><p class="noindent" >\(f_X(x)=\lambda e^{-\lambda x}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-4"  
+class="td11">
+ <!--l. 245--><p class="noindent" >\(x\ge 0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-5"  
+class="td11">
+ <!--l. 246--><p class="noindent" >\(\dfrac {1}{\lambda }\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-6"  
+class="td11">
+ <!--l. 247--><p class="noindent" >\(\dfrac {1}{\lambda ^2}\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-9-7"  
+class="td11">
+ <!--l. 248--><p class="noindent" >\(\dfrac {\lambda }{\lambda -t}\)                         </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-10-"><td  style="white-space:normal; text-align:left;" id="TBL-2-10-1"  
+class="td11">
+ <!--l. 251--><p class="noindent" ><span 
+class="cmr-10">Gamma</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-2"  
+class="td11">
+ <!--l. 252--><p class="noindent" >\(r&gt;0,\ \lambda &gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-3"  
+class="td11">
+ <!--l. 253--><p class="noindent" >\(f_X(x)=\dfrac {\lambda ^r}{\Gamma (r)}x^{r-1}e^{-\lambda x}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-4"  
+class="td11">
+ <!--l. 254--><p class="noindent" >\(x\ge 0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-5"  
+class="td11">
+ <!--l. 255--><p class="noindent" >\(\dfrac {r}{\lambda }\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-6"  
+class="td11">
+ <!--l. 256--><p class="noindent" >\(\dfrac {r}{\lambda ^2}\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-10-7"  
+class="td11">
+ <!--l. 257--><p class="noindent" >\(\left (\dfrac {\lambda }{\lambda -t}\right )^r\)                         </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-11-"><td  style="white-space:normal; text-align:left;" id="TBL-2-11-1"  
+class="td11">
+ <!--l. 260--><p class="noindent" ><span 
+class="cmr-10">Beta</span>               </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-2"  
+class="td11">
+ <!--l. 261--><p class="noindent" >\(a,b&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-3"  
+class="td11">
+ <!--l. 262--><p class="noindent" >\(f_X(x)=\dfrac {\Gamma (a+b)}{\Gamma (a)\Gamma (b)}x^{a-1}(1-x)^{b-1}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-4"  
+class="td11">
+ <!--l. 263--><p class="noindent" >\(0&lt;x&lt;1\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-5"  
+class="td11">
+ <!--l. 264--><p class="noindent" >\(\dfrac {a}{a+b}\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-6"  
+class="td11">
+ <!--l. 265--><p class="noindent" >\(\dfrac {ab}{(a+b)^2(a+b+1)}\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-11-7"  
+class="td11">
+ <!--l. 266--><p class="noindent" ><span 
+class="cmr-10">–</span>                                      </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-12-"><td  style="white-space:normal; text-align:left;" id="TBL-2-12-1"  
+class="td11">
+ <!--l. 269--><p class="noindent" ><span 
+class="cmr-10">Weibull</span>           </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-2"  
+class="td11">
+ <!--l. 270--><p class="noindent" >\(\alpha ,\lambda &gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-3"  
+class="td11">
+ <!--l. 271--><p class="noindent" >\(f_X(x)=\alpha \lambda x^{\alpha -1}e^{-\lambda x^\alpha }\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-4"  
+class="td11">
+ <!--l. 272--><p class="noindent" >\(x&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-5"  
+class="td11">
+ <!--l. 273--><p class="noindent" >\(\dfrac {\Gamma (1+1/\alpha )}{\lambda ^{1/\alpha }}\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-6"  
+class="td11">
+ <!--l. 274--><p class="noindent" >\(\dfrac {\Gamma (1+2/\alpha )}{\lambda ^{2/\alpha }}-\mu ^2\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-12-7"  
+class="td11">
+ <!--l. 275--><p class="noindent" ><span 
+class="cmr-10">–</span>                                      </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-13-"><td  style="white-space:normal; text-align:left;" id="TBL-2-13-1"  
+class="td11">
+ <!--l. 278--><p class="noindent" ><span 
+class="cmr-10">Chi-Square</span>       </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-2"  
+class="td11">
+ <!--l. 279--><p class="noindent" >\(n&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-3"  
+class="td11">
+ <!--l. 280--><p class="noindent" >\(f_X(x)=\dfrac {1}{2^{n/2}\Gamma (n/2)}x^{n/2-1}e^{-x/2}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-4"  
+class="td11">
+ <!--l. 281--><p class="noindent" >\(x&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-5"  
+class="td11">
+ <!--l. 282--><p class="noindent" >\(n\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-6"  
+class="td11">
+ <!--l. 283--><p class="noindent" >\(2n\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-13-7"  
+class="td11">
+ <!--l. 284--><p class="noindent" >\((1-2t)^{-n/2}\)                         </p></td>
+</tr><tr 
+class="vspace" style="font-size:14.22636pt"><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td><td 
+>&nbsp;</td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-14-"><td  style="white-space:normal; text-align:left;" id="TBL-2-14-1"  
+class="td11">
+ <!--l. 287--><p class="noindent" ><span 
+class="cmr-10">Student-</span>\(t\)          </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-2"  
+class="td11">
+ <!--l. 288--><p class="noindent" >\(n&gt;0\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-3"  
+class="td11">
+ <!--l. 289--><p class="noindent" >\(f_X(x)=\dfrac {\Gamma ((n+1)/2)}{\sqrt {n\pi }\Gamma (n/2)} \left (1+\dfrac {x^2}{n}\right )^{-(n+1)/2}\)                             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-4"  
+class="td11">
+ <!--l. 291--><p class="noindent" >\(-\infty &lt;x&lt;\infty \)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-5"  
+class="td11">
+ <!--l. 292--><p class="noindent" >\(0,\ n&gt;1\)             </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-6"  
+class="td11">
+ <!--l. 293--><p class="noindent" >\(\dfrac {n}{n-2},\ n&gt;2\)              </p></td><td  style="white-space:normal; text-align:left;" id="TBL-2-14-7"  
+class="td11">
+ <!--l. 294--><p class="noindent" ><span 
+class="cmr-10">DNE</span>                                 </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-15-"><td  style="white-space:normal; text-align:left;" id="TBL-2-15-1"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-16-"><td  style="white-space:normal; text-align:left;" id="TBL-2-16-1"  
+class="td11">               </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-17-"><td  style="white-space:normal; text-align:left;" id="TBL-2-17-1"  
+class="td11">
+ <!--l. 298--><p class="noindent" >              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-18-"><td  style="white-space:normal; text-align:left;" id="TBL-2-18-1"  
+class="td11">
+ <!--l. 298--><p class="noindent" >              </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-19-"><td  style="white-space:normal; text-align:left;" id="TBL-2-19-1"  
+class="td11">
+ <!--l. 298--><p class="noindent" >              </p></td>
+</tr>
+</table></div>
+ 
+</div> 
+</div>
+   <div class="tcolorbox distbox" id="tcolobox-3">     
+<div class="tcolorbox-title">
+<!--l. 311--><p class="indent" >   <span 
+class="cmbx-10x-x-109">Moment-Generating Function</span></p></div> 
+<div class="tcolorbox-content"><!--l. 303--><p class="noindent" >The moment-generating function is \[ M_X(t)=\mathbb {E}(e^{tX}). \] When it exists near \(t=0\), it can be used to compute moments: \[ \mathbb {E}(X^n)=M_X^{(n)}(0), \] </p> 
+</div> 
+</div>
+<div class="center" 
+>
+<!--l. 315--><p class="noindent" >
+</p><!--l. 317--><p class="noindent" ><span 
+class="tcrm-0900">© </span><span 
+class="cmr-9">2026 Arman Jahangiri — Department of Mathematics @ University of Washington.</span><br />
+<span 
+class="cmr-9">For educational use in MATH 394: Probability I</span> </p></div>
+                                                                                                                                                                                                                                                    </span>
+                                                                                                             
+                                                                                                             
+    
+</body> 
+</html>
+                                                                                                             
+
+

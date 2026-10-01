@@ -1,0 +1,445 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage{booktabs,array,longtable,enumitem,xcolor}
+
+
+% In the preamble
+\usepackage{xcolor}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{examcolor}{HTML}{B22222}
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+
+\usepackage[
+    colorlinks=true,
+    urlcolor=uwpurple,
+    linkcolor=uwpurple,
+    citecolor=uwpurple
+]{hyperref}
+
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+\titleformat{\section}{\large\bfseries\color{uwpurple}}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{uwpurple}}{}{0em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{MATH/STAT 394: Probability I}
+\rhead{University of Washington}
+\cfoot{\thepage}
+
+\newcommand{\blank}
+
+\begin{document}
+
+\begin{center}
+    {\Large \bfseries Syllabus}\\[12pt]
+    {\Large \bfseries MATH/STAT 394: Probability I}\\[3pt]
+      {\Large  Summer 2026}\\[3pt]
+    {\large University of Washington}\\[3pt]
+
+\end{center}
+
+\noindent
+\rule{\textwidth}{0.4pt}
+
+\vspace{0.5em}
+
+\noindent
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}>{\bfseries}l l@{}}
+Instructor: & Arman Jahangiri \quad armanjg@uw.edu \\[2pt]
+Time \& Location: & MWF, 12:00--1:00, THO 125 \\[2pt]
+Modality: & Online Learning -- Hybrid \\[2pt]
+Official Course Website: & https://canvas.uw.edu/courses/1896341 \\[2pt]
+Instructor's Course Website: & https://armanjg.github.io/MATH-394-Probability-1/ \\[2pt]
+
+
+Office Hours: & Mondays 1:00-2:00 and Thursdays 2:00-3:00 at PDL 109 and Zoom
+\end{tabular}
+
+\rule{\textwidth}{0.4pt}
+
+\tableofcontents
+\vspace{3mm}
+\hrule
+
+\section{Welcome}
+
+Welcome to MATH/STAT 394: Probability I! Probability is one of the central languages of modern mathematics, statistics, data science, machine learning, and decision-making under uncertainty. The course is designed to develop both technical fluency and probabilistic intuition.
+
+This syllabus is subject to reasonable adjustment during the quarter. Any changes will be announced on Canvas.
+
+\section{Course Description}
+
+MATH/STAT 394 is the first course in the introductory probability sequence (MATH/STAT 394-395). Students will learn how to understand and translate uncertain situations into probability models, perform exact and approximate calculations, and interpret results clearly.
+
+Topics generally include axiomatic definitions of probability; random variables; conditional probability and Bayes' theorem; expectations and variance; named distributions: binomial, geometric, Poisson, uniform (discrete and continuous), normal and exponential; normal and Poisson approximations to binomial. Transformations of a single random variable. Markov and Chebyshev's inequality. Weak law of large numbers for finite variance.
+
+\section{Prerequisites}
+
+The formal prerequisite is one of MATH 126 or MATH 136. \\ Students should be comfortable with reading and writing mathematical explanations, some set theory, limits, continuity, differentiation/integration techniques, and sums/series.
+
+\section{Learning Objectives}
+
+By the end of the course, students will be able to:
+\begin{enumerate}[leftmargin=*]
+    \item define and use sample spaces, events, probability measures, random variables, distributions, conditional probability, independence, expectation, and variance;
+    \item formulate an uncertainty problem as a probability model;
+    \item compute probabilistic quantities such as expectations, variances, and distribution functions for discrete and continuous random variables;
+    \item recognize and use well-known distributions such as Bernoulli, binomial, geometric, Poisson, uniform, exponential, normal, etc.;
+    \item find the distribution of random variables and functions of random variables;
+    \item explain the meaning and use of the WLLN (Weak Law of Large Numbers), the CLT (Central Limit Theorem), and their applications such as Monte Carlo integration, approximating and bounding probabilistic quantities.
+\end{enumerate}
+\section{Resources, Textbooks and References}
+
+\subsection{Main Resources}
+
+\begin{itemize}[leftmargin=*]
+
+    \item Lecture Slides (links will be made available a day before each class on instructor's website)
+
+    \item Joe Blitzstein and Jessica Hwang, 
+    \textit{Introduction to Probability}:\\
+    Free online version:\\
+    \url{https://drive.google.com/file/d/1VmkAAGOYCTORq1wxSQqy255qLJjTNvBI/edit}
+
+
+    
+\end{itemize}
+
+
+
+\subsection{Optional Resources}
+
+\begin{itemize}[leftmargin=*]
+
+    \item Hossein Pishro-Nik, 
+    \textit{Introduction to Probability, Statistics, and Random Processes}:\\
+    \url{https://www.probabilitycourse.com}
+
+
+
+    
+    \item Harvard STAT 110 course website by Joe Blitzstein:\\
+    \url{https://stat110.hsites.harvard.edu/}
+
+
+    
+
+    \item Charles M. Grinstead and J. Laurie Snell, 
+    \textit{Introduction to Probability}:\\
+    \url{https://math.dartmouth.edu/~prob/prob/prob.pdf}
+
+    \item David F. Anderson, Timo Seppäläinen, and Benedek Valkó, 
+    \textit{Introduction to Probability}, Cambridge University Press.
+
+    \item Sheldon Ross, 
+    \textit{A First Course in Probability}.
+
+    \item William Feller, 
+    \textit{An Introduction to Probability Theory and Its Applications}, Vol.~I.
+
+    \item Kai Lai Chung, 
+    \textit{Elementary Probability Theory with Stochastic Processes}.
+
+    \item Hoel, Port, and Stone, 
+    \textit{Introduction to Probability Theory}.
+
+\end{itemize}
+
+\section{Communication}
+
+\begin{itemize}[leftmargin=*]
+
+\item \href{https://canvas.uw.edu/courses/1896341}{\textbf{Canvas}}: Announcements, assignments, grades, and schedule updates will be posted there.
+
+\item \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{Instructor Website}}: Lecture slides, course documents, homework assignments and solutions, and additional course resources will be posted there.
+
+\item \href{https://edstem.org/}{\textbf{Ed Discussion}}: Students are encouraged to post conceptual, homework, and logistics questions there, since other students may benefit from the answers. Anonymous posting may be used when appropriate.
+
+\item \href{https://www.gradescope.com/courses/1317439}{\textbf{Gradescope}}: Homework submission, exam grading, and regrade requests will be handled there.
+
+\item \href{mailto:armanjg@uw.edu}{\textbf{Instructor Email}}: The instructor may be contacted for private, personal, or urgent matters.
+
+\end{itemize}
+
+
+
+
+
+
+
+
+Please allow up to 48 hours for an email response during the work week. Emails sent late Friday or during the weekend may receive a response the following week.
+
+\section{Grading}
+
+Final grades will be determined tentatively according Tables 1 and 2.
+\begin{table}[ht]
+\centering
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{minipage}{0.46\textwidth}
+\centering
+\caption{Course Components and Weights}
+\label{tab:grading-components}
+
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Component} & \textbf{Weight} \\
+\midrule
+Homework & 40\% \\
+Midterm & 25\% \\
+Final & 35\% \\
+\midrule
+Bonus* & 5\% \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\textwidth}
+\centering
+\caption{Approximate Grading Benchmarks}
+\label{tab:grading-benchmarks}
+
+\renewcommand{\arraystretch}{0.87}
+
+\begin{tabular}{@{}cc@{}}
+\toprule
+\textbf{Percent Earned} & \textbf{Course GPA} \\
+\midrule
+95 & 4.0 \\
+90 & 3.7 \\
+85 & 3.4 \\
+80 & 3.1 \\
+75 & 2.8 \\
+70 & 2.5 \\
+65 & 2.2 \\
+60 & 2.0 \\
+55 & 1.7 \\
+50 & 1.3 \\
+45 & 1.0 \\
+40 & 0.7 \\
+\bottomrule
+\end{tabular}
+
+\end{minipage}
+
+\end{table}
+
+
+
+The following grading benchmarks are approximate; exact grade cutoffs may vary slightly and are not guaranteed.
+Grades between the listed benchmarks will be determined by linear interpolation. Exceptions to the above table may be considered in certain situations.
+
+
+
+
+\newpage
+($\star$) 
+\textbf{Attendance (3\%)} Students with fewer than 4 absences throughout the quarter will receive the full attendance score (3\%). Beginning with the 4th absence, each additional absence will reduce the attendance score by 1%. 
+
+($\star$)  \textbf{Mini-Project (2\%)} Students will have the opportunity to earn an additional 2\% bonus by recording a short presentation teaching a probabilistic concept not covered in the course. Additional alternative opportunities for earning this bonus may also be announced throughout the quarter.
+
+
+
+\section{Exam Policies}
+Examinations are closed-book and closed-notes. Students may use:
+\begin{itemize}
+    \item one handwritten $8.5 \times 11$ inch reference sheet (front and back), and
+        \item a non-programmable non-graphing  calculator capable of standard exponential and logarithmic computations (e.g. TI-30X IIS). 
+\end{itemize}
+
+No other electronic devices, calculators, communication devices, or external resources may be used during examinations. 
+
+
+All \textbf{regrade requests} must be submitted through Gradescope, within \textbf{three} days of the grade being released. 
+
+
+
+
+
+\section{Homework  Policy}
+
+\subsection{Submission and Deadline}
+
+\begin{itemize}[leftmargin=*]
+    \item Homework must be submitted as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Each problem should begin on a new page unless otherwise stated.
+    \item Pages must be tagged correctly in Gradescope.
+    \item Work must be written clearly and legibly. Illegible work may receive little or no credit.
+    \item LaTeX is strongly encouraged but not required.
+\end{itemize}
+
+\subsection{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+
+\begin{itemize}
+   \item No explanation is required to use late days.
+    \item At most \textbf{two late days} may be used on any single homework assignment.
+    \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+ 
+    \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor (armanjg@uw.edu). In such cases:
+
+\begin{itemize}
+    \item The submission must consist of a \textbf{single PDF file}.
+    \item The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\section{Collaboration Policy}
+
+Students are encouraged to discuss homework ideas with classmates. However, submitted work must be written independently and in each student's own words.
+
+If collaboration occurs, collaborators' names should be listed at the top of the submission. Copying solutions from another student, from the internet, from solution manuals, or from AI tools without genuine understanding and an original write-up is not accepted.
+
+A useful guideline is to discuss ideas, then close all outside sources and write the solution independently.
+
+
+Canvas, Ed Discussion, Gradescope, Zoom, and possibly R/RMarkdown or \LaTeX{} may be used throughout the course. 
+
+
+
+Students are expected to have regular access to a reliable internet connection and a device capable of accessing course materials and completing assignments.
+
+
+The University of Washington also provides technology-related support resources for students, including equipment programs through services such as the Student Technology Loan Program (STLP) and other UW technology initiatives. These programs may provide temporary access to laptops, webcams, hotspots, and other educational technology resources for eligible students.
+
+
+\section{Accessibility and Disability Accommodations}
+
+Student access and inclusion are important priorities in this course. The University of Washington is committed to creating inclusive and accessible learning environments consistent with federal and state law.
+
+Students who have already established accommodations with Disability Resources for Students (DRS) should activate their accommodations through myDRS as soon as possible so that implementation can be arranged. Students who have not established accommodations but have a temporary health condition or permanent disability that may require accommodation should contact DRS directly.
+
+DRS website: \url{https://disability.uw.edu}
+
+\section{Religious Accommodations}
+Washington state law requires that the University of Washington develop a policy for accommodation of student absences or significant hardship due to reasons of faith or conscience, or for organized religious activities. The UW’s policy, including additional information about how to request an accommodation, is available at 
+\href{https://registrar.washington.edu/staffandfaculty/religious-accommodations-policy/}{Religious Accommodations Policy}.
+
+Accommodations must be requested within the first two weeks of the course using the 
+\href{https://registrar.washington.edu/students/religious-accommodations-request/}{Religious Accommodations Request Form}.
+
+
+
+
+
+
+\section{Diversity, Inclusion, and Classroom Climate}
+
+Diverse backgrounds, experiences, and perspectives are essential to university learning. Everyone in this course is expected to treat others with respect. This includes respect across differences of age, disability, ethnicity, family status, gender identity and expression, immigration status, national origin, race, religion, political belief, sex, sexual orientation, socioeconomic status, veteran status, and other identities or experiences.
+
+Harassment, discrimination, intimidation, or disrespectful behavior is not acceptable in class, office hours, online discussions, or course communications.
+
+\section{Academic Integrity}
+
+Academic integrity is essential to the learning community.  Academic misconduct may include submitting work that was not understood or independently produced, using unauthorized materials during exams, sharing exam content or solutions,  posting or obtaining course solutions from unauthorized websites,  and representing someone else's work as one's own.
+
+
+
+
+\subsection*{Use of AI Tools}
+
+AI tools can sometimes be useful for studying, checking notation, generating practice questions, or debugging LaTeX. However, they can also produce incorrect solutions and can significantly interfere with learning  when used as a substitute for independent thinking. AI-generated solutions may not be submitted as original work. Any permitted use of AI must support, not replace, the student's own reasoning. 
+
+\section{Tips for Success}
+
+\begin{itemize}[leftmargin=*]
+\item Attend the lectures actively.
+    \item Start homework early. 
+        \item Check Canvas and use Ed Discussion regularly.
+
+    \item Attempt problems seriously before seeking help.
+    \item Attend office hours.
+    \item Work with classmates.
+\end{itemize}
+
+\subsection*{Safety and Health}
+Prioritizing your well-being throughout the quarter is essential. Try to support both your physical and mental health by maintaining balanced habits. Limiting harmful coping mechanisms, including substance use, can also make a significant difference in your overall resilience. Building healthy routines can improve your ability to manage pressure, stay focused on your objectives, and navigate difficult periods more effectively. Remember that challenging times affect many people, and seeking guidance or encouragement from others is important. Reaching out for help early often prevents stress from becoming overwhelming.
+
+
+\newpage
+
+\renewcommand{\arraystretch}{1.24}
+\section{Tentative Weekly Schedule}
+
+This schedule is approximate and may change.
+
+\begin{longtable}{@{}cclp{0.7\textwidth}@{}}
+\toprule
+\textbf{Week} & \textbf{Lecture} & \textbf{Date} & \textbf{Topic} \\
+\midrule
+\endhead
+
+1 & 1  & Jun 22 (M) & Chapter 1A --- Sample Spaces and Events \\
+1 & 2  & Jun 24 (W) & Chapter 1B --- Naive Probability \\
+1 & 3  & Jun 26 (F) & Chapter 1C--1D --- Counting \\
+  &    & Jun 28 (S) & \textbf{\textcolor{uwpurple}{HW~1 due}} \\
+
+2 & 4  & Jun 29 (M) & Chapter 1C--1D --- Counting \\
+2 & 5  & Jul 01 (W) & Chapter 1F --- Axiomatic Probability \\
+2 & -- & Jul 03 (F) & University Holiday --- Independence Day Observed (no class) \\
+  &    & Jul 05 (S) & \textbf{\textcolor{uwpurple}{HW~2 due}} \\
+
+3 & 6  & Jul 06 (M) & Chapter 1F --- Axiomatic Probability \\
+3 & 7  & Jul 08 (W) & Chapter 2 --- Conditional Probability \\
+3 & 8  & Jul 10 (F) & Chapter 2 --- Conditional Probability \\
+  &    & Jul 12 (S) & \textbf{\textcolor{uwpurple}{HW~3 due}} \\
+
+4 & 9  & Jul 13 (M) & Chapter 3 --- Random Variables \\
+4 & 10 & Jul 15 (W) & Chapter 3 --- Random Variables \\
+4 & 11 & Jul 17 (F) & Chapter 4 --- Expectation \\
+  &    & Jul 19 (S) & \textbf{\textcolor{uwpurple}{HW~4 due}} \\
+
+5 & 12 & Jul 20 (M) & Chapter 4 --- Expectation \\
+5 & 13 & Jul 22 (W) & \textbf{\textcolor{examcolor}{Midterm Exam}} \\
+5 & 14 & Jul 24 (F) & Chapter 4 --- Expectation / Chapter 5A --- Continuous Uniform \\
+  &    & Jul 26 (S) & \textbf{\textcolor{uwpurple}{HW~5 due}} \\
+
+6 & 15 & Jul 27 (M) & Chapter 5B --- Normal and Exponential \\
+6 & 16 & Jul 29 (W) & Chapter 6A --- Moments \\
+6 & 17 & Jul 31 (F) & Chapter 6B --- MGFs \\
+  &    & Aug 02 (S) & \textbf{\textcolor{uwpurple}{HW~6 due}} \\
+
+7 & 18 & Aug 03 (M) & Chapter 7 --- Joint Distributions \\
+7 & 19 & Aug 05 (W) & Chapter 7 --- Joint Distributions \\
+7 & 20 & Aug 07 (F) & Chapter 8A --- Transformations \\
+  &    & Aug 09 (S) & \textbf{\textcolor{uwpurple}{HW~7 due}} \\
+
+8 & 21 & Aug 10 (M) & Chapter 8B --- Beta and Gamma \\
+8 & 22 & Aug 12 (W) & Chapter 10A --- Inequalities \\
+8 & 23 & Aug 14 (F) & Chapter 10B --- Law of Large Numbers and Central Limit Theorem \\
+  &    & Aug 16 (S) & \textbf{\textcolor{uwpurple}{HW~8 due}} \\
+
+9 & 24 & Aug 17 (M) & Chapter 10C --- Chi-Square and Student \(t\)-Distributions \\
+9 & 25 & Aug 19 (W) & Review for Final \\
+9 & 26 & Aug 21 (F) & \textbf{\textcolor{examcolor}{Final Exam}} \\
+
+\bottomrule
+\end{longtable}
+
+\end{document}

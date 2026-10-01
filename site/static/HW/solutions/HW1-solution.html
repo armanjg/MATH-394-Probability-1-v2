@@ -1,0 +1,366 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW1-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW1-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 131 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 135 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 1 Solution</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 155 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 157 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 169 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 171 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 181 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 183 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 192 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 194 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 196 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 204 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 206 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 208 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 219 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 221 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 227 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 23.</span>
+</p><!-- l. 231 --><p class='noindent'>Three people get into an empty elevator at the first floor of a building that has 10 floors. Each
+presses the button for their desired floor, unless one of the others has already pressed that button.
+Assume that they are equally likely to want to go to floors 2 through 10, independently of each
+other.
+</p><!-- l. 233 --><p class='noindent'>What is the probability that the buttons for 3 consecutive floors are pressed?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 258 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 236 --><p class='noindent'>There are 9 possible destination floors, namely floors 2 through 10. Since the three people make
+their choices independently, it is natural to count ordered triples of desired floors. The total number
+of such triples is \[ 9^3. \]
+</p><!-- l. 241 --><p class='noindent'>For exactly three consecutive buttons to be pressed, the three desired floors must be distinct, and
+the set of floors must look like \[ \{j,j+1,j+2\}, \quad with \ j=2,\cdots , 8. \] The smallest possible starting floor is 2 and the largest possible
+starting floor is 8, so there are 7 possible consecutive triples of floors. Once such a triple of floors
+has been chosen, the three people may be assigned to those floors in \(3!\) different orders. Thus the
+number of favorable ordered triples is \[ 7\cdot 3!. \] Hence the desired probability is \[ \frac {7\cdot 3!}{9^3} = \frac {42}{729} = \frac {14}{243}. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 264 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 3.</span>
+</p><!-- l. 268 --><p class='noindent'>Fred is planning to go out to dinner each night of a certain week, Monday through Friday, with each dinner
+being at one of his ten favorite restaurants.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>How many possibilities are there for Fred’s schedule of dinners for that Monday through Friday, if
+    Fred is not willing to eat at the same restaurant more than once?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>How many possibilities are there for Fred’s schedule of dinners for that Monday through Friday, if
+    Fred is willing to eat at the same restaurant more than once, but is not willing to eat at the same
+    place twice in a row or more?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 294 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 277 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Fred is choosing restaurants for five ordered nights, and in this part no restaurant may be
+repeated. There are 10 choices for Monday, then 9 choices for Tuesday, then 8 choices for Wednesday,
+then 7 choices for Thursday, and finally 6 choices for Friday. Therefore the number of possible
+dinner schedules is \[ 10\cdot 9\cdot 8\cdot 7\cdot 6 = 30240. \]
+</p><!-- l. 286 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now Fred may return to a restaurant later in the week, but he may not eat at the same
+restaurant on two consecutive nights. Monday can be chosen in 10 ways. On each of the remaining
+four nights, exactly one restaurant is forbidden, namely the restaurant from the previous night.
+Thus each of Tuesday through Friday has 9 available choices. The number of possible schedules is
+\[ 10\cdot 9^4 = 65610. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 300 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 15–18.</span>
+</p><!-- l. 304 --><p class='noindent'>Give story proofs for the following identities.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Show that \[ \sum _{k=0}^{n} {n \choose k}=2^n. \]
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Show that \[ \sum _{k=0}^{n}{n \choose k}^2={2n \choose n}, \] for all positive integers \(n\).
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Show that \[ \sum _{k=1}^{n} k{n \choose k}^2 = n{2n-1 \choose n-1}, \] for all positive integers \(n\).
+    <!-- l. 326 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: Consider choosing a committee of size</span> \(n\) <span class='cmti-10x-x-109'>from two groups of size</span> \(n\) <span class='cmti-10x-x-109'>each, where only one of the
+    two groups has people eligible to become the chair of the committee.</span></p></dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 372 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 330 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Consider a group of \(n\) people, and imagine forming a committee from this group. One way to
+make the committee is to decide, separately for each person, whether that person is included. Since
+each person has two possibilities, included or not included, the number of committees is \(2^n\).
+</p><!-- l. 332 --><p class='noindent'>The same committees can also be counted by their size. If the committee has \(k\) members, then it
+can be chosen in \(\binom {n}{k}\) ways. Since the committee may have any size from 0 to \(n\), the total number of
+committees is \[ \sum _{k=0}^{n}\binom {n}{k}. \] These two expressions count the same set of committees, and so \[ \sum _{k=0}^{n}\binom {n}{k}=2^n. \]
+</p><!-- l. 341 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Suppose there are two groups, each containing \(n\) people. We want to form a committee of size
+\(n\) from the combined group of \(2n\) people. If we ignore the two-group structure, this can be done in \[ \binom {2n}{n} \]
+ways.
+</p><!-- l. 347 --><p class='noindent'>Now count the same committees by the number \(k\) chosen from the first group. If \(k\) people are chosen
+from the first group, then \(n-k\) people must be chosen from the second group. This gives \[ \binom {n}{k}\binom {n}{n-k} \] committees.
+Since \(\binom {n}{n-k}=\binom {n}{k}\), the number with this value of \(k\) is \(\binom {n}{k}^2\). Summing over all possible values of \(k\) gives \[ \sum _{k=0}^{n}\binom {n}{k}^2. \] Both counts
+describe the same committees, and hence
+</p><!-- l. 359 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Again take two groups of \(n\) people each. We form a committee of size \(n\), and then choose a chair
+from the first group among those who are on the committee.
+</p><!-- l. 361 --><p class='noindent'>Count first according to the number \(k\) of committee members who come from the first group. The
+first group contributes \(k\) people in \(\binom {n}{k}\) ways, and the second group contributes the remaining \(n-k\) people in
+\(\binom {n}{n-k}=\binom {n}{k}\) ways. Once the committee has been chosen, there are \(k\) choices for the chair, since the chair must
+be one of the selected members from the first group. Thus this count gives \[ \sum _{k=1}^{n} k\binom {n}{k}^2. \]
+</p><!-- l. 366 --><p class='noindent'>There is a shorter count of the same chaired committees. Choose the chair first from the first group,
+which gives \(n\) choices. After the chair is chosen, we still need \(n-1\) additional committee members, and
+they may be chosen from the remaining \(2n-1\) people. This gives \[ n\binom {2n-1}{n-1}. \] The two counts are counting exactly
+the same objects, so
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 378 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 25.</span>
+</p><!-- l. 382 --><p class='noindent'>A city with 6 districts has 6 robberies in a particular week. Assume the robberies are located randomly, with
+all possibilities for which robbery occurred where equally likely.
+</p><!-- l. 384 --><p class='noindent'>What is the probability that some district had more than 1 robbery?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 412 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 387 --><p class='noindent'>It is easiest to count the complement. Treat the 6 robberies as distinguishable, for instance by the
+order in which they occurred. Each robbery may occur in any of the 6 districts, so there are \[ 6^6 \] equally
+likely assignments.
+</p><!-- l. 393 --><p class='noindent'>The complement of the event in the problem is the event that no district had more than one robbery.
+Since there are 6 robberies and 6 districts, this means that each district had exactly one robbery.
+The number of assignments with exactly one robbery in each district is \(6!\), since the robberies must
+be matched one-to-one with the districts.
+</p><!-- l. 395 --><p class='noindent'>Therefore \[ \mathbb {P}(\text {no district had more than one robbery}) = \frac {6!}{6^6}. \] It follows that \[ \mathbb {P}(\text {some district had more than one robbery}) = 1-\frac {6!}{6^6} = 1-\frac {720}{46656} = \frac {319}{324}. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 418 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 5.</span>
+</p><!-- l. 422 --><p class='noindent'>A knock-out tournament is being held with \(2^n\) tennis players. This means that for each round, the winners move
+on to the next round and the losers are eliminated, until only one person remains. For example, if initially
+there are \(2^4=16\) players, then there are 8 games in the first round, then the 8 winners move on to round 2, then the 4
+winners move on to round 3, then the 2 winners move on to round 4, the winner of which is declared the
+winner of the tournament. There are various systems for determining who plays whom within a round, but
+these do not matter for this problem.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>How many rounds are there?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Count how many games in total are played, by adding up the numbers of games played in each
+    round.
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Count how many games in total are played, this time by directly thinking about it without doing
+    almost any calculation.
+    <!-- l. 431 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: How many players need to be eliminated?</span></p></dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 457 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 435 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>There are \(2^n\) players at the beginning. After each round, half of the players remain. Thus the
+numbers of players remaining after successive rounds are \[ 2^n,\;2^{n-1},\;2^{n-2},\ldots ,2,1. \] It takes \(n\) rounds to reduce the field from
+\(2^n\) players to one champion.
+</p><!-- l. 442 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>In the first round, \(2^{n-1}\) games are played. In the second round, \(2^{n-2}\) games are played. Continuing in
+this way, the final round has one game. The total number of games is therefore \[ 2^{n-1}+2^{n-2}+\cdots +2+1 = 2^n-1. \]
+</p><!-- l. 451 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>There is also a very direct way to see the same number. Every game eliminates exactly one
+player. To finish with one champion, the tournament must eliminate all the other players. Since
+there are \(2^n\) players at the start, the number of eliminated players is \[ 2^n-1. \] Thus the number of games is
+\(2^n-1\).
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 463 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 49.</span>
+</p><!-- l. 467 --><p class='noindent'>A fair die is rolled \(n\) times. What is the probability that at least 1 of the 6 values never appears?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+<!-- l. 491 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 470 --><p class='noindent'>There are \(6^n\) equally likely sequences of \(n\) die rolls. We want the probability that at least one of the
+six faces is absent.
+</p><!-- l. 472 --><p class='noindent'>Let  \(A_j\)  be  the  event  that  face  \(j\)  never  appears.  The  desired  event  is  \[ A_1\cup A_2\cup \cdots \cup A_6. \]  We  count  this  union  by
+inclusion-exclusion. If a particular set of \(k\) faces is missing, then each roll must be one of the remaining
+\(6-k\) faces, so there are \[ (6-k)^n \] sequences. There are \(\binom {6}{k}\) ways to choose the missing faces. Hence, using the
+inclusion-exclusion principle, we have \[ \mathbb {P}(A_1\cup \cdots \cup A_6) = \frac {1}{6^n} \sum _{k=1}^{6} (-1)^{k+1}\binom {6}{k}(6-k)^n. \] Writing the expression out gives
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 497 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7.</span>                                                                                                  </p> 
+</div> 
+</div> <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 53.</span>
+</p><!-- l. 501 --><p class='noindent'>Fred needs to choose a password for a certain website. Assume that he will choose an 8-character password,
+and that the legal characters are the lowercase letters \(a,b,c,\dots ,z\), the uppercase letters \(A,B,C,\dots ,Z\), and the numbers
+\(0,1,\dots ,9\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>How many possibilities are there if he is required to have at least one lowercase letter in his
+    password?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>How many possibilities are there if he is required to have at least one lowercase letter and at least
+    one uppercase letter in his password?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>How many possibilities are there if he is required to have at least one lowercase letter, at least one
+    uppercase letter, and at least one number in his password?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-19'>     
+<div class='tcolorbox-title'>
+<!-- l. 538 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 512 --><p class='noindent'>There are \(62\) legal characters in total, namely \(26\) lowercase letters, \(26\) uppercase letters, and \(10\) digits.
+</p><!-- l. 514 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Count all 8-character passwords and subtract those with no lowercase letters. There are \(62^8\)
+passwords in total. If no lowercase letter appears, each character must be chosen from the \(26\) uppercase
+letters and the \(10\) digits, giving \(36^8\) such passwords. Therefore the number with at least one lowercase
+letter is
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+<!-- l. 520 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 519 --><p class='noindent'>\[ 62^8-36^8 \] </p> 
+</div> 
+</div>
+<!-- l. 522 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now the password must contain at least one lowercase letter and at least one uppercase letter. Start
+with all \(62^8\) passwords. Subtract the passwords with no lowercase letters and the passwords with
+no uppercase letters. Each of these two forbidden classes has \(36^8\) passwords. Passwords with
+neither lowercase nor uppercase letters use only digits, and there are \(10^8\) of them. These digit-only
+passwords have been subtracted twice, so they must be added back once. The desired number
+is
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-17'>     
+<div class='tcolorbox-title'>
+<!-- l. 528 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 527 --><p class='noindent'>\[ 62^8-2\cdot 36^8+10^8 \] </p> 
+</div> 
+</div>
+<!-- l. 530 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Finally, require all three types of characters to appear. Again begin with \(62^8\) total passwords. Subtract
+the passwords missing lowercase letters, missing uppercase letters, or missing digits. These counts are \(36^8\), \(36^8\),
+and \(52^8\), respectively.
+</p><!-- l. 532 --><p class='noindent'>Now add back the passwords in which two of the three character types are missing. If lowercase and
+uppercase letters are both missing, only digits remain, giving \(10^8\) passwords. If lowercase letters and digits are
+both missing, only uppercase letters remain, giving \(26^8\) passwords. If uppercase letters and digits are both
+missing, only lowercase letters remain, again giving \(26^8\) passwords. Since a password cannot be missing all
+three character types and still have length 8, there is no further term. Thus the number of valid passwords
+is </p> <div class='tcolorbox finalanswerbox' id='tcolobox-18'>     
+<div class='tcolorbox-title'>
+<!-- l. 537 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 536 --><p class='noindent'>\[ 62^8-2\cdot 36^8-52^8+10^8+2\cdot 26^8 \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

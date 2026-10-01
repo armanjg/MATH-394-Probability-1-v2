@@ -1,0 +1,598 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Midterm Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{solutionbox}[1][] {
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][] {
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.4cm}
+
+{\Huge \color{uwpurple}\textbf{Midterm Examination Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Exam date:} July 22, 2026
+
+\textbf{Answering time:} 60 minutes
+
+\textbf{Total:} 60 points
+\end{tcolorbox}
+
+ 
+ 
+\end{titlepage}
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 1. } \hfill \textbf{5 points}
+\end{problemheader}
+A student organization has 7 mathematics graduate students, 5 statistics graduate students, and 6 undergraduate students. A committee of 5 students is selected uniformly at random from all committees of 5.
+
+Find the probability that the committee contains exactly 2 mathematics graduate students, exactly 1 statistics graduate student, and exactly 2 undergraduate students.
+
+Give an exact answer. A correct expression involving binomial coefficients is acceptable.
+\begin{solutionbox}
+There are
+\[
+\binom{18}{5}
+\]
+possible committees of 5 students, and all are equally likely.
+
+To form a committee of the required type, choose:
+\begin{itemize}[leftmargin=*]
+    \item 2 of the 7 mathematics graduate students,
+    \item 1 of the 5 statistics graduate students, and
+    \item 2 of the 6 undergraduate students.
+\end{itemize}
+Thus the number of favorable committees is
+\[
+\binom{7}{2}\binom{5}{1}\binom{6}{2}.
+\]
+Therefore,
+\[
+P(\text{required composition})
+=
+\frac{\binom{7}{2}\binom{5}{1}\binom{6}{2}}{\binom{18}{5}}.
+\]
+Numerically,
+\[
+\binom{7}{2}\binom{5}{1}\binom{6}{2}=21\cdot 5\cdot 15=1575,
+\qquad
+\binom{18}{5}=8568,
+\]
+so
+\[
+\frac{1575}{8568}=\frac{525}{2856}=\frac{175}{952}.
+\]
+
+\end{solutionbox}
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 2.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A spam filter is designed by looking at commonly occurring phrases in spam. Suppose that $80\%$ of email is spam. In $10\%$ of the spam emails, the phrase ``free money'' is used, whereas this phrase is only used in $1\%$ of non-spam emails. A new email has just arrived, which does mention ``free money.'' What is the probability that it is spam?
+
+\begin{solutionbox}
+\textbf{(a)} Let $S$ be the event that the email is spam, and let $F$ be the event that the email contains the phrase ``free money.'' We are given
+\[
+P(S)=0.80,\qquad P(F\mid S)=0.10,\qquad P(F\mid S^c)=0.01.
+\]
+Bayes' rule gives
+\[
+P(S\mid F)
+=
+\frac{P(F\mid S)P(S)}{P(F\mid S)P(S)+P(F\mid S^c)P(S^c)}.
+\]
+Substituting the given values,
+\[
+P(S\mid F)
+=
+\frac{0.10\cdot 0.80}{0.10\cdot 0.80+0.01\cdot 0.20}
+=
+\frac{0.08}{0.082}
+=
+\frac{40}{41}.
+\]
+
+
+
+\end{solutionbox}
+
+\newpage
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 3. } \hfill \textbf{10 points}
+\end{problemheader}
+
+Let $A$ and $B$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+    \item Let $S$ be a sample space and $A_1,\dots, A_n\in  \mathcal{F}$ be events. Explain what it means for $A_i's$ to for a partition of $S$,  \hfill \textbf{(3 points)}
+    \item Suppose $P(A) = 0.6$ and $P(B)=0.5$. Can $A$ and $B$ be disjoint? \hfill \textbf{(3 points)}
+   
+    \item Suppose that $A$ is independent of itself. Use the definition of independence to conclude that $P(A)=0$ or $P(A)=1$. \hfill \textbf{(4 points)}
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a)} The events $A_1,\ldots,A_n$ form a partition of the sample space $S$ if they are pairwise disjoint,
+\[
+A_i\cap A_j=\emptyset,\qquad i\neq j,
+\]
+and
+\[
+\bigcup_{i=1}^n A_i=S.
+\]
+
+\textbf{(b)} If $A$ and $B$ were disjoint, then
+\[
+1\geq P(A\cup B)=P(A)+P(B)=0.6+0.5=1.1,
+\]
+which is impossible since probabilities cannot exceed $1$. Hence $A$ and $B$ cannot be disjoint.
+
+\textbf{(c)} If $A$ is independent of itself, then
+\[
+P(A\cap A)=P(A)P(A).
+\]
+Since $A\cap A=A$,
+\[
+P(A)=P(A)^2.
+\]
+Let $p=P(A)$. Then
+\[
+p(1-p)=0,
+\]
+so $p=0$ or $p=1$.
+
+\begin{finalanswerbox}
+(a) $\{A_i\}_{i=1}^n$ is a partition iff the events are pairwise disjoint and their union is $S$.
+
+(b) No.
+
+(c)
+\[
+ {P(A)=0\quad\text{or}\quad P(A)=1.}
+\]
+\end{finalanswerbox}
+\end{solutionbox}
+\newpage
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 4. } \hfill \textbf{15 points}
+\end{problemheader}
+
+Suppose that $X$ has probability density function
+\[
+f_X(x)=
+\begin{cases}
+ c\,x(2-x), & 0<x<2,\\
+ 0, & \text{otherwise},
+\end{cases}
+\]
+where $c$ is a constant.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.7em]
+    \item Find $c$. \hfill \textbf{(3 points)}
+    \item Find the cumulative distribution function $F_X(x)$ for all real $x$. \hfill \textbf{(5 points)}
+    \item Find $P(X>3/2)$. \hfill \textbf{(2 points)}
+    \item Find $\mathbb{E}[X]$ and $\operatorname{Var}(X)$. \hfill \textbf{(5 points)}
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} A density must integrate to $1$, so
+\begin{align*}
+1
+&=c\int_0^2 x(2-x)\,dx\\
+&=c\int_0^2(2x-x^2)\,dx\\
+&=c\left[x^2-\frac{x^3}{3}\right]_0^2
+=c\left(4-\frac83\right)
+=c\frac43.
+\end{align*}
+Hence
+\[
+c=\frac34.
+\]
+
+\textbf{(b)} For $0<x<2$,
+\begin{align*}
+F_X(x)
+&=\int_0^x \frac34t(2-t)\,dt\\
+&=\frac34\left[t^2-\frac{t^3}{3}\right]_0^x\\
+&=\frac{3x^2}{4}-\frac{x^3}{4}.
+\end{align*}
+Therefore,
+\[
+F_X(x)=
+\begin{cases}
+0, & x\leq 0,\\[2mm]
+\displaystyle \frac{3x^2-x^3}{4}, & 0<x<2,\\[2mm]
+1, & x\geq 2.
+\end{cases}
+\]
+
+\textbf{(c)} Using the CDF,
+\begin{align*}
+P\left(X>\frac32\right)
+&=1-F_X\left(\frac32\right)\\
+&=1-\frac{3(3/2)^2-(3/2)^3}{4}\\
+&=1-\frac{27}{32}
+=\frac5{32}.
+\end{align*}
+
+\textbf{(d)} First,
+\begin{align*}
+\mathbb{E}[X]
+&=\int_0^2 x\frac34x(2-x)\,dx\\
+&=\frac34\int_0^2(2x^2-x^3)\,dx\\
+&=\frac34\left[\frac{2x^3}{3}-\frac{x^4}{4}\right]_0^2
+=1.
+\end{align*}
+Also,
+\begin{align*}
+\mathbb{E}[X^2]
+&=\int_0^2 x^2\frac34x(2-x)\,dx\\
+&=\frac34\int_0^2(2x^3-x^4)\,dx\\
+&=\frac34\left[\frac{x^4}{2}-\frac{x^5}{5}\right]_0^2\\
+&=\frac65.
+\end{align*}
+Thus
+\[
+\operatorname{Var}(X)=\mathbb{E}[X^2]-\bigl(\mathbb{E}[X]\bigr)^2
+=\frac65-1=\frac15.
+\]
+
+\begin{finalanswerbox}
+\[
+ {c=\frac34},\qquad
+ {P(X>3/2)=\frac5{32}},\qquad
+ {\mathbb{E}[X]=1},\qquad
+ {\operatorname{Var}(X)=\frac15}.
+\]
+The CDF is
+\[
+ {
+F_X(x)=
+\begin{cases}
+0, & x\leq 0,\\
+(3x^2-x^3)/4, & 0<x<2,\\
+1, & x\geq 2.
+\end{cases}}
+\]
+\end{finalanswerbox}
+\end{solutionbox}
+ 
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 5.} \hfill \textbf{15 points}
+\end{problemheader}
+
+A company has found that \(40\%\) of customers who visit its website make a purchase. Suppose that \(200\) customers visit the website independently on a particular day.
+
+Let \(X\) denote the number of customers who make a purchase.
+
+\begin{enumerate}[label=\arabic*.,leftmargin=*,itemsep=1.2em]
+
+\item Determine whether a \textbf{Poisson approximation} or a
+\textbf{normal approximation} is more appropriate by verifying the
+required conditions. Then clearly state the approximating distribution;
+that is, provide \(\lambda\) if a Poisson approximation is appropriate,
+or provide \(\mu\) and \(\sigma^2\) if a normal approximation is
+appropriate.
+\hfill \textbf{(5 points)}
+
+\item Use the approximation from part (1) to estimate each of the following:
+\hfill \textbf{(10 points)}
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.7em]
+
+    \item
+    \[
+    \mathbb{P}(70<X<90)
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item
+    \[
+    \mathbb{P}(X>90)
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item
+    \[
+    \mathbb{P}(X=80)
+    \]
+    \hfill \textbf{(4 points)}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+Since each customer independently makes a purchase with probability
+\(p=0.40\), we have
+\[
+X\sim\operatorname{Bin}(200,0.40).
+\]
+
+\textbf{(1)} For a Poisson approximation to be appropriate, \(n\) should be large and
+\(p\) should be small. Although
+\[
+n=200
+\]
+is large, \(p=0.40\) is not small. Therefore, a Poisson approximation is
+not appropriate.
+
+For a normal approximation, we verify that
+\[
+np=200(0.40)=80
+\]
+and
+\[
+n(1-p)=200(0.60)=120.
+\]
+
+Since both quantities are greater than \(10\), the normal approximation is
+appropriate.
+
+The mean and variance of \(X\) are
+\[
+\mu=np=80
+\]
+and
+\[
+\sigma^2=np(1-p)=200(0.40)(0.60)=48.
+\]
+
+Therefore, we approximate \(X\) by
+\[
+Y\sim N(80,48),
+\]
+where
+\[
+\sigma=\sqrt{48}\approx6.93.
+\]
+
+
+\textbf{(2)}
+
+\textbf{(a)} Using the continuity correction,
+\[
+\mathbb{P}(70<X<90)
+\approx
+\mathbb{P}(70.5<Y<89.5).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(70.5<Y<89.5)
+&=
+\mathbb{P}\left(
+\frac{70.5-80}{\sqrt{48}}
+<
+Z
+<
+\frac{89.5-80}{\sqrt{48}}
+\right)\\
+&\approx
+\mathbb{P}(-1.37<Z<1.37).
+\end{aligned}
+\]
+
+Using the standard normal table,
+\[
+\Phi(1.37)=0.9147
+\]
+and
+\[
+\Phi(-1.37)=1-\Phi(1.37)=0.0853.
+\]
+
+Therefore,
+\[
+\mathbb{P}(70<X<90)
+\approx
+0.9147-0.0853
+=
+0.8294.
+\]
+
+
+\textbf{(b)} Using the continuity correction,
+\[
+\mathbb{P}(X>90)
+\approx
+\mathbb{P}(Y>90.5).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(Y>90.5)
+&=
+\mathbb{P}\left(
+Z>
+\frac{90.5-80}{\sqrt{48}}
+\right)\\
+&\approx
+\mathbb{P}(Z>1.52).
+\end{aligned}
+\]
+
+Using the standard normal table,
+\[
+\Phi(1.52)=0.9357.
+\]
+
+Thus,
+\[
+\mathbb{P}(X>90)
+\approx
+1-\Phi(1.52)
+=
+1-0.9357
+=
+0.0643.
+\]
+
+
+\textbf{(c)} Using the continuity correction,
+\[
+\mathbb{P}(X=80)
+\approx
+\mathbb{P}(79.5<Y<80.5).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(79.5<Y<80.5)
+&=
+\mathbb{P}\left(
+\frac{79.5-80}{\sqrt{48}}
+<
+Z
+<
+\frac{80.5-80}{\sqrt{48}}
+\right)\\
+&\approx
+\mathbb{P}(-0.07<Z<0.07).
+\end{aligned}
+\]
+
+Using the standard normal table,
+\[
+\Phi(0.07)=0.5279
+\]
+and
+\[
+\Phi(-0.07)=0.4721.
+\]
+
+Therefore,
+\[
+\mathbb{P}(X=80)
+\approx
+0.5279-0.4721
+=
+0.0558.
+\]
+
+\end{solutionbox}
+ 
+ 
+
+
+
+
+\end{document}

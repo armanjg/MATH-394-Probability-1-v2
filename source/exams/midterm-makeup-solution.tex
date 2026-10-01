@@ -1,0 +1,1036 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Makeup Midterm Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{solutionbox}[1][] {
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][] {
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\begin{document}
+
+% ============================================================
+% TITLE PAGE
+% ============================================================
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.4cm}
+
+{\Huge \color{uwpurple}\textbf{Makeup Midterm  Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+
+\textbf{Answering time:} 60 minutes
+
+\textbf{Total:} 60 points
+
+\end{tcolorbox}
+
+\end{titlepage}
+
+
+% ============================================================
+% PROBLEM 1
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 1.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A box contains 6 red balls, 5 blue balls, and 4 green balls. Five balls
+are selected uniformly at random without replacement.
+
+Find the probability that the selection contains exactly 2 red balls,
+exactly 2 blue balls, and exactly 1 green ball.
+
+Give an exact answer. A correct expression involving binomial coefficients
+is acceptable.
+
+\begin{solutionbox}
+
+There are
+\[
+\binom{15}{5}
+\]
+possible selections of 5 balls from the 15 balls, and all such selections
+are equally likely.
+
+To obtain the required composition, we choose
+
+\begin{itemize}[leftmargin=*]
+    \item 2 of the 6 red balls,
+    \item 2 of the 5 blue balls,
+    \item 1 of the 4 green balls.
+\end{itemize}
+
+Therefore, the number of favorable selections is
+\[
+\binom{6}{2}\binom{5}{2}\binom{4}{1}.
+\]
+
+Hence,
+\[
+P(\text{required composition})
+=
+\frac{
+\binom{6}{2}\binom{5}{2}\binom{4}{1}
+}{
+\binom{15}{5}
+}.
+\]
+
+Evaluating,
+\[
+\binom{6}{2}\binom{5}{2}\binom{4}{1}
+=
+15\cdot 10\cdot 4
+=
+600,
+\]
+while
+\[
+\binom{15}{5}=3003.
+\]
+
+Thus,
+\[
+P(\text{required composition})
+=
+\frac{600}{3003}
+=
+\frac{200}{1001}.
+\]
+
+\begin{finalanswerbox}
+\[
+P(\text{exactly 2 red, 2 blue, and 1 green})
+=
+\frac{\binom62\binom52\binom41}{\binom{15}{5}}
+=
+\frac{200}{1001}.
+\]
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 2
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 2.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A company purchases computer chips from three suppliers.
+
+Supplier $A$ provides $50\%$ of the chips, Supplier $B$ provides $30\%$,
+and Supplier $C$ provides the remaining $20\%$.
+
+The probabilities that a chip is defective are
+\[
+P(D\mid A)=0.01,\qquad
+P(D\mid B)=0.03,\qquad
+P(D\mid C)=0.06,
+\]
+where $D$ denotes the event that a chip is defective.
+
+A chip is selected at random and is found to be defective.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Find the probability that the defective chip came from
+    Supplier $B$.
+    \hfill \textbf{(6 points)}
+
+    \item Find the probability that the defective chip came from
+    either Supplier $B$ or Supplier $C$.
+    \hfill \textbf{(4 points)}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+We are given
+\[
+P(A)=0.50,\qquad
+P(B)=0.30,\qquad
+P(C)=0.20,
+\]
+and
+\[
+P(D\mid A)=0.01,\qquad
+P(D\mid B)=0.03,\qquad
+P(D\mid C)=0.06.
+\]
+
+Since $A$, $B$, and $C$ form a partition according to the supplier,
+the law of total probability gives
+\begin{align*}
+P(D)
+&=
+P(D\mid A)P(A)
++
+P(D\mid B)P(B)
++
+P(D\mid C)P(C)\\
+&=
+(0.01)(0.50)
++
+(0.03)(0.30)
++
+(0.06)(0.20)\\
+&=
+0.005+0.009+0.012\\
+&=
+0.026.
+\end{align*}
+
+
+\textbf{(a)}
+
+By Bayes' rule,
+\begin{align*}
+P(B\mid D)
+&=
+\frac{P(D\mid B)P(B)}{P(D)}\\
+&=
+\frac{(0.03)(0.30)}{0.026}\\
+&=
+\frac{0.009}{0.026}\\
+&=
+\frac{9}{26}.
+\end{align*}
+
+Thus,
+\[
+P(B\mid D)
+=
+\frac{9}{26}
+\approx 0.3462.
+\]
+
+
+\textbf{(b)}
+
+Since the suppliers are mutually exclusive,
+\[
+P(B\cup C\mid D)
+=
+P(B\mid D)+P(C\mid D).
+\]
+
+We may compute this directly:
+\begin{align*}
+P(B\cup C\mid D)
+&=
+\frac{
+P(D\mid B)P(B)+P(D\mid C)P(C)
+}{
+P(D)
+}\\
+&=
+\frac{
+(0.03)(0.30)+(0.06)(0.20)
+}{
+0.026
+}\\
+&=
+\frac{0.009+0.012}{0.026}\\
+&=
+\frac{0.021}{0.026}\\
+&=
+\frac{21}{26}.
+\end{align*}
+
+Therefore,
+\[
+P(B\cup C\mid D)
+=
+\frac{21}{26}
+\approx0.8077.
+\]
+
+\begin{finalanswerbox}
+\[
+\text{(a)}\qquad
+P(B\mid D)=\frac{9}{26}\approx0.3462,
+\]
+\[
+\text{(b)}\qquad
+P(B\cup C\mid D)=\frac{21}{26}\approx0.8077.
+\]
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 3
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 3.} \hfill \textbf{10 points}
+\end{problemheader}
+
+Let $A$ and $B$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1em]
+
+    \item Suppose
+    \[
+    P(A)=0.7,
+    \qquad
+    P(B)=0.6.
+    \]
+    What is the smallest possible value of $P(A\cap B)$?
+    Justify your answer.
+    \hfill \textbf{(3 points)}
+
+    \item Suppose $A$ and $B$ are disjoint and
+    \[
+    P(A)>0,
+    \qquad
+    P(B)>0.
+    \]
+    Can $A$ and $B$ be independent? Justify your answer using the
+    definition of independence.
+    \hfill \textbf{(3 points)}
+
+    \item Suppose $A$ and $B$ are independent. Prove that
+    $A$ and $B^c$ are also independent.
+    \hfill \textbf{(4 points)}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+\textbf{(a)}
+
+Using
+\[
+P(A\cup B)
+=
+P(A)+P(B)-P(A\cap B),
+\]
+and the fact that
+\[
+P(A\cup B)\leq 1,
+\]
+we obtain
+\[
+P(A)+P(B)-P(A\cap B)\leq1.
+\]
+
+Therefore,
+\[
+P(A\cap B)
+\geq
+P(A)+P(B)-1.
+\]
+
+Substituting the given values,
+\[
+P(A\cap B)
+\geq
+0.7+0.6-1
+=
+0.3.
+\]
+
+Thus the smallest possible value is
+\[
+P(A\cap B)=0.3.
+\]
+
+This value is possible, for example, when
+\[
+P(A\cup B)=1.
+\]
+
+
+\textbf{(b)}
+
+If $A$ and $B$ are disjoint, then
+\[
+A\cap B=\emptyset,
+\]
+so
+\[
+P(A\cap B)=0.
+\]
+
+However, if $A$ and $B$ were independent, the definition of independence
+would require
+\[
+P(A\cap B)
+=
+P(A)P(B).
+\]
+
+Since
+\[
+P(A)>0
+\qquad\text{and}\qquad
+P(B)>0,
+\]
+we have
+\[
+P(A)P(B)>0.
+\]
+
+Thus independence would imply
+\[
+P(A\cap B)>0,
+\]
+which contradicts
+\[
+P(A\cap B)=0.
+\]
+
+Therefore, two disjoint events having positive probability cannot be
+independent.
+
+
+\textbf{(c)}
+
+We want to prove that
+\[
+P(A\cap B^c)
+=
+P(A)P(B^c).
+\]
+
+Notice that $A$ is the disjoint union
+\[
+A
+=
+(A\cap B)\cup(A\cap B^c).
+\]
+
+Therefore,
+\[
+P(A)
+=
+P(A\cap B)+P(A\cap B^c),
+\]
+and hence
+\[
+P(A\cap B^c)
+=
+P(A)-P(A\cap B).
+\]
+
+Since $A$ and $B$ are independent,
+\[
+P(A\cap B)=P(A)P(B).
+\]
+
+Thus,
+\begin{align*}
+P(A\cap B^c)
+&=
+P(A)-P(A)P(B)\\
+&=
+P(A)\bigl(1-P(B)\bigr)\\
+&=
+P(A)P(B^c).
+\end{align*}
+
+Therefore, by the definition of independence,
+\[
+A\quad\text{and}\quad B^c
+\]
+are independent.
+
+\begin{finalanswerbox}
+
+\textbf{(a)}
+\[
+\min P(A\cap B)=0.3.
+\]
+
+\textbf{(b)} No. Disjoint events with positive probabilities cannot be
+independent.
+
+\textbf{(c)}
+\[
+P(A\cap B^c)=P(A)P(B^c),
+\]
+so $A$ and $B^c$ are independent.
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 4
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 4.} \hfill \textbf{15 points}
+\end{problemheader}
+
+Suppose that $X$ has probability density function
+\[
+f_X(x)=
+\begin{cases}
+c(1+x), & 0<x<2,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+where $c$ is a constant.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Find $c$.
+    \hfill \textbf{(3 points)}
+
+    \item Find the cumulative distribution function $F_X(x)$
+    for all real $x$.
+    \hfill \textbf{(5 points)}
+
+    \item Find
+    \[
+    P\left(\frac12<X<\frac32\right).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item Find $\mathbb{E}[X]$ and $\operatorname{Var}(X)$.
+    \hfill \textbf{(5 points)}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+\textbf{(a)}
+
+A probability density function must integrate to $1$. Therefore,
+\begin{align*}
+1
+&=
+\int_{-\infty}^{\infty} f_X(x)\,dx\\
+&=
+c\int_0^2(1+x)\,dx\\
+&=
+c\left[x+\frac{x^2}{2}\right]_0^2\\
+&=
+c(2+2)\\
+&=
+4c.
+\end{align*}
+
+Hence,
+\[
+c=\frac14.
+\]
+
+
+\textbf{(b)}
+
+For $x\leq0$,
+\[
+F_X(x)=0.
+\]
+
+For $0<x<2$,
+\begin{align*}
+F_X(x)
+&=
+\int_{-\infty}^{x}f_X(t)\,dt\\
+&=
+\int_0^x\frac14(1+t)\,dt\\
+&=
+\frac14
+\left[t+\frac{t^2}{2}\right]_0^x\\
+&=
+\frac{x}{4}+\frac{x^2}{8}\\
+&=
+\frac{x^2+2x}{8}.
+\end{align*}
+
+For $x\geq2$,
+\[
+F_X(x)=1.
+\]
+
+Therefore,
+\[
+F_X(x)
+=
+\begin{cases}
+0, & x\leq0,\\[2mm]
+\displaystyle \frac{x^2+2x}{8}, & 0<x<2,\\[3mm]
+1, & x\geq2.
+\end{cases}
+\]
+
+
+\textbf{(c)}
+
+Using the CDF,
+\begin{align*}
+P\left(\frac12<X<\frac32\right)
+&=
+F_X\left(\frac32\right)
+-
+F_X\left(\frac12\right).
+\end{align*}
+
+Now,
+\begin{align*}
+F_X\left(\frac32\right)
+&=
+\frac{
+(3/2)^2+2(3/2)
+}{8}\\
+&=
+\frac{\frac94+3}{8}\\
+&=
+\frac{21}{32},
+\end{align*}
+while
+\begin{align*}
+F_X\left(\frac12\right)
+&=
+\frac{
+(1/2)^2+2(1/2)
+}{8}\\
+&=
+\frac{\frac14+1}{8}\\
+&=
+\frac{5}{32}.
+\end{align*}
+
+Therefore,
+\[
+P\left(\frac12<X<\frac32\right)
+=
+\frac{21}{32}-\frac{5}{32}
+=
+\frac{16}{32}
+=
+\frac12.
+\]
+
+
+\textbf{(d)}
+
+First,
+\begin{align*}
+\mathbb{E}[X]
+&=
+\int_{-\infty}^{\infty}x f_X(x)\,dx\\
+&=
+\frac14\int_0^2x(1+x)\,dx\\
+&=
+\frac14\int_0^2(x+x^2)\,dx\\
+&=
+\frac14
+\left[
+\frac{x^2}{2}+\frac{x^3}{3}
+\right]_0^2\\
+&=
+\frac14
+\left(
+2+\frac83
+\right)\\
+&=
+\frac14\cdot\frac{14}{3}\\
+&=
+\frac76.
+\end{align*}
+
+Next,
+\begin{align*}
+\mathbb{E}[X^2]
+&=
+\int_{-\infty}^{\infty}x^2f_X(x)\,dx\\
+&=
+\frac14\int_0^2x^2(1+x)\,dx\\
+&=
+\frac14\int_0^2(x^2+x^3)\,dx\\
+&=
+\frac14
+\left[
+\frac{x^3}{3}+\frac{x^4}{4}
+\right]_0^2\\
+&=
+\frac14
+\left(
+\frac83+4
+\right)\\
+&=
+\frac14\cdot\frac{20}{3}\\
+&=
+\frac53.
+\end{align*}
+
+Therefore,
+\begin{align*}
+\operatorname{Var}(X)
+&=
+\mathbb{E}[X^2]
+-
+\bigl(\mathbb{E}[X]\bigr)^2\\
+&=
+\frac53
+-
+\left(\frac76\right)^2\\
+&=
+\frac{60}{36}
+-
+\frac{49}{36}\\
+&=
+\frac{11}{36}.
+\end{align*}
+
+
+\begin{finalanswerbox}
+
+\[
+c=\frac14.
+\]
+
+\[
+F_X(x)
+=
+\begin{cases}
+0, & x\leq0,\\[1mm]
+\dfrac{x^2+2x}{8}, & 0<x<2,\\[2mm]
+1, & x\geq2.
+\end{cases}
+\]
+
+\[
+P\left(\frac12<X<\frac32\right)=\frac12,
+\]
+
+\[
+\mathbb{E}[X]=\frac76,
+\qquad
+\operatorname{Var}(X)=\frac{11}{36}.
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+ 
+
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 5
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 5.} \hfill \textbf{15 points}
+\end{problemheader}
+
+A factory produces two types of electronic components. Each component is
+independently classified as Type I with probability \(0.5\) and Type II
+with probability \(0.5\).
+
+Suppose that \(60\) components are produced.
+
+Let \(X\) denote the number of Type I components among the \(60\)
+components.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.9em]
+
+    \item State the distribution of \(X\).
+
+    Determine whether a normal approximation is appropriate by verifying
+    the required conditions. Then state the approximating normal
+    distribution, including its mean and variance.
+
+    \hfill \textbf{(6 points)}
+
+    \item Using the normal approximation with an appropriate continuity
+    correction, approximate the probability that among the \(60\)
+    components there are \textbf{at least \(27\) components of each type}.
+
+    \hfill \textbf{(9 points)}
+
+\end{enumerate}
+
+
+\begin{solutionbox}
+
+\textbf{(a)}
+
+Each of the \(60\) components is independently Type I with probability
+\[
+p=0.5.
+\]
+
+Therefore,
+\[
+X\sim\operatorname{Bin}(60,0.5).
+\]
+
+To determine whether the normal approximation is appropriate, we check
+\[
+np=60(0.5)=30
+\]
+and
+\[
+n(1-p)=60(0.5)=30.
+\]
+
+Since both quantities are greater than \(10\), the normal approximation is
+appropriate.
+
+The mean is
+\[
+\mu=np=30,
+\]
+and the variance is
+\[
+\sigma^2=np(1-p)
+=
+60(0.5)(0.5)
+=
+15.
+\]
+
+Thus, we approximate \(X\) by
+\[
+Y\sim N(30,15),
+\]
+where
+\[
+\sigma=\sqrt{15}.
+\]
+
+
+\textbf{(b)}
+
+If \(X\) is the number of Type I components, then the number of Type II
+components is
+\[
+60-X.
+\]
+
+Having at least \(27\) components of each type means
+\[
+X\geq27
+\]
+and
+\[
+60-X\geq27.
+\]
+
+The second inequality is equivalent to
+\[
+X\leq33.
+\]
+
+Therefore, the desired event is
+\[
+27\leq X\leq33.
+\]
+
+Using the continuity correction,
+\[
+P(27\leq X\leq33)
+\approx
+P(26.5<Y<33.5).
+\]
+
+Standardizing,
+\begin{align*}
+P(26.5<Y<33.5)
+&=
+P\left(
+\frac{26.5-30}{\sqrt{15}}
+<
+Z
+<
+\frac{33.5-30}{\sqrt{15}}
+\right)\\
+&=
+P\left(
+-\frac{3.5}{\sqrt{15}}
+<
+Z
+<
+\frac{3.5}{\sqrt{15}}
+\right).
+\end{align*}
+
+Since
+\[
+\frac{3.5}{\sqrt{15}}
+\approx0.90,
+\]
+we obtain
+\[
+P(27\leq X\leq33)
+\approx
+P(-0.90<Z<0.90).
+\]
+
+Using the standard normal table,
+\[
+\Phi(0.90)=0.8159,
+\]
+and
+\[
+\Phi(-0.90)=0.1841.
+\]
+
+Therefore,
+\[
+P(27\leq X\leq33)
+\approx
+0.8159-0.1841
+=
+0.6318.
+\]
+
+
+\begin{finalanswerbox}
+
+\[
+X\sim\operatorname{Bin}(60,0.5).
+\]
+
+Since
+\[
+np=n(1-p)=30>10,
+\]
+the normal approximation is appropriate:
+\[
+X\approx Y,
+\qquad
+Y\sim N(30,15).
+\]
+
+Finally,
+\[
+P(\text{at least 27 of each type})
+=
+P(27\leq X\leq33)
+\approx
+0.632.
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+
+
+\end{document}

@@ -1,0 +1,592 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW7-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW7-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 100 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 104 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 7 Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 117 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 119 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 125 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 127 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 135 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 137 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 146 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 148 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 150 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 158 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 160 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 162 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 173 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 175 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 180 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1. Meeting for Lunch</span> </p> 
+</div> 
+</div>                                                          <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 1.</span>
+</p><!-- l. 184 --><p class='noindent'>Alice and Bob arrange to meet for lunch on a certain day at noon. However, neither is known for punctuality.
+They both arrive independently at uniformly distributed times between noon and 1 pm on that day. Each is
+willing to wait up to 15 minutes for the other to show up.
+</p><!-- l. 186 --><p class='noindent'>What is the probability they will meet for lunch that day?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+<!-- l. 212 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 189 --><p class='noindent'>Measure arrival times in hours after noon, and let Alice’s and Bob’s arrival times be \[ X,Y\sim \operatorname {Unif}(0,1), \] independently.
+They meet exactly when their arrival times differ by at most 15 minutes, which is one quarter of
+an hour. Thus the desired event is \[ |X-Y|\le \frac 14. \]
+</p><!-- l. 198 --><p class='noindent'>Geometrically, the pair \((X,Y)\) is uniformly distributed over the unit square. The event \(|X-Y|&gt;1/4\) consists of two
+congruent right triangles, one above the line \(y=x+1/4\) and one below the line \(y=x-1/4\). Each triangle has side length
+\(3/4\), so the total excluded area is \[ 2\cdot \frac 12\left (\frac 34\right )^2=\frac {9}{16}. \] Therefore the desired probability is \[ 1-\frac {9}{16}=\frac {7}{16}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 211 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 210 --><p class='noindent'>\[ \frac {7}{16} \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 218 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2. Two Breakpoints on a Stick</span> </p> 
+</div> 
+</div>                                                <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 7.</span>
+</p><!-- l. 222 --><p class='noindent'>A stick of length \(L\), where \(L\) is a positive constant, is broken at a uniformly random point \(X\). Given that \(X=x\), another
+breakpoint \(Y\) is chosen uniformly on the interval \([0,x]\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the joint PDF of \(X\) and \(Y\). Be sure to specify the support.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>We already know that the marginal distribution of \(X\) is \(\operatorname {Unif}(0,L)\). Check that marginalizing out \(Y\) from the
+    joint PDF agrees that this is the marginal distribution of \(X\).
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>We already know that the conditional distribution of \(Y\) given \(X=x\) is \(\operatorname {Unif}(0,x)\). Check that using the definition of
+    conditional PDFs agrees that this is the conditional distribution of \(Y\) given \(X=x\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the marginal PDF of \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(X\) given \(Y=y\).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 311 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 237 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Since \(X\sim \operatorname {Unif}(0,L)\), we have \[ f_X(x)=\frac 1L,\qquad 0&lt;x&lt;L. \] Given \(X=x\), the random variable \(Y\) is uniform on \((0,x)\), so \[ f_{Y\mid X}(y\mid x)=\frac 1x,\qquad 0&lt;y&lt;x. \] Thus \[ f_{X,Y}(x,y)=f_X(x)f_{Y\mid X}(y\mid x)=\frac {1}{Lx}, \qquad 0&lt;y&lt;x&lt;L. \] It is zero outside this
+region.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+<!-- l. 256 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 255 --><p class='noindent'>\[ f_{X,Y}(x,y)=\frac {1}{Lx},\qquad 0&lt;y&lt;x&lt;L. \] </p> 
+</div> 
+</div>
+<!-- l. 258 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Marginalizing out \(Y\), for \(0&lt;x&lt;L\), gives \[ f_X(x)=\int _0^x \frac {1}{Lx}\,dy=\frac {1}{Lx}\cdot x=\frac 1L. \] This is exactly the \(\operatorname {Unif}(0,L)\) density.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 268 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 267 --><p class='noindent'>\[ f_X(x)=\frac 1L,\qquad 0&lt;x&lt;L. \] </p> 
+</div> 
+</div>
+<!-- l. 270 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Using the definition of a conditional density, \[ f_{Y\mid X}(y\mid x)=\frac {f_{X,Y}(x,y)}{f_X(x)} =\frac {1/(Lx)}{1/L}=\frac 1x, \qquad 0&lt;y&lt;x. \] This is the uniform density on \((0,x)\), as expected.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+<!-- l. 283 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 282 --><p class='noindent'>\[ f_{Y\mid X}(y\mid x)=\frac 1x, \qquad 0&lt;y&lt;x. \] </p> 
+</div> 
+</div>
+<!-- l. 285 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>For a fixed \(y\), the possible values of \(x\) run from \(y\) to \(L\). Hence, for \(0&lt;y&lt;L\), \[ f_Y(y)=\int _y^L \frac {1}{Lx}\,dx =\frac 1L\log \left (\frac {L}{y}\right ). \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 295 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (d)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 294 --><p class='noindent'>\[ f_Y(y)=\frac 1L\log \left (\frac {L}{y}\right ),\qquad 0&lt;y&lt;L. \] </p> 
+</div> 
+</div>
+<!-- l. 297 --><p class='noindent'><span class='cmbx-10x-x-109'>(e) </span>Finally, \[ f_{X\mid Y}(x\mid y) =\frac {f_{X,Y}(x,y)}{f_Y(y)} =\frac {1/(Lx)}{(1/L)\log (L/y)} =\frac {1}{x\log (L/y)}, \] for \(y&lt;x&lt;L\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+<!-- l. 310 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (e)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 309 --><p class='noindent'>\[ f_{X\mid Y}(x\mid y)=\frac {1}{x\log (L/y)},\qquad y&lt;x&lt;L. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 317 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3. Broken Stick and Table Legs</span> </p> 
+</div> 
+</div>                                               <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 14.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>A stick is broken into three pieces by picking two points independently and uniformly along the
+    stick, and breaking the stick at those two points. What is the probability that the three pieces can
+    be assembled into a triangle?
+    <!-- l. 324 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: A triangle can be formed from 3 line segments of lengths</span> \(a,b,c\) <span class='cmti-10x-x-109'>if and only if</span> \(a,b,c\in (0,1/2)\)<span class='cmti-10x-x-109'>. The probability can
+    be interpreted geometrically as proportional to an area in the plane, avoiding all calculus, but make
+    sure for that approach that the distribution of the random point in the plane is Uniform over some
+    region.</span>
+    </p></dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Three legs are positioned uniformly and independently on the perimeter of a round table. What is
+    the probability that the table will stand?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+<!-- l. 366 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 330 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Scale the stick to have length 1. Let the two breakpoints be independent uniform points on \((0,1)\),
+and order them as \(U&lt;V\). The three piece lengths are \[ U, \qquad V-U, \qquad 1-V. \] A triangle can be formed exactly when no piece has
+length at least \(1/2\). The ordered pair \((U,V)\) is uniform over the triangle \[ 0&lt;U&lt;V&lt;1. \] Inside this triangle, the forbidden
+regions are \[ U&gt;\frac 12, \qquad V-U&gt;\frac 12, \qquad 1-V&gt;\frac 12. \] These three regions are congruent corner triangles whose total area is three quarters
+of the area of the full region. Therefore the remaining area is one quarter of the full region.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+<!-- l. 352 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 351 --><p class='noindent'>\[ \frac 14 \] </p> 
+</div> 
+</div>
+<!-- l. 354 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>The table stands exactly when the three points on the circumference are not all contained in some
+semicircle. Equivalently, the triangle formed by the three leg positions contains the center of the
+table.
+</p><!-- l. 356 --><p class='noindent'>For three independent uniform points on a circle, the probability that they all lie in some semicircle
+is \(3/4\). Thus the complementary probability, namely the probability that the table stands, is
+\[ 1-\frac 34=\frac 14. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+<!-- l. 365 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 364 --><p class='noindent'>\[ \frac 14 \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-17'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 372 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4. Rectangle Probability from a Joint CDF</span> </p> 
+</div> 
+</div>                                   <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 15.</span>
+</p><!-- l. 376 --><p class='noindent'>Let \(X\) and \(Y\) be continuous random variables, with joint CDF \(F(x,y)\). Show that the probability that \((X,Y)\) falls into the
+rectangle \([a_1,a_2]\times [b_1,b_2]\) is \[ F(a_2,b_2)-F(a_1,b_2)+F(a_1,b_1)-F(a_2,b_1). \]
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-19'>     
+<div class='tcolorbox-title'>
+<!-- l. 407 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 382 --><p class='noindent'>The joint CDF is \[ F(x,y)=P(X\le x,\,Y\le y). \] We want the probability of the rectangle \[ a_1\le X\le a_2, \qquad b_1\le Y\le b_2. \] Start with the probability of the
+lower-left rectangle ending at \((a_2,b_2)\), namely \(F(a_2,b_2)\). This includes too much. It includes points with \(X\le a_1\), whose
+probability is \(F(a_1,b_2)\), and points with \(Y\le b_1\), whose probability is \(F(a_2,b_1)\). After subtracting these two pieces, the
+corner \((X\le a_1,Y\le b_1)\) has been subtracted twice, so it must be added back once. Thus \[ P(a_1\le X\le a_2,\,b_1\le Y\le b_2) = F(a_2,b_2)-F(a_1,b_2)-F(a_2,b_1)+F(a_1,b_1). \] This is the same expression
+as the one stated in the problem, only with the last two terms written in the usual order.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-18'>     
+<div class='tcolorbox-title'>
+<!-- l. 406 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 405 --><p class='noindent'>\[ P\big ((X,Y)\in [a_1,a_2]\times [b_1,b_2]\big ) = F(a_2,b_2)-F(a_1,b_2)+F(a_1,b_1)-F(a_2,b_1). \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-20'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 413 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5. Joint PDF I</span> </p> 
+</div> 
+</div>                                                                 <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 16.</span>
+</p><!-- l. 417 --><p class='noindent'>Let \(X\) and \(Y\) have joint PDF \[ f_{X,Y}(x,y)=x+y,\qquad 0&lt;x&lt;1,\;0&lt;y&lt;1. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Check that this is a valid joint PDF.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Are \(X\) and \(Y\) independent?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the marginal PDFs of \(X\) and \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(Y\) given \(X=x\).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-25'>     
+<div class='tcolorbox-title'>
+<!-- l. 486 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 433 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>The function is nonnegative on the unit square. Its total integral is \[ \int _0^1\int _0^1 (x+y)\,dy\,dx = \int _0^1\left (x+\frac 12\right )dx =\frac 12+\frac 12=1. \] Thus it is a valid joint
+PDF.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-21'>     
+<div class='tcolorbox-title'>
+<!-- l. 444 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 443 --><p class='noindent'>It is a valid joint PDF. </p> 
+</div> 
+</div>
+<!-- l. 446 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>The variables are not independent. One way to see this is to compute the marginals and observe that
+their product does not equal the joint density.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-22'>     
+<div class='tcolorbox-title'>
+<!-- l. 452 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 451 --><p class='noindent'>\[ X \text { and } Y \text { are not independent.} \] </p> 
+</div> 
+</div>
+<!-- l. 454 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>For \(0&lt;x&lt;1\), \[ f_X(x)=\int _0^1 (x+y)\,dy=x+\frac 12. \] Similarly, for \(0&lt;y&lt;1\), \[ f_Y(y)=\int _0^1 (x+y)\,dx=y+\frac 12. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-23'>     
+<div class='tcolorbox-title'>
+<!-- l. 470 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 469 --><p class='noindent'>\[ f_X(x)=x+\frac 12, \qquad f_Y(y)=y+\frac 12, \qquad 0&lt;x,y&lt;1. \] </p> 
+</div> 
+</div>
+<!-- l. 472 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>For \(0&lt;x&lt;1\), the conditional density is \[ f_{Y\mid X}(y\mid x) =\frac {f_{X,Y}(x,y)}{f_X(x)} =\frac {x+y}{x+1/2}, \qquad 0&lt;y&lt;1. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-24'>     
+<div class='tcolorbox-title'>
+<!-- l. 485 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (d)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 484 --><p class='noindent'>\[ f_{Y\mid X}(y\mid x)=\frac {x+y}{x+1/2}, \qquad 0&lt;y&lt;1. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-26'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 492 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6. Joint PDF II</span> </p> 
+</div> 
+</div>                                                                <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 17.</span>
+</p><!-- l. 496 --><p class='noindent'>Let \(X\) and \(Y\) have joint PDF \[ f_{X,Y}(x,y)=cxy,\qquad 0&lt;x&lt;y&lt;1. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find \(c\) to make this a valid joint PDF.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Are \(X\) and \(Y\) independent?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the marginal PDFs of \(X\) and \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(Y\) given \(X=x\).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-31'>     
+<div class='tcolorbox-title'>
+<!-- l. 575 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 512 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>We need \[ \int _0^1\int _0^y cxy\,dx\,dy=1. \] The integral is \[ c\int _0^1 y\left (\int _0^y x\,dx\right )dy = c\int _0^1 y\cdot \frac {y^2}{2}\,dy = \frac {c}{2}\cdot \frac 14 = \frac {c}{8}. \] Thus \(c=8\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-27'>     
+<div class='tcolorbox-title'>
+<!-- l. 532 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 531 --><p class='noindent'>\[ c=8 \] </p> 
+</div> 
+</div>
+<!-- l. 534 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>The variables are not independent. The support itself already shows this, since the condition \(0&lt;X&lt;Y&lt;1\) ties the
+possible values of \(X\) and \(Y\) together.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-28'>     
+<div class='tcolorbox-title'>
+<!-- l. 540 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 539 --><p class='noindent'>\[ X \text { and } Y \text { are not independent.} \] </p> 
+</div> 
+</div>
+<!-- l. 542 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>With \(c=8\), for \(0&lt;x&lt;1\), \[ f_X(x)=\int _x^1 8xy\,dy=4x(1-x^2). \] For \(0&lt;y&lt;1\), \[ f_Y(y)=\int _0^y 8xy\,dx=4y^3. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-29'>     
+<div class='tcolorbox-title'>
+<!-- l. 559 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 554 --><p class='noindent'>\[ f_X(x)=4x(1-x^2),\qquad 0&lt;x&lt;1, \] \[ f_Y(y)=4y^3, \qquad 0&lt;y&lt;1. \] </p> 
+</div> 
+</div>
+<!-- l. 561 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>For fixed \(x\), the conditional support is \(x&lt;y&lt;1\). Therefore \[ f_{Y\mid X}(y\mid x) =\frac {8xy}{4x(1-x^2)} =\frac {2y}{1-x^2}, \qquad x&lt;y&lt;1. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-30'>     
+<div class='tcolorbox-title'>
+<!-- l. 574 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (d)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 573 --><p class='noindent'>\[ f_{Y\mid X}(y\mid x)=\frac {2y}{1-x^2}, \qquad x&lt;y&lt;1. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-32'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 581 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7. Random Quadratic</span> </p> 
+</div> 
+</div>                                                          <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 21.</span>
+</p><!-- l. 585 --><p class='noindent'>Find the probability that the quadratic polynomial \[ Ax^2+Bx+1, \] where the coefficients \(A\) and \(B\) are determined by drawing
+i.i.d. \(\operatorname {Unif}(0,1)\) random variables, has at least one real root.
+</p><!-- l. 591 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: By the quadratic formula, the polynomial</span> \(ax^2+bx+c\) <span class='cmti-10x-x-109'>has a real root if and only if</span> \(b^2-4ac\ge 0\)<span class='cmti-10x-x-109'>.</span>
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-34'>     
+<div class='tcolorbox-title'>
+<!-- l. 618 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 594 --><p class='noindent'>The polynomial has a real root exactly when its discriminant is nonnegative. Here that condition
+is \[ B^2-4A\ge 0, \] or equivalently \[ A\le \frac {B^2}{4}. \] Since \((A,B)\) is uniformly distributed on the unit square, the desired probability is the
+area of the region under the curve \(a=b^2/4\), for \(0&lt;b&lt;1\). Hence \[ P\left (A\le \frac {B^2}{4}\right ) = \int _0^1 \frac {b^2}{4}\,db = \frac {1}{4}\cdot \frac 13 = \frac {1}{12}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-33'>     
+<div class='tcolorbox-title'>
+<!-- l. 617 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 616 --><p class='noindent'>\[ \frac {1}{12} \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-35'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 624 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 8. Distance Between Two Uniforms</span> </p> 
+</div> 
+</div>                                           <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 31.</span>
+</p><!-- l. 628 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Unif}(0,1)\). Find the standard deviation of the distance between \(X\) and \(Y\).
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-37'>     
+<div class='tcolorbox-title'>
+<!-- l. 664 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 631 --><p class='noindent'>Let \[ D=|X-Y|. \] We need \(\operatorname {SD}(D)\). First, \[ E(D^2)=E\big ((X-Y)^2\big )=\operatorname {Var}(X-Y). \] Since \(X\) and \(Y\) are independent uniforms, \[ \operatorname {Var}(X-Y)=\operatorname {Var}(X)+\operatorname {Var}(Y)=\frac {1}{12}+\frac {1}{12}=\frac 16. \] Also, by the usual triangular-density
+calculation for the distance between two independent uniforms, \[ E(D)=\int _0^1 2d(1-d)\,dd=\frac 13. \] Therefore \[ \operatorname {Var}(D) =E(D^2)-[E(D)]^2 =\frac 16-\frac 19 =\frac {1}{18}. \] Thus \[ \operatorname {SD}(D)=\sqrt {\frac 1{18}}=\frac {1}{3\sqrt 2}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-36'>     
+<div class='tcolorbox-title'>
+<!-- l. 663 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 662 --><p class='noindent'>\[ \operatorname {SD}(|X-Y|)=\frac {1}{3\sqrt 2}. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-38'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 670 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 9. Minimum and Maximum of Geometrics</span> </p> 
+</div> 
+</div>                                    <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 29.</span>
+</p><!-- l. 674 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Geom}(p)\), and let \[ L=\min (X,Y), \qquad M=\max (X,Y). \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the joint PMF of \(L\) and \(M\). Are they independent?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the marginal distribution of \(L\) in two ways: using the joint PMF, and using a story.
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find \(E(M)\).
+    <!-- l. 686 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: A quick way is to use part (b) and the fact that</span> \(L+M=X+Y\)<span class='cmti-10x-x-109'>.</span>
+    </p></dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the joint PMF of \(L\) and \(M-L\). Are they independent?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-43'>     
+<div class='tcolorbox-title'>
+<!-- l. 798 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 692 --><p class='noindent'>Let \(q=1-p\), and use the convention that \(\operatorname {Geom}(p)\) counts the number of failures before the first success, so \[ P(X=k)=q^k p, \qquad k=0,1,2,\ldots . \]
+</p><!-- l. 698 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>If \(0\le l&lt;m\), then one of \(X,Y\) must equal \(l\) and the other must equal \(m\), so \[ P(L=l,M=m)=2p^2q^{l+m}. \] If \(l=m\), then both variables must equal
+\(l\), so \[ P(L=l,M=l)=p^2q^{2l}. \] The variables \(L\) and \(M\) are not independent. For example, the event \(M&lt;L\) has probability zero, so
+knowing \(L\) restricts possible values of \(M\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-39'>     
+<div class='tcolorbox-title'>
+<!-- l. 718 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 716 --><p class='noindent'>\[ P(L=l,M=m)= \begin {cases} p^2q^{2l}, &amp; m=l,\\ 2p^2q^{l+m}, &amp; 0\le l&lt;m,\\ 0, &amp; \text {otherwise.} \end {cases} \] They are not independent. </p> 
+</div> 
+</div>
+<!-- l. 720 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Using the joint PMF, \[ P(L=l)=p^2q^{2l}+\sum _{m=l+1}^{\infty }2p^2q^{l+m}. \] The geometric sum gives \[ P(L=l)=p^2q^{2l}+2p^2q^l\frac {q^{l+1}}{1-q} =p^2q^{2l}+2pq^{2l+1} =p(2-p)q^{2l}. \]
+</p><!-- l. 731 --><p class='noindent'>The story proof is even cleaner. The event \(L=l\) means that during the first \(l\) paired trials, both sequences fail,
+and at time \(l\), at least one of them succeeds. The probability of both failing in a paired trial is \(q^2\), and the
+probability that at least one succeeds is \(1-q^2=p(2-p)\). Hence \[ P(L=l)=(q^2)^l(1-q^2)=p(2-p)q^{2l}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-40'>     
+<div class='tcolorbox-title'>
+<!-- l. 742 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 741 --><p class='noindent'>\[ L\sim \operatorname {Geom}\big (1-q^2\big ), \qquad P(L=l)=p(2-p)q^{2l}. \] </p> 
+</div> 
+</div>
+<!-- l. 744 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Since \[ L+M=X+Y, \] we have \[ E(M)=E(X)+E(Y)-E(L). \] For our convention, \(E(X)=E(Y)=q/p\). Also, from part (b), \[ E(L)=\frac {q^2}{1-q^2}=\frac {q^2}{p(2-p)}. \] Therefore \[ E(M)=\frac {2q}{p}-\frac {q^2}{p(2-p)}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-41'>     
+<div class='tcolorbox-title'>
+<!-- l. 766 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 765 --><p class='noindent'>\[ E(M)=\frac {2q}{p}-\frac {q^2}{p(2-p)}, \qquad q=1-p. \] </p> 
+</div> 
+</div>
+<!-- l. 768 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>Let \(D=M-L\). If \(d=0\), then \(M=L=l\), so \[ P(L=l,D=0)=p^2q^{2l}. \] If \(d&gt;0\), then \((X,Y)\) can be \((l,l+d)\) or \((l+d,l)\), so \[ P(L=l,D=d)=2p^2q^{2l+d}. \] The factorization shows that \(L\) and \(D=M-L\) are independent.
+Indeed, \[ P(L=l)=p(2-p)q^{2l}, \] while \[ P(D=0)=\frac {p}{2-p}, \qquad P(D=d)=\frac {2p}{2-p}q^d,\quad d=1,2,\ldots , \] and multiplying these marginals recovers the joint PMF above.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-42'>     
+<div class='tcolorbox-title'>
+<!-- l. 797 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (d)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 795 --><p class='noindent'>\[ P(L=l,M-L=d)= \begin {cases} p^2q^{2l}, &amp; d=0,\\ 2p^2q^{2l+d}, &amp; d=1,2,\ldots , \end {cases} \] for \(l=0,1,2,\ldots \). The variables \(L\) and \(M-L\) are independent. </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-44'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 804 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 10. Covariance and Independence</span> </p> 
+</div> 
+</div>                                             <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 39–40.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Two fair, six-sided dice are rolled, one green and one orange, with outcomes \(X\) and \(Y\) for the green die and
+    the orange die, respectively.
+          <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+       (i) </dt><dd class='enumerate-enumitem'>Compute the covariance of \(X+Y\) and \(X-Y\).
+          </dd><dt class='enumerate-enumitem'>
+      (ii) </dt><dd class='enumerate-enumitem'>Are \(X+Y\) and \(X-Y\) independent?</dd></dl>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Unif}(0,1)\).
+          <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+       (i) </dt><dd class='enumerate-enumitem'>Compute the covariance of \(X+Y\) and \(X-Y\).
+          </dd><dt class='enumerate-enumitem'>
+      (ii) </dt><dd class='enumerate-enumitem'>Are \(X+Y\) and \(X-Y\) independent?</dd></dl>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-47'>     
+<div class='tcolorbox-title'>
+<!-- l. 855 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 823 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Since the two dice are independent and identically distributed, \[ \operatorname {Cov}(X+Y,X-Y) = \operatorname {Cov}(X,X)-\operatorname {Cov}(X,Y) +\operatorname {Cov}(Y,X)-\operatorname {Cov}(Y,Y). \] The cross-covariances are zero,
+and \(\operatorname {Var}(X)=\operatorname {Var}(Y)\). Therefore \[ \operatorname {Cov}(X+Y,X-Y)=\operatorname {Var}(X)-\operatorname {Var}(Y)=0. \] They are not independent. For instance, if \(X+Y=2\), then necessarily \(X=Y=1\), so \(X-Y=0\). Knowing the
+sum can restrict the difference.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-45'>     
+<div class='tcolorbox-title'>
+<!-- l. 841 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 839 --><p class='noindent'>\[ \operatorname {Cov}(X+Y,X-Y)=0, \] but \(X+Y\) and \(X-Y\) are not independent. </p> 
+</div> 
+</div>
+<!-- l. 843 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>The same covariance calculation applies for independent uniforms. We again get \[ \operatorname {Cov}(X+Y,X-Y)=\operatorname {Var}(X)-\operatorname {Var}(Y)=0. \] They are not
+independent. The pair \((X+Y,X-Y)\) cannot take arbitrary values in a rectangle. For example, if \(X+Y\) is very close to 0, then
+both \(X\) and \(Y\) must be close to 0, forcing \(X-Y\) also to be close to 0.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-46'>     
+<div class='tcolorbox-title'>
+<!-- l. 854 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 852 --><p class='noindent'>\[ \operatorname {Cov}(X+Y,X-Y)=0, \] but \(X+Y\) and \(X-Y\) are not independent. </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-48'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 861 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 11. Multinomial Covariance</span> </p> 
+</div> 
+</div>                                                   <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 65.</span>
+</p><!-- l. 865 --><p class='noindent'>Let \[ (X_1,\dots ,X_k) \] be Multinomial with parameters \[ n \quad \text {and} \quad (p_1,\dots ,p_k). \] Use indicator random variables to show that \[ \operatorname {Cov}(X_i,X_j)=-np_ip_j, \qquad i\ne j. \]
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-50'>     
+<div class='tcolorbox-title'>
+<!-- l. 923 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 880 --><p class='noindent'>Think of the multinomial vector as coming from \(n\) independent trials, where each trial falls into
+exactly one of the \(k\) categories. For trial \(r\), define \[ I_{r,i}=\mathbf {1}\{\text {trial }r\text { falls in category }i\}. \] Then \[ X_i=\sum _{r=1}^n I_{r,i}, \qquad X_j=\sum _{s=1}^n I_{s,j}. \] Therefore \[ \operatorname {Cov}(X_i,X_j) = \sum _{r=1}^n\sum _{s=1}^n \operatorname {Cov}(I_{r,i},I_{s,j}). \] When \(r\ne s\), the indicators come from
+different independent trials, so their covariance is zero. When \(r=s\), the two indicators cannot both be
+1 because a single trial cannot fall into both category \(i\) and category \(j\). Hence \[ E(I_{r,i}I_{r,j})=0, \] while \[ E(I_{r,i})=p_i, \qquad E(I_{r,j})=p_j. \] Thus \[ \operatorname {Cov}(I_{r,i},I_{r,j}) =0-p_ip_j =-p_ip_j. \] There
+are \(n\) such same-trial terms, so \[ \operatorname {Cov}(X_i,X_j)=n(-p_ip_j)=-np_ip_j. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-49'>     
+<div class='tcolorbox-title'>
+<!-- l. 922 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 921 --><p class='noindent'>\[ \operatorname {Cov}(X_i,X_j)=-np_ip_j, \qquad i\ne j. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

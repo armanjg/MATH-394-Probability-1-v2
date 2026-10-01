@@ -1,0 +1,822 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.68in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage{booktabs}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+\definecolor{softgray}{HTML}{F6F6F6}
+
+\tcbuselibrary{breakable,skins}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Final Exam Preparation Guide}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{topicbox}[1][]{
+    breakable,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    title={#1},
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{toolbox}[1][]{
+    breakable,
+    colback=softgold,
+    colframe=deepgold,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    title={#1},
+    coltitle=uwpurple,
+    colbacktitle=softgold,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{warningbox}[1][]{
+    breakable,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    title={#1},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\begin{document}
+
+% ============================================================
+% TITLE PAGE
+% ============================================================
+
+\begin{titlepage}
+\centering
+\vspace*{0.6cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{0.8cm}
+
+{\Huge \color{uwpurple}\textbf{Final Exam Preparation Guide}}\\[0.22cm]
+{\Large \textbf{\course}}\\[0.18cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.88\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{>{\bfseries}p{0.30\textwidth}p{0.48\textwidth}}
+Final exam date: & August 21, 2026 \\
+Answering time: & 60 minutes \\
+Number of problems: & 7 \\
+Total points: & 60 \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.6cm}
+
+\begin{warningbox}[Purpose of this guide]
+This document tells you  what topic each problem
+tests, what mathematical tools you should know how to use, and what
+background calculations you should be comfortable performing.
+
+ 
+\end{warningbox}
+
+\vfill
+
+{\large\color{uwpurple}\textbf{The final emphasizes conceptual recognition,
+correct setup, and efficient calculation.}}
+
+\end{titlepage}
+
+% ============================================================
+% OVERVIEW
+% ============================================================
+
+\section*{1. Exam}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{center}
+\begin{tabular}{>{\centering\arraybackslash}p{0.10\textwidth}
+                >{\centering\arraybackslash}p{0.11\textwidth}
+                p{0.55\textwidth}
+                >{\centering\arraybackslash}p{0.12\textwidth}}
+\toprule
+\textbf{Problem} & \textbf{Points} & \textbf{Main topic} & \textbf{Approx. time} \\
+\midrule
+1 & 16 & Joint distributions, covariance, independence, MGF & 13 min \\
+2 & 8 & Multivariate transformation and Jacobian & 9 min \\
+3 & 7 & Jensen, symmetry, Cauchy--Schwarz & 6 min \\
+4 & 7 & Chebyshev inequality and sample-size control & 7 min \\
+5 & 8 & Convolution of continuous random variables & 7 min \\
+6 & 8 & Pairwise versus mutual independence & 8 min \\
+7 & 6 & WLLN, SLLN, and CLT (multiple choice) & 4 min \\
+\midrule
+\textbf{Total} & \textbf{60} & & \textbf{54 min} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warningbox}[Advicew]
+The approximate solving times total about \(54\) minutes. This leaves several
+minutes for reading, checking algebra, fixing notation, and returning to a
+part that you initially skipped.
+\end{warningbox}
+
+% ============================================================
+% PROBLEM 1
+% ============================================================
+
+\newpage
+\section*{2. Problem-by-Problem Preparation}
+
+\begin{topicbox}[Problem 1 \hfill 16 points \hfill Joint distributions, covariance, and MGF]
+
+\textbf{What this problem covers}
+
+\begin{itemize}[leftmargin=*]
+    \item Expectations from marginal densities.
+    \item Expectations from a joint density.
+    \item Covariance:
+    \[
+    \operatorname{Cov}(X,Y)
+    =
+    E(XY)-E(X)E(Y).
+    \]
+    \item Covariance of affine transformations.
+    \item Determining whether two random variables are independent.
+    \item Calculating a moment-generating function from a density.
+    \item Recovering the expectation from the derivative of the MGF.
+\end{itemize}
+
+\end{topicbox}
+
+\begin{toolbox}[Tools you must know for Problem 1]
+
+You should be able to use
+\[
+E(X)
+=
+\int_{-\infty}^{\infty}x f_X(x)\,dx,
+\]
+and
+\[
+E(XY)
+=
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty}
+xy f_{X,Y}(x,y)\,dx\,dy.
+\]
+
+You should know
+\[
+\operatorname{Cov}(X,Y)
+=
+E(XY)-E(X)E(Y),
+\]
+and the affine covariance rule
+\[
+\operatorname{Cov}(aX+b,cY+d)
+=
+ac\,\operatorname{Cov}(X,Y).
+\]
+ 
+
+You should therefore also remember
+\[
+\operatorname{Var}(X)
+=
+E(X^2)-[E(X)]^2.
+\]
+
+For independence, you should know that jointly continuous \(X,Y\) are
+independent if and only if
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y)
+\]
+on the support.
+
+You should also remember the implication
+\[
+X\perp Y
+\quad\Longrightarrow\quad
+\operatorname{Cov}(X,Y)=0
+\]
+whenever the relevant moments exist.
+
+The converse is \textbf{not} true in general.
+\end{toolbox}
+
+\begin{toolbox}[MGF tools]
+
+The definition is
+\[
+M_X(t)
+=
+E(e^{tX})
+=
+\int_{-\infty}^{\infty}
+e^{tx}f_X(x)\,dx.
+\]
+
+You should know
+\[
+M_X'(0)=E(X),
+\]
+and, more generally,
+\[
+M_X^{(k)}(0)=E(X^k).
+\]
+
+Be careful to determine the values of \(t\) for which the MGF exists.
+\end{toolbox}
+
+\begin{toolbox}[Calculus background needed]
+
+You should be comfortable with improper integrals, integration by parts, and substitution.
+ 
+\end{toolbox}
+
+\begin{warningbox}[Common mistakes]
+\begin{itemize}[leftmargin=*]
+    \item Forgetting that \(E(XY)\) requires the \textbf{joint} density.
+    \item Confusing zero covariance with independence.
+    \item Forgetting that constants disappear inside covariance.
+    \item Forgetting to check the domain of \(t\) for an MGF.
+\end{itemize}
+\end{warningbox}
+
+% ============================================================
+% PROBLEM 2
+% ============================================================
+
+\newpage
+
+\begin{topicbox}[Problem 2 \hfill 8 points \hfill Transformation of two random variables]
+
+\textbf{What this problem covers}
+
+
+Jacobian method for finding the transformation of random variables.
+
+\end{topicbox}
+
+\begin{toolbox}[The complete Jacobian procedure]
+
+Suppose
+\[
+Z=g_1(X,Y),
+\qquad
+W=g_2(X,Y).
+\]
+
+You should follow these steps.
+
+\begin{enumerate}[leftmargin=*]
+    \item Write the transformation:
+    \[
+    z=g_1(x,y),
+    \qquad
+    w=g_2(x,y).
+    \]
+
+    \item Solve for the original variables:
+    \[
+    x=x(z,w),
+    \qquad
+    y=y(z,w).
+    \]
+
+    \item Determine the new support in the \((z,w)\)-coordinates.
+
+    \item Compute the inverse Jacobian:
+    \[
+    J
+    =
+    \frac{\partial(x,y)}{\partial(z,w)}.
+    \]
+
+    \item Take the absolute value:
+    \[
+    |J|.
+    \]
+
+    \item Use
+    \[
+    f_{Z,W}(z,w)
+    =
+    f_{X,Y}(x(z,w),y(z,w))
+    \left|
+    \frac{\partial(x,y)}{\partial(z,w)}
+    \right|.
+    \]
+
+    \item To obtain \(f_Z(z)\), integrate out \(W\):
+    \[
+    f_Z(z)
+    =
+    \int f_{Z,W}(z,w)\,dw.
+    \]
+\end{enumerate}
+
+\end{toolbox}
+ 
+
+% ============================================================
+% PROBLEM 3
+% ============================================================
+
+\newpage
+\begin{topicbox}[Problem 3 \hfill 7 points \hfill Comparing expectations and probabilities]
+
+This problem is conceptual. You need to recognize which theorem or
+inequality applies.
+
+The main tools you should be able to recognize are:
+
+\begin{itemize}[leftmargin=*]
+    \item Jensen's inequality;
+    \item Markov's inequality;
+    \item Chebyshev's inequality;
+    \item Cauchy--Schwarz inequality;
+    \item symmetry of i.i.d.\ random variables.
+\end{itemize}
+
+\end{topicbox}
+
+\begin{toolbox}[Jensen's inequality]
+
+If \(g\) is convex,
+\[
+g(E(X))
+\leq
+E[g(X)].
+\]
+
+If \(g\) is concave, the direction reverses:
+\[
+E[g(X)]
+\leq
+g(E(X)).
+\]
+
+You should therefore know how to determine convexity or concavity using
+\[
+g''(x).
+\]
+
+In particular,
+\[
+g(x)=\log x
+\]
+is concave for \(x>0\), since
+\[
+g''(x)=-\frac1{x^2}<0.
+\]
+
+\end{toolbox}
+
+\begin{toolbox}[Markov's inequality]
+
+If \(X\) is a nonnegative random variable and \(a>0\), then
+\[
+P(X\geq a)
+\leq
+\frac{E(X)}{a}.
+\]
+
+More generally, Markov's inequality may be applied to any
+\textbf{nonnegative function of a random variable}. For example,
+\[
+P(X^2\geq a)
+\leq
+\frac{E(X^2)}{a}.
+\]
+
+Before applying Markov's inequality, always check that the random variable
+to which you apply it is nonnegative.
+
+\end{toolbox}
+
+\begin{toolbox}[Chebyshev's inequality]
+
+If \(X\) has finite mean and variance, then for every \(a>0\),
+\[
+P\left(
+|X-E(X)|\geq a
+\right)
+\leq
+\frac{\operatorname{Var}(X)}{a^2}.
+\]
+
+Equivalently,
+\[
+P\left(
+|X-E(X)|<a
+\right)
+\geq
+1-
+\frac{\operatorname{Var}(X)}{a^2}.
+\]
+
+You should recognize that Chebyshev's inequality controls deviations
+\textbf{from the mean}, whereas Markov's inequality directly controls the
+upper tail of a nonnegative random variable.
+
+Also remember that Chebyshev's inequality can be obtained by applying
+Markov's inequality to
+\[
+(X-E(X))^2.
+\]
+
+\end{toolbox}
+% ============================================================
+% PROBLEM 4
+% ============================================================
+
+\newpage
+
+\begin{topicbox}[Problem 4 \hfill 7 points \hfill Chebyshev inequality and sample size]
+
+\textbf{What this problem is about}
+
+\begin{itemize}[leftmargin=*]
+    \item Mean and variance of a sample average.
+    \item Chebyshev's inequality.
+    \item Converting an upper bound on an error probability into a lower
+    bound on a success probability.
+    \item Choosing an efficient sample size.
+\end{itemize}
+
+\end{topicbox}
+ 
+
+\begin{toolbox}[Chebyshev's inequality]
+
+For any random variable with finite variance,
+\[
+P(|X-E(X)|\geq a)
+\leq
+\frac{\operatorname{Var}(X)}{a^2}.
+\]
+
+You should be comfortable switching between
+\[
+P(|X-\mu|\geq a)
+\]
+and
+\[
+P(|X-\mu|<a)
+\]
+using complements.
+\end{toolbox}
+ 
+ 
+
+% ============================================================
+% PROBLEM 5
+% ============================================================
+
+\newpage
+
+\begin{topicbox}[Problem 5 \hfill 8 points \hfill Convolution]
+
+\textbf{What this problem covers}
+
+Finding the distribution of the sum of two independent variables through the convolution technique.
+
+\end{topicbox}
+
+\begin{toolbox}[Convolution formula]
+
+For independent continuous random variables,
+\[
+f_{X+Y}(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+\]
+
+The most important part is often not the integration itself, but determining
+where both densities are simultaneously nonzero.
+\end{toolbox}
+
+
+% ============================================================
+% PROBLEM 6
+% ============================================================
+
+\newpage
+
+\begin{topicbox}[Problem 6 \hfill 8 points \hfill Pairwise and mutual independence]
+
+\textbf{What this problem covers}
+
+\begin{itemize}[leftmargin=*]
+    \item Marginalizing a three-dimensional joint density.
+    \item Obtaining pairwise joint densities.
+    \item Testing pairwise independence.
+    \item Testing mutual independence.
+    \item Understanding the logical relationship between pairwise and mutual
+    independence.
+\end{itemize}
+
+\end{topicbox}
+
+\begin{toolbox}[Obtaining pairwise densities]
+
+From
+\[
+f_{X,Y,Z}(x,y,z),
+\]
+you should know that
+\[
+f_{X,Y}(x,y)
+=
+\int_{-\infty}^{\infty}
+f_{X,Y,Z}(x,y,z)\,dz.
+\]
+
+Similarly,
+\[
+f_{X,Z}(x,z)
+=
+\int
+f_{X,Y,Z}(x,y,z)\,dy,
+\]
+and
+\[
+f_{Y,Z}(y,z)
+=
+\int
+f_{X,Y,Z}(x,y,z)\,dx.
+\]
+\end{toolbox}
+
+\begin{toolbox}[Pairwise independence]
+
+The variables \(X,Y,Z\) are pairwise independent if all three conditions
+hold:
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y),
+\]
+\[
+f_{X,Z}(x,z)=f_X(x)f_Z(z),
+\]
+and
+\[
+f_{Y,Z}(y,z)=f_Y(y)f_Z(z).
+\]
+
+If even one pair fails, then the variables are not pairwise independent.
+\end{toolbox}
+
+\begin{toolbox}[Mutual independence]
+
+For jointly continuous \(X,Y,Z\), mutual independence, \textbf{in addition to pairwise independence}, requires
+\[
+f_{X,Y,Z}(x,y,z)
+=
+f_X(x)f_Y(y)f_Z(z)
+\]
+on the support.
+
+Remember:
+\[
+\text{mutual independence}
+\quad\Longrightarrow\quad
+\text{pairwise independence}.
+\]
+
+The converse is not true in general.
+\end{toolbox}
+
+
+% ============================================================
+% PROBLEM 7
+% ============================================================
+
+\newpage
+
+\begin{topicbox}[Problem 7 \hfill 6 points \hfill WLLN, SLLN, and CLT]
+
+This is a theorem-recognition problem.
+
+You need to distinguish:
+
+\[
+\text{WLLN}
+\qquad
+\text{vs.}
+\qquad
+\text{SLLN}
+\qquad
+\text{vs.}
+\qquad
+\text{CLT}.
+\]
+
+You need to know both the \textbf{assumptions} and the \textbf{conclusion} of
+each theorem.
+\end{topicbox}
+
+\begin{toolbox}[Weak Law of Large Numbers]
+
+Under the assumptions used in class, let
+\[
+X_1,X_2,\dots
+\]
+be i.i.d.\ with
+\[
+E(X_i)=\mu
+\]
+and finite variance.
+
+Then
+\[
+\overline X_n\xrightarrow{P}\mu.
+\]
+
+Equivalently, for every \(\varepsilon>0\),
+\[
+\lim_{n\to\infty}
+P\left(
+|\overline X_n-\mu|>\varepsilon
+\right)
+=
+0.
+\]
+
+\textbf{Key phrase:}
+\[
+\boxed{\text{convergence in probability}}
+\]
+\end{toolbox}
+
+\begin{toolbox}[Strong Law of Large Numbers]
+
+Under the same assumptions used in class,
+\[
+\overline X_n\xrightarrow{a.s.}\mu.
+\]
+
+Equivalently,
+\[
+P\left(
+\lim_{n\to\infty}\overline X_n=\mu
+\right)
+=
+1.
+\]
+
+\textbf{Key phrase:}
+\[
+\boxed{\text{almost-sure convergence}}
+\]
+
+Also remember:
+\[
+\text{almost-sure convergence}
+\quad\Longrightarrow\quad
+\text{convergence in probability}.
+\]
+
+Thus the SLLN is stronger than the WLLN.
+\end{toolbox}
+
+\begin{toolbox}[Central Limit Theorem]
+
+Let
+\[
+X_1,X_2,\dots
+\]
+be i.i.d.\ with
+\[
+E(X_i)=\mu,
+\qquad
+\operatorname{Var}(X_i)=\sigma^2<\infty.
+\]
+
+Then
+\[
+\frac{\overline X_n-\mu}{\sigma/\sqrt n}
+\xrightarrow{d}
+N(0,1).
+\]
+
+Equivalently, for every \(z\in\mathbb R\),
+\[
+\lim_{n\to\infty}
+P\left(
+\frac{\overline X_n-\mu}{\sigma/\sqrt n}
+\leq z
+\right)
+=
+\Phi(z).
+\]
+
+\textbf{Key phrase:}
+\[
+\boxed{\text{convergence in distribution}}
+\]
+\end{toolbox}
+
+\begin{warningbox}[Do not confuse the three conclusions]
+
+\[
+\begin{array}{c|c|c}
+\textbf{Theorem}
+&
+\textbf{What converges?}
+&
+\textbf{Type of convergence}
+\\
+\hline
+\text{WLLN}
+&
+\overline X_n\to\mu
+&
+\text{in probability}
+\\[1mm]
+\text{SLLN}
+&
+\overline X_n\to\mu
+&
+\text{almost surely}
+\\[1mm]
+\text{CLT}
+&
+\dfrac{\overline X_n-\mu}{\sigma/\sqrt n}
+\to N(0,1)
+&
+\text{in distribution}
+\end{array}
+\]
+
+The WLLN/SLLN13 tells you \textbf{where the sample mean goes}.
+
+The CLT tells you the \textbf{shape of the fluctuations around the mean}.
+\end{warningbox}
+
+% ============================================================
+% MASTER TOOLKIT
+% ============================================================
+ 
+
+\end{document}

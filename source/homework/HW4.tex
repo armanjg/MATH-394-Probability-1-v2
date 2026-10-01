@@ -1,0 +1,369 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 4}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 3, Problem #1.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 4}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1. }
+\end{problemheader}
+\source{1}
+
+People are arriving at a party one at a time. While waiting for more people to arrive, they entertain themselves by comparing their birthdays.
+
+Let $X$ be the number of people needed to obtain a birthday match; that is, before person $X$ arrives, no two people have the same birthday, but when person $X$ arrives there is a match.
+
+Find the PMF of $X$.
+
+\vfill
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2. }
+\end{problemheader}
+\source{3}
+
+Let $X$ be a random variable with CDF $F$, and let
+\[
+Y=\mu+\sigma X,
+\]
+where $\mu$ and $\sigma$ are real numbers with $\sigma>0$.
+
+The random variable $Y$ is called a \emph{location--scale transformation} of $X$.
+
+Find the CDF of $Y$ in terms of $F$.
+
+\vfill
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3. }
+\end{problemheader}
+\source{4}
+
+Let $n$ be a positive integer and define
+\[
+F(x)=\frac{\lfloor x\rfloor}{n}
+\]
+for $0\le x\le n$, where $\lfloor x\rfloor$ is the greatest integer less than or equal to $x$.
+
+Also define
+\[
+F(x)=0 \quad \text{for } x<0,
+\]
+and
+\[
+F(x)=1 \quad \text{for } x>n.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Show that $F$ is a valid CDF.
+
+    \item Find the PMF corresponding to $F$.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4. }
+\end{problemheader}
+\source{5}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Show that
+    \[
+    p(n)=\left(\frac12\right)^{n+1},
+    \qquad n=0,1,2,\dots,
+    \]
+    is a valid PMF for a discrete random variable.
+
+    \item Find the CDF of a random variable with the PMF from part (a).
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{8}
+
+There are 100 prizes, with one worth \$1, one worth \$2, \dots, and one worth \$100. There are 100 boxes, each containing one of the prizes.
+
+You get 5 prizes by picking random boxes one at a time, without replacement.
+
+Find the PMF of how much your most valuable prize is worth, as a simple expression in terms of binomial coefficients.
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. }
+\end{problemheader}
+\source{9}
+
+Let $F_1$ and $F_2$ be CDFs, let $0<p<1$, and define
+\[
+F(x)=pF_1(x)+(1-p)F_2(x)
+\]
+for all $x$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Show directly that $F$ has the properties of a valid CDF. The distribution defined by $F$ is called a \emph{mixture} of the distributions defined by $F_1$ and $F_2$.
+
+    \item Consider creating a random variable in the following way. Flip a coin with probability $p$ of Heads. If the coin lands Heads, generate a random variable according to $F_1$; if the coin lands Tails, generate a random variable according to $F_2$. Show that the random variable obtained in this way has CDF $F$.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 7.}
+\end{problemheader}
+\source{22}
+
+There are two coins, one with probability $p_1$ of Heads and the other with probability $p_2$ of Heads. One of the coins is randomly chosen, with equal probabilities for the two coins. It is then flipped $n\ge2$ times.
+
+Let $X$ be the number of times it lands Heads.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the PMF of $X$.
+
+    \item What is the distribution of $X$ if $p_1=p_2$?
+
+    \item Give an intuitive explanation of why $X$ is not Binomial for $p_1\ne p_2$. You may assume that $n$ is large for your explanation.
+\end{enumerate}
+
+\vfill
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 8. }
+\end{problemheader}
+\source{30}
+
+A certain company has $n+m$ employees, consisting of $n$ women and $m$ men. The company is deciding which employees to promote.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Suppose for this part that the company decides to promote $t$ employees, where
+    \[
+    1\le t\le n+m,
+    \]
+    by choosing $t$ random employees, with equal probabilities for each set of $t$ employees.
+
+    What is the distribution of the number of women who get promoted?
+
+    \item Now suppose that instead of having a predetermined number of promotions to give, the company decides independently for each employee, promoting the employee with probability $p$.
+
+    Find the distributions of:
+    \begin{itemize}
+        \item the number of women who are promoted,
+        \item the number of women who are not promoted,
+        \item the number of employees who are promoted.
+    \end{itemize}
+
+    \item In the set-up from part (b), find the conditional distribution of the number of women who are promoted, given that exactly $t$ employees are promoted.
+\end{enumerate}
+
+\vfill
+
+
+
+\end{document}

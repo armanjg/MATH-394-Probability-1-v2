@@ -1,0 +1,1476 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Final Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{solutionbox}[1][] {
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][] {
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\begin{document}
+
+% ============================================================
+% TITLE PAGE
+% ============================================================
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.4cm}
+
+{\Huge \color{uwpurple}\textbf{Final Examination Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Exam date:} August 21, 2026
+
+\textbf{Answering time:} 60 minutes
+
+\textbf{Total:} 60 points
+\end{tcolorbox}
+
+\end{titlepage}
+
+
+% ============================================================
+% PROBLEM 1
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 1.} \hfill \textbf{16 points}
+\end{problemheader}
+
+Let the joint probability density function of random variables \(X\) and \(Y\)
+be given by
+\[
+f(x,y)
+=
+\begin{cases}
+x^2e^{-x(y+1)}, & x\geq0,\quad y\geq0,\\
+0, & \text{elsewhere}.
+\end{cases}
+\]
+
+The marginal probability density functions are
+\[
+f_X(x)
+=
+\begin{cases}
+xe^{-x}, & x\geq0,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+and
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac{2}{(1+y)^3}, & y\geq0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Calculate
+    \[
+    \operatorname{Cov}(X,Y).
+    \]
+    \hfill \textbf{(4 points)}
+
+    \item Calculate
+    \[
+    \operatorname{Cov}(3X+1,\,2X-4).
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item Are \(X\) and \(Y\) independent? Justify your answer.
+    \hfill \textbf{(2 points)}
+
+    \item Calculate the moment-generating function of \(X\), namely
+    \[
+    M_X(t)=E(e^{tX}).
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item Using \(M_X(t)\), calculate \(E(X)\).
+    \hfill \textbf{(2 points)}
+ 
+
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a)} Recall that
+\[
+\operatorname{Cov}(X,Y)
+=
+E(XY)-E(X)E(Y).
+\]
+
+First,
+\begin{align*}
+E(X)
+&=
+\int_0^\infty x f_X(x)\,dx\\
+&=
+\int_0^\infty x^2e^{-x}\,dx\\
+&=2.
+\end{align*}
+
+Next,
+\begin{align*}
+E(Y)
+&=
+\int_0^\infty y\frac{2}{(1+y)^3}\,dy\\
+&=1.
+\end{align*}
+
+To calculate \(E(XY)\), use the joint density:
+\begin{align*}
+E(XY)
+&=
+\int_0^\infty\int_0^\infty
+xy\,x^2e^{-x(y+1)}\,dy\,dx\\
+&=
+\int_0^\infty
+x^3e^{-x}
+\left(
+\int_0^\infty y e^{-xy}\,dy
+\right)dx.
+\end{align*}
+
+For \(x>0\),
+\[
+\int_0^\infty y e^{-xy}\,dy
+=
+\frac{1}{x^2}.
+\]
+
+Therefore,
+\begin{align*}
+E(XY)
+&=
+\int_0^\infty xe^{-x}\,dx\\
+&=1.
+\end{align*}
+
+Hence
+\[
+\operatorname{Cov}(X,Y)
+=
+1-(2)(1)
+=
+-1.
+\]
+
+
+\textbf{(b)} Using
+\[
+\operatorname{Cov}(aX+b,cX+d)
+=
+ac\,\operatorname{Var}(X),
+\]
+we obtain
+\[
+\operatorname{Cov}(3X+1,2X-4)
+=
+6\operatorname{Var}(X).
+\]
+
+Now
+\[
+E(X)=2,
+\]
+and
+\begin{align*}
+E(X^2)
+&=
+\int_0^\infty x^2 f_X(x)\,dx\\
+&=
+\int_0^\infty x^3e^{-x}\,dx\\
+&=6.
+\end{align*}
+
+Thus
+\[
+\operatorname{Var}(X)
+=
+E(X^2)-[E(X)]^2
+=
+6-4
+=
+2.
+\]
+
+Therefore,
+\[
+\operatorname{Cov}(3X+1,2X-4)
+=
+6(2)
+=
+12.
+\]
+
+
+\textbf{(c)} If \(X\) and \(Y\) were independent, then we would have
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y)
+\]
+on their support.
+
+However,
+\[
+f_X(x)f_Y(y)
+=
+xe^{-x}\frac{2}{(1+y)^3},
+\]
+whereas
+\[
+f_{X,Y}(x,y)
+=
+x^2e^{-x(y+1)}.
+\]
+
+These are not equal in general. Therefore, \(X\) and \(Y\) are not
+independent.
+
+Alternatively, part (a) already gives
+\[
+\operatorname{Cov}(X,Y)=-1\neq0.
+\]
+Since independence would imply zero covariance, \(X\) and \(Y\) cannot be
+independent.
+
+
+\textbf{(d)} By definition,
+\begin{align*}
+M_X(t)
+&=
+E(e^{tX})\\
+&=
+\int_0^\infty e^{tx}xe^{-x}\,dx\\
+&=
+\int_0^\infty xe^{-(1-t)x}\,dx.
+\end{align*}
+
+For \(t<1\),
+\[
+\int_0^\infty xe^{-(1-t)x}\,dx
+=
+\frac{1}{(1-t)^2}.
+\]
+
+Therefore,
+\[
+M_X(t)
+=
+\frac{1}{(1-t)^2},
+\qquad t<1.
+\]
+
+
+\textbf{(e)} We know that
+\[
+E(X)=M_X'(0).
+\]
+
+Since
+\[
+M_X(t)=(1-t)^{-2},
+\]
+we have
+\[
+M_X'(t)=2(1-t)^{-3}.
+\]
+
+Therefore,
+\[
+E(X)
+=
+M_X'(0)
+=
+2.
+\]
+
+ 
+
+\begin{finalanswerbox}
+
+\[
+\text{(a)}\quad \operatorname{Cov}(X,Y)=-1.
+\]
+
+\[
+\text{(b)}\quad
+\operatorname{Cov}(3X+1,2X-4)=12.
+\]
+
+\[
+\text{(c)}\quad X\text{ and }Y\text{ are not independent.}
+\]
+
+\[
+\text{(d)}\quad
+M_X(t)=\frac{1}{(1-t)^2},
+\qquad t<1.
+\]
+
+\[
+\text{(e)}\quad E(X)=2.
+\]
+ 
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 2
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 2.} \hfill \textbf{8 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be two positive independent continuous random variables
+with probability density functions \(f_1(x)\) and \(f_2(y)\), respectively.
+
+Find the probability density function of
+\[
+U=\frac{X}{Y}.
+\]
+
+\textit{Hint:} Let \(V=X\). Find the joint probability density function of
+\(U\) and \(V\) (Jacobian method), and then calculate the marginal probability density function
+of \(U\).
+
+\begin{solutionbox}
+
+Define
+\[
+U=\frac{X}{Y},
+\qquad
+V=X.
+\]
+
+We first find the inverse transformation.
+
+Since
+\[
+v=x
+\]
+and
+\[
+u=\frac{x}{y},
+\]
+we obtain
+\[
+x=v,
+\qquad
+y=\frac{v}{u}.
+\]
+
+Because \(X>0\) and \(Y>0\), the support of \((U,V)\) is
+\[
+u>0,\qquad v>0.
+\]
+
+The Jacobian of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{vmatrix}
+\dfrac{\partial x}{\partial u}
+&
+\dfrac{\partial x}{\partial v}
+\\[2mm]
+\dfrac{\partial y}{\partial u}
+&
+\dfrac{\partial y}{\partial v}
+\end{vmatrix}.
+\]
+
+Since
+\[
+x=v,
+\qquad
+y=\frac vu,
+\]
+we have
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{vmatrix}
+0 & 1\\[2mm]
+-\dfrac{v}{u^2} & \dfrac1u
+\end{vmatrix}
+=
+\frac{v}{u^2}.
+\]
+
+Thus
+\[
+\left|
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac{v}{u^2}.
+\]
+
+Since \(X\) and \(Y\) are independent,
+\[
+f_{X,Y}(x,y)=f_1(x)f_2(y).
+\]
+
+Therefore,
+\[
+f_{U,V}(u,v)
+=
+f_1(v)
+f_2\left(\frac vu\right)
+\frac{v}{u^2},
+\qquad u,v>0.
+\]
+
+Finally, integrate out \(V\):
+\[
+f_U(u)
+=
+\int_0^\infty
+f_1(v)
+f_2\left(\frac vu\right)
+\frac{v}{u^2}\,dv,
+\qquad u>0.
+\]
+
+For \(u\leq0\),
+\[
+f_U(u)=0.
+\]
+
+\begin{finalanswerbox}
+
+\[
+f_U(u)
+=
+\begin{cases}
+\displaystyle
+\frac{1}{u^2}
+\int_0^\infty
+v f_1(v)
+f_2\left(\frac vu\right)\,dv,
+& u>0,\\[4mm]
+0,
+& u\leq0.
+\end{cases}
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 3
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 3.} \hfill \textbf{7 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be i.i.d.\ positive random variables.
+
+For each part below, fill in the appropriate equality or inequality symbol.
+
+Write \(=\) if the two sides are always equal, \(\leq\) if the left-hand side
+is less than or equal to the right-hand side but not necessarily equal, and
+similarly for \(\geq\). If no relation holds in general, write \(?\).
+
+Justify each answer.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1.2em]
+
+    \item
+    \[
+    E(\log X)
+    \quad \underline{\hspace{1.2cm}} \quad
+    \log(E(X)).
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item
+    \[
+    P(X\leq Y)
+    \quad \underline{\hspace{1.2cm}} \quad
+    P(X\geq Y).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item
+    \[
+    E(XY)
+    \quad \underline{\hspace{1.2cm}} \quad
+    \sqrt{E(X^2)E(Y^2)}.
+    \]
+    \hfill \textbf{(2 points)}
+
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a)} The function
+\[
+g(x)=\log x
+\]
+is concave on \((0,\infty)\).
+
+By Jensen's inequality for a concave function,
+\[
+E[g(X)]\leq g(E[X]).
+\]
+
+Therefore,
+\[
+E(\log X)\leq\log(E(X)).
+\]
+
+
+\textbf{(b)} Since \(X\) and \(Y\) are i.i.d., the joint distribution of
+\((X,Y)\) is symmetric under interchange of \(X\) and \(Y\).
+
+Therefore,
+\[
+P(X<Y)=P(Y<X).
+\]
+
+Also,
+\[
+P(X\leq Y)
+=
+P(X<Y)+P(X=Y)
+\]
+and
+\[
+P(X\geq Y)
+=
+P(X>Y)+P(X=Y).
+\]
+
+Since
+\[
+P(X<Y)=P(X>Y),
+\]
+it follows that
+\[
+P(X\leq Y)=P(X\geq Y).
+\]
+
+
+\textbf{(c)} By the Cauchy--Schwarz inequality,
+\[
+|E(XY)|
+\leq
+\sqrt{E(X^2)E(Y^2)}.
+\]
+
+Since \(X\) and \(Y\) are positive,
+\[
+E(XY)\geq0.
+\]
+
+Hence
+\[
+E(XY)
+\leq
+\sqrt{E(X^2)E(Y^2)}.
+\]
+
+In fact, because \(X\) and \(Y\) are independent,
+\[
+E(XY)=E(X)E(Y),
+\]
+but Cauchy--Schwarz gives the requested comparison directly.
+
+\begin{finalanswerbox}
+
+\[
+\text{(a)}\quad
+E(\log X)
+\leq
+\log(E(X)).
+\]
+
+\[
+\text{(b)}\quad
+P(X\leq Y)
+=
+P(X\geq Y).
+\]
+
+\[
+\text{(c)}\quad
+E(XY)
+\leq
+\sqrt{E(X^2)E(Y^2)}.
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 4
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 4.} \hfill \textbf{7 points}
+\end{problemheader}
+
+Suppose
+\[
+X_1,\ldots,X_n
+\]
+are independent Bernoulli random variables with unknown success probability
+\(p\), and define
+\[
+\widehat p
+=
+\frac1n\sum_{i=1}^n X_i.
+\]
+
+Let
+\[
+\varepsilon>0
+\qquad\text{and}\qquad
+0<\alpha<1.
+\]
+
+Using Chebyshev's inequality, derive a condition on the sample size \(n\) that
+guarantees
+\[
+P\left(|\widehat p-p|<\varepsilon\right)
+\geq
+1-\alpha
+\]
+for every
+\[
+0<p<1.
+\]
+
+\begin{solutionbox}
+
+Since
+\[
+X_i\sim\operatorname{Bernoulli}(p),
+\]
+we have
+\[
+E(X_i)=p,
+\qquad
+\operatorname{Var}(X_i)=p(1-p).
+\]
+
+Therefore,
+\[
+E(\widehat p)
+=
+E\left(
+\frac1n\sum_{i=1}^nX_i
+\right)
+=
+p.
+\]
+
+Since the \(X_i\)'s are independent,
+\begin{align*}
+\operatorname{Var}(\widehat p)
+&=
+\operatorname{Var}
+\left(
+\frac1n\sum_{i=1}^nX_i
+\right)\\
+&=
+\frac1{n^2}
+\sum_{i=1}^n
+\operatorname{Var}(X_i)\\
+&=
+\frac{p(1-p)}{n}.
+\end{align*}
+
+Chebyshev's inequality gives
+\[
+P\left(
+|\widehat p-p|\geq\varepsilon
+\right)
+\leq
+\frac{\operatorname{Var}(\widehat p)}
+{\varepsilon^2}
+=
+\frac{p(1-p)}{n\varepsilon^2}.
+\]
+
+We want a bound that holds for every \(0<p<1\).
+
+Since
+\[
+p(1-p)\leq\frac14,
+\]
+we obtain
+\[
+P\left(
+|\widehat p-p|\geq\varepsilon
+\right)
+\leq
+\frac{1}{4n\varepsilon^2}.
+\]
+
+Therefore,
+\[
+P\left(
+|\widehat p-p|<\varepsilon
+\right)
+\geq
+1-\frac{1}{4n\varepsilon^2}.
+\]
+
+To guarantee that this is at least \(1-\alpha\), it is sufficient that
+\[
+\frac{1}{4n\varepsilon^2}
+\leq
+\alpha.
+\]
+
+Solving for \(n\),
+\[
+n
+\geq
+\frac{1}{4\alpha\varepsilon^2}.
+\]
+
+Since \(n\) must be an integer, one may take
+\[
+n
+\geq
+\left\lceil
+\frac{1}{4\alpha\varepsilon^2}
+\right\rceil.
+\]
+
+\begin{finalanswerbox}
+
+A sufficient condition is
+\[
+n
+\geq
+\frac{1}{4\alpha\varepsilon^2}.
+\]
+
+Equivalently, for integer sample size,
+\[
+n
+\geq
+\left\lceil
+\frac{1}{4\alpha\varepsilon^2}
+\right\rceil.
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 5
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 5.} \hfill \textbf{8 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be independent exponential random variables with common
+parameter \(\lambda>0\):
+\[
+X,Y\overset{\mathrm{i.i.d.}}{\sim}\operatorname{Exp}(\lambda),
+\]
+with probability density function
+\[
+f(w)=
+\begin{cases}
+\lambda e^{-\lambda w}, & w>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Define
+\[
+T=X+Y.
+\]
+
+Using the convolution formula
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx,
+\]
+find the probability density function of \(T\), including its support.
+
+\begin{solutionbox}
+
+Since
+\[
+T=X+Y
+\]
+and \(X,Y>0\), we must have
+\[
+T>0.
+\]
+
+Thus, for \(t\leq0\),
+\[
+f_T(t)=0.
+\]
+
+Now suppose \(t>0\).
+
+For the integrand
+\[
+f_X(x)f_Y(t-x)
+\]
+to be nonzero, we need
+\[
+x>0
+\]
+and
+\[
+t-x>0.
+\]
+
+Therefore,
+\[
+0<x<t.
+\]
+
+Using convolution,
+\begin{align*}
+f_T(t)
+&=
+\int_0^t
+f_X(x)f_Y(t-x)\,dx\\
+&=
+\int_0^t
+\lambda e^{-\lambda x}
+\lambda e^{-\lambda(t-x)}
+\,dx\\
+&=
+\lambda^2e^{-\lambda t}
+\int_0^t dx\\
+&=
+\lambda^2t e^{-\lambda t}.
+\end{align*}
+
+Hence
+\[
+f_T(t)
+=
+\begin{cases}
+\lambda^2t e^{-\lambda t},
+& t>0,\\
+0,
+& t\leq0.
+\end{cases}
+\]
+
+Thus \(T\) does \emph{not} have an exponential distribution. It has a
+Gamma distribution with shape parameter \(2\) and rate parameter
+\(\lambda\).
+
+\begin{finalanswerbox}
+
+\[
+f_T(t)
+=
+\begin{cases}
+\lambda^2t e^{-\lambda t},
+& t>0,\\
+0,
+& t\leq0.
+\end{cases}
+\]
+
+Equivalently,
+\[
+T\sim\operatorname{Gamma}(2,\lambda)
+\]
+under the shape-rate parameterization.
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 6
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 6.} \hfill \textbf{8 points}
+\end{problemheader}
+
+Let \(X,Y,Z\) be jointly continuous with joint probability density function
+\[
+f_{X,Y,Z}(x,y,z)
+=
+\begin{cases}
+x^2e^{-x(1+y+z)}, & x,y,z>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+The marginal probability density functions are
+\[
+f_X(x)
+=
+\begin{cases}
+e^{-x}, & x>0,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+and
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac{1}{(1+y)^2}, & y>0,\\
+0, & \text{otherwise},
+\end{cases}
+\qquad
+f_Z(z)
+=
+\begin{cases}
+\dfrac{1}{(1+z)^2}, & z>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Are \(X,Y,Z\) pairwise independent? Justify your answer.
+    \hfill \textbf{(5 points)}
+
+    \item Are \(X,Y,Z\) mutually independent? Justify your answer.
+    \hfill \textbf{(3 points)}
+
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a)} To determine pairwise independence, we examine the joint
+density of each pair.
+
+First, consider \(X\) and \(Y\). Integrating out \(Z\),
+\begin{align*}
+f_{X,Y}(x,y)
+&=
+\int_0^\infty
+x^2e^{-x(1+y+z)}\,dz\\
+&=
+x^2e^{-x(1+y)}
+\int_0^\infty e^{-xz}\,dz\\
+&=
+x^2e^{-x(1+y)}
+\frac1x\\
+&=
+xe^{-x(1+y)},
+\qquad x,y>0.
+\end{align*}
+
+On the other hand,
+\[
+f_X(x)f_Y(y)
+=
+e^{-x}\frac{1}{(1+y)^2}.
+\]
+
+These are not equal in general:
+\[
+xe^{-x(1+y)}
+\neq
+\frac{e^{-x}}{(1+y)^2}.
+\]
+
+Therefore, \(X\) and \(Y\) are not independent.
+
+Consequently, \(X,Y,Z\) cannot be pairwise independent.
+
+For completeness, the same phenomenon occurs for the other pairs.
+
+By symmetry,
+\[
+f_{X,Z}(x,z)
+=
+xe^{-x(1+z)},
+\]
+which is not equal to
+\[
+f_X(x)f_Z(z)
+=
+\frac{e^{-x}}{(1+z)^2}.
+\]
+
+For \(Y\) and \(Z\),
+\begin{align*}
+f_{Y,Z}(y,z)
+&=
+\int_0^\infty
+x^2e^{-x(1+y+z)}\,dx.
+\end{align*}
+
+Using
+\[
+\int_0^\infty x^2e^{-ax}\,dx
+=
+\frac{2}{a^3},
+\qquad a>0,
+\]
+we obtain
+\[
+f_{Y,Z}(y,z)
+=
+\frac{2}{(1+y+z)^3}.
+\]
+
+However,
+\[
+f_Y(y)f_Z(z)
+=
+\frac{1}{(1+y)^2(1+z)^2},
+\]
+which is again different in general.
+
+Hence none of the three pairs is independent.
+
+
+\textbf{(b)} Mutual independence would require
+\[
+f_{X,Y,Z}(x,y,z)
+=
+f_X(x)f_Y(y)f_Z(z)
+\]
+for all points in the support.
+
+The product of the marginals is
+\[
+f_X(x)f_Y(y)f_Z(z)
+=
+\frac{e^{-x}}
+{(1+y)^2(1+z)^2}.
+\]
+
+But the joint density is
+\[
+f_{X,Y,Z}(x,y,z)
+=
+x^2e^{-x(1+y+z)}.
+\]
+
+These expressions are not equal in general.
+
+Therefore, \(X,Y,Z\) are not mutually independent.
+
+Also, since mutual independence implies pairwise independence and part (a)
+shows that they are not pairwise independent, mutual independence is
+impossible.
+
+\begin{finalanswerbox}
+
+\[
+\text{(a)}\quad
+X,Y,Z\text{ are not pairwise independent.}
+\]
+
+In fact, none of the three pairs is independent.
+
+\[
+\text{(b)}\quad
+X,Y,Z\text{ are not mutually independent.}
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\newpage
+
+% ============================================================
+% PROBLEM 7
+% ============================================================
+
+\begin{problemheader}
+\textbf{Problem 7.} \hfill \textbf{6 points}
+\end{problemheader}
+
+For each part below, select the \textbf{correct statement} of the indicated
+theorem. Only one choice is correct in each part.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1.2em]
+
+% ------------------------------------------------------------
+\item \textbf{Weak Law of Large Numbers (WLLN).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables with finite mean
+\[
+E(X_i)=\mu
+\]
+and finite variance
+\[
+\operatorname{Var}(X_i)=\sigma^2.
+\]
+Let
+\[
+\overline X_n=\frac1n\sum_{i=1}^n X_i.
+\]
+
+Which of the following is the conclusion of the Weak Law of Large Numbers?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)=0
+    \qquad
+    \text{for every }n.
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(z\in\mathbb R\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \leq z
+    \right)
+    =
+    \Phi(z).
+    \]
+
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\item \textbf{Strong Law of Large Numbers (SLLN).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables satisfying the same
+assumptions as in the Weak Law of Large Numbers, with
+\[
+E(X_i)=\mu
+\]
+and finite variance
+\[
+\operatorname{Var}(X_i)=\sigma^2.
+\]
+
+Which of the following is the conclusion of the Strong Law of Large Numbers?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+    \item
+    \[
+    \lim_{n\to\infty}
+    P(\overline X_n=\mu)
+    =1.
+    \]
+
+    \item
+    \[
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \xrightarrow[]{d}
+    N(0,1).
+    \]
+
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\item \textbf{Central Limit Theorem (CLT).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables with
+\[
+E(X_i)=\mu,
+\qquad
+\operatorname{Var}(X_i)=\sigma^2<\infty.
+\]
+
+Which of the following is the conclusion of the Central Limit Theorem?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item
+    \[
+    \overline X_n
+    \xrightarrow[]{P}
+    N(\mu,\sigma^2).
+    \]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(z\in\mathbb R\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \leq z
+    \right)
+    =
+    \Phi(z).
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+\end{enumerate}
+
+\end{enumerate}
+
+\begin{solutionbox}
+
+\textbf{(a) Weak Law of Large Numbers.}
+
+The WLLN states that the sample mean converges to the population mean
+\(\mu\) \emph{in probability}. That is, for every \(\varepsilon>0\),
+\[
+\lim_{n\to\infty}
+P\left(
+|\overline X_n-\mu|>\varepsilon
+\right)
+=
+0.
+\]
+
+Therefore, the correct answer is
+
+\[
+\textbf{B}.
+\]
+
+
+\textbf{(b) Strong Law of Large Numbers.}
+
+The SLLN states that
+\[
+\overline X_n\longrightarrow\mu
+\]
+almost surely. Equivalently,
+\[
+P\left(
+\lim_{n\to\infty}\overline X_n=\mu
+\right)
+=
+1.
+\]
+
+Therefore, the correct answer is
+
+\[
+\textbf{A}.
+\]
+
+
+\textbf{(c) Central Limit Theorem.}
+
+The CLT states that the standardized sample mean converges in distribution
+to a standard normal random variable:
+\[
+\frac{\overline X_n-\mu}{\sigma/\sqrt n}
+\xrightarrow[]{d}
+N(0,1).
+\]
+
+Equivalently, for every \(z\in\mathbb R\),
+\[
+\lim_{n\to\infty}
+P\left(
+\frac{\overline X_n-\mu}{\sigma/\sqrt n}
+\leq z
+\right)
+=
+\Phi(z).
+\]
+
+Therefore, the correct answer is
+
+\[
+\textbf{C}.
+\]
+
+\begin{finalanswerbox}
+
+\[
+\boxed{\text{(a) B}}
+\qquad
+\boxed{\text{(b) A}}
+\qquad
+\boxed{\text{(c) C}}
+\]
+
+\end{finalanswerbox}
+
+\end{solutionbox}
+
+
+\end{document}

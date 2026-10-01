@@ -1,0 +1,279 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.62in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+\hypersetup{colorlinks=true,linkcolor=uwpurple,urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Practice Midterm Examination}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,colframe=uwpurple,boxrule=0.8pt,arc=2mm,
+    left=2mm,right=2mm,top=1mm,bottom=1mm
+}
+
+\newtcolorbox{policybox}{
+    breakable,colback=softgold,colframe=deepgold,boxrule=0.8pt,arc=2mm,
+    left=2.5mm,right=2.5mm,top=1.5mm,bottom=1.5mm
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{0.05cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{0.28cm}
+
+{\LARGE \color{uwpurple}\textbf{Midterm Examination (Practice)}}\\[0.15cm]
+{\Large \textbf{\course}}\\[0.15cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{0.22cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\bfseries}p{0.19\textwidth}p{0.68\textwidth}}
+Date: & July 22, 2026 \\
+Answering time: & 60 minutes \\
+Total points: & 60 \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.18cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\bfseries}p{0.22\textwidth}p{0.67\textwidth}}
+Name: & \hrulefill \\
+Student ID: & \hrulefill \\
+UW NetID: & \hrulefill \\
+Signature: & \hrulefill \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.15cm}
+
+\begin{policybox}
+\small
+\textbf{Instructions}
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.15em,parsep=0pt]
+    \item This examination contains \textbf{five problems}. Verify that your copy is complete.
+    \item Show all work and justify your answers. Unsupported answers may receive little or no credit.
+    \item Clearly define any events or random variables that you introduce.    
+    \item For any perceived ambiguity, state a reasonable interpretation and proceed.
+    \item Do not remove pages from the examination booklet.
+\end{itemize}
+
+\medskip
+\textbf{Permitted materials}
+
+Examinations are closed-book and closed-notes. Students may use:
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.12em,parsep=0pt]
+    \item one handwritten 8.5 $\times$ 11 inch reference sheet (front and back), and
+    \item a non-programmable non-graphing calculator capable of standard exponential and logarithmic computations (e.g. TI-30X IIS).
+\end{itemize}
+No other electronic devices, calculators, communication devices, or external resources may be used during examinations.
+\end{policybox}
+
+\vspace{0.10cm}
+
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{|>{\centering\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.16\textwidth}|}
+\hline
+\textbf{Problem} & \textbf{Score} \\
+\hline
+1 & /10 \\
+\hline
+2 & /10 \\
+\hline
+3 & /10 \\
+\hline
+4 & /15 \\
+\hline
+5 & /15 \\
+\hline
+\textbf{Total} & \textbf{/60} \\
+\hline
+\end{tabular}
+
+\vspace{0.08cm}
+{\footnotesize By signing above, you affirm that the work is your own and that you followed the examination rules.}
+\end{titlepage}
+
+
+\begin{problemheader}
+\textbf{Problem 1. } \hfill \textbf{10 points}
+\end{problemheader}
+
+A university student ID consists of three uppercase English letters followed by four digits. Letters and digits may repeat. The first letter cannot be \texttt{X}, and at least one of the four digits must be even.
+
+How many such student IDs are possible? Justify your counting.
+
+\vspace{2mm}\hrule
+\newpage
+
+\begin{problemheader}
+\textbf{Problem 2. } \hfill \textbf{10 points}
+\end{problemheader}
+
+A warehouse receives items from three factories. Factory $A$ supplies $40\%$ of the items and has a defect rate of $2\%$. Factory $B$ supplies $35\%$ of the items and has a defect rate of $5\%$. Factory $C$ supplies $25\%$ of the items and has a defect rate of $8\%$.
+
+An item is selected uniformly at random from the warehouse and is found to be defective.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.7em]
+    \item Find the probability that the item came from Factory $C$. \hfill \textbf{(6 points)}
+    \item Find the probability that the item did not come from Factory $A$. \hfill \textbf{(4 points)}
+\end{enumerate}
+
+\vspace{2mm}\hrule
+\newpage
+
+\begin{problemheader}
+\textbf{Problem 3. } \hfill \textbf{10 points}
+\end{problemheader}
+
+Let $A$, $B$, and $C$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.75em]
+    \item Prove that
+    \[
+    P(A\cup B\cup C)
+    =P(A)+P(B)+P(C)
+    -P(A\cap B)-P(A\cap C)-P(B\cap C)
+    +P(A\cap B\cap C).
+    \]
+    \hfill \textbf{(6 points)}
+
+    \item Deduce that
+    \[
+    P(A\cup B\cup C)\leq P(A)+P(B)+P(C).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item Give a simple necessary and sufficient condition for equality in part (b). \hfill \textbf{(2 points)}
+\end{enumerate}
+
+\vspace{2mm}\hrule
+\newpage
+
+\begin{problemheader}
+\textbf{Problem 4.} \hfill \textbf{15 points}
+\end{problemheader}
+
+The cumulative distribution function of a continuous random variable $X$ is
+\[
+F_X(x)=
+\begin{cases}
+0, & x<0,\\[1mm]
+\dfrac{x^2}{4}, & 0\leq x<1,\\[2mm]
+\dfrac{2x-1}{4}, & 1\leq x<2,\\[2mm]
+1-\dfrac{(3-x)^2}{4}, & 2\leq x<3,\\[2mm]
+1, & x\geq 3.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.75em]
+    \item Find the probability density function $f_X(x)$. \hfill \textbf{(4 points)}
+    \item Prove that $f_X(x)$ found in part (a) is a PDF. \hfill \textbf{(3 points)}
+    \item Find $P\!\left(\frac12<X\leq\frac52\right)$. \hfill \textbf{(3 points)}
+    \item Find $\mathbb{E}[X]$. \hfill \textbf{(5 points)}
+\end{enumerate}
+
+\vspace{2mm}\hrule
+\newpage
+
+
+
+
+ 
+\newpage
+\begin{problemheader}
+\textbf{Problem 5. } 
+\hfill \textbf{15 points}
+\end{problemheader}
+
+A city operates a large bike-share system. Assume that the outcomes of
+different rides are independent.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.9em]
+
+    \item On a typical day, \(8000\) rides are completed. Each ride results
+    in a serious mechanical failure with probability \(0.0005\).
+
+    Let \(X\) be the number of serious mechanical failures during the day.
+
+    Determine whether a Poisson approximation or a Normal approximation to
+    the distribution of \(X\) is more appropriate. Verify the relevant
+    conditions and state the approximating distribution.
+    \hfill \textbf{(3 points)}
+
+    \item Use the approximation from part (a) to estimate the probability
+    that at least \(3\) serious mechanical failures occur during the day.
+    \hfill \textbf{(3 points)}
+ 
+
+    \item At one busy station, \(300\) bikes are rented during the afternoon.
+    Each bike is returned late with probability \(0.35\).
+
+    Let \(Y\) be the number of bikes returned late.
+
+    Determine whether a Poisson approximation or a Normal approximation to
+    the distribution of \(Y\) is more appropriate. Verify the relevant
+    conditions and state the approximating distribution.
+    \hfill \textbf{(3 points)}
+
+    \item Using the approximation from part (d), estimate
+    \[
+    P(95\leq Y\leq115).
+    \]
+    \hfill \textbf{(3 points)}
+
+\end{enumerate}
+\hrule
+ 
+
+\end{document}

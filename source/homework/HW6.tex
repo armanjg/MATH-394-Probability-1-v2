@@ -1,0 +1,344 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{colorlinks=true, linkcolor=uwpurple, urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 6}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[2]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter #1, Problem #2.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 6}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[width=0.86\textwidth,colback=white,colframe=uwgold,boxrule=0.8pt,arc=3mm]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.}
+\end{problemheader}
+\source{5}{14}
+
+Let $U_1,\dots,U_n$ be i.i.d. $\operatorname{Unif}(0,1)$, and
+\[
+X=\max(U_1,\dots,U_n).
+\]
+What is the PDF of $X$? What is $E(X)$?
+
+\emph{Hint: Find the CDF of $X$ first, by translating the event $X\le x$ into an event involving $U_1,\dots,U_n$.}
+ 
+\newpage
+
+% ------------------------------------------------------------
+ 
+ 
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.}
+\end{problemheader}
+\source{5}{36}
+
+A post office has 2 clerks. Alice enters the post office while 2 other customers, Bob and Claire, are being served by the 2 clerks. She is next in line. Assume that the time a clerk spends serving a customer has an $\operatorname{Exp}(\lambda)$ distribution.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item What is the probability that Alice is the last of the 3 customers to be done being served?
+
+    \emph{Hint: No integrals are needed.}
+
+    \item What is the expected total time that Alice needs to spend at the post office?
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.}
+\end{problemheader}
+\source{5}{43}
+
+The Exponential is the analog of the Geometric in continuous time. This problem explores the connection between Exponential and Geometric in more detail, building up on what was taught in class, asking what happens to a Geometric in a limit where the Bernoulli trials are performed faster and faster but with smaller and smaller success probabilities.
+
+Suppose that Bernoulli trials are being performed in continuous time; rather than only thinking about first trial, second trial, etc., imagine that the trials take place at points on a timeline. Assume that the trials are at regularly spaced times
+\[
+0,\Delta t,2\Delta t,\dots,
+\]
+where $\Delta t$ is a small positive number. Let the probability of success of each trial be $\lambda \Delta t$, where $\lambda$ is a positive constant. Let $G$ be the number of failures before the first success in discrete time, and let $T$ be the time of the first success in continuous time.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find a simple equation relating $G$ to $T$.
+
+    \emph{Hint: Draw a timeline and try out a simple example.}
+
+    \item Find the CDF of $T$.
+
+    \emph{Hint: First find $P(T>t)$.}
+
+    \item Show that as $\Delta t\to0$, the CDF of $T$ converges to the $\operatorname{Exp}(\lambda)$ CDF, evaluating all the CDFs at a fixed $t\ge0$.
+
+ 
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4.}
+\end{problemheader}
+\source{6}{1--2}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Let $U\sim\operatorname{Unif}(a,b)$. Find the median and mode of $U$.
+
+    \item Let $X\sim\operatorname{Exp}(\lambda)$. Find the median and mode of $X$.
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{6}{21}
+
+Let
+\[
+X_n\sim\operatorname{Bin}(n,p_n)
+\]
+for all $n\ge1$, where $np_n$ is a constant $\lambda>0$ for all $n$, so that
+\[
+p_n=\frac{\lambda}{n}.
+\]
+Let
+\[
+X\sim\operatorname{Pois}(\lambda).
+\]
+
+Show that the MGF of $X_n$ converges to the MGF of $X$. This gives another way to see that the $\operatorname{Bin}(n,p)$ distribution can be well-approximated by the $\operatorname{Pois}(\lambda)$ distribution when $n$ is large, $p$ is small, and $\lambda=np$ is moderate.
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+
+
+
+
+
+
+ 
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. }
+\end{problemheader}
+
+A student has developed a highly scientific method for deciding whether to
+complete an optional online practice module. They go to the roof of their
+apartment building and throw one of their shoes toward the ground.
+
+Let $X\in[0,1]$ be the proportion of the module that the student completes.
+Assume that, with probability \(p\), the shoe lands in a tree and becomes
+permanently stuck. In that case, the student spends the rest of the evening
+trying to recover it and completes none of the module, so \(X=0\).
+
+With probability \(1-p\), the shoe does not get stuck in the tree. The student
+then attempts the module, and the proportion \(X\) that they complete is
+uniformly distributed on \((0,1)\).
+
+Let
+\[
+I=
+\begin{cases}
+1, & \text{if the shoe gets stuck in the tree},\\
+0, & \text{otherwise},
+\end{cases}
+\qquad
+P(I=1)=p,
+\]
+where \(0<p<1\).
+
+Let
+\[
+U\sim\operatorname{Unif}(0,1),
+\]
+independently of \(I\). In this case, we have
+\[
+X=
+\begin{cases}
+0, & if \ I=1,\\
+U, & if \ I=0.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the CDF \(F_X(x)\), specifying it for all \(x\in\mathbb R\).\\
+    \textit{Hint: Problem 6 in HW4.}
+
+    \item Sketch the CDF and explain the meaning of its jump at \(x=0\).
+
+    \item Find \(P(X=x)\) for every \(x\in\mathbb R\). Explain why \(X\) is not
+    a discrete random variable.
+
+    \item Explain why \(X\) is not a continuous random variable.
+
+    \item Find
+    \[
+    P\left(X\leq\frac12\right),
+    \qquad
+    P\left(0<X\leq\frac12\right),
+    \qquad
+    P(X>0).
+    \]
+
+    \item Describe the distribution of \(X\) as a mixture of a point mass and a
+    continuous distribution.
+\end{enumerate}
+ 
+  
+
+
+\end{document}

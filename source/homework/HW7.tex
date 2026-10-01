@@ -1,0 +1,302 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{colorlinks=true, linkcolor=uwpurple, urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 7}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[2]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter #1, Problem #2.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 7}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[width=0.86\textwidth,colback=white,colframe=uwgold,boxrule=0.8pt,arc=3mm]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 1.  }
+\end{problemheader}
+\source{7}{1}
+
+Alice and Bob arrange to meet for lunch on a certain day at noon. However, neither is known for punctuality. They both arrive independently at uniformly distributed times between noon and 1 pm on that day. Each is willing to wait up to 15 minutes for the other to show up.
+
+What is the probability they will meet for lunch that day?
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.  }
+\end{problemheader}
+\source{7}{7}
+
+A stick of length $L$, where $L$ is a positive constant, is broken at a uniformly random point $X$. Given that $X=x$, another breakpoint $Y$ is chosen uniformly on the interval $[0,x]$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the joint PDF of $X$ and $Y$. Be sure to specify the support.
+
+    \item We already know that the marginal distribution of $X$ is $\operatorname{Unif}(0,L)$. Check that marginalizing out $Y$ from the joint PDF agrees that this is the marginal distribution of $X$.
+
+    \item We already know that the conditional distribution of $Y$ given $X=x$ is $\operatorname{Unif}(0,x)$. Check that using the definition of conditional PDFs agrees that this is the conditional distribution of $Y$ given $X=x$.
+
+    \item Find the marginal PDF of $Y$.
+
+    \item Find the conditional PDF of $X$ given $Y=y$.
+\end{enumerate}
+
+\newpage
+
+% ------------------------------------------------------------
+ 
+\begin{problemheader}
+\textbf{Problem 3.}
+\end{problemheader}
+\source{7}{15}
+
+Let $X$ and $Y$ be continuous random variables, with joint CDF $F(x,y)$. Show that the probability that $(X,Y)$ falls into the rectangle $[a_1,a_2]\times[b_1,b_2]$ is
+\[
+F(a_2,b_2)-F(a_1,b_2)+F(a_1,b_1)-F(a_2,b_1).
+\]
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4.  }
+\end{problemheader}
+\source{7}{16}
+
+Let $X$ and $Y$ have joint PDF
+\[
+f_{X,Y}(x,y)=x+y,\qquad 0<x<1,\;0<y<1.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Check that this is a valid joint PDF.
+
+    \item Are $X$ and $Y$ independent?
+
+    \item Find the marginal PDFs of $X$ and $Y$.
+
+    \item Find the conditional PDF of $Y$ given $X=x$.
+\end{enumerate}
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{7}{17}
+
+Let $X$ and $Y$ have joint PDF
+\[
+f_{X,Y}(x,y)=cxy,\qquad 0<x<y<1.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find $c$ to make this a valid joint PDF.
+
+    \item Are $X$ and $Y$ independent?
+
+    \item Find the marginal PDFs of $X$ and $Y$.
+
+    \item Find the conditional PDF of $Y$ given $X=x$.
+\end{enumerate}
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 6.}
+\end{problemheader}
+\source{7}{21}
+
+Find the probability that the quadratic polynomial
+$$
+Ax^2+Bx+1,
+$$
+where the coefficients $A$ and $B$ are determined by drawing i.i.d. $\operatorname{Unif}(0,1)$ random variables, has at least one real root.
+
+\emph{Hint: By the quadratic formula, the polynomial $Ax^2+Bx+C$ has a real root if and only if $B^2-4AC\ge0$. Try to work on the event $\{B^2-4AC\geq 0\}\in \mathcal{F}$. } 
+
+\newpage
+
+% ------------------------------------------------------------
+
+
+\begin{problemheader}
+\textbf{Problem 7. }
+\end{problemheader}
+\source{7}{39--40}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Two fair, six-sided dice are rolled, one green and one orange, with outcomes $X$ and $Y$ for the green die and the orange die, respectively.
+    \begin{enumerate}[label=(\roman*), leftmargin=*]
+        \item Compute the covariance of $X+Y$ and $X-Y$.
+        \item Are $X+Y$ and $X-Y$ independent?
+    \end{enumerate}
+
+    \item Let $X$ and $Y$ be i.i.d. $\operatorname{Unif}(0,1)$.
+    \begin{enumerate}[label=(\roman*), leftmargin=*]
+        \item Compute the covariance of $X+Y$ and $X-Y$.
+        \item Are $X+Y$ and $X-Y$ independent?
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 8. }
+\end{problemheader}
+\source{7}{65}
+
+Let
+\[
+(X_1,\dots,X_k)
+\]
+be Multinomial with parameters
+\[
+n \quad \text{and} \quad (p_1,\dots,p_k).
+\]
+Use indicator random variables to show that
+\[
+\operatorname{Cov}(X_i,X_j)=-np_ip_j,
+\qquad i\ne j.
+\]
+\end{document}

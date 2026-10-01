@@ -1,0 +1,962 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MATH/STAT 394: Probability I</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f7f4;
+      color: #222;
+      line-height: 1.6;
+    }
+
+header {
+  background: #4B2E83;
+  color: white;
+  padding: 2rem 1.5rem;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.course-logo {
+  width: 110px;
+  height: auto;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+}
+
+.header-text {
+  text-align: left;
+}
+
+
+
+
+    
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0.4rem 0;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.2rem;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: #4B2E83;
+      margin-top: 0;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.4rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0eef7;
+      color: #222;
+    }
+
+    a {
+      color: #4B2E83;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .links a {
+      margin-right: 0.75rem;
+      white-space: nowrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .note {
+      background: #fff8e5;
+      border-left: 4px solid #b7a57a;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+
+
+.inactive-link {
+  color: #888 !important;
+  pointer-events: none;
+  text-decoration: none;
+  cursor: default;
+  font-weight: normal;
+  opacity: 0.6;
+}
+
+    
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="header-container">
+
+    <img
+      src="Figures/probability-logo.png"
+      alt="Probability I Logo"
+      class="course-logo"
+    >
+
+    <div class="header-text">
+      <h1>MATH/STAT 394: Probability I</h1>
+      <p>Summer 2026 · University of Washington</p>
+      <p>Instructor: Arman Jahangiri</p>
+    </div>
+
+  </div>
+
+</header>
+
+<main>
+
+  <section>
+    <h2>Course Information</h2>
+
+    <p>
+      Welcome to the course website for MATH/STAT 394: Probability I.
+      This page contains the syllabus, homework assignments,
+      lecture slides, and supplementary course materials.
+    </p>
+
+
+
+
+
+<div class="note">
+  In addition to the PDF files, HTML versions of the course materials are
+  provided in this page to support accessibility.
+  <br><br>
+
+  Students are welcome to use whichever format best supports their needs.
+</div>
+
+    
+
+    <div class="note">
+      Course materials may be updated during the quarter.
+      Please check Canvas for official announcements,
+      due dates, and grades.
+    </div>
+    
+
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Links</th>
+      </tr>
+
+      <tr>
+        <td>Syllabus</td>
+        <td class="links">
+          <a href="syllabus.pdf">PDF</a>
+          <a href="syllabus.html">HTML</a>
+        </td>
+      </tr>
+    </table>
+
+  </section>
+
+  <section>
+    <h2>Homework Assignments</h2>
+
+    <table>
+      <tr>
+        <th>Homework</th>
+        <th>Assignment</th>
+        <th>Solution</th>
+      </tr>
+
+      <tr>
+        <td>HW 1</td>
+        <td class="links">
+          <a href="HW/HW1.pdf">PDF</a>
+          <a href="HW/HW1.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW1-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW1-solution.html">HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 2</td>
+        <td class="links">
+          <a href="HW/HW2.pdf"  >PDF</a>
+          <a href="HW/HW2.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW2-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW2-solution.html" >HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 3</td>
+        <td class="links">
+          <a href="HW/HW3.pdf" >PDF</a>
+          <a href="HW/HW3.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW3-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW3-solution.html" >HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 4</td>
+        <td class="links">
+          <a href="HW/HW4.pdf" >PDF</a>
+          <a href="HW/HW4.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW4-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW4-solution.html" >HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 5</td>
+        <td class="links">
+          <a href="HW/HW5.pdf"  >PDF</a>
+          <a href="HW/HW5.html"  >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW5-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW5-solution.html" >HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 6</td>
+        <td class="links">
+          <a href="HW/HW6.pdf" >PDF</a>
+          <a href="HW/HW6.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW6-solution.pdf" >PDF</a>
+          <a href="HW/solutions/HW6-solution.html">HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 7</td>
+        <td class="links">
+          <a href="HW/HW7.pdf"  >PDF</a>
+          <a href="HW/HW7.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW7-solution.pdf"  >PDF</a>
+          <a href="HW/solutions/HW7-solution.html"  >HTML</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>HW 8</td>
+        <td class="links">
+          <a href="HW/HW8.pdf"  >PDF</a>
+          <a href="HW/HW8.html" >HTML</a>
+        </td>
+        <td class="links">
+          <a href="HW/solutions/HW8-solution.pdf"  >PDF</a>
+          <a href="HW/solutions/HW8-solution.html"  >HTML</a>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Additional Materials</h2>
+
+    <table>
+      <tr>
+        <th>Material</th>
+        <th>Links</th>
+      </tr>
+
+
+<tr>
+  <td>Supplementary Notes</td>
+  <td class="links">
+    <a href="sup.pdf">PDF</a>
+    <a href="sup.html">HTML</a>
+  </td>
+</tr>
+
+
+
+
+      
+      <tr>
+        <td>Normal Probability Table</td>
+        <td class="links">
+          <a href="normal-table.pdf">PDF</a>
+          <a href="normal-table.html">HTML</a>
+        </td>
+      </tr>
+
+
+
+<tr>
+  <td>Common Distributions (version I)</td>
+  <td class="links">
+    <a href="distributions-v1.pdf">PDF</a>
+    <a href="Figures/distributions-v11.html"> HTML</a>
+  </td>
+</tr>
+
+
+      
+<tr>
+  <td>Common Distributions (version II)</td>
+  <td class="links">
+    <a href="distributions-v2.pdf">PDF</a>
+
+    <a href="Figures/distributions-v22.html"> HTML</a>
+  </td>
+</tr>
+
+
+      
+
+
+
+
+
+      
+    </table>
+  </section>
+
+
+<style>
+  .exam-text {
+    color: #8B0000;
+    font-weight: bold;
+  }
+</style>
+
+<section>
+  <h2>Exams</h2>
+
+  <table>
+    <tr>
+      <th>Exam</th>
+      <th>Exam</th>
+      <th>Solution</th>
+    </tr>
+
+    <tr>
+      <td><span class="exam-text">Midterm Exam</span></td>
+
+      <td class="links">
+        <a href="Exams/midterm.pdf"   >PDF</a>
+        <a href="Exams/midterm.html"   >HTML</a>
+      </td>
+
+      <td class="links">
+        <a href="Exams/midterm_solution.pdf"   >PDF</a>
+        <a href="Exams/midterm_solution.html"   >HTML</a>
+      </td>
+    </tr>
+
+<tr>
+  <td><span class="exam-text">Midterm Practice</span></td>
+
+  <td class="links">
+    <a href="Exams/midterm_practice.pdf">PDF</a>
+    <a href="Exams/midterm_practice.html">HTML</a>
+  </td>
+
+  <td class="links">
+    <a
+      href="Exams/midterm_practice_solution.pdf"
+    >
+      PDF
+    </a>
+
+    <a
+      href="Exams/midterm_practice_solution.html"
+    >
+      HTML
+    </a>
+  </td>
+</tr>
+
+
+    
+
+<tr>
+  <td><span class="exam-text">Midterm Question Bank</span></td>
+
+  <td class="links">
+    <a href="Exams/midterm-question-bank.pdf">PDF</a>
+    <a href="Exams/midterm-question-bank.html">HTML</a>
+  </td>
+
+  <td>—</td>
+</tr>
+
+
+<tr>
+  <td><span class="exam-text">Final Exam</span></td>
+
+  <td class="links">
+    <a href="Exams/final.pdf">PDF</a>
+    <a href="Exams/final.html">HTML</a>
+  </td>
+
+  <td class="links">
+    <a href="Exams/final_solution.pdf">PDF</a>
+    <a href="Exams/final_solution.html">HTML</a>
+  </td>
+</tr>
+
+<tr>
+  <td><span class="exam-text">Final Question Bank</span></td>
+
+  <td class="links">
+    <a href="Exams/final-question-bank.pdf">PDF</a>
+    <a href="Exams/final-question-bank.html">HTML</a>
+  </td>
+
+  <td>—</td>
+</tr>
+
+
+    
+  </table>
+</section>
+
+    <section>
+  <h2>Lecture Slides</h2>
+
+  <table>
+    <tr>
+      <th>Week</th>
+      <th>Lecture</th>
+      <th>Date</th>
+      <th>Links</th>
+    </tr>
+
+    <tr>
+      <td>Week 1</td>
+      <td>Lecture 1</td>
+      <td>June 22, 2026</td>
+      <td class="links">
+        <a href="chapter1a_sample_spaces_events.pdf">PDF</a>
+        <a href="Annotated/chapter1a_sample_spaces_events.pdf">Annotated PDF</a>
+        <a href="chapter1b_naive_probability.html">HTML</a>
+        <a href="https://youtu.be/hp5iJeUsAKA" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 1</td>
+      <td>Lecture 2-a</td>
+      <td>June 24, 2026</td>
+      <td class="links">
+        <a href="chapter1b_naive_probability.pdf">PDF</a>
+        <a href="Annotated/chapter1b_naive_probability.pdf">Annotated PDF</a>
+        <a href="chapter1b_naive_probability.html">HTML</a>
+        <a href="https://youtu.be/pUpHxY1APDg" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 1</td>
+      <td>Lecture 2-b</td>
+      <td>June 24, 2026</td>
+      <td class="links">
+        <a href="chapter1cd_counting.pdf">PDF</a>
+        <a href="Annotated/chapter1cd_counting.pdf">Annotated PDF</a>
+        <a href="chapter1cd_counting.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 1</td>
+      <td>Lecture 3</td>
+      <td>June 26, 2026</td>
+      <td class="links">
+        <a href="chapter1f_axiomatic_probability.pdf">PDF</a>
+        <a href="Annotated/chapter1f_axiomatic_probability.pdf">Annotated PDF</a>
+        <a href="chapter1f_axiomatic_probability.html">HTML</a>
+        <a href="https://youtu.be/bbsPEhCdgV4" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 2</td>
+      <td>Lecture 4</td>
+      <td>June 29, 2026</td>
+      <td class="links">
+        <a href="chapter2_conditional_probability.pdf">PDF</a>
+        <a href="Annotated/chapter2_conditional_probability.pdf">Annotated PDF</a>
+        <a href="chapter2_conditional_probability.html">HTML</a>
+        <a href="https://youtu.be/awqHDXiS1u0" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 3</td>
+      <td>Lecture 5</td>
+      <td>July 1, 2026</td>
+      <td class="links">
+        <a href="chapter3_random_variables.pdf">PDF</a>
+        <a href="Annotated/chapter3_random_variables.pdf">Annotated PDF</a>
+        <a href="chapter3_random_variables.html">HTML</a>
+        <a href="https://youtu.be/F0R696040cA" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 2</td>
+      <td>—</td>
+      <td>July 3, 2026</td>
+      <td>
+        <span class="exam-text">
+          University Holiday (no class)
+        </span>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 3</td>
+      <td>Lecture 6-a</td>
+      <td>July 5, 2026</td>
+      <td class="links">
+        <a href="chapter3_random_variables.pdf">PDF</a>
+        <a href="Annotated/chapter3_random_variables.pdf">Annotated PDF</a>
+        <a href="chapter3_random_variables.html">HTML</a>
+        <a href="https://youtu.be/AHFoKPIUC08" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 3</td>
+      <td>Lecture 6-b</td>
+      <td>July 5, 2026</td>
+      <td class="links">
+        <a href="chapter4_expectation.pdf">PDF</a>
+        <a href="Annotated/chapter4_expectation.pdf">Annotated PDF</a>
+        <a href="chapter4_expectation.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 3</td>
+      <td>Lecture 7</td>
+      <td>July 8, 2026</td>
+      <td class="links">
+        <a href="chapter4_expectation.pdf">PDF</a>
+        <a href="Annotated/chapter4_expectation1.pdf">Annotated PDF</a>
+        <a href="chapter4_expectation.html">HTML</a>
+        <a href="https://youtu.be/f0dnGDUcSMc" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 3</td>
+      <td>Lecture 8</td>
+      <td>July 10, 2026</td>
+      <td class="links">
+        <a href="chapter4_expectation.pdf">PDF</a>
+        <a href="Annotated/chapter4_expectation2.pdf">Annotated PDF</a>
+        <a href="chapter4_expectation.html">HTML</a>
+        <a href="https://youtu.be/X1_8_C6WDWw" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 4</td>
+      <td>Lecture 9</td>
+      <td>July 13, 2026</td>
+      <td class="links">
+        <a href="chapter5a_continuous_uniform.pdf">PDF</a>
+        <a href="Annotated/chapter5a_continuous_uniform.pdf">Annotated PDF</a>
+        <a href="chapter5a_continuous_uniform.html">HTML</a>
+        <a href="https://youtu.be/96303zKNwxg" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 10a</td>
+      <td>July 15, 2026</td>
+      <td class="links">
+        <a href="chapter5b_normal_exponential.pdf">PDF</a>
+        <a href="Annotated/chapter5a_continuous_uniform1.pdf">Annotated PDF</a>
+        <a href="chapter5b_normal_exponential.html">HTML</a>
+        <a href="https://youtu.be/Z3eyyJkGndg" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 10b</td>
+      <td>July 15, 2026</td>
+      <td class="links">
+        <a href="chapter5b_normal_exponential.pdf">PDF</a>
+        <a href="Annotated/chapter5b_normal_exponential.pdf">Annotated PDF</a>
+        <a href="chapter5b_normal_exponential.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 11a</td>
+      <td>July 17, 2026</td>
+      <td class="links">
+        <a href="chapter5b_normal_exponential.pdf">PDF</a>
+        <a href="Annotated/chapter5b_normal_exponential1.pdf">Annotated PDF</a>
+        <a href="chapter5b_normal_exponential.html">HTML</a>
+        <a href="https://youtu.be/MhTk7zakKUY" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 11b</td>
+      <td>July 17, 2026</td>
+      <td class="links">
+        <a href="chapter5b_normal_exponential.pdf">PDF</a>
+        <a href="Annotated/chapter5b_normal_exponential2.pdf">Annotated PDF</a>
+        <a href="chapter5b_normal_exponential.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 12</td>
+      <td>July 20, 2026</td>
+      <td class="links">
+        <a href="Exams/midterm_practice_solution.pdf">PDF</a>
+        <a href="Annotated/midterm_practice_annotated.pdf">Annotated PDF</a>
+        <a href="Exams/midterm_practice_solution.html">HTML</a>
+        <a href="https://youtu.be/VVHI6ZL4qtc" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td><span class="exam-text">Midterm Exam</span></td>
+      <td>July 22, 2026</td>
+      <td class="links">
+        <a href="Exams/midterm.pdf" class="inactive-link">PDF</a>
+        <a href="Exams/midterm_solution.pdf" class="inactive-link">Solutions PDF</a>
+        <a href="Exams/midterm.html" class="inactive-link">HTML</a>
+        <a href="Exams/midterm_solution.html" class="inactive-link">Solutions HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 13a</td>
+      <td>July 24, 2026</td>
+      <td class="links">
+        <a href="chapter5b_normal_exponential.pdf">PDF</a>
+        <a href="Annotated/chapter5b_normal_exponential3.pdf">Annotated PDF</a>
+        <a href="chapter5b_normal_exponential.html">HTML</a>
+        <a href="https://youtu.be/OE3xTk4Rl4A" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 5</td>
+      <td>Lecture 13b</td>
+      <td>July 24, 2026</td>
+      <td class="links">
+        <a href="chapter6a_moments.pdf">PDF</a>
+        <a href="Annotated/chapter6a_moments.pdf">Annotated PDF</a>
+        <a href="chapter6a_moments.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 6</td>
+      <td>Lecture 14</td>
+      <td>July 27, 2026</td>
+      <td class="links">
+        <a href="chapter6a_moments.pdf">PDF</a>
+        <a href="Annotated/chapter6a_moments.pdf">Annotated PDF</a>
+        <a href="chapter6a_moments.html">HTML</a>
+        <a href="https://youtu.be/wCrrVCugiYg" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 6</td>
+      <td>Lecture 15</td>
+      <td>July 29, 2026</td>
+      <td class="links">
+        <a href="chapter6a_moments.pdf">PDF</a>
+        <a href="Annotated/chapter6a_moments1.pdf">Annotated PDF</a>
+        <a href="chapter6a_moments.html">HTML</a>
+        <a href="https://youtu.be/GCkCovKrmwA" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 6</td>
+      <td>Lecture 16a</td>
+      <td>July 31, 2026</td>
+      <td class="links">
+        <a href="chapter6a_moments.pdf">PDF</a>
+        <a href="Annotated/chapter6a_moments2.pdf">Annotated PDF</a>
+        <a href="chapter6a_moments.html">HTML</a>
+        <a href="https://youtu.be/mkhb9AUr0r4" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 6</td>
+      <td>Lecture 16b</td>
+      <td>July 31, 2026</td>
+      <td class="links">
+        <a href="chapter6b_mgfs.pdf">PDF</a>
+        <a href="Annotated/chapter6b_mgfs.pdf">Annotated PDF</a>
+        <a href="chapter6b_mgfs.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 17a</td>
+      <td>August 3, 2026</td>
+      <td class="links">
+        <a href="chapter6b_mgfs.pdf">PDF</a>
+        <a href="Annotated/chapter6b_mgfs1.pdf">Annotated PDF</a>
+        <a href="chapter6b_mgfs.html">HTML</a>
+        <a href="https://youtu.be/ri3rYpfFdJ0" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 17b</td>
+      <td>August 3, 2026</td>
+      <td class="links">
+        <a href="chapter6b_mgfs.pdf">PDF</a>
+        <a href="Annotated/chapter6b_mgfs2.pdf">Annotated PDF</a>
+        <a href="chapter6b_mgfs.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 18</td>
+      <td>August 5, 2026</td>
+      <td class="links">
+        <a href="chapter7_joint_distributions.pdf">PDF</a>
+        <a href="Annotated/chapter7_joint_distributions.pdf">Annotated PDF</a>
+        <a href="chapter7_joint_distributions.html">HTML</a>
+        <a href="https://youtu.be/_3SydnHczqA" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 19</td>
+      <td>August 7, 2026</td>
+      <td class="links">
+        <a href="chapter7_joint_distributions.pdf">PDF</a>
+        <a href="Annotated/chapter7_joint_distributions1.pdf">Annotated PDF</a>
+        <a href="chapter7_joint_distributions.html">HTML</a>
+        <a href="https://youtu.be/6e5gNVaAYiU" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 20</td>
+      <td>August 10, 2026</td>
+      <td class="links">
+        <a href="chapter7_joint_distributions.pdf">PDF</a>
+        <a href="Annotated/chapter7_joint_distributions2.pdf">Annotated PDF</a>
+        <a href="chapter7_joint_distributions.html">HTML</a>
+        <a href="https://youtu.be/3QuP83Hfbl4" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 21</td>
+      <td>August 12, 2026</td>
+      <td class="links">
+        <a href="chapter7_joint_distributions.pdf">PDF</a>
+        <a href="Annotated/chapter7_joint_distributions3.pdf">Annotated PDF</a>
+        <a href="chapter7_joint_distributions.html">HTML</a>
+        <a href="https://youtu.be/WZXbecc7vXo" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 7</td>
+      <td>Lecture 22</td>
+      <td>August 14, 2026</td>
+      <td class="links">
+        <a href="chapter8a_transformations.pdf">PDF</a>
+        <a href="Annotated/chapter8a_transformations.pdf">Annotated PDF</a>
+        <a href="chapter8a_transformations.html">HTML</a>
+        <a href="https://youtu.be/vR4MOxb67wg" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 8</td>
+      <td>Lecture 23a</td>
+      <td>August 17, 2026</td>
+      <td class="links">
+        <a href="chapter10a_inequalities.pdf">PDF</a>
+        <a href="Annotated/chapter10a_inequalities.pdf">Annotated PDF</a>
+        <a href="chapter10a_inequalities.html">HTML</a>
+        <a href="https://youtu.be/jz1kiZItf2E" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 8</td>
+      <td>Lecture 23b</td>
+      <td>August 17, 2026</td>
+      <td class="links">
+        <a href="chapter10b_limit_theorems.pdf">PDF</a>
+        <a href="Annotated/chapter10b_limit_theorems.pdf">Annotated PDF</a>
+        <a href="chapter10b_limit_theorems.html">HTML</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 8</td>
+      <td>Lecture 24</td>
+      <td>August 19, 2026</td>
+      <td class="links">
+        <a href="chapter10b_limit_theorems.pdf">PDF</a>
+        <a href="Annotated/chapter10b_limit_theorems1.pdf">Annotated PDF</a>
+        <a href="chapter10b_limit_theorems.html">HTML</a>
+        <a href="https://youtu.be/pzMzMtURD98" target="_blank" rel="noopener">Recording</a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Week 8</td>
+      <td><span class="exam-text">Final Exam</span></td>
+      <td>August 21, 2026</td>
+      <td class="links">
+        <a href="Exams/final.pdf">PDF</a>
+        <a href="Exams/final_solution.pdf">Solutions PDF</a>
+        <a href="Exams/final.html">HTML</a>
+        <a href="Exams/final_solution.html">Solutions HTML</a>
+      </td>
+    </tr>
+
+  </table>
+</section>
+  
+ 
+
+
+
+<section>
+  <h2>Miscellaneous (Interactive Graphs, Useful Links, Papers, etc.)</h2>
+
+  <p class="links">
+    <a href="Figures/pdfpmf.html">CDF Properties</a>,
+    <a href="Figures/normal-binomial-interactive.html">
+      Normal Approximation to Binomial
+    </a>,
+    <a href="Figures/bivariate.html">Bivariate Normal PDF</a>,
+    Sample Mean Convergence
+    (
+    <a href="Figures/normal_sample_mean_convergence.html">Normal</a>,
+    <a href="Figures/uniform_sample_mean_convergence.html">Uniform</a>,
+    <a href="Figures/bernoulli_sample_mean_convergence.html">Bernoulli</a>,
+    <a href="Figures/exponential_sample_mean_convergence.html">Exponential</a>
+    )
+  </p>
+</section>
+  
+
+
+
+  
+<section>
+  <h2>Projects</h2>
+
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Instructions</th>
+    </tr>
+
+    <tr>
+      <td>Mini-Project</td>
+      <td class="links">
+        <a href="project.pdf">PDF</a>
+        <a href="project.html">HTML</a>
+      </td>
+    </tr>
+  </table>
+</section>
+  
+
+</main>
+
+<footer>
+  MATH/STAT 394: Probability I · University of Washington · Summer 2026
+  <br><br>
+  © Arman Jahangiri
+</footer>
+
+</body>
+</html>

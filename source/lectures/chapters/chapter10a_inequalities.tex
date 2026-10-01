@@ -1,0 +1,592 @@
+\setcounter{framenumber}{0}
+%29
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item apply the Cauchy--Schwarz inequality;
+    \item use Jensen's inequality with convex and concave functions;
+    \item apply Markov's inequality;
+    \item apply Chebyshev's inequality;
+    \item apply Chernoff bounds;
+    \item interpret inequalities probabilistically.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Why Inequalities Matter}
+
+\begin{frame}{What If Exact Calculation Is Impossible?}
+In many real problems:
+\begin{itemize}
+    \item exact probabilities are difficult;
+    \item integrals may be impossible;
+    \item distributions may be unknown;
+    \item computations may be too expensive.
+\end{itemize}
+
+\vspace{0.25cm}
+
+Three major strategies:
+\begin{enumerate}
+    \item simulation;
+    \item inequalities (bounds);
+    \item asymptotic approximations.
+\end{enumerate}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Today's focus}
+Probability inequalities
+\end{keybox}
+\end{frame}
+
+\begin{frame}{What Is a Bound?}
+Suppose we cannot compute
+\[
+\Prob(A)
+\]
+exactly.
+
+\vspace{0.25cm}
+
+An inequality may tell us:
+\[
+0.01
+\le
+\Prob(A)
+\le
+0.03.
+\]
+
+\vspace{0.25cm}
+
+Even without the exact answer, we gain useful information.
+
+\end{frame}
+
+\lecturepart{Cauchy--Schwarz Inequality}
+
+\begin{frame}{Cauchy--Schwarz Inequality}
+\begin{keybox}{Theorem}
+For random variables $X,Y$ with finite second moments,
+\[
+{
+|\mathbb{E}(XY)|
+\le
+\sqrt{
+\mathbb{E}(X^2)\mathbb{E}(Y^2)
+}.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+This is one of the most applicable inequalities in mathematics (linear algebra, statistics, functional inequalities, geometry, etc.).
+\end{frame}
+
+\begin{frame}{Idea Behind the Proof}
+For every real number $t$,
+\[
+(Y-tX)^2\ge0.
+\]
+
+Taking expectations:
+\[
+\mathbb{E}(Y-tX)^2\ge0.
+\]
+
+Expanding:
+\[
+\mathbb{E}(Y^2)
+-2t\mathbb{E}(XY)
++t^2\mathbb{E}(X^2)
+\ge0.
+\]
+
+\vspace{0.25cm}
+
+This quadratic must always be nonnegative.
+\end{frame}
+
+\begin{frame}{Proof of Cauchy--Schwarz}
+Since
+\[
+\mathbb{E}(Y^2)
+-2t\mathbb{E}(XY)
++t^2\mathbb{E}(X^2)
+\ge0
+\]
+for all $t$,
+its discriminant must satisfy:
+\[
+(-2\mathbb{E}(XY))^2
+-
+4\mathbb{E}(X^2)\mathbb{E}(Y^2)
+\le0.
+\]
+
+Thus,
+\[
+\mathbb{E}(XY)^2
+\le
+\mathbb{E}(X^2)\mathbb{E}(Y^2).
+\]
+
+Taking square roots gives:
+\[
+{
+|\mathbb{E}(XY)|
+\le
+\sqrt{
+\mathbb{E}(X^2)\mathbb{E}(Y^2)
+}.
+}
+\]
+\end{frame}
+
+\begin{frame}{Application of Cauchy-Schwarz: $-1\leq Corr(X,Y)\leq 1$}
+Apply Cauchy--Schwarz to
+\[
+X-\mathbb{E}(X)
+\]
+and
+\[
+Y-\mathbb{E}(Y).
+\]
+
+Then:
+\[
+|\operatorname{Cov}(X,Y)|
+\le
+\sqrt{
+\operatorname{Var}(X)\operatorname{Var}(Y)
+}.
+\]
+
+Dividing both sides:
+\[
+{
+|\operatorname{Corr}(X,Y)|
+\le1.
+}
+\]
+\end{frame}
+
+\begin{frame}{Application of Cauchy-Schwarz: $Var(X)\geq 0$}
+Apply Cauchy--Schwarz with
+\[
+Y=1.
+\]
+
+Then:
+\[
+|\mathbb{E}(X)|^2
+\le
+\mathbb{E}(X^2).
+\]
+
+Therefore,
+\[
+\boxed{
+\operatorname{Var}(X)
+=
+\mathbb{E}(X^2)-(\mathbb{E}(X))^2
+\ge0.
+}
+\]
+\end{frame}
+
+
+\lecturepart{Jensen's Inequality}
+\begin{frame}{Convex Functions}
+\begin{keybox}{Definition}
+A function \(g:I\to\mathbb{R}\) is called convex if
+\[
+g(\lambda x+(1-\lambda)y)
+\le
+\lambda g(x)+(1-\lambda)g(y)
+\]
+for all \(x,y\in I\) and all
+\[
+0\le \lambda \le 1.
+\]
+\end{keybox}
+
+
+Interpretation: $\lambda x+(1-\lambda)y$ is a weighted average of \(x\) and \(y\), and convexity says $g(\text{average})
+\le
+\text{average of } g.$
+
+\textbf{Geometrically}: the graph of a convex function always lies below its secant lines.
+
+\begin{keybox}{Second Derivative Test}
+If \(g\) is twice differentiable, then:
+\[
+g''(x)\ge0
+\quad \text{for all } x
+\]
+implies that \(g\) is convex.
+\end{keybox}
+ 
+
+Examples of convex functions:
+\[
+g(x)=x^2,
+\qquad
+g(x)=e^x.
+\]
+\end{frame}
+
+\begin{frame}{Jensen's Inequality}
+\begin{keybox}{Theorem}
+If $g$ is convex, then
+\[
+{
+\mathbb{E}(g(X))
+\ge
+g(\mathbb{E}(X)).
+}
+\]
+\end{keybox}
+
+If $g$ is concave, the inequality reverses:
+\[
+{
+\mathbb{E}(g(X))
+\le
+g(\mathbb{E}(X)).
+}
+\]
+
+The theorem is proved using induction (not covered - available in Wikipedia).
+\end{frame}
+
+\begin{frame}{Geometric Interpretation of Jensen}
+For a convex function:
+\begin{itemize}
+    \item tangent lines lie below the graph;
+    \item averaging inputs produces smaller values than averaging outputs.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Mnemonic}
+\[
+g(\text{average})
+\le
+\text{average of }g.
+\]
+for convex functions.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Example (Jensen's Inequality): $Var(X)\geq 0 $ (again)}
+Take
+\[
+g(x)=x^2.
+\]
+
+Since
+\[
+g''(x)=2>0,
+\]
+the function is convex.
+
+\vspace{0.25cm}
+
+Jensen gives:
+\[
+\mathbb{E}(X^2)
+\ge
+(\mathbb{E}(X))^2.
+\]
+
+Thus:
+\[
+\operatorname{Var}(X)\ge0.
+\]
+\end{frame}
+
+\begin{frame}{Example (Jensen's Inequality): Logarithms}
+Take
+\[
+g(x)=\log x.
+\]
+
+Since
+\[
+g''(x)=-\frac1{x^2}<0,
+\]
+the logarithm is concave.
+
+\vspace{0.25cm}
+
+Thus:
+\[
+{
+\mathbb{E}(\log X)
+\le
+\log(\mathbb{E}(X)).
+}
+\]
+
+\vspace{0.25cm}
+
+This inequality is fundamental in statistics and information theory.
+\end{frame}
+
+\begin{frame}{Example (Jensen's Inequality): Sample Standard Deviation Is Biased}
+Recall:
+\[
+\mathbb{E} [S_n^2] = \sigma^2, 
+\]
+i.e., $S^2$ is an unbiased estimator for $\sigma^2$.
+
+Now, since
+\[
+g(x)=\sqrt{x}
+\]
+is concave,
+Jensen's inequality gives:
+\[
+\mathbb{E}(S_n)
+=
+\mathbb{E}(\sqrt{S_n^2})
+\le
+\sqrt{\mathbb{E}(S_n^2)}
+=
+\sigma.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Conclusion}
+Sample standard deviation tends to underestimate the true standard deviation.
+\end{keybox}
+\end{frame}
+
+\lecturepart{Tail Bounds}
+
+\begin{frame}{Tail Probabilities}
+We often want bounds on:
+\[
+\Prob(X\ge a),
+\]
+or
+\[
+\Prob(|X-\mu|\ge a).
+\]
+
+\vspace{0.25cm}
+
+These are called tail probabilities.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Applications}
+\begin{itemize}
+    \item rare events;
+    \item risk analysis;
+    \item statistics;
+    \item machine learning;
+    \item concentration inequalities.
+\end{itemize}
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Markov's Inequality}
+\begin{keybox}{Theorem (Markov's Inequality)}
+If $X\ge0$ and $a>0,$ then
+\[
+{
+\Prob(X\ge a)
+\le
+\frac{\mathbb{E}(X)}{a}.
+}
+\]
+\end{keybox}
+
+\textbf{Proof}
+
+First, note that $X
+\ge
+a\,I(X\ge a).$
+
+Taking expectations from both sides,
+\[
+\mathbb{E}(X)
+\ge
+a\mathbb{E}(I(X\ge a)).
+\]
+
+Using the fundamental bridge:
+\[
+\mathbb{E}(I(X\ge a))
+=
+\Prob(X\ge a).
+\]
+
+Therefore:
+\[
+{
+\Prob(X\ge a)
+\le
+\frac{\mathbb{E}(X)}{a}.
+}
+\]
+
+\end{frame}
+
+
+
+\begin{frame}{Chebyshev's Inequality}
+\begin{keybox}{Theorem (Chebyshev's Inequality)}
+If $X$ has mean $\mu$ and variance $\sigma^2$, then for every $a>0,$
+\[
+{
+\Prob(|X-\mu|\ge a)
+\le
+\frac{\sigma^2}{a^2}.
+}
+\]
+\end{keybox}
+\textbf{Proof}
+
+Apply Markov to $(X-\mu)^2\geq 0.$ Then,
+\[
+\Prob((X-\mu)^2\ge a^2)
+\le
+\frac{
+\mathbb{E}(X-\mu)^2
+}{
+a^2 
+}=\frac{\sigma^2}{a^2}.
+\]
+\end{frame}
+
+
+
+\begin{frame}{Standardized Form of Chebyshev}
+Let
+\[
+a=c\sigma.
+\]
+
+Then:
+\[
+\boxed{
+\Prob(|X-\mu|\ge c\sigma)
+\le
+\frac1{c^2}.
+}
+\]
+
+\vspace{0.25cm}
+
+Examples:
+\[
+\Prob(|X-\mu|\ge2\sigma)\le\frac14,
+\]
+
+\[
+\Prob(|X-\mu|\ge3\sigma)\le\frac19.
+\]
+\end{frame}
+
+\begin{frame}{Chernoff Bounds}
+Markov becomes stronger if we apply it to:
+\[
+e^{tX},
+\qquad t>0.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Chernoff Bound}
+For every
+\[
+t>0,
+\]
+\[
+\boxed{
+\Prob(X\ge a)
+\le
+\frac{
+\mathbb{E}(e^{tX})
+}{
+e^{ta}
+}.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+The numerator is the MGF of $X$.
+\end{frame}
+ 
+
+\begin{frame}{Comparing Bounds for Normal Tails}
+Suppose
+\[
+Z\sim N(0,1).
+\]
+
+True probability:
+\[
+\Prob(|Z|>3)\approx0.003.
+\]
+
+Bounds:
+\[
+\text{Markov: }0.27,
+\]
+
+\[
+\text{Chebyshev: }0.11,
+\]
+
+\[
+\text{Chernoff: }0.022.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Observation}
+Chernoff bounds are often dramatically better.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Cauchy--Schwarz bounds expectations.
+
+    \item Jensen compares
+    \[
+    \mathbb{E}(g(X))
+    \]
+    and
+    \[
+    g(\mathbb{E}(X)).
+    \]
+
+    \item Markov bounds nonnegative tails.
+
+    \item Chebyshev controls deviations from the mean.
+
+    \item Chernoff bounds are often much sharper.
+
+    \item Inequalities are fundamental tools throughout probability and statistics.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Next lecture}
+Law of Large Numbers and Central Limit Theorem.
+\end{keybox}
+\end{frame}

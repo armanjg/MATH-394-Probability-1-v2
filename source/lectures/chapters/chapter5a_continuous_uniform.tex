@@ -1,0 +1,534 @@
+\setcounter{framenumber}{0}
+%21
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item define and interpret PDFs and CDFs;
+    \item compute probabilities by integrating a PDF;
+    \item recognize valid PDFs;
+    \item compute expectation for continuous random variables;
+    \item define and use the Uniform distribution;
+    \item understand the universality of the Uniform distribution.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Continuous Random Variables}
+
+\begin{frame}{From Discrete to Continuous Random Variables}
+Discrete random variables take values in a finite or countably infinite set.
+
+\vspace{0.25cm}
+
+Continuous random variables can take any value in an interval, such as
+\[
+(0,1),\qquad (a,b),\qquad [0,\infty),\qquad \mathbb{R}.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main difference}
+For a continuous random variable,
+\[
+\Prob(X=x)=0
+\]
+for every individual point $x$.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Probability Density Functions}
+\begin{keybox}{Definition}
+For a continuous random variable $X$, the probability density function, or PDF, is a function $f$ such that
+\[
+\Prob(X\in A)=\int_A f(x)\,dx, \quad \forall A\subseteq \mathbb{R}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+The value $f(x)$ itself is not a probability (could be greater than 1).
+
+\vspace{0.25cm}
+
+Probabilities are areas under the density curve.
+\end{frame}
+
+\begin{frame}{How to verify a function is a PDF?}
+A function $f$ is a valid PDF if it satisfies two properties, namely
+
+\[
+f(x)\geq 0
+\qquad \text{for all }x,
+\]
+
+and
+
+\[
+\int_{-\infty}^{\infty} f(x)\,dx=1.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Analogy}
+For discrete random variables:
+\[
+p_X(x)\geq 0, \quad \sum_x p_X(x)=1.
+\]
+
+For continuous random variables:
+\[
+f_X(x)\geq 0, \quad \int_{-\infty}^{\infty} f(x)\,dx=1.
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{CDF and PDF}
+CDF has the same formula for continuous and discrete r.v.s, i.e.
+\[
+F(x)=\Prob(X\leq x).
+\]
+
+For a continuous random variable with PDF $f$, according to the definition of PDF,
+
+\[
+F(x)=\int_{-\infty}^{x} f(t)\,dt.
+\]
+
+Note that , according to the definition of CDF,
+\begin{equation*}
+    \mathbb{P}(a< X\leq b) = F(b) - F(a) 
+\end{equation*}
+This, together with the Fundamental Theorem of Calculus, implies that
+\begin{equation}
+    \frac{d}{dx}F(x) = F^{\prime}(x) = f(x)
+\end{equation}
+
+
+
+For \textbf{continuous} r.v.s, since $\mathbb{P}(X=a)=0$ for any $a\in \mathbb{R}$,
+\[
+\begin{aligned}
+\Prob(X\le a) &= \Prob(X<a),\\
+\Prob(X\ge a) &= \Prob(X>a),\\
+\Prob(a\le X\le b) &= \Prob(a<X\le b)
+= \Prob(a\le X<b)
+= \Prob(a<X<b).
+\end{aligned}
+\]
+
+
+
+
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{What Does the Density \(f(x)\) Mean?}
+
+For a continuous random variable,
+\[
+F(x)=\Prob(X\le x)
+=
+\int_{-\infty}^x f(t)\,dt.
+\]
+
+\vspace{0.2cm}
+
+For a small number \(\epsilon>0\),
+\[
+\Prob(x\le X\le x+\epsilon)
+=
+F(x+\epsilon)-F(x).
+\]
+
+Therefore,
+\[
+\frac{\Prob(x\le X\le x+\epsilon)}{\epsilon}
+=
+\frac{F(x+\epsilon)-F(x)}{\epsilon}.
+\]
+
+Taking the limit as \(\epsilon\to0\),
+\[
+\lim_{\epsilon\to0}
+\frac{\Prob(x\le X\le x+\epsilon)}{\epsilon}
+=
+\lim_{\epsilon\to0}
+\frac{F(x+\epsilon)-F(x)}{\epsilon}.
+\]
+
+By the definition of derivative,
+\[
+f(x)=F'(x)
+=
+\lim_{\epsilon\to0}
+\frac{F(x+\epsilon)-F(x)}{\epsilon}.
+\]
+
+Thus,
+\[
+{
+f(x)
+=
+\lim_{\epsilon\to0}
+\frac{\Prob(x\le X\le x+\epsilon)}{\epsilon}
+}
+\]
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Expectation for Continuous Random Variables}
+\begin{keybox}{Definition}
+If $X$ is continuous with PDF $f$, then
+\[
+\boxed{
+\mathbb{E}(X)=\int_{-\infty}^{\infty} x f(x)\,dx.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+If the support is an interval, we integrate over that interval.
+
+\vspace{0.25cm}
+
+Expectation is still the balancing point of the distribution.
+\end{frame}
+
+\begin{frame}{Continuous LOTUS}
+\begin{keybox}{LOTUS}
+If \(X\) has PDF \(f\) and \(g:\mathbb{R}\to\mathbb{R}\), then
+\[
+\boxed{
+\mathbb{E}(g(X))
+=
+\int_{-\infty}^{\infty} g(x)f(x)\,dx.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+\textbf{Proof idea.}
+For a small interval \([x,x+\Delta x]\),
+\[
+\Prob(x\le X\le x+\Delta x)
+\approx f(x)\Delta x.
+\]
+
+On this interval, \(g(X)\) is approximately \(g(x)\). Hence,
+\[
+g(X)\Prob(x\le X\le x+\Delta x)
+\approx
+g(x)f(x)\Delta x.
+\]
+
+Adding over many small intervals,
+\[
+\mathbb{E}(g(X))
+\approx
+\sum_i g(x_i)f(x_i)\Delta x.
+\]
+
+Taking the limit as \(\Delta x\to 0\), the Riemann sum becomes
+\[
+\mathbb{E}(g(X))
+=
+\int_{-\infty}^{\infty} g(x)f(x)\,dx.
+\]
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\lecturepart{Uniform Distribution}
+\begin{frame}{Uniform Distribution}
+
+\begin{keybox}{Definition}
+A random variable $U$ has the Uniform distribution on $(a,b)$ if its PDF is
+\[
+f(x)=
+\begin{cases}
+\dfrac{1}{b-a}, & a<x<b,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+We write
+\[
+U\sim \operatorname{Unif}(a,b).
+\]
+\end{keybox}
+
+\begin{keybox}{PDF Verification}
+\[
+f(x)=\frac{1}{b-a}>0
+\]
+since \(b>a\). And
+\[
+\int_{-\infty}^{\infty} f(x)\,dx
+=
+\int_a^b \frac{1}{b-a}\,dx
+=
+\frac{1}{b-a}(b-a)
+=
+1.
+\]
+\end{keybox}
+
+\end{frame}
+
+\begin{frame}{Uniform CDF}
+If
+\[
+U\sim \operatorname{Unif}(a,b),
+\]
+then its CDF is
+\[
+F(x)=
+\begin{cases}
+0, & x\leq a,\\[0.1cm]
+\dfrac{x-a}{b-a}, & a<x<b,\\[0.2cm]
+1, & x\geq b.
+\end{cases}
+\]
+
+\vspace{0.25cm}
+
+For the standard Uniform,
+\[
+U\sim \operatorname{Unif}(0,1),
+\]
+we have
+\[
+F(x)=x,\qquad 0<x<1.
+\]
+\end{frame}
+
+\lecturepart{Universality of the Uniform}
+
+\begin{frame}{Why the Uniform Distribution Is Special}
+The Uniform distribution is a universal starting point for simulation.
+
+\vspace{0.25cm}
+
+Many algorithms first generate
+\[
+U\sim \operatorname{Unif}(0,1),
+\]
+then transform $U$ to obtain another distribution.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main idea}
+A Uniform random variable can be transformed into a random variable with many other distributions.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Inverse CDF Method}
+Suppose $F$ is a continuous, strictly increasing CDF.
+
+Let
+\[
+U\sim \operatorname{Unif}(0,1).
+\]
+
+Define
+\[
+X=F^{-1}(U).
+\]
+
+Then
+\[
+{
+X \text{ has CDF } F.
+}
+\]
+
+\vspace{0.25cm}
+
+This is called the inverse CDF method or inverse transform sampling.
+\end{frame}
+
+\begin{frame}{Why the Inverse CDF Method Works}
+Let
+\[
+X=F^{-1}(U).
+\]
+
+Then
+\[
+\Prob(X\leq x)
+=
+\Prob(F^{-1}(U)\leq x).
+\]
+
+Since $F$ is increasing,
+\[
+F^{-1}(U)\leq x
+\quad \Longleftrightarrow \quad
+U\leq F(x).
+\]
+
+Therefore,
+\[
+\Prob(X\leq x)
+=
+\Prob(U\leq F(x)).
+\]
+
+Because $U\sim\operatorname{Unif}(0,1)$,
+\[
+\Prob(U\leq F(x))=F(x).
+\]
+
+Thus $X$ has CDF $F$.
+\end{frame}
+
+\begin{frame}{Probability Integral Transform}
+Conversely, if $X$ has continuous strictly increasing CDF $F$, then
+\[
+{
+F(X)\sim \operatorname{Unif}(0,1).
+}
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Interpretation}
+Applying the CDF to a random variable converts its value into a percentile.
+\end{keybox}
+
+\vspace{0.25cm}
+
+For example, if exam scores have CDF $F$, then $F(X)$ is the percentile of a randomly selected student.
+\end{frame}
+\begin{frame}{Uniform Mean and Variance}
+If $U\sim \operatorname{Unif}(a,b)$, then
+\[
+f_U(u)=\frac{1}{b-a},
+\qquad a\le u\le b.
+\]
+
+\begin{keybox}{Mean}
+\[
+\mathbb{E}(U)
+=
+\int_a^b u\,\frac{1}{b-a}\,du
+=
+\frac{1}{b-a}\left[\frac{u^2}{2}\right]_a^b
+=
+\frac{b^2-a^2}{2(b-a)}
+=
+{\frac{a+b}{2}}.
+\]
+\end{keybox}
+
+\begin{keybox}{Variance}
+First,
+\[
+\mathbb{E}(U^2)
+=
+\int_a^b u^2\,\frac{1}{b-a}\,du
+=
+\frac{b^3-a^3}{3(b-a)}
+=
+\frac{a^2+ab+b^2}{3}.
+\]
+Thus,
+\[
+\operatorname{Var}(U)
+=
+\mathbb{E}(U^2)-[\mathbb{E}(U)]^2
+=
+\frac{a^2+ab+b^2}{3}
+-
+\left(\frac{a+b}{2}\right)^2
+=
+{\frac{(b-a)^2}{12}}.
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Location-Scale Transformation}
+If
+\[
+U\sim \operatorname{Unif}(0,1),
+\]
+then
+\[
+a+(b-a)U\sim \operatorname{Unif}(a,b).
+\]
+
+\vspace{0.25cm}
+
+This transforms:
+\[
+(0,1)
+\quad \longrightarrow \quad
+(a,b).
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Useful idea}
+Start with the standard Uniform and shift/scale to get any Uniform interval.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Continuous random variables have probabilities over intervals, not points.
+
+    \item A PDF integrates to probabilities:
+    \[
+    \Prob(a<X<b)=\int_a^b f(x)\,dx.
+    \]
+
+    \item A valid PDF is nonnegative and integrates to $1$.
+
+    \item The CDF is accumulated area:
+    \[
+    F(x)=\int_{-\infty}^x f(t)\,dt.
+    \]
+
+    \item Uniform probabilities are proportional to interval length.
+
+    \item The Uniform distribution is universal through the inverse CDF method.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Next lecture}
+Normal and Exponential distributions.
+\end{keybox}
+\end{frame}

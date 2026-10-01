@@ -1,0 +1,508 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW7.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW7.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 67 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 71 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 7</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 84 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 86 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 92 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 94 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 102 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 104 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 113 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 115 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 117 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 125 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 127 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 129 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 140 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 142 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 147 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1. Meeting for Lunch</span> </p> 
+</div> 
+</div>                                                          <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 1.</span>
+</p><!-- l. 151 --><p class='noindent'>Alice and Bob arrange to meet for lunch on a certain day at noon. However, neither is known for punctuality.
+They both arrive independently at uniformly distributed times between noon and 1 pm on that day. Each is
+willing to wait up to 15 minutes for the other to show up.
+</p><!-- l. 153 --><p class='noindent'>What is the probability they will meet for lunch that day?
+</p>
+                                                                                              <div class='flushright'>
+<!-- l. 156 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 156 --><p class='noindent'><span class='cmbx-10'>Final Answer</span> </p> 
+</div> 
+</div>               </div>
+<!-- l. 157 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 162 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2. Two Breakpoints on a Stick</span> </p> 
+</div> 
+</div>                                                <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 7.</span>
+</p><!-- l. 166 --><p class='noindent'>A stick of length \(L\), where \(L\) is a positive constant, is broken at a uniformly random point \(X\). Given that \(X=x\), another
+breakpoint \(Y\) is chosen uniformly on the interval \([0,x]\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the joint PDF of \(X\) and \(Y\). Be sure to specify the support.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>We already know that the marginal distribution of \(X\) is \(\operatorname {Unif}(0,L)\). Check that marginalizing out \(Y\) from the
+    joint PDF agrees that this is the marginal distribution of \(X\).
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>We already know that the conditional distribution of \(Y\) given \(X=x\) is \(\operatorname {Unif}(0,x)\). Check that using the definition of
+    conditional PDFs agrees that this is the conditional distribution of \(Y\) given \(X=x\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the marginal PDF of \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(X\) given \(Y=y\).</dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 181 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 181 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 182 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 182 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 183 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 183 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (c)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 184 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 184 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (d)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              
+                                                                                              
+                                                                                              <div class='flushright'>
+<!-- l. 185 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 185 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (e)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 186 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 191 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3. Broken Stick and Table Legs</span> </p> 
+</div> 
+</div>                                               <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 14.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>A stick is broken into three pieces by picking two points independently and uniformly along the
+    stick, and breaking the stick at those two points. What is the probability that the three pieces can
+    be assembled into a triangle?
+    <!-- l. 198 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: A triangle can be formed from 3 line segments of lengths</span> \(a,b,c\) <span class='cmti-10x-x-109'>if and only if</span> \(a,b,c\in (0,1/2)\)<span class='cmti-10x-x-109'>. The probability can
+    be interpreted geometrically as proportional to an area in the plane, avoiding all calculus, but make
+    sure for that approach that the distribution of the random point in the plane is Uniform over some
+    region.</span>
+    </p></dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Three legs are positioned uniformly and independently on the perimeter of a round table. What is
+    the probability that the table will stand?</dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 204 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 204 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 205 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 205 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 206 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 211 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4. Rectangle Probability from a Joint CDF</span> </p> 
+</div> 
+</div>                                   <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 15.</span>
+</p><!-- l. 215 --><p class='noindent'>Let \(X\) and \(Y\) be continuous random variables, with joint CDF \(F(x,y)\). Show that the probability that \((X,Y)\) falls into the
+rectangle \([a_1,a_2]\times [b_1,b_2]\) is \[ F(a_2,b_2)-F(a_1,b_2)+F(a_1,b_1)-F(a_2,b_1). \]
+</p>
+                                                                                              <div class='flushright'>
+<!-- l. 221 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 221 --><p class='noindent'><span class='cmbx-10'>Final Answer</span> </p> 
+</div> 
+</div>               </div>
+<!-- l. 222 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 227 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5. Joint PDF I</span> </p> 
+</div> 
+</div>                                                                 <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 16.</span>
+</p><!-- l. 231 --><p class='noindent'>Let \(X\) and \(Y\) have joint PDF \[ f_{X,Y}(x,y)=x+y,\qquad 0&lt;x&lt;1,\;0&lt;y&lt;1. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Check that this is a valid joint PDF.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Are \(X\) and \(Y\) independent?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the marginal PDFs of \(X\) and \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(Y\) given \(X=x\).</dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 247 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-17'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 247 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 248 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-18'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 248 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 249 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-19'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 249 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (c)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 250 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-20'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 250 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (d)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 251 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-21'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 256 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6. Joint PDF II</span> </p> 
+</div> 
+</div>                                                                <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 17.</span>
+</p><!-- l. 260 --><p class='noindent'>Let \(X\) and \(Y\) have joint PDF \[ f_{X,Y}(x,y)=cxy,\qquad 0&lt;x&lt;y&lt;1. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find \(c\) to make this a valid joint PDF.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Are \(X\) and \(Y\) independent?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the marginal PDFs of \(X\) and \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the conditional PDF of \(Y\) given \(X=x\).</dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 276 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-22'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 276 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 277 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-23'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 277 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 278 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-24'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 278 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (c)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 279 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-25'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 279 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (d)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 280 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-26'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 285 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7. Random Quadratic</span> </p> 
+</div> 
+</div>                                                          <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 21.</span>
+</p><!-- l. 289 --><p class='noindent'>Find the probability that the quadratic polynomial \[ Ax^2+Bx+1, \] where the coefficients \(A\) and \(B\) are determined by drawing
+i.i.d. \(\operatorname {Unif}(0,1)\) random variables, has at least one real root.
+</p><!-- l. 295 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: By the quadratic formula, the polynomial</span> \(ax^2+bx+c\) <span class='cmti-10x-x-109'>has a real root if and only if</span> \(b^2-4ac\ge 0\)<span class='cmti-10x-x-109'>.</span>
+</p>
+                                                                                              <div class='flushright'>
+<!-- l. 298 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-27'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 298 --><p class='noindent'><span class='cmbx-10'>Final Answer</span> </p> 
+</div> 
+</div>               </div>
+<!-- l. 299 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-28'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 304 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 8. Distance Between Two Uniforms</span> </p> 
+</div> 
+</div>                                           <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 31.</span>
+</p><!-- l. 308 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Unif}(0,1)\). Find the standard deviation of the distance between \(X\) and \(Y\).
+</p>
+                                                                                              <div class='flushright'>
+<!-- l. 311 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-29'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 311 --><p class='noindent'><span class='cmbx-10'>Final Answer</span> </p> 
+</div> 
+</div>               </div>
+<!-- l. 312 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-30'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 317 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 9. Minimum and Maximum of Geometrics</span> </p> 
+</div> 
+</div>                                    <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 29.</span>
+</p><!-- l. 321 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Geom}(p)\), and let \[ L=\min (X,Y), \qquad M=\max (X,Y). \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the joint PMF of \(L\) and \(M\). Are they independent?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the marginal distribution of \(L\) in two ways: using the joint PMF, and using a story.
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find \(E(M)\).
+    <!-- l. 333 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: A quick way is to use part (b) and the fact that</span> \(L+M=X+Y\)<span class='cmti-10x-x-109'>.</span>
+    </p></dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the joint PMF of \(L\) and \(M-L\). Are they independent?</dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 339 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-31'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 339 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 340 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-32'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 340 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 341 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-33'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 341 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (c)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 342 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-34'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 342 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (d)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 343 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-35'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 348 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 10. Covariance and Independence</span> </p> 
+</div> 
+</div>                                             <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 39–40.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Two fair, six-sided dice are rolled, one green and one orange, with outcomes \(X\) and \(Y\) for the green die and
+    the orange die, respectively.
+          <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+       (i) </dt><dd class='enumerate-enumitem'>Compute the covariance of \(X+Y\) and \(X-Y\).
+          </dd><dt class='enumerate-enumitem'>
+      (ii) </dt><dd class='enumerate-enumitem'>Are \(X+Y\) and \(X-Y\) independent?</dd></dl>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Unif}(0,1)\).
+          <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+       (i) </dt><dd class='enumerate-enumitem'>Compute the covariance of \(X+Y\) and \(X-Y\).
+          </dd><dt class='enumerate-enumitem'>
+      (ii) </dt><dd class='enumerate-enumitem'>Are \(X+Y\) and \(X-Y\) independent?</dd></dl>
+    </dd></dl>
+                                                                                              <div class='flushright'>
+<!-- l. 367 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-36'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 367 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (a)</span> </p> 
+</div> 
+</div>   </div>
+                                                                                              <div class='flushright'>
+<!-- l. 368 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-37'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 368 --><p class='noindent'><span class='cmbx-10'>Final Answer for Part (b)</span> </p> 
+</div> 
+</div>   </div>
+<!-- l. 369 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-38'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 374 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 11. Multinomial Covariance</span> </p> 
+</div> 
+</div>                                                   <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 7, Problem 65.</span>
+</p><!-- l. 378 --><p class='noindent'>Let \[ (X_1,\dots ,X_k) \] be Multinomial with parameters \[ n \quad \text {and} \quad (p_1,\dots ,p_k). \] Use indicator random variables to show that \[ \operatorname {Cov}(X_i,X_j)=-np_ip_j, \qquad i\ne j. \]
+</p>
+                                                                                              <div class='flushright'>
+<!-- l. 393 --><p class='noindent'>
+ </p> <div class='tcolorbox tcolorbox' id='tcolobox-39'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 393 --><p class='noindent'><span class='cmbx-10'>Final Answer</span> </p> 
+</div> 
+</div>               </div>
+ 
+</body> 
+</html>

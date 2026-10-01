@@ -1,0 +1,519 @@
+\setcounter{framenumber}{0}
+%22
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item understand the Law of Large Numbers;
+    \item distinguish convergence in probability from exact equality;
+    \item apply the Weak Law of Large Numbers;
+    \item understand Monte Carlo integration;
+    \item define the empirical CDF;
+    \item understand the Central Limit Theorem;
+    \item standardize sums and averages;
+    \item apply Normal approximations to Binomial and Poisson distributions.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Why Limit Theorems Matter}
+
+\begin{frame}{Order Emerging from Randomness}
+Individual random outcomes are unpredictable.
+
+\vspace{0.25cm}
+
+But large collections of random variables often display remarkable regularity.
+
+\vspace{0.25cm}
+
+Examples:
+\begin{itemize}
+    \item sample averages stabilize;
+    \item proportions settle down;
+    \item histograms become bell-shaped;
+    \item randomness averages out.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main message}
+Large-scale randomness becomes highly structured.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Two Fundamental Theorems}
+The two most important limit theorems are:
+
+\vspace{0.25cm}
+
+\begin{enumerate}
+    \item Law of Large Numbers (LLN)
+
+    \[
+    \text{averages converge to expectations;}
+    \]
+
+    \item Central Limit Theorem (CLT)
+
+    \[
+    \text{standardized sums become approximately Normal.}
+    \]
+\end{enumerate}
+
+\vspace{0.25cm}
+
+Together, these form the foundation of modern statistics.
+\end{frame}
+
+\lecturepart{Law of Large Numbers (LLN)}
+
+
+\begin{frame}{Weak Law of Large Numbers}
+
+\begin{keybox}{Theorem (WLLN)}
+Let $X_1,X_2,\dots$ be i.i.d.\ random variables with finite mean $\mu$ (and finite variance $\sigma^2)$
+
+
+Then
+\[
+\forall  \ \varepsilon>0, \quad  \lim_{n\to\infty}
+\Prob\!\left(
+|\bar X_n-\mu|>\varepsilon
+\right)
+=0, \quad 
+\text{or equivalently,} 
+\quad   \lim_{n\to\infty}
+\Prob\!\left(
+|\bar X_n-\mu|\le \varepsilon
+\right)
+=1.
+\]
+ 
+\end{keybox}
+
+
+
+\begin{keybox}{Interpretation}
+As the sample size grows, the sample mean $\bar X_n$
+becomes arbitrarily close to the population mean $\mu$
+with probability approaching \(1\).
+\end{keybox}
+
+\textbf{Notation (Convergence in Probability):} This phenomena is also known as \textit{convergence in probability}, and is denoted by
+\begin{equation*}
+    \bar X_n \xrightarrow[]{P}\mu.
+\end{equation*}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Proof of WLLN Using Chebyshev's Inequality}
+Recall:
+\[
+\mathbb{E}(\bar X_n)=\mu,
+\]
+and
+\[
+\operatorname{Var}(\bar X_n)
+=
+\frac{\sigma^2}{n}.
+\]
+
+Applying Chebyshev:
+\[
+\Prob(|\bar X_n-\mu|>\varepsilon)
+\le
+\frac{
+\operatorname{Var}(\bar X_n)
+}{
+\varepsilon^2
+}.
+\]
+
+Thus:
+\[
+\Prob(|\bar X_n-\mu|>\varepsilon)
+\le
+\frac{\sigma^2}{n\varepsilon^2}.
+\]
+
+As
+\[
+n\to\infty,
+\]
+the right-hand side goes to
+\[
+0.
+\]
+\end{frame}
+\begin{frame}{Coin Toss Example}
+
+Suppose:
+\[
+X_i=
+\begin{cases}
+1,&\text{Heads},\\
+0,&\text{Tails}.
+\end{cases}
+\]
+
+Then $\mathbb{E}(X_i)=p.$ The sample mean is:
+\[
+\bar X_n
+=
+\frac{1}{n}\sum_{i=1}^n X_i
+=
+\text{proportion of Heads}.
+\]
+The LLN says $X_n
+\overset{P}{\longrightarrow}
+p.$
+Thus, observed proportions stabilize near the true probability \(p\).
+
+\end{frame}
+
+\begin{frame}{LLN and the Relative-Frequency Interpretation of Probability}
+
+\begin{keybox}{}
+The Law of Large Numbers gives a mathematical justification for the
+\textbf{long-run relative-frequency interpretation} of probability:
+if an experiment is repeated many times, the proportion of trials on which
+an event occurs approaches its probability.
+\end{keybox}
+
+Let \(A\subseteq \Sample\) be an event, and suppose the experiment is repeated
+independently under the same conditions. Define
+\[
+X_i=
+\begin{cases}
+1, & \text{if } A \text{ occurs on trial } i,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Then
+\[
+X_i\sim \operatorname{Bernoulli}(\Prob(A)),
+\qquad
+\E(X_i)=\Prob(A).
+\]
+
+Moreover,
+\[
+\bar X_n
+=
+\frac{1}{n}\sum_{i=1}^n X_i
+=
+\frac{\#\{\text{times }A\text{ occurs in the first }n\text{ trials}\}}{n},
+\]
+so \(\bar X_n\) is exactly the \textbf{relative frequency} of \(A\). By the Law of Large Numbers, $\bar X_n
+\overset{P}{\longrightarrow}
+\Prob(A).$ Thus,
+\[
+\text{relative frequency of }A
+\quad
+\xrightarrow[\text{number of trials}\to\infty]{P}
+\quad
+\text{theoretical probability }\Prob(A).
+\]
+
+\end{frame}
+
+
+
+\begin{frame}{Strong Law of Large Numbers}
+\begin{keybox}{Strong Law}
+Under the same assumptions of WLLN, we have
+
+\begin{equation*}
+    \Prob({\lim_{n\to \infty} \bar X_n = \mu}) =1.
+\end{equation*}
+Equivalently, 
+\begin{equation*}
+    \Prob(\{ s\in \Sample : \lim_{n\to \infty}X(s)=\mu \})=1
+\end{equation*}
+
+\end{keybox}
+
+\textbf{Notation (Almost-Sure Convergence)}: This phenomenon is also known as \textit{almost-sure convergence} or \textit{almost-everywhere convergence}, and is denoted by
+\begin{equation*}
+    \bar X_n \xrightarrow[]{a.s.}\mu, \quad or \quad \bar X_n \xrightarrow[]{a.e.}\mu
+\end{equation*}
+
+\textbf{Remark}: Almost-sure convergence implies (i.e., is stronger than) convergence in probability. Thus, SLLN is stronger than WLLN. The proof requires graduate-level background of Probability (Borel-Canteli Lemma).
+
+
+\end{frame}
+
+\lecturepart{LLN Application: Monte Carlo Integration}
+\begin{frame}{Monte Carlo Integration}
+
+Suppose we want to compute
+\[
+\int_0^1 g(x)\,dx.
+\]
+
+Let
+$U_1,\dots,U_n
+\overset{\text{i.i.d.}}{\sim}
+\operatorname{Unif}(0,1)$.
+
+Then
+\[
+\mathbb{E}(g(U_i))
+=
+\int_0^1 g(x)\,dx.
+\]
+
+Hence,
+\[
+\mathbb{E}[\frac1n
+\sum_{j=1}^n g(U_j)]= \int_0^1 g(x)\,dx.
+\]
+By the WLLN,
+\[
+\boxed{
+\frac1n
+\sum_{j=1}^n g(U_j)
+\xrightarrow[]{P}
+\int_0^1 g(x)\,dx, \quad \text{and thus},\quad   \frac1n
+\sum_{j=1}^n g(U_j)
+\approx
+\int_0^1 g(x)\,dx
+\quad
+\text{for large } n.
+}
+\]
+
+This is called Monte Carlo estimation of integrals. Draw $n$ random points on the interval, evaluate the function $g$ on them, and then average. The larger the $n$ the closer the average to the true integral.
+
+\end{frame}
+
+
+
+\lecturepart{LLN Application: Empirical Distribution Function}
+
+\begin{frame}{Empirical CDF}
+Given observations:
+\[
+X_1,\dots,X_n \sim F
+\]
+define the empirical CDF:
+\[
+{
+\hat F_n(x)
+=
+\frac1n
+\sum_{j=1}^n
+I(X_j\le x).
+}
+\]
+
+Interpretation:
+\[
+\hat F_n(x)
+=
+\text{fraction of observations $\leq$ }x.
+\]
+
+
+For fixed $x,$ the indicators $I(X_j\le x)$ are i.i.d. Bernoulli random variables with mean $F(x)=\Prob(X\le x).$ Thus, by the LLN:
+\[
+{
+\hat F_n(x)\to F(x).
+}
+\]
+
+The empirical CDF approximates the true CDF.
+\end{frame}
+
+
+
+
+\lecturepart{Central Limit Theorem}
+
+\begin{frame}{Central Limit Theorem}
+
+\begin{keybox}{Theorem (CLT)}
+Let $X_1,X_2,\dots$ be i.i.d.\ random variables with
+$\mathbb{E}(X_i)=\mu$ and $\Var(X_i)=\sigma^2<\infty$.
+
+Then for every $z\in \mathbb{R}$,
+\[
+\forall z\in \mathbb{R},\ \lim_{n\to\infty}
+\Prob\!\left(
+\frac{
+(\bar X_n-\mu)
+}{
+\sigma /\sqrt n
+}
+\le z
+\right)
+=
+\Phi(z),
+\]
+\end{keybox}
+
+
+\begin{keybox}{Interpretation}
+We previously learned that $\mathbb{E}[\bar X_n] = \mu$ and $\operatorname{Var}[\bar X_n]=\frac{\sigma^2}{n}$, which means that the fraction $\frac{\bar X_n-\mu}{\sigma /\sqrt{n}}$ is the standardized version of $\bar X_n$. CLT says that for large \(n\), the sample mean
+$\bar X_n$
+is approximately normal: $\bar X_n
+\approx
+N\!\left(
+\mu,
+\frac{\sigma^2}{n}
+\right).$
+This is especially important because we do not assume any distribution for $X_1,\dots X_n$ yet the sample mean follows a normal distribution for large $n.$ This offers that Normality emerges universally from averaging.
+\end{keybox}
+
+\textbf{Notation (Convergence in Distribution):} This phenomenon is also known as \textit{convergence in distribution}, and is denoted by $\frac{
+ \bar X_n-\mu
+}{
+\sigma/\sqrt n
+}
+\xrightarrow[]{d}
+N(0,1).$
+\end{frame}
+
+
+
+\begin{frame}{CLT Application: Normal's Approximation to Binomial}
+We have previously seen that a binomial r.v. can be written as a sum of $n$ i.i.d. Bernouli r.v.s. Let $X\sim \operatorname{Bin}(n,p).
+$, and $X
+=
+X_1+\cdots+X_n,$ where $X_1,\dots, X_n \sim Ber(p)$.
+
+
+Since:
+\[
+\mu=\mathbb{E}[X_i]= p,
+\qquad
+\sigma^2=\operatorname{Var}[X_i]= p(1-p),
+\]
+the CLT gives:
+\[
+\boxed{
+\frac{\bar X_n-\mathbb{E}[\bar X_n]}{\sqrt{Var}[\bar X_n]}=\frac{X/n-p}{\sqrt{p(1-p)/n}}
+=
+\frac{
+X-np
+}{
+\sqrt{np(1-p)}
+}
+\approx
+N(0,1).
+}
+\]
+\end{frame}
+
+\begin{frame}{Continuity Correction}
+A subtle point here is that Binomial distributions are discrete, while Normal distributions are continuous.
+
+\vspace{0.25cm}
+
+A better approximation uses a continuity correction:
+\[
+\Prob(X\le k)
+\approx
+\Prob\left(
+Y\le k+\frac12
+\right),
+\]
+where
+\[
+Y\sim N(np,np(1-p)).
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Idea}
+The correction accounts for the width of discrete bins.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Poisson to Normal}
+Suppose:
+\[
+X\sim \operatorname{Pois}(\lambda).
+\]
+
+For large
+\[
+\lambda,
+\]
+\[
+{
+\frac{
+X-\lambda
+}{
+\sqrt{\lambda}
+}
+\approx
+N(0,1).
+}
+\]
+
+\vspace{0.25cm}
+
+Equivalently:
+\[
+X
+\approx
+N(\lambda,\lambda).
+\]
+\end{frame}
+
+\begin{frame}{Why the CLT Is Remarkable}
+The original distribution can be:
+\begin{itemize}
+    \item discrete;
+    \item continuous;
+    \item skewed;
+    \item highly non-Normal.
+\end{itemize}
+
+\vspace{0.25cm}
+
+Yet averages still become approximately Normal.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Universality}
+The CLT explains why Normal distributions appear everywhere.
+\end{keybox}
+\end{frame}
+
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item The LLN says averages stabilize.
+
+    \item Monte Carlo integration is justified by the LLN.
+
+    \item The empirical CDF approximates the true CDF.
+
+    \item The CLT says standardized sums/averages become approximately Normal.
+
+    \item Standard errors decrease like
+    \[
+    \frac1{\sqrt n}.
+    \]
+
+    \item Normal approximations apply to Binomial and Poisson distributions.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Next lecture}
+Chi-Square and Student $t$ distributions.
+\end{keybox}
+\end{frame}

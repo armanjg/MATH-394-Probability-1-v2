@@ -1,0 +1,550 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\newtcolorbox{solutionbox}[1][]{
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][]{
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 2}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 1, Problem #1.}}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 2 Solution}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1. }
+\end{problemheader}
+\source{8}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item How many ways are there to split a dozen people into 3 teams, where one team has 2 people, and the other two teams have 5 people each?
+
+    \item How many ways are there to split a dozen people into 3 teams, where each team has 4 people?
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} First choose the team of 2 people. This can be done in
+\[
+\binom{12}{2}
+\]
+ways. After those two people have been chosen, there are 10 people left, and we need to divide them into two teams of 5. If we choose 5 of them for one team, the remaining 5 automatically form the other team. This gives \(\binom{10}{5}\) choices, but the two teams of size 5 have no labels, so this counts each split twice. Therefore the number of possible splits is
+\[
+\binom{12}{2}\frac{\binom{10}{5}}{2}
+=
+66\cdot \frac{252}{2}
+=
+8316.
+\]
+
+
+
+\textbf{(b)} Now all three teams have the same size, so none of the teams is distinguished by its size. If the teams were labeled, we could choose 4 people for the first team, then 4 of the remaining 8 for the second team, and then the last 4 people would form the third team. This gives
+\[
+\binom{12}{4}\binom{8}{4}\binom{4}{4}.
+\]
+Since the three teams are not labeled, each actual split has been counted \(3!\) times. Thus the desired number is
+\[
+\frac{1}{3!}\binom{12}{4}\binom{8}{4}\binom{4}{4}
+=
+\frac{12!}{(4!)^3 3!}
+=
+5775.
+\]
+
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2. }
+\end{problemheader}
+\source{20}
+
+Show using a story proof that
+\[
+{ k \choose k}
++
+{ k+1 \choose k}
++
+{ k+2 \choose k}
++
+\cdots
++
+{ n \choose k}
+=
+{ n+1 \choose k+1},
+\]
+where $n$ and $k$ are positive integers with $n\ge k$. This is called the \emph{hockey stick identity}.
+
+\emph{Hint: Imagine arranging a group of people by age, and then think about the oldest person in a chosen subgroup.}
+
+\begin{solutionbox}
+Imagine \(n+1\) people arranged from youngest to oldest. We want to choose a subgroup of \(k+1\) people. If we ignore the order of the people, the number of possible subgroups is simply
+\[
+\binom{n+1}{k+1}.
+\]
+
+Now count the same subgroups according to who the oldest chosen person is. If the oldest chosen person is the \((j+1)\)-st person in the age order, then the remaining \(k\) members of the subgroup must all be chosen from the \(j\) people younger than that person. This can be done in
+\[
+\binom{j}{k}
+\]
+ways. The oldest chosen person must have at least \(k\) people younger than them, and can range up to the oldest person in the whole group. Hence \(j\) ranges from \(k\) to \(n\). Summing over all possible choices of the oldest selected person gives
+\[
+\binom{k}{k}
++
+\binom{k+1}{k}
++
+\binom{k+2}{k}
++
+\cdots
++
+\binom{n}{k}.
+\]
+
+Both expressions count the same collection of subgroups of size \(k+1\). Therefore
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.  }
+\end{problemheader}
+\source{43}
+
+Show that for any events $A$ and $B$,
+\[
+P(A)+P(B)-1
+\le
+P(A\cap B)
+\le
+P(A\cup B)
+\le
+P(A)+P(B).
+\]
+
+For each of these three inequalities, give a simple criterion for when the inequality is actually an equality. For example, give a simple condition such that $P(A\cap B)=P(A\cup B)$ if and only if the condition holds.
+
+\begin{solutionbox}
+The addition rule gives
+\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B).
+\]
+Since \(P(A\cup B)\le 1\), this identity implies
+\[
+P(A)+P(B)-P(A\cap B)\le 1.
+\]
+Rearranging gives
+\[
+P(A)+P(B)-1\le P(A\cap B).
+\]
+Equality holds here exactly when \(P(A\cup B)=1\), meaning that \(A\cup B\) occurs with probability one.
+
+Next, since
+\[
+A\cap B\subseteq A\cup B,
+\]
+monotonicity of probability gives
+\[
+P(A\cap B)\le P(A\cup B).
+\]
+Equality holds exactly when the part of \(A\cup B\) outside \(A\cap B\) has probability zero. This part is the symmetric difference
+\[
+(A-B)\cup(B-A).
+\]
+Thus equality holds exactly when
+\[
+P\big((A-B)\cup(B-A)\big)=0.
+\]
+
+Finally, from the addition rule and the fact that \(P(A\cap B)\ge 0\), we get
+\[
+P(A\cup B)
+=
+P(A)+P(B)-P(A\cap B)
+\le
+P(A)+P(B).
+\]
+Equality holds exactly when
+\[
+P(A\cap B)=0.
+\]
+
+Therefore all three inequalities hold, and the equality cases are as described above.
+
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4.}
+\end{problemheader}
+\source{44}
+
+Let $A$ and $B$ be events. The \emph{difference} $B-A$ is defined to be the set of all elements of $B$ that are not in $A$. Show that if $A\subseteq B$, then
+\[
+P(B-A)=P(B)-P(A),
+\]
+directly using the axioms of probability.
+
+\begin{solutionbox}
+Since \(A\subseteq B\), the event \(B\) can be decomposed into two disjoint pieces,
+\[
+B=A\cup(B-A).
+\]
+These two events are disjoint because \(B-A\) consists exactly of the outcomes in \(B\) that are not in \(A\). Therefore, by finite additivity,
+\[
+P(B)
+=
+P(A\cup(B-A))
+=
+P(A)+P(B-A).
+\]
+Rearranging this identity gives
+\[
+P(B-A)=P(B)-P(A).
+\]
+
+This proves the desired formula directly from the additivity axiom of probability.
+
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5.}
+\end{problemheader}
+\source{50}
+
+A card player is dealt a 13-card hand from a well-shuffled, standard deck of cards.
+
+What is the probability that the hand is void in at least one suit? Here, ``void in a suit'' means having no cards of that suit.
+
+\begin{solutionbox}
+There are
+\[
+\binom{52}{13}
+\]
+equally likely 13-card hands. For each suit \(s\), let \(A_s\) be the event that the hand has no cards of suit \(s\). We want
+\[
+P(A_{\spadesuit}\cup A_{\heartsuit}\cup A_{\diamondsuit}\cup A_{\clubsuit}).
+\]
+
+We count this union by inclusion-exclusion. If one specified suit is missing, then all 13 cards must come from the remaining 39 cards, giving
+\[
+\binom{39}{13}
+\]
+hands. There are 4 choices for the missing suit.
+
+If two specified suits are missing, then all 13 cards must come from the remaining 26 cards, giving
+\[
+\binom{26}{13}
+\]
+hands. There are \(\binom{4}{2}\) choices for the two missing suits.
+
+If three specified suits are missing, then all 13 cards must come from a single suit. This is possible in
+\[
+\binom{13}{13}=1
+\]
+way for each choice of the three missing suits. There are \(\binom{4}{3}\) such choices. It is impossible for all four suits to be missing, since the hand has 13 cards.
+
+Therefore the probability that the hand is void in at least one suit is
+\[
+\frac{
+4\binom{39}{13}
+-
+\binom{4}{2}\binom{26}{13}
++
+\binom{4}{3}\binom{13}{13}
+}{
+\binom{52}{13}
+}.
+\]
+Equivalently,
+\[
+\frac{
+4\binom{39}{13}
+-
+6\binom{26}{13}
++
+4
+}{
+\binom{52}{13}
+}.
+\]
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. }
+\end{problemheader}
+\source{55}
+
+A club consists of 10 seniors, 12 juniors, and 15 sophomores. An organizing committee of size 5 is chosen randomly, with all subsets of size 5 equally likely.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the probability that there are exactly 3 sophomores in the committee.
+
+    \item Find the probability that the committee has at least one representative from each of the senior, junior, and sophomore classes.
+\end{enumerate}
+
+\begin{solutionbox}
+There are \(10+12+15=37\) students in the club, so the total number of possible committees of size 5 is
+\[
+\binom{37}{5}.
+\]
+
+\textbf{(a)} To have exactly 3 sophomores, we choose 3 of the 15 sophomores and then choose the remaining 2 committee members from the 22 students who are not sophomores. This gives
+\[
+\binom{15}{3}\binom{22}{2}
+\]
+committees. Hence the desired probability is
+\[
+\frac{\binom{15}{3}\binom{22}{2}}{\binom{37}{5}}.
+\]
+
+
+
+\textbf{(b)} Now the committee must contain at least one senior, at least one junior, and at least one sophomore. We count by the triple
+\[
+(s,j,p),
+\]
+where \(s\), \(j\), and \(p\) are the numbers of seniors, juniors, and sophomores on the committee. We need
+\[
+s+j+p=5,
+\qquad
+s,j,p\ge 1.
+\]
+Thus the favorable committees are counted by
+\[
+\sum_{\substack{s+j+p=5\\ s,j,p\ge 1}}
+\binom{10}{s}\binom{12}{j}\binom{15}{p}.
+\]
+Writing this out explicitly gives
+\[
+\binom{10}{1}\binom{12}{1}\binom{15}{3}
++
+\binom{10}{1}\binom{12}{2}\binom{15}{2}
++
+\binom{10}{1}\binom{12}{3}\binom{15}{1}
+\]
+\[
++
+\binom{10}{2}\binom{12}{1}\binom{15}{2}
++
+\binom{10}{2}\binom{12}{2}\binom{15}{1}
++
+\binom{10}{3}\binom{12}{1}\binom{15}{1}.
+\]
+Dividing by the total number of committees gives the probability
+\[
+\frac{
+\binom{10}{1}\binom{12}{1}\binom{15}{3}
++
+\binom{10}{1}\binom{12}{2}\binom{15}{2}
++
+\binom{10}{1}\binom{12}{3}\binom{15}{1}
++
+\binom{10}{2}\binom{12}{1}\binom{15}{2}
++
+\binom{10}{2}\binom{12}{2}\binom{15}{1}
++
+\binom{10}{3}\binom{12}{1}\binom{15}{1}
+}{
+\binom{37}{5}
+}.
+\]
+
+
+\end{solutionbox}
+
+\end{document}

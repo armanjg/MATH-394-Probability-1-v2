@@ -1,0 +1,368 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{colorlinks=true, linkcolor=uwpurple, urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 8}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[2]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter #1, Problem #2.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[width=0.36\textwidth,height=2cm,colback=white,colframe=uwpurple,boxrule=0.7pt,arc=1mm]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 8}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[width=0.86\textwidth,colback=white,colframe=uwgold,boxrule=0.8pt,arc=3mm]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.}
+\end{problemheader}
+\source{8}{1--5}
+
+Find the following PDFs.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the PDF of $e^{-X}$ for $X\sim \operatorname{Exp}(1)$.
+
+    \item Find the PDF of $X^7$ for $X\sim \operatorname{Exp}(\lambda)$.
+
+    \item Find the PDF of $Z^3$ for $Z\sim N(0,1)$.
+
+    \item Find the PDF of $Z^4$ for $Z\sim N(0,1)$.
+
+    \item Find the PDF of $|Z|$ for $Z\sim N(0,1)$.
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2. }
+\end{problemheader}
+\source{8}{13}
+
+Let $X$ and $Y$ be i.i.d. $\operatorname{Exp}(\lambda)$, and let
+\[
+T=\log(X/Y).
+\]
+Find the CDF and PDF of $T$.
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.  }
+\end{problemheader}
+\source{8}{14}
+
+Let $X$ and $Y$ have joint PDF $f_{X,Y}(x,y)$, and transform $(X,Y)\mapsto (T,W)$ linearly by letting
+\[
+T=aX+bY,
+\qquad
+W=cX+dY,
+\]
+where $a,b,c,d$ are constants such that
+\[
+ad-bc\ne0.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the joint PDF $f_{T,W}(t,w)$ in terms of $f_{X,Y}$, though your answer should be written as a function of $t$ and $w$.
+
+    \item For the case where
+    \[
+    T=X+Y,
+    \qquad
+    W=X-Y,
+    \]
+    show that
+    \[
+    f_{T,W}(t,w)
+    =
+    \frac12
+    f_{X,Y}\left(\frac{t+w}{2},\frac{t-w}{2}\right).
+    \]
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4. }
+\end{problemheader}
+\source{10}{2}
+
+For i.i.d. random variables $X_1,\dots,X_n$ with mean $\mu$ and variance $\sigma^2$, give a value of $n$, as a specific number, that will ensure that there is at least a $99\%$ chance that the sample mean will be within $2$ standard deviations of the true mean $\mu$.
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5.  }
+\end{problemheader}
+\source{10}{4}
+
+The famous arithmetic mean--geometric mean inequality says that for any positive numbers
+\[
+a_1,a_2,\dots,a_n,
+\]
+we have
+\[
+\frac{a_1+a_2+\cdots+a_n}{n}
+\ge
+(a_1a_2\cdots a_n)^{1/n}.
+\]
+
+Show that this inequality follows from Jensen's inequality, by considering $E(\log X)$ for a random variable $X$ whose possible values are $a_1,\dots,a_n$. You should specify the PMF of $X$.
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6.  }
+\end{problemheader}
+\source{10}{7}
+
+Let $X$ and $Y$ be i.i.d. positive random variables, and let $c>0$. For each part below, fill in the appropriate equality or inequality symbol.
+
+Write $=$ if the two sides are always equal, $\le$ if the left-hand side is less than or equal to the right-hand side but not necessarily equal, and similarly for $\ge$. If no relation holds in general, write $?$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item $E(\log X)\ \underline{\hspace{1cm}}\ \log(E X)$
+    \item $E(X)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)}$
+    \item $E(\sin^2 X)+E(\cos^2 X)\ \underline{\hspace{1cm}}\ 1$
+    \item $E(|X|)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)}$
+    \item $P(X>c)\ \underline{\hspace{1cm}}\ \dfrac{E(X^3)}{c^3}$
+    \item $P(X\le Y)\ \underline{\hspace{1cm}}\ P(X\ge Y)$
+    \item $E(XY)\ \underline{\hspace{1cm}}\ \sqrt{E(X^2)E(Y^2)}$
+    \item $P(X+Y>10)\ \underline{\hspace{1cm}}\ P(X>5\text{ or }Y>5)$
+    \item $E(\min(X,Y))\ \underline{\hspace{1cm}}\ \min(EX,EY)$
+    \item $E(X/Y)\ \underline{\hspace{1cm}}\ \dfrac{EX}{EY}$
+    \item $E\!\left(X^2(X^2+1)\right)\ \underline{\hspace{1cm}}\ E\!\left(X^2(Y^2+1)\right)$
+    \item $E\!\left(\dfrac{X^3}{X^3+Y^3}\right)\ \underline{\hspace{1cm}}\ E\!\left(\dfrac{Y^3}{X^3+Y^3}\right)$
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 7.}
+\end{problemheader}
+\source{10}{22}
+
+Let
+\[
+U_1,U_2,\dots,U_{60}
+\]
+be i.i.d. $\operatorname{Unif}(0,1)$ and let
+\[
+X=U_1+U_2+\cdots+U_{60}.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Which important distribution is the distribution of $X$ very close to? Specify what the parameters are, and state which theorem justifies your choice.
+
+    \item Give a simple but accurate approximation for
+    \[
+    P(X>17).
+    \]
+    Justify briefly.
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 8.}
+\end{problemheader}
+\source{10}{25}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Let
+    \[
+    Y=e^X,
+    \qquad
+    X\sim \operatorname{Exp}(3).
+    \]
+    Find the mean and variance of $Y$.
+
+    \item For $Y_1,\dots,Y_n$ i.i.d. with the same distribution as $Y$ from part (a), what is the approximate distribution of the sample mean
+    \[
+    \bar Y_n=\frac1n\sum_{j=1}^{n}Y_j
+    \]
+    when $n$ is large?
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 9. }
+\end{problemheader}
+\source{10}{27}
+
+Consider i.i.d. $\operatorname{Pois}(\lambda)$ random variables
+\[
+X_1,X_2,\dots.
+\]
+The MGF of $X_j$ is
+\[
+M(t)=e^{\lambda(e^t-1)}.
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the MGF $M_n(t)$ of the sample mean
+    \[
+    \bar X_n=\frac1n\sum_{j=1}^{n}X_j.
+    \]
+
+    \item Find the limit of $M_n(t)$ as $n\to\infty$. You can do this with almost no calculation using a relevant theorem, or you can use part (a) and the fact that $e^x\approx 1+x$ if $x$ is very small.
+\end{enumerate}
+ 
+
+\end{document}

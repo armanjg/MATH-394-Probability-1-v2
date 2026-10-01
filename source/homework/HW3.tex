@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 3}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 2, Problem #1.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 3}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.}
+\end{problemheader}
+\source{1}
+
+A spam filter is designed by looking at commonly occurring phrases in spam. Suppose that $80\%$ of email is spam. In $10\%$ of the spam emails, the phrase ``free money'' is used, whereas this phrase is only used in $1\%$ of non-spam emails. A new email has just arrived, which does mention ``free money.'' What is the probability that it is spam?
+
+\vfill
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.}
+\end{problemheader}
+\source{6}
+
+A hat contains 100 coins, where 99 are fair but one is double-headed, always landing Heads. A coin is chosen uniformly at random. The chosen coin is flipped 7 times, and it lands Heads all 7 times.
+
+Given this information, what is the probability that the chosen coin is double-headed?
+
+\vfill
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3. }
+\end{problemheader}
+\source{10}
+
+Fred is working on a major project. In planning the project, two milestones are set up, with dates by which they should be accomplished. This serves as a way to track Fred's progress. Let $A_1$ be the event that Fred completes the first milestone on time, $A_2$ be the event that he completes the second milestone on time, and $A_3$ be the event that he completes the project on time.
+
+Suppose that
+\[
+P(A_{j+1}\mid A_j)=0.8
+\qquad\text{but}\qquad
+P(A_{j+1}\mid A_j^c)=0.3
+\]
+for $j=1,2$, since if Fred falls behind on his schedule it will be hard for him to get caught up. Also, assume that the second milestone supersedes the first, in the sense that once we know whether he is on time in completing the second milestone, it no longer matters what happened with the first milestone. We can express this by saying that $A_1$ and $A_3$ are conditionally independent given $A_2$, and they are also conditionally independent given $A_2^c$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the probability that Fred will finish the project on time, given that he completes the first milestone on time. Also find the probability that Fred will finish the project on time, given that he is late for the first milestone.
+
+    \item Suppose that $P(A_1)=0.75$. Find the probability that Fred will finish the project on time.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4.}
+\end{problemheader}
+\source{20}
+
+The Jack of Spades, Jack of Hearts, Queen of Spades, and Queen of Hearts are taken from a deck of cards. These four cards are shuffled, and then two are dealt. Literary references to cider, tarts, and winks do not need to be considered when solving this problem.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the probability that both of these two cards are queens, given that the first card dealt is a queen.
+
+    \item Find the probability that both are queens, given that at least one is a queen.
+
+    \item Find the probability that both are queens, given that one is the Queen of Hearts.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5.}
+\end{problemheader}
+\source{30}
+
+A family has 3 children, creatively named $A$, $B$, and $C$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Discuss intuitively, but clearly, whether the event ``$A$ is older than $B$'' is independent of the event ``$A$ is older than $C$.''
+
+    \item Find the probability that $A$ is older than $B$, given that $A$ is older than $C$.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. }
+\end{problemheader}
+\source{31}
+
+Is it possible that an event is independent of itself? If so, when is this the case?
+
+\vfill
+
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 7. }
+\end{problemheader}
+\source{35}
+
+You are going to play 2 games of chess with an opponent whom you have never played against before. Your opponent is equally likely to be a beginner, intermediate, or master. Depending on which, your chances of winning an individual game are $90\%$, $50\%$, or $30\%$, respectively.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item What is your probability of winning the first game?
+
+    \item Congratulations: you won the first game! Given this information, what is the probability that you will also win the second game, assuming that, given the skill level of your opponent, the outcomes of the games are independent?
+
+    \item Explain the distinction between assuming that the outcomes of the games are independent and assuming that they are conditionally independent given the opponent's skill level. Which of these assumptions seems more reasonable, and why?
+\end{enumerate}
+
+\vfill
+
+
+
+\end{document}

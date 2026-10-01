@@ -1,0 +1,283 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.45in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\definecolor{main}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{EEF6FF}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=main,
+    urlcolor=main
+}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newtcolorbox{distbox}[1]{
+    colback=softblue,
+    colframe=main,
+    title=\textbf{#1},
+    fonttitle=\large,
+    arc=3mm,
+    boxrule=0.8pt,
+    left=3mm,
+    right=3mm,
+    top=2mm,
+    bottom=1mm
+}
+
+% -------------------------------------------------
+% Header / Footer Style
+% -------------------------------------------------
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\setlength{\headheight}{18pt}
+\setlength{\headsep}{18pt}
+
+\lhead{\small University of Washington}
+\chead{\small Department of Mathematics}
+\rhead{\small MATH 394: Probability I}
+
+\lfoot{\small Summer 2026}
+\cfoot{\small Arman Jahangiri}
+\rfoot{\small \thepage\ /\ \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Probability Distribution Reference Sheet}\\[-1mm]
+{\normalsize MATH 394: Probability I (Summer 2026)}\\[-1mm]
+{\small Instructor: Arman Jahangiri, Department of Mathematics @ University of Washington}
+\end{center}
+
+\vspace{-2mm}
+
+\begin{distbox}{Discrete Distributions I}
+\scriptsize
+\renewcommand{\arraystretch}{1.55}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabularx}{\textwidth}{@{}L{2.0cm}YYYYY@{}}
+\toprule
+\textbf{Quantity} & \textbf{Bernoulli} & \textbf{Binomial} & \textbf{Poisson} & \textbf{Geometric} & \textbf{Geometric, zero-based} \\
+\midrule
+Parameters
+& $0\le p\le 1$
+& $n\ge 1,\ 0\le p\le 1$
+& $\lambda>0$
+& $0<p\le 1$
+& $0<p\le 1$ \\
+PMF
+& $P(X=k)=p^k(1-p)^{1-k}$
+& $P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}$
+& $P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!}$
+& $P(X=k)=p(1-p)^{k-1}$
+& $P(X=k)=p(1-p)^k$ \\
+Support
+& $k=0,1$
+& $k=0,\dots,n$
+& $k=0,1,2,\dots$
+& $k=1,2,\dots$
+& $k=0,1,2,\dots$ \\
+Mean
+& $p$
+& $np$
+& $\lambda$
+& $\dfrac{1}{p}$
+& $\dfrac{1-p}{p}$ \\
+Variance
+& $p(1-p)$
+& $np(1-p)$
+& $\lambda$
+& $\dfrac{1-p}{p^2}$
+& $\dfrac{1-p}{p^2}$ \\
+MGF
+& $1-p+pe^t$
+& $(1-p+pe^t)^n$
+& $\exp\{\lambda(e^t-1)\}$
+& $\dfrac{pe^t}{1-(1-p)e^t}$
+& $\dfrac{p}{1-(1-p)e^t}$ \\
+\bottomrule
+\end{tabularx}
+\end{distbox}
+
+\vspace{2mm}
+
+\begin{distbox}{Discrete Distributions II}
+\scriptsize
+\renewcommand{\arraystretch}{1.55}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabularx}{\textwidth}{@{}L{2.0cm}YYYY@{}}
+\toprule
+\textbf{Quantity} & \textbf{Negative Binomial} & \textbf{Negative Binomial, failures before $r$ successes} & \textbf{Hypergeometric} & \textbf{Negative Hypergeometric} \\
+\midrule
+Parameters
+& $r\ge 1,\ 0<p\le 1$
+& $r\ge 1,\ 0<p\le 1$
+& $w,b,n$
+& $w,b,r$ \\
+PMF
+& $P(X=k)=\binom{k-1}{r-1}p^r(1-p)^{k-r}$
+& $P(X=k)=\binom{r+k-1}{r-1}p^r(1-p)^k$
+& $P(X=k)=\dfrac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}}$
+& $P(X=k)=\dfrac{\binom{r+k-1}{r-1}\binom{w+b-r-k}{w-r}}{\binom{w+b}{w}}$ \\
+Support
+& $k=r,r+1,\dots$
+& $k=0,1,2,\dots$
+& $\max(0,n-b)\le k\le \min(n,w)$
+& $k=0,1,\dots,b$ \\
+Mean
+& $\dfrac{r}{p}$
+& $\dfrac{r(1-p)}{p}$
+& $\dfrac{nw}{w+b}$
+& $\dfrac{rb}{w+1}$ \\
+Variance
+& $\dfrac{r(1-p)}{p^2}$
+& $\dfrac{r(1-p)}{p^2}$
+& $\dfrac{w+b-n}{w+b-1}\,n\dfrac{w}{w+b}\left(1-\dfrac{w}{w+b}\right)$
+& $\dfrac{rb(w+b+1)(w-r+1)}{(w+1)^2(w+2)}$ \\
+MGF
+& $\left(\dfrac{pe^t}{1-(1-p)e^t}\right)^r$
+& $\left(\dfrac{p}{1-(1-p)e^t}\right)^r$
+& $\displaystyle \sum_k e^{tk}\dfrac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}}$
+& $\displaystyle \sum_{k=0}^{b} e^{tk}\dfrac{\binom{r+k-1}{r-1}\binom{w+b-r-k}{w-r}}{\binom{w+b}{w}}$ \\
+\bottomrule
+\end{tabularx}
+\end{distbox}
+
+\begin{center}
+{\footnotesize
+© 2026 Arman Jahangiri — Department of Mathematics @ University of Washington.\\
+For educational use in MATH 394: Probability I
+}
+\end{center}
+
+\newpage
+
+\begin{distbox}{Continuous Distributions I}
+\scriptsize
+\renewcommand{\arraystretch}{1.55}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabularx}{\textwidth}{@{}L{2.0cm}YYYYY@{}}
+\toprule
+\textbf{Quantity} & \textbf{Uniform} & \textbf{Normal} & \textbf{Log-Normal} & \textbf{Exponential} & \textbf{Gamma} \\
+\midrule
+Parameters
+& $a<b$
+& $\mu\in\mathbb{R},\ \sigma^2>0$
+& $\mu\in\mathbb{R},\ \sigma^2>0$
+& $\lambda>0$
+& $r>0,\ \lambda>0$ \\
+PDF
+& $f_X(x)=\dfrac{1}{b-a}$
+& $f_X(x)=\dfrac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\dfrac{(x-\mu)^2}{2\sigma^2}\right\}$
+& $f_X(x)=\dfrac{1}{x\sigma\sqrt{2\pi}}\exp\left\{-\dfrac{(\log x-\mu)^2}{2\sigma^2}\right\}$
+& $f_X(x)=\lambda e^{-\lambda x}$
+& $f_X(x)=\dfrac{\lambda^r}{\Gamma(r)}x^{r-1}e^{-\lambda x}$ \\
+Support
+& $a<x<b$
+& $-\infty<x<\infty$
+& $x>0$
+& $x\ge 0$
+& $x\ge 0$ \\
+Mean
+& $\dfrac{a+b}{2}$
+& $\mu$
+& $e^{\mu+\sigma^2/2}$
+& $\dfrac{1}{\lambda}$
+& $\dfrac{r}{\lambda}$ \\
+Variance
+& $\dfrac{(b-a)^2}{12}$
+& $\sigma^2$
+& $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$
+& $\dfrac{1}{\lambda^2}$
+& $\dfrac{r}{\lambda^2}$ \\
+MGF
+& $\dfrac{e^{tb}-e^{ta}}{t(b-a)}$
+& $\exp\left\{\mu t+\dfrac{\sigma^2t^2}{2}\right\}$
+& DNE
+& $\dfrac{\lambda}{\lambda-t}$
+& $\left(\dfrac{\lambda}{\lambda-t}\right)^r$ \\
+\bottomrule
+\end{tabularx}
+\end{distbox}
+
+\vspace{2mm}
+
+\begin{distbox}{Continuous Distributions II}
+\scriptsize
+\renewcommand{\arraystretch}{1.55}
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabularx}{\textwidth}{@{}L{2.0cm}YYYY@{}}
+\toprule
+\textbf{Quantity} & \textbf{Beta} & \textbf{Weibull} & \textbf{Chi-Square} & \textbf{Student-$t$} \\
+\midrule
+Parameters
+& $a,b>0$
+& $\alpha,\lambda>0$
+& $n>0$
+& $n>0$ \\
+PDF
+& $f_X(x)=\dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}$
+& $f_X(x)=\alpha\lambda x^{\alpha-1}e^{-\lambda x^\alpha}$
+& $f_X(x)=\dfrac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2}$
+& $f_X(x)=\dfrac{\Gamma((n+1)/2)}{\sqrt{n\pi}\Gamma(n/2)}\left(1+\dfrac{x^2}{n}\right)^{-(n+1)/2}$ \\
+Support
+& $0<x<1$
+& $x>0$
+& $x>0$
+& $-\infty<x<\infty$ \\
+Mean
+& $\dfrac{a}{a+b}$
+& $\dfrac{\Gamma(1+1/\alpha)}{\lambda^{1/\alpha}}$
+& $n$
+& $0,\ n>1$ \\
+Variance
+& $\dfrac{ab}{(a+b)^2(a+b+1)}$
+& $\dfrac{\Gamma(1+2/\alpha)}{\lambda^{2/\alpha}}-\mu^2$
+& $2n$
+& $\dfrac{n}{n-2},\ n>2$ \\
+MGF
+& --
+& --
+& $(1-2t)^{-n/2}$
+& DNE \\
+\bottomrule
+\end{tabularx}
+\end{distbox}
+
+\begin{distbox}{Moment-Generating Function}
+The moment-generating function is
+\[
+M_X(t)=\mathbb{E}(e^{tX}).
+\]
+When it exists near $t=0$, it can be used to compute moments:
+\[
+\mathbb{E}(X^n)=M_X^{(n)}(0).
+\]
+\end{distbox}
+
+\begin{center}
+{\footnotesize
+© 2026 Arman Jahangiri — Department of Mathematics @ University of Washington.\\
+For educational use in MATH 394: Probability I
+}
+\end{center}
+
+\end{document}

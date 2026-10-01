@@ -1,0 +1,560 @@
+\setcounter{framenumber}{0}
+%25
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+
+\begin{itemize}
+    \item state the naive definition of probability;
+    \item identify when the naive definition is appropriate;
+    \item compute probabilities by counting favorable outcomes;
+    \item use complements to simplify probability calculations;
+\end{itemize}
+\end{frame}
+
+\lecturepart{Naive Probability}
+
+\begin{frame}{From Events to Probabilities}
+In the previous lecture:
+
+\[
+\Sample = \{\text{all possible outcomes}\},
+\qquad
+A \subseteq \Sample.
+\]
+
+\vspace{0.25cm}
+
+Now we want to assign a number to an event:
+
+\[
+\Prob(A) = \text{probability that } A \text{ occurs}.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Question}
+If every outcome in a finite sample space is equally likely, how should we define $\Prob(A)$?
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Definition: Naive Probability}
+\begin{keybox}{Naive Definition of Probability}
+Let $A$ be an event for an experiment with a finite sample space $\Sample$.
+
+If all outcomes in $\Sample$ are equally likely, define
+
+\[
+\Prob_{\mathrm{naive}}(A)
+=
+\frac{|A|}{|\Sample|}
+=
+\frac{\text{number of outcomes favorable to } A}
+{\text{total number of outcomes in } \Sample}.
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+Here $|A|$ denotes the number of elements in the set $A$ (aka $card(A)$).
+\vspace{1mm}
+
+Question: Why does this definition is suitable for equally-likely outcomes?
+
+\end{frame}
+
+\begin{frame}{Naive Probability - Properties}
+
+
+Naive probability satisfies
+
+\[
+0 \leq \Prob(A) \leq 1, \ \Prob(S)=1, \ \Prob(\emptyset)=0,
+\qquad \text{for every } A \subseteq \Sample.
+\]
+
+Why? First, if $A \subseteq \Sample$, then
+\[
+0 \leq |A| \leq |\Sample|,
+\]
+so
+\[
+0 \leq \frac{|A|}{|\Sample|} \leq 1.
+\]
+
+Also,
+\[
+\Prob(\Sample)=\frac{|\Sample|}{|\Sample|}=1,
+\qquad
+\Prob(\emptyset)=\frac{0}{|\Sample|}=0.
+\]
+\end{frame}
+
+\begin{frame}{Additivity for Disjoint Events}
+Suppose $A,B \subseteq \Sample$ ,
+
+Then, since
+\[
+|A \cup B| = |A| + |B| - |A\cap B|.
+\]
+
+Therefore,
+\[
+\Prob(A \cup B)
+=
+\frac{|A \cup B|}{|\Sample|}
+=
+\frac{|A|+|B|-|A\cap B|}{|\Sample|}
+=
+\frac{|A|}{|\Sample|}
++
+\frac{|B|}{|\Sample|}
+-
+\frac{|A\cap B|}{|\Sample|}.
+\]
+
+Thus
+\[
+{\Prob(A \cup B)=\Prob(A)+\Prob(B)} -\Prob(A\cap B).
+\]
+A speical case is when $A$ and $B$ are exclusive ($A\cap B=\emptyset$), when we have 
+\[
+{\Prob(A \cup B)=\Prob(A)+\Prob(B)}
+\]
+
+
+\begin{keybox}{Looking ahead}
+Later, we will define probability more generally using properties like these as axioms.  
+Naive probability will then become a special case of the general theory.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{What the Definition Means}
+The naive definition says:
+
+\[
+\Prob(A)
+=
+\frac{\text{how many outcomes make } A \text{ happen}}
+{\text{how many outcomes are possible}}.
+\]
+
+\vspace{0.3cm}
+
+This requires two assumptions:
+
+\begin{enumerate}
+    \item The sample space $\Sample$ is finite (we can't divide by infinity).
+    \item All outcomes in $\Sample$ are equally likely.
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\begin{keybox}{Important}
+The naive definition is not wrong.  
+It is just limited. It should only be used when its assumptions are justified.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Pebble World Interpretation}
+Suppose each pebble has the same mass.
+
+\[
+\Prob(A)
+=
+\frac{\text{number of pebbles in } A}
+{\text{number of pebbles in } \Sample}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+    \draw[rounded corners, thick] (-3.4,-1.55) rectangle (3.4,1.55);
+    \node at (3.05,1.25) {$\Sample$};
+
+    \foreach \x/\y in {-2.6/0.8,-1.8/0.9,-1.0/0.65,-0.2/0.85,0.8/0.75,1.7/0.9,2.5/0.75,
+                       -2.2/0.0,-1.2/-0.1,-0.3/0.05,0.7/-0.1,1.7/0.0,2.6/0.05,
+                       -2.5/-0.85,-1.5/-0.75,-0.4/-0.9,0.6/-0.75,1.6/-0.85,2.5/-0.75}
+        \fill[UWGray] (\x,\y) circle (2.5pt);
+
+    \draw[UWPurple, thick] (-1.75,0.05) ellipse (1.25 and 1.05);
+    \node[UWPurple] at (-2.8,1.15) {$A$};
+\end{tikzpicture}
+\end{center}
+
+\[
+\Prob(A) = \frac{|A|}{|\Sample|}.
+\]
+\end{frame}
+
+\begin{frame}{Example: One Fair Die}
+Roll one fair six-sided die.
+
+\[
+\Sample = \{1,2,3,4,5,6\}.
+\]
+
+Let
+\[
+A = \{\text{roll is even}\} = \{2,4,6\}.
+\]
+
+Then
+
+\[
+|\Sample| = 6,
+\qquad
+|A| = 3.
+\]
+
+Therefore
+
+\[
+\Prob(A)
+=
+\frac{|A|}{|\Sample|}
+=
+\frac{3}{6}
+=
+\frac{1}{2}.
+\]
+\end{frame}
+
+\begin{frame}{Example: One Card}
+Draw one card from a standard well-shuffled $52$-card deck.
+
+Let
+
+\[
+A = \{\text{card is an ace}\}.
+\]
+
+There are $4$ aces and $52$ cards total, so
+
+\[
+\Prob(A)
+=
+\frac{|A|}{|\Sample|}
+=
+\frac{4}{52}
+=
+\frac{1}{13}.
+\]
+
+\vspace{0.25cm}
+
+Let
+
+\[
+H = \{\text{card is a heart}\}.
+\]
+
+Then
+
+\[
+\Prob(H)
+=
+\frac{13}{52}
+=
+\frac{1}{4}.
+\]
+\end{frame}
+
+\begin{frame}{Example: Red or Ace}
+Draw one card from a standard $52$-card deck.
+
+Let
+
+\[
+R = \{\text{card is red}\},
+\qquad
+A = \{\text{card is an ace}\}.
+\]
+
+We want
+
+\[
+\Prob(R \cup A).
+\]
+
+\vspace{0.2cm}
+
+There are:
+\[
+26 \text{ red cards},
+\qquad
+4 \text{ aces},
+\qquad
+2 \text{ red aces}.
+\]
+
+So
+
+\[
+|R \cup A|
+=
+26 + 4 - 2
+=
+28.
+\]
+
+Therefore
+
+\[
+\Prob(R \cup A)
+=
+\frac{28}{52}
+=
+\frac{7}{13}.
+\]
+\end{frame}
+
+
+\lecturepart{Complements}
+
+\begin{frame}{Complement Rule Under the Naive Definition}
+Let $A \subseteq \Sample$.
+
+The complement of $A$ is
+
+\[
+A^c = \{s \in \Sample : s \notin A\}.
+\]
+
+Since every outcome is either in $A$ or not in $A$,
+
+\[
+|A^c| = |\Sample| - |A|.
+\]
+
+Therefore,
+
+\[
+\Prob(A^c)
+=
+\frac{|A^c|}{|\Sample|}
+=
+\frac{|\Sample|-|A|}{|\Sample|}
+=
+1 - \frac{|A|}{|\Sample|}.
+\]
+
+So
+
+\[
+{\Prob(A^c)=1-\Prob(A).}
+\]
+\end{frame}
+
+\begin{frame}{Why Complements Are Useful}
+Sometimes it is easier to count when an event does \textbf{not} happen.
+
+\vspace{0.25cm}
+
+Instead of computing $\Prob(A)$ directly, compute:
+
+\[
+\Prob(A) = 1 - \Prob(A^c).
+\]
+
+\vspace{0.3cm}
+
+\begin{keybox}{Strategy}
+When a probability asks for phrases like
+
+\[
+\text{``at least one''}, \qquad \text{``at least two''}, \qquad \text{``not all''},
+\]
+
+first ask whether the complement is easier.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Example: At Least One Head}
+Flip a fair coin $5$ times.
+
+Let
+
+\[
+A = \{\text{at least one head occurs}\}.
+\]
+
+The complement is
+
+\[
+A^c = \{\text{no heads occur}\}.
+\]
+
+There is only one outcome with no heads: $TTTTT.$
+
+The total number of outcomes is $2^5 = 32.$
+
+Therefore
+
+\[
+\Prob(A^c)=\frac{1}{32},
+\qquad
+\Prob(A)=1-\frac{1}{32}=\frac{31}{32}.
+\]
+\end{frame}
+
+\begin{frame}{Example: At Least One Six}
+Roll a fair die $4$ times.
+
+Let
+
+\[
+A = \{\text{at least one six occurs}\}.
+\]
+
+It is easier to count
+
+\[
+A^c = \{\text{no six occurs}\}.
+\]
+
+Total outcomes: $6^4$. Outcomes with no six: $5^4$.
+
+Therefore,
+\[
+\Prob(A)
+=
+1-\Prob(A^c)
+=
+1-\frac{5^4}{6^4}.
+\]
+\end{frame}
+
+\lecturepart{Common Mistakes}
+
+
+
+\begin{frame}{Example: Two Fair Dice}
+Roll two fair dice.
+
+A correct sample space is
+
+\[
+\Sample = \{(i,j): i,j \in \{1,2,3,4,5,6\}\}.
+\]
+
+Here $(i,j)$ means:
+
+\[
+i = \text{result of die 1},
+\qquad
+j = \text{result of die 2}.
+\]
+
+Thus
+
+\[
+|\Sample| = 36.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Important}
+The outcomes are ordered pairs.  
+For example, $(5,6)$ and $(6,5)$ are different outcomes.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Example: Sum 11 versus Sum 12}
+For two fair dice:
+
+\[
+\Sample = \{(i,j): i,j \in \{1,\dots,6\}\}.
+\]
+
+Let
+
+\[
+A = \{\text{sum is } 11\},
+\qquad
+B = \{\text{sum is } 12\}.
+\]
+
+Then
+
+\[
+A = \{(5,6),(6,5)\},
+\qquad
+B = \{(6,6)\}.
+\]
+
+So
+
+\[
+\Prob(A)=\frac{2}{36}=\frac{1}{18},
+\]
+
+while $\Prob(B)=\frac{1}{36}.$
+
+Thus a sum of $11$ is twice as likely as a sum of $12$.
+\end{frame}
+
+
+\begin{frame}{Mini-Exercises}
+\begin{enumerate}
+    \item A fair die is rolled. What is the probability of rolling a number at least $5$?
+
+    \item A fair coin is flipped $4$ times. What is the probability of getting all tails?
+
+    \item A card is drawn from a standard deck. What is the probability that it is not a heart?
+
+    \item Two fair dice are rolled. What is the probability that the sum is $7$?
+
+    \item Why is the statement ``the probability of rain tomorrow is $1/2$ because either it rains or it does not'' invalid?
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\begin{livebox}{Answers}
+\[
+\frac{2}{6}=\frac13,
+\qquad
+\frac{1}{16},
+\qquad
+1-\frac{13}{52}=\frac34,
+\qquad
+\frac{6}{36}=\frac16.
+\]
+\end{livebox}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item The naive definition is
+    \[
+    \Prob(A)=\frac{|A|}{|\Sample|}.
+    \]
+
+    \item It applies when $\Sample$ is finite and all outcomes are equally likely.
+
+    \item Naive probability satisfies:
+    \[
+    0 \leq \Prob(A) \leq 1,
+    \qquad
+    \Prob(\Sample)=1,
+    \qquad
+    \Prob(\emptyset)=0,
+    \]
+ If $A \cap B=\emptyset$, then
+    \[
+    \Prob(A \cup B)=\Prob(A)+\Prob(B).
+    \]
+
+    \item Complements are often useful:
+    \[
+    \Prob(A^c)=1-\Prob(A).
+    \]
+\end{itemize}
+
+\begin{keybox}{Next lecture}
+Counting methods: multiplication rule, sampling with replacement, and sampling without replacement.
+\end{keybox}
+\end{frame}

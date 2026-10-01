@@ -1,0 +1,224 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='midterm_solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='midterm_solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 92 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p><!-- l. 96 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Midterm Examination Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Summer 2026    —    Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 115 --><p class='noindent'><span class='cmbx-10x-x-109'>Exam date: </span>July 22, 2026
+</p><!-- l. 117 --><p class='noindent'><span class='cmbx-10x-x-109'>Answering time: </span>60 minutes
+</p><!-- l. 119 --><p class='noindent'><span class='cmbx-10x-x-109'>Total: </span>60 points </p> 
+</div> 
+</div>
+                                                                                               
+                                                                                               
+<div class='tcolorbox problemheader' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 128 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.                                                                                         5 points</span>
+</p> 
+</div> 
+</div><p>                                                                                            A
+student organization has 7 mathematics graduate students, 5 statistics graduate students, and 6
+undergraduate students. A committee of 5 students is selected uniformly at random from all committees of
+5.
+</p><!-- l. 132 --><p class='noindent'>Find the probability that the committee contains exactly 2 mathematics graduate students, exactly 1 statistics
+graduate student, and exactly 2 undergraduate students.
+</p><!-- l. 134 --><p class='noindent'>Give an exact answer. A correct expression involving binomial coefficients is acceptable. </p> <div class='tcolorbox solutionbox' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+<!-- l. 169 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 136 --><p class='noindent'>There are \[ \binom {18}{5} \] possible committees of 5 students, and all are equally likely.
+</p><!-- l. 142 --><p class='noindent'>To form a committee of the required type, choose: </p>
+   <ul class='itemize1'>
+   <li class='itemize'>2 of the 7 mathematics graduate students,
+   </li>
+   <li class='itemize'>1 of the 5 statistics graduate students, and
+   </li>
+   <li class='itemize'>2 of the 6 undergraduate students.</li></ul>
+<!-- l. 148 --><p class='noindent'>Thus the number of favorable committees is \[ \binom {7}{2}\binom {5}{1}\binom {6}{2}. \] Therefore, \[ P(\text {required composition}) = \frac {\binom {7}{2}\binom {5}{1}\binom {6}{2}}{\binom {18}{5}}. \] Numerically, \[ \binom {7}{2}\binom {5}{1}\binom {6}{2}=21\cdot 5\cdot 15=1575, \qquad \binom {18}{5}=8568, \] so \[ \frac {1575}{8568}=\frac {525}{2856}=\frac {175}{952}. \]
+</p>
+ 
+</div> 
+</div>
+<!-- l. 171 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 175 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.                                                                                        10 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 178 --><p class='noindent'>A spam filter is designed by looking at commonly occurring phrases in spam. Suppose that \(80\%\) of email is spam. In \(10\%\)
+of the spam emails, the phrase “free money” is used, whereas this phrase is only used in \(1\%\) of non-spam emails. A
+new email has just arrived, which does mention “free money.” What is the probability that it is
+spam?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+<!-- l. 204 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 181 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Let \(S\) be the event that the email is spam, and let \(F\) be the event that the email contains the phrase
+“free money.” We are given \[ P(S)=0.80,\qquad P(F\mid S)=0.10,\qquad P(F\mid S^c)=0.01. \] Bayes’ rule gives \[ P(S\mid F) = \frac {P(F\mid S)P(S)}{P(F\mid S)P(S)+P(F\mid S^c)P(S^c)}. \] Substituting the given values, \[ P(S\mid F) = \frac {0.10\cdot 0.80}{0.10\cdot 0.80+0.01\cdot 0.20} = \frac {0.08}{0.082} = \frac {40}{41}. \]
+</p>
+ 
+</div> 
+</div>
+<!-- l. 206 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 209 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.                                                                                        10 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 212 --><p class='noindent'>Let \(A\) and \(B\) be events.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Let \(S\) be a sample space and \(A_1,\dots , A_n\in \mathcal {F}\) be events. Explain what it means for \(A_i's\) to for a partition of \(S\),           <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Suppose \(P(A) = 0.6\) and \(P(B)=0.5\). Can \(A\) and \(B\) be disjoint?                                                                             <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Suppose that \(A\) is independent of itself. Use the definition of independence to conclude that \(P(A)=0\) or \(P(A)=1\).  <span class='cmbx-10x-x-109'>(4
+    points)</span></dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 262 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 223 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>The events \(A_1,\ldots ,A_n\) form a partition of the sample space \(S\) if they are pairwise disjoint, \[ A_i\cap A_j=\emptyset ,\qquad i\neq j, \] and \[ \bigcup _{i=1}^n A_i=S. \]
+</p><!-- l. 232 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>If \(A\) and \(B\) were disjoint, then \[ 1\geq P(A\cup B)=P(A)+P(B)=0.6+0.5=1.1, \] which is impossible since probabilities cannot exceed \(1\). Hence \(A\) and \(B\)
+cannot be disjoint.
+</p><!-- l. 238 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>If \(A\) is independent of itself, then \[ P(A\cap A)=P(A)P(A). \] Since \(A\cap A=A\), \[ P(A)=P(A)^2. \] Let \(p=P(A)\). Then \[ p(1-p)=0, \] so \(p=0\) or \(p=1\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+<!-- l. 261 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 253 --><p class='noindent'>(a) \(\{A_i\}_{i=1}^n\) is a partition iff the events are pairwise disjoint and their union is \(S\).
+</p><!-- l. 255 --><p class='noindent'>(b) No.
+</p><!-- l. 257 --><p class='noindent'>(c) \[ {P(A)=0\quad \text {or}\quad P(A)=1.} \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                               
+                                                                                               
+<div class='tcolorbox problemheader' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 266 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4.                                                                                        15 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 269 --><p class='noindent'>Suppose that \(X\) has probability density function \[ f_X(x)= \begin {cases} c\,x(2-x), &amp; 0&lt;x&lt;2,\\ 0, &amp; \text {otherwise}, \end {cases} \] where \(c\) is a constant.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find \(c\).                                                                                                                       <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the cumulative distribution function \(F_X(x)\) for all real \(x\).                                                       <span class='cmbx-10x-x-109'>(5
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find \(P(X&gt;3/2)\).                                                                                                                       <span class='cmbx-10x-x-109'>(2
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find \(\mathbb {E}[X]\) and \(\operatorname {Var}(X)\).                                                                                                                <span class='cmbx-10x-x-109'>(5
+    points)</span></dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+<!-- l. 367 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 287 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>A density must integrate to \(1\), so \begin {align*}  1 &amp;=c\int _0^2 x(2-x)\,dx\\ &amp;=c\int _0^2(2x-x^2)\,dx\\ &amp;=c\left [x^2-\frac {x^3}{3}\right ]_0^2 =c\left (4-\frac 83\right ) =c\frac 43.  \end {align*}
+</p><!-- l. 296 --><p class='noindent'>Hence \[ c=\frac 34. \]
+</p><!-- l. 301 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>For \(0&lt;x&lt;2\), \begin {align*}  F_X(x) &amp;=\int _0^x \frac 34t(2-t)\,dt\\ &amp;=\frac 34\left [t^2-\frac {t^3}{3}\right ]_0^x\\ &amp;=\frac {3x^2}{4}-\frac {x^3}{4}.  \end {align*}
+</p><!-- l. 308 --><p class='noindent'>Therefore, \[ F_X(x)= \begin {cases} 0, &amp; x\leq 0,\\[2mm] \displaystyle \frac {3x^2-x^3}{4}, &amp; 0&lt;x&lt;2,\\[2mm] 1, &amp; x\geq 2. \end {cases} \]
+</p><!-- l. 318 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Using the CDF, \begin {align*}  P\left (X&gt;\frac 32\right ) &amp;=1-F_X\left (\frac 32\right )\\ &amp;=1-\frac {3(3/2)^2-(3/2)^3}{4}\\ &amp;=1-\frac {27}{32} =\frac 5{32}.  \end {align*}
+</p><!-- l. 327 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>First, \begin {align*}  \mathbb {E}[X] &amp;=\int _0^2 x\frac 34x(2-x)\,dx\\ &amp;=\frac 34\int _0^2(2x^2-x^3)\,dx\\ &amp;=\frac 34\left [\frac {2x^3}{3}-\frac {x^4}{4}\right ]_0^2 =1.  \end {align*}
+</p><!-- l. 335 --><p class='noindent'>Also, \begin {align*}  \mathbb {E}[X^2] &amp;=\int _0^2 x^2\frac 34x(2-x)\,dx\\ &amp;=\frac 34\int _0^2(2x^3-x^4)\,dx\\ &amp;=\frac 34\left [\frac {x^4}{2}-\frac {x^5}{5}\right ]_0^2\\ &amp;=\frac 65.  \end {align*}
+</p><!-- l. 343 --><p class='noindent'>Thus \[ \operatorname {Var}(X)=\mathbb {E}[X^2]-\bigl (\mathbb {E}[X]\bigr )^2 =\frac 65-1=\frac 15. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 366 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 355 --><p class='noindent'>\[ {c=\frac 34},\qquad {P(X&gt;3/2)=\frac 5{32}},\qquad {\mathbb {E}[X]=1},\qquad {\operatorname {Var}(X)=\frac 15}. \] The CDF is \[ { F_X(x)= \begin {cases} 0, &amp; x\leq 0,\\ (3x^2-x^3)/4, &amp; 0&lt;x&lt;2,\\ 1, &amp; x\geq 2. \end {cases}} \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 369 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 376 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5.                                                                                        15 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 379 --><p class='noindent'>A company has found that \(40\%\) of customers who visit its website make a purchase. Suppose that \(200\) customers visit
+the website independently on a particular day.
+</p><!-- l. 381 --><p class='noindent'>Let \(X\) denote the number of customers who make a purchase.
+     </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+   1. </dt><dd class='enumerate-enumitem'>Determine whether a <span class='cmbx-10x-x-109'>Poisson approximation </span>or a <span class='cmbx-10x-x-109'>normal approximation </span>is more appropriate
+     by verifying the required conditions. Then clearly state the approximating distribution; that is,
+     provide \(\lambda \) if a Poisson approximation is appropriate, or provide \(\mu \) and \(\sigma ^2\) if a normal approximation is
+     appropriate.
+     </dd><dt class='enumerate-enumitem'>
+   2. </dt><dd class='enumerate-enumitem'>Use the approximation from part (a) to estimate each of the following:
+          <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+      (a) </dt><dd class='enumerate-enumitem'>\(\mathbb {P}(70&lt;X&lt;90)\)
+          </dd><dt class='enumerate-enumitem'>
+      (b) </dt><dd class='enumerate-enumitem'>\(\mathbb {P}(X&gt;90)\)
+          </dd><dt class='enumerate-enumitem'>
+      (c) </dt><dd class='enumerate-enumitem'>\(\mathbb {P}(X=80)\)</dd></dl>
+     </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+<!-- l. 568 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 403 --><p class='noindent'>Since each customer independently makes a purchase with probability \(p=0.40\), we have \[ X\sim \operatorname {Bin}(200,0.40). \]
+</p><!-- l. 409 --><p class='noindent'><span class='cmbx-10x-x-109'>(1) </span>For a Poisson approximation to be appropriate, \(n\) should be large and \(p\) should be small. Although
+\(n=200\) is large, \(p=0.40\) is not small. Therefore, a Poisson approximation is not appropriate.
+</p><!-- l. 413 --><p class='noindent'>For a normal approximation, we verify that \[ np=200(0.40)=80 \] and \[ n(1-p)=200(0.60)=120. \] Since both quantities are greater than \(10\), the normal
+approximation is appropriate.
+</p><!-- l. 424 --><p class='noindent'>The mean and variance of \(X\) are \[ \mu =np=80 \] and \[ \sigma ^2=np(1-p)=200(0.40)(0.60)=48. \]
+</p><!-- l. 433 --><p class='noindent'>Therefore, we approximate \(X\) by \[ Y\sim N(80,48), \] where \[ \sigma =\sqrt {48}\approx 6.93. \]
+</p><!-- l. 442 --><p class='noindent'><span class='cmbx-10x-x-109'>(2)</span>
+</p><!-- l. 446 --><p class='noindent'>(a) Using the continuity correction, \[ \mathbb {P}(70&lt; X&lt; 90) \approx \mathbb {P}(70.5&lt;Y&lt;89.5). \]
+</p><!-- l. 453 --><p class='noindent'>Standardizing, \[ \begin {aligned} \mathbb {P}(70.5&lt;Y&lt;89.5) &amp;= \mathbb {P}\left ( \frac {70.5-80}{\sqrt {48}} &lt; Z &lt; \frac {89.5-80}{\sqrt {48}} \right )\\ &amp;\approx \mathbb {P}(-1.37&lt;Z&lt;1.37). \end {aligned} \]
+</p><!-- l. 470 --><p class='noindent'>Using the standard normal table, \[ \Phi (1.37)=0.9147 \] and \[ \Phi (-1.37)=1-\Phi (1.37)=0.0853. \]
+</p><!-- l. 479 --><p class='noindent'>Therefore, \[ \mathbb {P}(70&lt;X&lt;90) \approx 0.9147-0.0853 = {0.8294}. \]
+</p><!-- l. 488 --><p class='noindent'>(b) Using the continuity correction, \[ \mathbb {P}(X&gt;90) \approx \mathbb {P}(Y&gt;90.5). \]
+</p><!-- l. 495 --><p class='noindent'>Standardizing, \[ \begin {aligned} \mathbb {P}(Y&gt;90.5) &amp;= \mathbb {P}\left ( Z&gt; \frac {90.5-80}{\sqrt {48}} \right )\\ &amp;\approx \mathbb {P}(Z&gt;1.52). \end {aligned} \]
+</p><!-- l. 509 --><p class='noindent'>Using the standard normal table, \[ \Phi (1.52)=0.9357. \]
+</p><!-- l. 514 --><p class='noindent'>Thus, \[ \mathbb {P}(X&gt;90) \approx 1-\Phi (1.52) = 1-0.9357 = {0.0643}. \]
+</p><!-- l. 525 --><p class='noindent'>(c) Using the continuity correction, \[ \mathbb {P}(X=80) \approx \mathbb {P}(79.5&lt;Y&lt;80.5). \]
+</p><!-- l. 532 --><p class='noindent'>Standardizing, \[ \begin {aligned} \mathbb {P}(79.5&lt;Y&lt;80.5) &amp;= \mathbb {P}\left ( \frac {79.5-80}{\sqrt {48}} &lt; Z &lt; \frac {80.5-80}{\sqrt {48}} \right )\\ &amp;\approx \mathbb {P}(-0.07&lt;Z&lt;0.07). \end {aligned} \]
+</p><!-- l. 549 --><p class='noindent'>Using the standard normal table, \[ \Phi (0.07)=0.5279 \] and \[ \Phi (-0.07)=0.4721. \]
+</p><!-- l. 558 --><p class='noindent'>Therefore, \[ \mathbb {P}(X=80) \approx 0.5279-0.4721 = {0.0558}. \]
+</p>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

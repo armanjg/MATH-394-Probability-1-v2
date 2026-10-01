@@ -1,0 +1,534 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW8-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW8-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 101 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 105 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 8 Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 118 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 120 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 126 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 128 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 136 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 138 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 147 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 149 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 151 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 159 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 161 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 163 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 174 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 176 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 181 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1. Transformations of Random Variables</span> </p> 
+</div> 
+</div>                                      <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 8, Problem 1–5.</span>
+</p><!-- l. 185 --><p class='noindent'>Find the following PDFs.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the PDF of \(e^{-X}\) for \(X\sim \operatorname {Expo}(1)\).
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the PDF of \(X^7\) for \(X\sim \operatorname {Expo}(\lambda )\).
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the PDF of \(Z^3\) for \(Z\sim N(0,1)\).
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Find the PDF of \(Z^4\) for \(Z\sim N(0,1)\).
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>Find the PDF of \(|Z|\) for \(Z\sim N(0,1)\).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+<!-- l. 283 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 200 --><p class='noindent'>Let \(\phi (z)=(2\pi )^{-1/2}e^{-z^2/2}\) denote the standard normal density.
+</p><!-- l. 202 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Put \(Y=e^{-X}\). Since \(X&gt;0\), we have \(0&lt;Y&lt;1\). The inverse transformation is \(x=-\log y\), and \[ \left |\frac {dx}{dy}\right |=\frac 1y. \] Thus \[ f_Y(y)=e^{-(-\log y)}\frac 1y=1, \qquad 0&lt;y&lt;1. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 216 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 215 --><p class='noindent'>\[ f_Y(y)=1,\qquad 0&lt;y&lt;1. \] </p> 
+</div> 
+</div>
+<!-- l. 218 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Put \(Y=X^7\). The inverse is \(x=y^{1/7}\) for \(y&gt;0\), and \[ \left |\frac {dx}{dy}\right |=\frac {1}{7}y^{-6/7}. \] Therefore \[ f_Y(y)=\frac {\lambda }{7}y^{-6/7}e^{-\lambda y^{1/7}}, \qquad y&gt;0. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+<!-- l. 233 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 232 --><p class='noindent'>\[ f_Y(y)=\frac {\lambda }{7}y^{-6/7}e^{-\lambda y^{1/7}}, \qquad y&gt;0. \] </p> 
+</div> 
+</div>
+<!-- l. 235 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Put \(Y=Z^3\). This transformation is one-to-one. For \(y\ne 0\), the inverse is \(z=y^{1/3}\) and \[ \left |\frac {dz}{dy}\right |=\frac {1}{3|y|^{2/3}}. \] Hence \[ f_Y(y)=\frac {\phi (y^{1/3})}{3|y|^{2/3}}, \qquad y\ne 0. \] The value assigned to the
+density at the single point \(y=0\) is immaterial.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 251 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 250 --><p class='noindent'>\[ f_Y(y)=\frac {\phi (y^{1/3})}{3|y|^{2/3}}, \qquad y\ne 0. \] </p> 
+</div> 
+</div>
+<!-- l. 253 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>Put \(Y=Z^4\). The support is \(y&gt;0\). For each \(y&gt;0\), the two preimages are \(y^{1/4}\) and \(-y^{1/4}\). Adding the two contributions gives
+\[ f_Y(y) = \phi (y^{1/4})\frac {1}{4y^{3/4}} + \phi (-y^{1/4})\frac {1}{4y^{3/4}} = \frac {\phi (y^{1/4})}{2y^{3/4}}, \qquad y&gt;0. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+<!-- l. 270 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (d)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 269 --><p class='noindent'>\[ f_Y(y)=\frac {\phi (y^{1/4})}{2y^{3/4}}, \qquad y&gt;0. \] </p> 
+</div> 
+</div>
+<!-- l. 272 --><p class='noindent'><span class='cmbx-10x-x-109'>(e) </span>Put \(Y=|Z|\). For \(y&gt;0\), the two preimages are \(y\) and \(-y\), and therefore \[ f_Y(y)=\phi (y)+\phi (-y)=2\phi (y), \qquad y&gt;0. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 282 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (e)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 281 --><p class='noindent'>\[ f_Y(y)=2\phi (y),\qquad y&gt;0. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 289 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2. Log Ratio of Exponentials</span> </p> 
+</div> 
+</div>                                                  <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 8, Problem 13.</span>
+</p><!-- l. 293 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. \(\operatorname {Expo}(\lambda )\), and let \[ T=\log (X/Y). \] Find the CDF and PDF of \(T\).
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 333 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 300 --><p class='noindent'>For real \(t\), \[ F_T(t)=P\!\left (\log (X/Y)\le t\right )=P(X\le e^tY). \] Conditioning on \(Y=y\) gives \[ F_T(t)=\int _0^\infty P(X\le e^t y)\lambda e^{-\lambda y}\dd y. \] Since \(X\sim \operatorname {Expo}(\lambda )\), \[ P(X\le e^t y)=1-e^{-\lambda e^t y}. \] Thus \[ F_T(t)=\int _0^\infty \left (1-e^{-\lambda e^t y}\right )\lambda e^{-\lambda y}\dd y =1-\frac {1}{1+e^t} =\frac {e^t}{1+e^t}. \] Differentiating the CDF gives \[ f_T(t)=\frac {e^t}{(1+e^t)^2}, \qquad -\infty &lt;t&lt;\infty . \] The parameter \(\lambda \)
+disappears because only the ratio \(X/Y\) matters.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+<!-- l. 332 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 331 --><p class='noindent'>\[ F_T(t)=\frac {e^t}{1+e^t}, \qquad f_T(t)=\frac {e^t}{(1+e^t)^2}, \qquad -\infty &lt;t&lt;\infty . \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 339 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3. Linear Change of Variables</span> </p> 
+</div> 
+</div>                                                 <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 8, Problem 14.</span>
+</p><!-- l. 343 --><p class='noindent'>Let \(X\) and \(Y\) have joint PDF \(f_{X,Y}(x,y)\), and transform \((X,Y)\mapsto (T,W)\) linearly by letting \[ T=aX+bY, \qquad W=cX+dY, \] where \(a,b,c,d\) are constants such that
+\[ ad-bc\ne 0. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the joint PDF \(f_{T,W}(t,w)\) in terms of \(f_{X,Y}\), though your answer should be written as a function of \(t\) and \(w\).
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>For the case where \[ T=X+Y, \qquad W=X-Y, \] show that \[ f_{T,W}(t,w) = \frac 12 f_{X,Y}\left (\frac {t+w}{2},\frac {t-w}{2}\right ). \]</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+<!-- l. 429 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 373 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Let \[ D=ad-bc. \] Solving the linear system gives \[ x=\frac {dt-bw}{D}, \qquad y=\frac {-ct+aw}{D}. \] The Jacobian determinant of the inverse transformation
+is \[ \left |\frac {\partial (x,y)}{\partial (t,w)}\right |=\frac {1}{|D|}. \] Therefore \[ f_{T,W}(t,w) = \frac {1}{|ad-bc|} f_{X,Y}\left (\frac {dt-bw}{ad-bc},\frac {-ct+aw}{ad-bc}\right ), \] for all \((t,w)\) whose inverse point lies in the support of \((X,Y)\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+<!-- l. 403 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 402 --><p class='noindent'>\[ f_{T,W}(t,w) = \frac {1}{|ad-bc|} f_{X,Y}\left (\frac {dt-bw}{ad-bc},\frac {-ct+aw}{ad-bc}\right ). \] </p> 
+</div> 
+</div>
+<!-- l. 405 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Here \(a=1\), \(b=1\), \(c=1\), and \(d=-1\), so \[ ad-bc=-2. \] Also \[ x=\frac {t+w}{2}, \qquad y=\frac {t-w}{2}. \] Thus \[ f_{T,W}(t,w) = \frac 12 f_{X,Y}\left (\frac {t+w}{2},\frac {t-w}{2}\right ). \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+<!-- l. 428 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 427 --><p class='noindent'>\[ f_{T,W}(t,w) = \frac 12 f_{X,Y}\left (\frac {t+w}{2},\frac {t-w}{2}\right ). \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-17'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 435 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4. Sum of Independent Gamma Random Variables</span> </p> 
+</div> 
+</div>                           <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 8, Problem 29.</span>
+</p><!-- l. 439 --><p class='noindent'>Let \[ X\sim \operatorname {Gamma}(a,\lambda ), \qquad Y\sim \operatorname {Gamma}(b,\lambda ), \] and suppose \(X\) and \(Y\) are independent, with \(a\) and \(b\) integers.
+</p><!-- l. 447 --><p class='noindent'>Show that \[ X+Y\sim \operatorname {Gamma}(a+b,\lambda ) \] in three ways:
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>with a convolution integral;
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>with MGFs;
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>with a story proof.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-21'>     
+<div class='tcolorbox-title'>
+<!-- l. 522 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 462 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>For \(s&gt;0\), the convolution density of \(S=X+Y\) is \[ f_S(s)=\int _0^s \frac {\lambda ^a}{\Gamma (a)}x^{a-1}e^{-\lambda x} \frac {\lambda ^b}{\Gamma (b)}(s-x)^{b-1}e^{-\lambda (s-x)}\dd x. \] This becomes \[ f_S(s)= \frac {\lambda ^{a+b}e^{-\lambda s}}{\Gamma (a)\Gamma (b)} \int _0^s x^{a-1}(s-x)^{b-1}\dd x. \] Using the beta integral, \[ \int _0^s x^{a-1}(s-x)^{b-1}\dd x = s^{a+b-1}\frac {\Gamma (a)\Gamma (b)}{\Gamma (a+b)}. \] Thus \[ f_S(s)=\frac {\lambda ^{a+b}}{\Gamma (a+b)}s^{a+b-1}e^{-\lambda s}, \qquad s&gt;0, \] which is the
+\(\operatorname {Gamma}(a+b,\lambda )\) density.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-18'>     
+<div class='tcolorbox-title'>
+<!-- l. 491 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 490 --><p class='noindent'>\[ X+Y\sim \operatorname {Gamma}(a+b,\lambda ). \] </p> 
+</div> 
+</div>
+<!-- l. 493 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>The MGF of \(\operatorname {Gamma}(a,\lambda )\), using the rate parameter \(\lambda \), is \[ M_X(t)=\left (\frac {\lambda }{\lambda -t}\right )^a, \qquad t&lt;\lambda . \] By independence, \[ M_{X+Y}(t)=M_X(t)M_Y(t) = \left (\frac {\lambda }{\lambda -t}\right )^a \left (\frac {\lambda }{\lambda -t}\right )^b = \left (\frac {\lambda }{\lambda -t}\right )^{a+b}. \] This is the MGF of \(\operatorname {Gamma}(a+b,\lambda )\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-19'>     
+<div class='tcolorbox-title'>
+<!-- l. 513 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 512 --><p class='noindent'>\[ M_{X+Y}(t)=\left (\frac {\lambda }{\lambda -t}\right )^{a+b}. \] </p> 
+</div> 
+</div>
+<!-- l. 515 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>When \(a\) and \(b\) are positive integers, \(\operatorname {Gamma}(a,\lambda )\) is the waiting time for the \(a\)th arrival in a Poisson process of rate \(\lambda \).
+Likewise, \(\operatorname {Gamma}(b,\lambda )\) is the additional waiting time for the next \(b\) arrivals. By the independent increments property of
+the Poisson process, the total time to wait for \(a+b\) arrivals is the sum of these two independent waiting times.
+Hence the total waiting time is \(\operatorname {Gamma}(a+b,\lambda )\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-20'>     
+<div class='tcolorbox-title'>
+<!-- l. 521 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (c)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 520 --><p class='noindent'>\[ X+Y\sim \operatorname {Gamma}(a+b,\lambda ). \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-22'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 528 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5. A Chebyshev Bound for the Sample Mean</span> </p> 
+</div> 
+</div>                                 <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 2.</span>
+</p><!-- l. 532 --><p class='noindent'>For i.i.d. random variables \(X_1,\dots ,X_n\) with mean \(\mu \) and variance \(\sigma ^2\), give a value of \(n\), as a specific number, that will ensure
+that there is at least a \(99\%\) chance that the sample mean will be within \(2\) standard deviations of the true mean
+\(\mu \).
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-24'>     
+<div class='tcolorbox-title'>
+<!-- l. 563 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 535 --><p class='noindent'>The sample mean has \[ E(\bar X_n)=\mu , \qquad \Var (\bar X_n)=\frac {\sigma ^2}{n}. \] Chebyshev’s inequality gives \[ P(|\bar X_n-\mu |\ge 2\sigma ) \le \frac {\Var (\bar X_n)}{(2\sigma )^2} = \frac {1}{4n}. \] To make the probability of being outside the
+interval at most \(0.01\), it is enough to require \[ \frac {1}{4n}\le 0.01. \] Thus \(n\ge 25\) is sufficient. With \(n=25\), Chebyshev gives \[ P(|\bar X_n-\mu |&lt;2\sigma )\ge 0.99. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-23'>     
+<div class='tcolorbox-title'>
+<!-- l. 562 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 561 --><p class='noindent'>\[ n=25 \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-25'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 569 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6. AM–GM from Jensen’s Inequality</span> </p> 
+</div> 
+</div>                                          <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 4.</span>
+</p><!-- l. 573 --><p class='noindent'>The famous arithmetic mean–geometric mean inequality says that for any positive numbers \[ a_1,a_2,\dots ,a_n, \] we have
+\[ \frac {a_1+a_2+\cdots +a_n}{n} \ge (a_1a_2\cdots a_n)^{1/n}. \]
+</p><!-- l. 584 --><p class='noindent'>Show that this inequality follows from Jensen’s inequality, by considering \(E(\log X)\) for a random variable \(X\) whose
+possible values are \(a_1,\dots ,a_n\). You should specify the PMF of \(X\).
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-27'>     
+<div class='tcolorbox-title'>
+<!-- l. 626 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 587 --><p class='noindent'>Let \(X\) take the values \(a_1,a_2,\dots ,a_n\) with equal probabilities: \[ P(X=a_j)=\frac 1n, \qquad j=1,\dots ,n. \] Then \[ E(X)=\frac {a_1+\cdots +a_n}{n} \] and \[ E(\log X)=\frac 1n\sum _{j=1}^n \log a_j = \log \left ((a_1a_2\cdots a_n)^{1/n}\right ). \] Since \(\log x\) is concave, Jensen’s inequality
+gives \[ E(\log X)\le \log (E X). \] Therefore \[ \log \left ((a_1a_2\cdots a_n)^{1/n}\right ) \le \log \left (\frac {a_1+\cdots +a_n}{n}\right ). \] Because the logarithm is increasing, exponentiating both sides gives \[ (a_1a_2\cdots a_n)^{1/n} \le \frac {a_1+a_2+\cdots +a_n}{n}. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-26'>     
+<div class='tcolorbox-title'>
+<!-- l. 625 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 624 --><p class='noindent'>\[ \frac {a_1+a_2+\cdots +a_n}{n} \ge (a_1a_2\cdots a_n)^{1/n}. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-28'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 632 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7. Equality and Inequality Symbols</span> </p> 
+</div> 
+</div>                                           <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 7.</span>
+</p><!-- l. 636 --><p class='noindent'>Let \(X\) and \(Y\) be i.i.d. positive random variables, and let \(c&gt;0\). For each part below, fill in the appropriate equality or
+inequality symbol.
+</p><!-- l. 638 --><p class='noindent'>Write \(=\) if the two sides are always equal, \(\le \) if the left-hand side is less than or equal to the right-hand side but
+not necessarily equal, and similarly for \(\ge \). If no relation holds in general, write \(?\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>\(E(\log X)\ \underline {\hspace {1cm}}\ \log (E X)\)
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>\(E(X)\ \underline {\hspace {1cm}}\ \sqrt {E(X^2)}\)
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>\(E(\sin ^2 X)+E(\cos ^2 X)\ \underline {\hspace {1cm}}\ 1\)
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>\(E(|X|)\ \underline {\hspace {1cm}}\ \sqrt {E(X^2)}\)
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>\(P(X&gt;c)\ \underline {\hspace {1cm}}\ \dfrac {E(X^3)}{c^3}\)
+    </dd><dt class='enumerate-enumitem'>
+ (f) </dt><dd class='enumerate-enumitem'>\(P(X\le Y)\ \underline {\hspace {1cm}}\ P(X\ge Y)\)
+    </dd><dt class='enumerate-enumitem'>
+ (g) </dt><dd class='enumerate-enumitem'>\(E(XY)\ \underline {\hspace {1cm}}\ \sqrt {E(X^2)E(Y^2)}\)
+    </dd><dt class='enumerate-enumitem'>
+ (h) </dt><dd class='enumerate-enumitem'>\(P(X+Y&gt;10)\ \underline {\hspace {1cm}}\ P(X&gt;5\text { or }Y&gt;5)\)
+    </dd><dt class='enumerate-enumitem'>
+ (i) </dt><dd class='enumerate-enumitem'>\(E(\min (X,Y))\ \underline {\hspace {1cm}}\ \min (EX,EY)\)
+    </dd><dt class='enumerate-enumitem'>
+ (j) </dt><dd class='enumerate-enumitem'>\(E(X/Y)\ \underline {\hspace {1cm}}\ \dfrac {EX}{EY}\)
+    </dd><dt class='enumerate-enumitem'>
+ (k) </dt><dd class='enumerate-enumitem'>\(E\!\left (X^2(X^2+1)\right )\ \underline {\hspace {1cm}}\ E\!\left (X^2(Y^2+1)\right )\)
+    </dd><dt class='enumerate-enumitem'>
+ (l) </dt><dd class='enumerate-enumitem'>\(E\!\left (\dfrac {X^3}{X^3+Y^3}\right )\ \underline {\hspace {1cm}}\ E\!\left (\dfrac {Y^3}{X^3+Y^3}\right )\)</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-30'>     
+<div class='tcolorbox-title'>
+<!-- l. 689 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 656 --><p class='noindent'>The answers are as follows. \[ \begin {array}{c|c|l} \text {Part} &amp; \text {Symbol} &amp; \text {Reason}\\ \hline (a) &amp; \le &amp; \log x\text { is concave, by Jensen.}\\ (b) &amp; \le &amp; (E X)^2\le E(X^2).\\ (c) &amp; = &amp; \sin ^2 X+\cos ^2 X=1\text { pointwise.}\\ (d) &amp; \le &amp; (E|X|)^2\le E(X^2).\\ (e) &amp; \le &amp; \text {Markov applied to }X^3.\\ (f) &amp; = &amp; \text {Symmetry of i.i.d. }X,Y.\\ (g) &amp; \le &amp; \text {Cauchy--Schwarz.}\\ (h) &amp; \le &amp; X+Y&gt;10\text { implies }X&gt;5\text { or }Y&gt;5.\\ (i) &amp; \le &amp; \min (X,Y)\le X\text { and }\min (X,Y)\le Y.\\ (j) &amp; ? &amp; \text {No fixed relation holds in general.}\\ (k) &amp; \ge &amp; E(X^4)\ge (E X^2)^2.\\ (l) &amp; = &amp; \text {Symmetry, and the two fractions exchange when }X,Y\text { are swapped.} \end {array} \]
+</p><!-- l. 675 --><p class='noindent'>For part (k), independence gives \[ E\!\left (X^2(Y^2+1)\right )=(E X^2)^2+E(X^2), \] while the left-hand side is \(E(X^4)+E(X^2)\), so the comparison reduces to \(E(X^4)\ge (E X^2)^2\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-29'>     
+<div class='tcolorbox-title'>
+<!-- l. 688 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 687 --><p class='noindent'>\[ \begin {array}{c|cccccccccccc} \text {Part} &amp; (a)&amp;(b)&amp;(c)&amp;(d)&amp;(e)&amp;(f)&amp;(g)&amp;(h)&amp;(i)&amp;(j)&amp;(k)&amp;(l)\\ \hline \text {Symbol} &amp; \le&amp; \le&amp; =&amp;\le&amp; \le&amp; =&amp;\le&amp; \le&amp; \le&amp; ?&amp;\ge&amp; = \end {array} \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-31'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 695 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 8. Ratio of Sample Sums</span> </p> 
+</div> 
+</div>                                                      <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 21.</span>
+</p><!-- l. 699 --><p class='noindent'>Let \(X_1,X_2,\dots \) be i.i.d. positive random variables with mean \(2\). Let \(Y_1,Y_2,\dots \) be i.i.d. positive random variables with mean
+\(3\).
+</p><!-- l. 701 --><p class='noindent'>Show that \[ \frac {X_1+X_2+\cdots +X_n}{Y_1+Y_2+\cdots +Y_n} \to \frac 23 \] with probability \(1\).
+</p><!-- l. 709 --><p class='noindent'>Does it matter whether the \(X_i\) are independent of the \(Y_j\)?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-33'>     
+<div class='tcolorbox-title'>
+<!-- l. 739 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 712 --><p class='noindent'>By the Strong Law of Large Numbers, \[ \frac {X_1+\cdots +X_n}{n}\to 2 \qquad \text {with probability }1, \] and \[ \frac {Y_1+\cdots +Y_n}{n}\to 3 \qquad \text {with probability }1. \] On the event where both convergences occur, which
+has probability \(1\), we may divide the two limits since the denominator tends to the nonzero constant
+\(3\). Hence \[ \frac {X_1+\cdots +X_n}{Y_1+\cdots +Y_n} = \frac {(X_1+\cdots +X_n)/n}{(Y_1+\cdots +Y_n)/n} \to \frac {2}{3}. \] The independence between the \(X_i\)’s and the \(Y_j\)’s is not needed. What is needed is that each
+sequence separately satisfies the Strong Law. The two probability-one events can be intersected,
+and the intersection still has probability \(1\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-32'>     
+<div class='tcolorbox-title'>
+<!-- l. 738 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 736 --><p class='noindent'>\[ \frac {X_1+\cdots +X_n}{Y_1+\cdots +Y_n}\to \frac 23 \qquad \text {with probability }1. \] No cross-independence between the two sequences is needed. </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-34'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 745 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 9. CLT Approximation</span> </p> 
+</div> 
+</div>                                                        <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 22.</span>
+</p><!-- l. 749 --><p class='noindent'>Let \[ U_1,U_2,\dots ,U_{60} \] be i.i.d. \(\operatorname {Unif}(0,1)\) and let \[ X=U_1+U_2+\cdots +U_{60}. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Which important distribution is the distribution of \(X\) very close to? Specify what the parameters
+    are, and state which theorem justifies your choice.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Give a simple but accurate approximation for \[ P(X&gt;17). \] Justify briefly.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-37'>     
+<div class='tcolorbox-title'>
+<!-- l. 816 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 769 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>For one \(\operatorname {Unif}(0,1)\) random variable, \[ E(U_j)=\frac 12, \qquad \Var (U_j)=\frac 1{12}. \] Therefore \[ E(X)=60\cdot \frac 12=30, \qquad \Var (X)=60\cdot \frac 1{12}=5. \] By the Central Limit Theorem, the distribution of \(X\) is
+very close to \[ N(30,5). \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-35'>     
+<div class='tcolorbox-title'>
+<!-- l. 790 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 789 --><p class='noindent'>\[ X\approx N(30,5). \] </p> 
+</div> 
+</div>
+<!-- l. 792 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Using the normal approximation, \[ P(X&gt;17) \approx P\left (N(30,5)&gt;17\right ) = P\left (Z&gt;\frac {17-30}{\sqrt 5}\right ). \] The standardized value is \[ \frac {17-30}{\sqrt 5}\approx -5.81. \] Thus \[ P(X&gt;17)\approx P(Z&gt;-5.81)=\Phi (5.81), \] which is essentially
+\(1\).
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-36'>     
+<div class='tcolorbox-title'>
+<!-- l. 815 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 813 --><p class='noindent'>\[ P(X&gt;17)\approx \Phi (5.81)\approx 0.999999997, \] so a simple accurate approximation is \(1\). </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-38'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 822 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 10. Exponential Transformation and Sample Mean</span> </p> 
+</div> 
+</div>                           <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 25.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Let \[ Y=e^X, \qquad X\sim \operatorname {Expo}(3). \] Find the mean and variance of \(Y\).
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>For \(Y_1,\dots ,Y_n\) i.i.d. with the same distribution as \(Y\) from part (a), what is the approximate distribution of the
+    sample mean \[ \bar Y_n=\frac 1n\sum _{j=1}^{n}Y_j \] when \(n\) is large?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-41'>     
+<div class='tcolorbox-title'>
+<!-- l. 883 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 843 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Since \(X\sim \operatorname {Expo}(3)\), its MGF is \[ M_X(t)=\frac {3}{3-t}, \qquad t&lt;3. \] Because \(Y=e^X\), \[ E(Y)=E(e^X)=M_X(1)=\frac 32. \] Also \[ E(Y^2)=E(e^{2X})=M_X(2)=3. \] Therefore \[ \Var (Y)=E(Y^2)-[E(Y)]^2 =3-\frac 94 =\frac 34. \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-39'>     
+<div class='tcolorbox-title'>
+<!-- l. 869 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 868 --><p class='noindent'>\[ E(Y)=\frac 32, \qquad \Var (Y)=\frac 34. \] </p> 
+</div> 
+</div>
+<!-- l. 871 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>By the Central Limit Theorem, when \(n\) is large, \[ \bar Y_n\approx N\left (E(Y),\frac {\Var (Y)}{n}\right ) = N\left (\frac 32,\frac {3}{4n}\right ). \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-40'>     
+<div class='tcolorbox-title'>
+<!-- l. 882 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 881 --><p class='noindent'>\[ \bar Y_n\approx N\left (\frac 32,\frac {3}{4n}\right ). \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-42'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 889 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 11. MGF of the Poisson Sample Mean</span> </p> 
+</div> 
+</div>                                        <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 10, Problem 27.</span>
+</p><!-- l. 893 --><p class='noindent'>Consider i.i.d. \(\operatorname {Pois}(\lambda )\) random variables \[ X_1,X_2,\dots . \] The MGF of \(X_j\) is \[ M(t)=e^{\lambda (e^t-1)}. \]
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the MGF \(M_n(t)\) of the sample mean \[ \bar X_n=\frac 1n\sum _{j=1}^{n}X_j. \]
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the limit of \(M_n(t)\) as \(n\to \infty \). You can do this with almost no calculation using a relevant theorem, or you
+    can use part (a) and the fact that \(e^x\approx 1+x\) if \(x\) is very small.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-45'>     
+<div class='tcolorbox-title'>
+<!-- l. 954 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 912 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>We compute \[ M_n(t)=E\left (e^{t\bar X_n}\right ) =E\left (e^{(t/n)(X_1+\cdots +X_n)}\right ). \] By independence, \[ M_n(t)=\prod _{j=1}^n E\left (e^{(t/n)X_j}\right ) =\left [M\left (\frac tn\right )\right ]^n. \] Using the Poisson MGF, \[ M_n(t)=\left [e^{\lambda (e^{t/n}-1)}\right ]^n = \exp \left (n\lambda (e^{t/n}-1)\right ). \]
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-43'>     
+<div class='tcolorbox-title'>
+<!-- l. 933 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (a)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 932 --><p class='noindent'>\[ M_n(t)=\exp \left (n\lambda (e^{t/n}-1)\right ). \] </p> 
+</div> 
+</div>
+<!-- l. 935 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>As \(n\to \infty \), \[ e^{t/n}-1\sim \frac tn. \] Therefore \[ n\lambda (e^{t/n}-1)\to \lambda t. \] It follows that \[ M_n(t)\to e^{\lambda t}. \] This is the MGF of the constant random variable equal to \(\lambda \), which
+agrees with the Law of Large Numbers.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-44'>     
+<div class='tcolorbox-title'>
+<!-- l. 953 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer for Part (b)</span></p></div> 
+<div class='tcolorbox-content'><!-- l. 952 --><p class='noindent'>\[ \lim _{n\to \infty }M_n(t)=e^{\lambda t}. \] </p> 
+</div> 
+</div>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

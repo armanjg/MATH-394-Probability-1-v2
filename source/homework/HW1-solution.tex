@@ -1,0 +1,540 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\newtcolorbox{solutionbox}[1][]{
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][]{
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 1, Problem #1.}}
+}
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 1 Solution}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+
+
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.} \hfill 
+\end{problemheader}
+\source{23}
+
+Three people get into an empty elevator at the first floor of a building that has 10 floors. Each presses the button for their desired floor, unless one of the others has already pressed that button. Assume that they are equally likely to want to go to floors 2 through 10, independently of each other.
+
+What is the probability that the buttons for 3 consecutive floors are pressed?
+
+\begin{solutionbox}
+There are 9 possible destination floors, namely floors 2 through 10. Since the three people make their choices independently, it is natural to count ordered triples of desired floors. The total number of such triples is
+\[
+9^3.
+\]
+
+For exactly three consecutive buttons to be pressed, the three desired floors must be distinct, and the set of floors must look like
+\[
+\{j,j+1,j+2\}, \quad with \ j=2,\cdots, 8.
+\]
+The smallest possible starting floor is 2 and the largest possible starting floor is 8, so there are 7 possible consecutive triples of floors. Once such a triple of floors has been chosen, the three people may be assigned to those floors in \(3!\) different orders. Thus the number of favorable ordered triples is
+\[
+7\cdot 3!.
+\]
+Hence the desired probability is
+\[
+\frac{7\cdot 3!}{9^3}
+=
+\frac{42}{729}
+=
+\frac{14}{243}.
+\]
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.} \hfill  
+\end{problemheader}
+\source{3}
+
+Fred is planning to go out to dinner each night of a certain week, Monday through Friday, with each dinner being at one of his ten favorite restaurants.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item How many possibilities are there for Fred's schedule of dinners for that Monday through Friday, if Fred is not willing to eat at the same restaurant more than once?
+
+    \item How many possibilities are there for Fred's schedule of dinners for that Monday through Friday, if Fred is willing to eat at the same restaurant more than once, but is not willing to eat at the same place twice in a row or more?
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} Fred is choosing restaurants for five ordered nights, and in this part no restaurant may be repeated. There are 10 choices for Monday, then 9 choices for Tuesday, then 8 choices for Wednesday, then 7 choices for Thursday, and finally 6 choices for Friday. Therefore the number of possible dinner schedules is
+\[
+10\cdot 9\cdot 8\cdot 7\cdot 6
+=
+30240.
+\]
+
+
+
+\textbf{(b)} Now Fred may return to a restaurant later in the week, but he may not eat at the same restaurant on two consecutive nights. Monday can be chosen in 10 ways. On each of the remaining four nights, exactly one restaurant is forbidden, namely the restaurant from the previous night. Thus each of Tuesday through Friday has 9 available choices. The number of possible schedules is
+\[
+10\cdot 9^4
+=
+65610.
+\]
+
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.} \hfill  
+\end{problemheader}
+\source{15--18}
+
+Give story proofs for the following identities.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Show that
+    \[
+    \sum_{k=0}^{n} {n \choose k}=2^n.
+    \]
+
+    \item Show that
+    \[
+    \sum_{k=0}^{n}{n \choose k}^2={2n \choose n},
+    \]
+    for all positive integers $n$.
+
+    \item Show that
+    \[
+    \sum_{k=1}^{n} k{n \choose k}^2
+    =
+    n{2n-1 \choose n-1},
+    \]
+    for all positive integers $n$.
+
+    \emph{Hint: Consider choosing a committee of size $n$ from two groups of size $n$ each, where only one of the two groups has people eligible to become the chair of the committee.}
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} Consider a group of \(n\) people, and imagine forming a committee from this group. One way to make the committee is to decide, separately for each person, whether that person is included. Since each person has two possibilities, included or not included, the number of committees is \(2^n\).
+
+The same committees can also be counted by their size. If the committee has \(k\) members, then it can be chosen in \(\binom{n}{k}\) ways. Since the committee may have any size from 0 to \(n\), the total number of committees is
+\[
+\sum_{k=0}^{n}\binom{n}{k}.
+\]
+These two expressions count the same set of committees, and so
+\[
+\sum_{k=0}^{n}\binom{n}{k}=2^n.
+\]
+
+\textbf{(b)} Suppose there are two groups, each containing \(n\) people. We want to form a committee of size \(n\) from the combined group of \(2n\) people. If we ignore the two-group structure, this can be done in
+\[
+\binom{2n}{n}
+\]
+ways.
+
+Now count the same committees by the number \(k\) chosen from the first group. If \(k\) people are chosen from the first group, then \(n-k\) people must be chosen from the second group. This gives
+\[
+\binom{n}{k}\binom{n}{n-k}
+\]
+committees. Since \(\binom{n}{n-k}=\binom{n}{k}\), the number with this value of \(k\) is \(\binom{n}{k}^2\). Summing over all possible values of \(k\) gives
+\[
+\sum_{k=0}^{n}\binom{n}{k}^2.
+\]
+Both counts describe the same committees, and hence
+
+
+
+\textbf{(c)} Again take two groups of \(n\) people each. We form a committee of size \(n\), and then choose a chair from the first group among those who are on the committee.
+
+Count first according to the number \(k\) of committee members who come from the first group. The first group contributes \(k\) people in \(\binom{n}{k}\) ways, and the second group contributes the remaining \(n-k\) people in \(\binom{n}{n-k}=\binom{n}{k}\) ways. Once the committee has been chosen, there are \(k\) choices for the chair, since the chair must be one of the selected members from the first group. Thus this count gives
+\[
+\sum_{k=1}^{n} k\binom{n}{k}^2.
+\]
+
+There is a shorter count of the same chaired committees. Choose the chair first from the first group, which gives \(n\) choices. After the chair is chosen, we still need \(n-1\) additional committee members, and they may be chosen from the remaining \(2n-1\) people. This gives
+\[
+n\binom{2n-1}{n-1}.
+\]
+The two counts are counting exactly the same objects, so
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4. } \hfill 
+\end{problemheader}
+\source{25}
+
+A city with 6 districts has 6 robberies in a particular week. Assume the robberies are located randomly, with all possibilities for which robbery occurred where equally likely.
+
+What is the probability that some district had more than 1 robbery?
+
+\begin{solutionbox}
+It is easiest to count the complement. Treat the 6 robberies as distinguishable, for instance by the order in which they occurred. Each robbery may occur in any of the 6 districts, so there are
+\[
+6^6
+\]
+equally likely assignments.
+
+The complement of the event in the problem is the event that no district had more than one robbery. Since there are 6 robberies and 6 districts, this means that each district had exactly one robbery. The number of assignments with exactly one robbery in each district is \(6!\), since the robberies must be matched one-to-one with the districts.
+
+Therefore
+\[
+\mathbb{P}(\text{no district had more than one robbery})
+=
+\frac{6!}{6^6}.
+\]
+It follows that
+\[
+\mathbb{P}(\text{some district had more than one robbery})
+=
+1-\frac{6!}{6^6}
+=
+1-\frac{720}{46656}
+=
+\frac{319}{324}.
+\]
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5.} \hfill  
+\end{problemheader}
+\source{5}
+
+A knock-out tournament is being held with $2^n$ tennis players. This means that for each round, the winners move on to the next round and the losers are eliminated, until only one person remains. For example, if initially there are $2^4=16$ players, then there are 8 games in the first round, then the 8 winners move on to round 2, then the 4 winners move on to round 3, then the 2 winners move on to round 4, the winner of which is declared the winner of the tournament. There are various systems for determining who plays whom within a round, but these do not matter for this problem.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item How many rounds are there?
+
+    \item Count how many games in total are played, by adding up the numbers of games played in each round.
+
+    \item Count how many games in total are played, this time by directly thinking about it without doing almost any calculation.
+
+    \emph{Hint: How many players need to be eliminated?}
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} There are \(2^n\) players at the beginning. After each round, half of the players remain. Thus the numbers of players remaining after successive rounds are
+\[
+2^n,\;2^{n-1},\;2^{n-2},\ldots,2,1.
+\]
+It takes \(n\) rounds to reduce the field from \(2^n\) players to one champion.
+
+
+\textbf{(b)} In the first round, \(2^{n-1}\) games are played. In the second round, \(2^{n-2}\) games are played. Continuing in this way, the final round has one game. The total number of games is therefore
+\[
+2^{n-1}+2^{n-2}+\cdots+2+1
+=
+2^n-1.
+\]
+
+
+
+\textbf{(c)} There is also a very direct way to see the same number. Every game eliminates exactly one player. To finish with one champion, the tournament must eliminate all the other players. Since there are \(2^n\) players at the start, the number of eliminated players is
+\[
+2^n-1.
+\]
+Thus the number of games is \(2^n-1\).
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. } \hfill  
+\end{problemheader}
+\source{49}
+
+A fair die is rolled $n$ times. What is the probability that at least 1 of the 6 values never appears?
+
+\begin{solutionbox}
+There are \(6^n\) equally likely sequences of \(n\) die rolls. We want the probability that at least one of the six faces is absent.
+
+Let \(A_j\) be the event that face \(j\) never appears. The desired event is
+\[
+A_1\cup A_2\cup\cdots\cup A_6.
+\]
+We count this union by inclusion-exclusion. If a particular set of \(k\) faces is missing, then each roll must be one of the remaining \(6-k\) faces, so there are
+\[
+(6-k)^n
+\]
+sequences. There are \(\binom{6}{k}\) ways to choose the missing faces. Hence, using the inclusion-exclusion principle, we have
+\[
+\mathbb{P}(A_1\cup\cdots\cup A_6)
+=
+\frac{1}{6^n}
+\sum_{k=1}^{6}
+(-1)^{k+1}\binom{6}{k}(6-k)^n.
+\]
+Writing the expression out gives
+
+
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 7. } \hfill 
+\end{problemheader}
+\source{53}
+
+Fred needs to choose a password for a certain website. Assume that he will choose an 8-character password, and that the legal characters are the lowercase letters $a,b,c,\dots,z$, the uppercase letters $A,B,C,\dots,Z$, and the numbers $0,1,\dots,9$.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item How many possibilities are there if he is required to have at least one lowercase letter in his password?
+
+    \item How many possibilities are there if he is required to have at least one lowercase letter and at least one uppercase letter in his password?
+
+    \item How many possibilities are there if he is required to have at least one lowercase letter, at least one uppercase letter, and at least one number in his password?
+\end{enumerate}
+
+\begin{solutionbox}
+There are \(62\) legal characters in total, namely \(26\) lowercase letters, \(26\) uppercase letters, and \(10\) digits.
+
+\textbf{(a)} Count all 8-character passwords and subtract those with no lowercase letters. There are \(62^8\) passwords in total. If no lowercase letter appears, each character must be chosen from the \(26\) uppercase letters and the \(10\) digits, giving \(36^8\) such passwords. Therefore the number with at least one lowercase letter is
+
+\begin{finalanswerbox}[for Part (a)]
+\[
+62^8-36^8
+\]
+\end{finalanswerbox}
+
+\textbf{(b)} Now the password must contain at least one lowercase letter and at least one uppercase letter. Start with all \(62^8\) passwords. Subtract the passwords with no lowercase letters and the passwords with no uppercase letters. Each of these two forbidden classes has \(36^8\) passwords. Passwords with neither lowercase nor uppercase letters use only digits, and there are \(10^8\) of them. These digit-only passwords have been subtracted twice, so they must be added back once. The desired number is
+
+\begin{finalanswerbox}[for Part (b)]
+\[
+62^8-2\cdot 36^8+10^8
+\]
+\end{finalanswerbox}
+
+\textbf{(c)} Finally, require all three types of characters to appear. Again begin with \(62^8\) total passwords. Subtract the passwords missing lowercase letters, missing uppercase letters, or missing digits. These counts are \(36^8\), \(36^8\), and \(52^8\), respectively.
+
+Now add back the passwords in which two of the three character types are missing. If lowercase and uppercase letters are both missing, only digits remain, giving \(10^8\) passwords. If lowercase letters and digits are both missing, only uppercase letters remain, giving \(26^8\) passwords. If uppercase letters and digits are both missing, only lowercase letters remain, again giving \(26^8\) passwords. Since a password cannot be missing all three character types and still have length 8, there is no further term. Thus the number of valid passwords is
+\begin{finalanswerbox}[for Part (c)]
+\[
+62^8-2\cdot 36^8-52^8+10^8+2\cdot 26^8
+\]
+\end{finalanswerbox}
+\end{solutionbox}
+
+\end{document}

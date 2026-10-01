@@ -1,0 +1,687 @@
+\setcounter{framenumber}{0}
+%27
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item define the Beta distribution;
+    \item understand how Beta parameters affect shape;
+    \item recognize Uniform distributions as special Beta distributions;
+    \item define the Gamma function and Gamma distribution;
+    \item interpret Gamma distributions as sums of Exponential random variables;
+    \item compute means and variances of Beta and Gamma random variables;
+    \item understand the relationship between Gamma and Poisson processes.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Beta Distribution}
+
+\begin{frame}{Why the Beta Distribution?}
+Many random quantities naturally live between
+\[
+0
+\quad \text{and} \quad
+1.
+\]
+
+Examples:
+\begin{itemize}
+    \item probabilities;
+    \item proportions;
+    \item percentages;
+    \item fractions;
+    \item success rates.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main idea}
+The Beta distribution is one of the most important distributions on the interval
+\[
+(0,1).
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Beta Function}
+\begin{keybox}{Definition}
+For
+\[
+a,b>0,
+\]
+the Beta function is
+\[
+{
+B(a,b)
+=
+\int_0^1
+x^{a-1}(1-x)^{b-1}\,dx.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+The Beta function serves as a normalization constant.
+\end{frame}
+
+\begin{frame}{Definition of the Beta Distribution}
+\begin{keybox}{Definition}
+A random variable $X$ has the Beta distribution with parameters
+\[
+a,b>0
+\]
+if its PDF is
+\[
+{
+f(x)
+=
+\frac{
+x^{a-1}(1-x)^{b-1}
+}{
+B(a,b)
+},
+\qquad 0<x<1.
+}
+\]
+
+Notation:
+\[
+X\sim \operatorname{Beta}(a,b).
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Shape of Beta Distributions}
+Different parameter values create very different shapes.
+
+\vspace{0.25cm}
+
+Examples:
+\begin{itemize}
+    \item
+    \[
+    a=b=1
+    \]
+    gives a Uniform distribution;
+
+    \item
+    \[
+    a,b>1
+    \]
+    produces mound-shaped densities;
+
+    \item
+    \[
+    a<1
+    \]
+    or
+    \[
+    b<1
+    \]
+    can create spikes near the endpoints.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Important}
+The Beta family is extremely flexible.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Uniform Distribution as a Beta Distribution}
+If
+\[
+a=b=1,
+\]
+then
+\[
+B(1,1)=1,
+\]
+and the PDF becomes
+\[
+f(x)=1,
+\qquad 0<x<1.
+\]
+
+Thus:
+\[
+{
+\operatorname{Beta}(1,1)
+=
+\operatorname{Unif}(0,1).
+}
+\]
+\end{frame}
+
+\begin{frame}{Mean and Variance of Beta}
+If
+\[
+X\sim \operatorname{Beta}(a,b),
+\]
+then
+\[
+{
+\mathbb{E}(X)
+=
+\frac{a}{a+b}.
+}
+\]
+
+Also,
+\[
+{
+\operatorname{Var}(X)
+=
+\frac{ab}{(a+b)^2(a+b+1)}.
+}
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Interpretation}
+The parameters control both:
+\begin{itemize}
+    \item the center;
+    \item the concentration.
+\end{itemize}
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Beta Distribution and Beliefs}
+Suppose a coin has unknown success probability
+\[
+p.
+\]
+
+Before observing data, we may model uncertainty about $p$ using a Beta distribution.
+
+\vspace{0.25cm}
+
+Example:
+\[
+p\sim \operatorname{Beta}(2,2)
+\]
+represents a prior belief favoring values near
+\[
+0.5.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Bayesian interpretation}
+Beta distributions are natural models for uncertain probabilities.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Beta-Binomial Connection}
+Suppose:
+\begin{itemize}
+    \item
+    \[
+    p\sim \operatorname{Beta}(a,b),
+    \]
+    and conditional on $p$,
+
+    \item
+    \[
+    X\mid p\sim \operatorname{Bin}(n,p).
+    \]
+\end{itemize}
+
+Then the posterior distribution of $p$ given $X=k$ is again Beta:
+
+\[
+\boxed{
+p\mid X=k
+\sim
+\operatorname{Beta}(a+k,b+n-k).
+}
+\]
+
+\vspace{0.25cm}
+
+This is called conjugacy.
+\end{frame}
+
+\begin{frame}{Bayes' Billiards}
+Imagine tossing a ball uniformly onto a billiard table.
+
+A second sequence of balls lands independently.
+
+\vspace{0.25cm}
+
+We ask:
+what fraction land to the left of the first ball?
+
+\vspace{0.25cm}
+
+This naturally leads to Beta distributions.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Historical note}
+This is one of the earliest Bayesian probability models.
+\end{keybox}
+\end{frame}
+
+\lecturepart{Gamma Function}
+
+\begin{frame}{Why the Gamma Function?}
+Recall:
+\[
+n!
+=
+1\cdot2\cdot3\cdots n.
+\]
+
+Can factorials be extended to non-integer values?
+
+\vspace{0.25cm}
+
+\begin{keybox}{Answer}
+Yes. The Gamma function generalizes factorials to positive real numbers.
+\end{keybox}
+
+\begin{keybox}{Definition}
+For
+\[
+\alpha>0,
+\]
+the Gamma function is
+\[
+{
+\Gamma(\alpha)
+=
+\int_0^\infty
+x^{\alpha-1}e^{-x}\,dx.
+}
+\]
+\end{keybox}
+\end{frame}
+
+
+
+\begin{frame}{Connection with Factorials}
+\begin{keybox}{Theorem}
+For positive integers $n$,
+\[
+\boxed{
+\Gamma(n)=(n-1)!.
+}
+\]
+\end{keybox}
+
+\textbf{Proof}. Show $\Gamma(n)=(n-1)\times \Gamma(n-1)$ using integration by parts, and then solve the recursion with induction.
+
+
+Examples:
+\[
+\Gamma(1)=1,
+\]
+\[
+\Gamma(2)=1!,
+\]
+\[
+\Gamma(3)=2!,
+\]
+etc.
+
+\end{frame}
+
+
+
+\lecturepart{Gamma Distribution}
+
+\begin{frame}{Definition of Gamma Distribution}
+\begin{keybox}{Definition}
+A random variable $X$ has the Gamma distribution with parameters
+\[
+\alpha,\lambda>0
+\]
+if its PDF is
+\[
+{
+f(x)
+=
+\frac{
+\lambda^\alpha
+}{
+\Gamma(\alpha)
+}
+x^{\alpha-1}e^{-\lambda x},
+\qquad x>0.
+}
+\]
+
+Notation:
+\[
+X\sim \operatorname{Gamma}(\alpha,\lambda).
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Exponential Distribution as a Gamma Distribution}
+If
+\[
+\alpha=1,
+\]
+then
+\[
+\Gamma(1)=1,
+\]
+and the PDF becomes
+\[
+f(x)=\lambda e^{-\lambda x}.
+\]
+
+Thus:
+\[
+{
+\operatorname{Gamma}(1,\lambda)
+=
+\operatorname{Exp}(\lambda).
+}
+\]
+\end{frame}
+\begin{frame}{Mean and Variance of Gamma}
+If
+\[
+X\sim \operatorname{Gamma}(\alpha,\lambda),
+\]
+then
+\[
+\mathbb{E}(X)=\frac{\alpha}{\lambda}.
+\]
+
+Also,
+\[
+\operatorname{Var}(X)=\frac{\alpha}{\lambda^2}.
+\]
+\end{frame}
+
+
+
+\begin{frame}{Proof: Mean and Variance of Gamma}
+The density is
+\[
+f_X(x)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-\lambda x},
+\qquad x>0.
+\]
+
+Then
+\[
+\mathbb{E}(X)
+=
+\int_0^\infty x f_X(x)\,dx
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^\infty x^\alpha e^{-\lambda x}\,dx.
+\]
+
+Using
+\[
+\int_0^\infty x^\alpha e^{-\lambda x}\,dx
+=
+\frac{\Gamma(\alpha+1)}{\lambda^{\alpha+1}},
+\]
+we get
+\[
+\mathbb{E}(X)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\cdot
+\frac{\Gamma(\alpha+1)}{\lambda^{\alpha+1}}.
+\]
+
+Since \(\Gamma(\alpha+1)=\alpha\Gamma(\alpha)\),
+\[
+\mathbb{E}(X)=\frac{\alpha}{\lambda}.
+\]
+\end{frame}
+
+
+
+\begin{frame}{Proof: Variance of Gamma}
+First compute
+\[
+\mathbb{E}(X^2)
+=
+\int_0^\infty x^2 f_X(x)\,dx.
+\]
+
+Thus
+\[
+\mathbb{E}(X^2)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^\infty x^{\alpha+1}e^{-\lambda x}\,dx.
+\]
+
+Using
+\[
+\int_0^\infty x^{\alpha+1}e^{-\lambda x}\,dx
+=
+\frac{\Gamma(\alpha+2)}{\lambda^{\alpha+2}},
+\]
+we get
+\[
+\mathbb{E}(X^2)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\cdot
+\frac{\Gamma(\alpha+2)}{\lambda^{\alpha+2}}.
+\]
+
+Since
+\[
+\Gamma(\alpha+2)
+=
+(\alpha+1)\alpha\Gamma(\alpha),
+\]
+we have
+\[
+\mathbb{E}(X^2)
+=
+\frac{\alpha(\alpha+1)}{\lambda^2}.
+\]
+
+Therefore,
+\[
+\operatorname{Var}(X)
+=
+\mathbb{E}(X^2)-(\mathbb{E}(X))^2
+=
+\frac{\alpha(\alpha+1)}{\lambda^2}
+-
+\frac{\alpha^2}{\lambda^2}.
+\]
+
+Hence
+\[
+\operatorname{Var}(X)=\frac{\alpha}{\lambda^2}.
+\]
+\end{frame}
+
+
+
+
+
+\begin{frame}{Gamma as a Sum of Exponentials}
+Suppose
+\[
+X_1,\dots,X_n
+\]
+are independent Exponential$(\lambda)$ random variables.
+
+Define
+\[
+T=X_1+\cdots+X_n.
+\]
+
+Then:
+\[
+{
+T\sim \operatorname{Gamma}(n,\lambda).
+}
+\]
+
+
+
+
+\begin{keybox}{Interpretation}
+Gamma distributions describe waiting times for multiple arrivals.
+\end{keybox}
+\end{frame}
+
+
+
+\begin{frame}{Gamma and Negative Binomial}
+There is a strong analogy:
+
+\vspace{0.25cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{ccc}
+\toprule
+Discrete & Continuous & Interpretation \\
+\midrule
+Geometric & Exponential & waiting for first event \\
+Negative Binomial & Gamma & waiting for multiple events \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Big picture}
+Gamma distributions are continuous analogs of Negative Binomial distributions.
+\end{keybox}
+\end{frame}
+\begin{frame}{MGF of Gamma Distribution}
+If
+\[
+X\sim \operatorname{Gamma}(\alpha,\lambda),
+\]
+then its MGF is
+\[
+M_X(t)
+=
+\left(
+\frac{\lambda}{\lambda-t}
+\right)^\alpha,
+\]
+for \(t<\lambda\).
+\end{frame}
+
+
+
+\begin{frame}{Proof: MGF of Gamma Distribution}
+The density is
+\[
+f_X(x)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-\lambda x},
+\qquad x>0.
+\]
+
+By definition,
+\[
+M_X(t)
+=
+\mathbb{E}(e^{tX})
+=
+\int_0^\infty e^{tx} f_X(x)\,dx.
+\]
+
+Therefore,
+\[
+M_X(t)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^\infty
+x^{\alpha-1}e^{tx}e^{-\lambda x}\,dx.
+\]
+
+Combining the exponentials, we have
+\[
+M_X(t)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^\infty
+x^{\alpha-1}e^{-(\lambda-t)x}\,dx.
+\]
+
+Using the Gamma integral,
+\[
+\int_0^\infty x^{\alpha-1}e^{-cx}\,dx
+=
+\frac{\Gamma(\alpha)}{c^\alpha},
+\qquad c>0,
+\]
+with \(c=\lambda-t\), we get
+\[
+M_X(t)
+=
+\left(
+\frac{\lambda}{\lambda-t}
+\right)^\alpha,
+\qquad \text{for } \lambda-t>0.
+\]
+\end{frame}
+\begin{frame}{Relationship Between Beta and Gamma}
+If
+\[
+X\sim \operatorname{Gamma}(a,1),
+\qquad
+Y\sim \operatorname{Gamma}(b,1),
+\]
+independently, then
+\[
+{
+\frac{X}{X+Y}
+\sim
+\operatorname{Beta}(a,b).
+}
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Beautiful connection}
+Beta and Gamma distributions are deeply linked.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Beta distributions model random quantities between
+    \[
+    0
+    \quad \text{and} \quad
+    1.
+    \]
+
+    \item Gamma functions generalize factorials.
+
+    \item Gamma distributions generalize Exponential distributions.
+
+    \item Gamma distributions arise from sums of independent Exponentials.
+
+    \item Beta and Gamma distributions are closely connected.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Next lecture}
+Conditional expectation and prediction.
+\end{keybox}
+\end{frame}

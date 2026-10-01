@@ -1,0 +1,93 @@
+\usetheme{Madrid}
+
+
+
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}
+    \hspace{1em}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}
+    \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,right]{date in head/foot}
+    \insertshortdate{}\hspace{2em}\insertframenumber{}\hspace{1em}
+  \end{beamercolorbox}}%
+}
+
+
+
+
+
+
+
+
+
+\usecolortheme{default}
+
+
+\setbeamersize{text margin left=2mm,text margin right=2mm}
+
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{animate} % for GIF-like animation in PDF
+\usepackage{subcaption}
+\usepackage{braket}
+
+
+
+
+\definecolor{UWPurple}{HTML}{4B2E83}
+\definecolor{UWGold}{HTML}{B7A57A}
+\definecolor{UWLightGold}{HTML}{E8E3D3}
+\definecolor{UWGray}{HTML}{444444}
+\definecolor{UWLightGray}{HTML}{F4F4F4}
+\definecolor{UWSoftBlue}{HTML}{EEF3F7}
+
+\setbeamercolor{structure}{fg=UWPurple}
+\setbeamercolor{title}{fg=white,bg=UWPurple}
+\setbeamercolor{frametitle}{fg=white,bg=UWPurple}
+\setbeamercolor{block title}{fg=white,bg=UWPurple}
+\setbeamercolor{block body}{fg=black,bg=UWLightGray}
+\setbeamercolor{alerted text}{fg=UWPurple}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\color{UWPurple}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{UWGold}$\bullet$}
+
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{normal text}{size=\small}
+
+\newtcolorbox{keybox}[1]{
+  colback=UWLightGray,
+  colframe=UWPurple,
+  title=#1,
+  fonttitle=\bfseries,
+  sharp corners,
+  boxrule=0.7pt
+}
+
+\newtcolorbox{livebox}[1]{
+  colback=UWSoftBlue!60,
+  colframe=UWGold!80!black,
+  coltext=UWGray!70,
+  title=#1,
+  fonttitle=\bfseries,
+  sharp corners,
+  boxrule=0.6pt
+}
+
+
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Var}{\operatorname{Var}}

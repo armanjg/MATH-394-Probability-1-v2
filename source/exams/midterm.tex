@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.62in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Midterm Examination}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{policybox}{
+    breakable,
+    colback=softgold,
+    colframe=deepgold,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm
+}
+
+\newcommand{\workspace}[1]{%
+    \vspace{0.4cm}
+    \begin{tcolorbox}[
+        height=#1,
+        colback=white,
+        colframe=uwgold,
+        boxrule=0.5pt,
+        arc=1mm,
+        title={\small\textbf{Work space}},
+        coltitle=uwpurple,
+        colbacktitle=softpurple
+    ]
+    \end{tcolorbox}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{0.05cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{0.28cm}
+
+{\LARGE \color{uwpurple}\textbf{Midterm Examination}}\\[0.15cm]
+{\Large \textbf{\course}}\\[0.15cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{0.22cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\bfseries}p{0.19\textwidth}p{0.68\textwidth}}
+Date: & July 22, 2026 \\
+Answering time: & 60 minutes \\
+Total points: & 60 \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.18cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\bfseries}p{0.22\textwidth}p{0.67\textwidth}}
+Name: & \hrulefill \\
+Student ID: & \hrulefill \\
+Signature: & \hrulefill \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.15cm}
+
+\begin{policybox}
+\small
+\textbf{Instructions}
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.15em,parsep=0pt]
+    \item This examination contains \textbf{five problems}. Verify that your copy is complete.
+    \item Show all work and justify your answers. Unsupported answers may receive little or no credit.
+    \item Clearly define any events or random variables that you introduce.    
+    \item Do not remove pages from the examination booklet.
+\end{itemize}
+
+\medskip
+\textbf{Permitted materials}
+
+Examinations are closed-book and closed-notes. Students may use:
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.12em,parsep=0pt]
+    \item one handwritten 8.5 $\times$ 11 inch reference sheet (front and back), and
+    \item a non-programmable non-graphing calculator capable of standard exponential and logarithmic computations (e.g. TI-30X IIS).
+\end{itemize}
+No other electronic devices, calculators, communication devices, or external resources may be used during examinations.
+\end{policybox}
+
+\vspace{0.10cm}
+
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{|>{\centering\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.16\textwidth}|}
+\hline
+\textbf{Problem} & \textbf{Score} \\
+\hline
+1 & /10 \\
+\hline
+2 & /10 \\
+\hline
+3 & /10 \\
+\hline
+4 & /15 \\
+\hline
+5 & /15 \\
+\hline
+\textbf{Total} & \textbf{/60} \\
+\hline
+\end{tabular}
+
+\vspace{0.08cm}
+{\footnotesize By signing above, you affirm that the work is your own and that you followed the examination rules.}
+\end{titlepage}
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 1. } \hfill \textbf{5 points}
+\end{problemheader}
+A student organization has 7 mathematics graduate students, 5 statistics graduate students, and 6 undergraduate students. A committee of 5 students is selected uniformly at random from all committees of 5.
+
+Find the probability that the committee contains exactly 2 mathematics graduate students, exactly 1 statistics graduate student, and exactly 2 undergraduate students.
+\hrule
+ 
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 2.} \hfill \textbf{10 points}
+\end{problemheader}
+
+A spam filter is designed by looking at commonly occurring phrases in spam. Suppose that $80\%$ of email is spam. In $10\%$ of the spam emails, the phrase ``free money'' is used, whereas this phrase is only used in $1\%$ of non-spam emails. A new email has just arrived, which does mention ``free money.'' What is the probability that it is spam?
+ 
+\hrule
+ 
+
+\newpage
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 3. } \hfill \textbf{10 points}
+\end{problemheader}
+
+Let $A$ and $B$ be events.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*]
+    \item Let $S$ be a sample space and $A_1,\dots, A_n\in  \mathcal{F}$ be events. Explain what it means for $A_i's$ to form a partition of $S$,  \hfill \textbf{(3 points)}
+    \item Suppose $P(A) = 0.6$ and $P(B)=0.5$. Can $A$ and $B$ be disjoint? \hfill \textbf{(3 points)}
+   
+    \item Suppose that $A$ is independent of itself. Use the definition of independence to conclude that $P(A)=0$ or $P(A)=1$. \hfill \textbf{(4 points)}
+\end{enumerate}
+ 
+\hrule
+ 
+\newpage
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 4. } \hfill \textbf{15 points}
+\end{problemheader}
+
+Suppose that $X$ has probability density function
+\[
+f_X(x)=
+\begin{cases}
+ c\,x(2-x), & 0<x<2,\\
+ 0, & \text{otherwise},
+\end{cases}
+\]
+where $c$ is a constant.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.7em]
+    \item Find $c$. \hfill \textbf{(3 points)}
+    \item Find the cumulative distribution function $F_X(x)$ for all real $x$. \hfill \textbf{(5 points)}
+    \item Find $P(X>3/2)$. \hfill \textbf{(2 points)}
+    \item Find $\mathbb{E}[X]$ and $\operatorname{Var}(X)$. \hfill \textbf{(5 points)}
+\end{enumerate}
+
+\hrule
+
+\newpage
+ 
+
+
+
+
+\begin{problemheader}
+\textbf{Problem 5.} \hfill \textbf{20 Points}
+\end{problemheader}
+
+A company has found that \(40\%\) of customers who visit its website make a purchase. Suppose that \(200\) customers visit the website independently on a particular day.
+
+Let \(X\) denote the number of customers who make a purchase.
+
+\begin{enumerate}[]
+
+\item Determine whether a \textbf{Poisson approximation} or a
+\textbf{normal approximation} is more appropriate by verifying the
+required conditions. Then clearly state the approximating distribution;
+that is, provide \(\lambda\) if a Poisson approximation is appropriate,
+or provide \(\mu\) and \(\sigma^2\) if a normal approximation is
+appropriate.   \hfill \textbf{(5 points)}
+
+\item  Use the approximation from part (a) to estimate each of the following:
+\begin{enumerate}[]
+    \item  \(\mathbb{P}(70<X<90)\)  \hfill \textbf{(5 points)}
+    \item  \(\mathbb{P}(X>90)\)  \hfill \textbf{(5 points)}
+    \item  \(\mathbb{P}(X=80)\)  \hfill \textbf{(5 points)}
+\end{enumerate}
+
+\end{enumerate}
+
+\hrule
+
+  
+
+\end{document}

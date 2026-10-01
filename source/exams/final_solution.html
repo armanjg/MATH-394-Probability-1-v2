@@ -1,0 +1,401 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='final_solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='final_solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+<script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 96 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p><!-- l. 100 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Final Examination Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Summer 2026    —    Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-content'><!-- l. 119 --><p class='noindent'><span class='cmbx-10x-x-109'>Exam date: </span>August 21, 2026
+</p><!-- l. 121 --><p class='noindent'><span class='cmbx-10x-x-109'>Answering time: </span>60 minutes
+</p><!-- l. 123 --><p class='noindent'><span class='cmbx-10x-x-109'>Total: </span>60 points </p> 
+</div> 
+</div>
+                                                                                               
+                                                                                               
+<div class='tcolorbox problemheader' id='tcolobox-2'>     
+<div class='tcolorbox-content'><!-- l. 134 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.                                                                                        16 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 137 --><p class='noindent'>Let the joint probability density function of random variables <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> be given by </p><div class='mathjax-block'>\[ f(x,y) = \begin {cases} x^2e^{-x(y+1)}, &amp; x\geq 0,\quad y\geq 0,\\ 0, &amp; \text {elsewhere}. \end {cases} \]</div>
+<!-- l. 148 --><p class='noindent'>The marginal probability density functions are </p><div class='mathjax-block'>\[ f_X(x) = \begin {cases} xe^{-x}, &amp; x\geq 0,\\ 0, &amp; \text {otherwise}, \end {cases} \]</div><p> and </p><div class='mathjax-block'>\[ f_Y(y) = \begin {cases} \dfrac {2}{(1+y)^3}, &amp; y\geq 0,\\ 0, &amp; \text {otherwise}. \end {cases} \]</div>
+    <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Calculate <div class='mathjax-block'>\[ \operatorname {Cov}(X,Y). \]</div>                                                                                                                  <span class='cmbx-10x-x-109'>(4
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Calculate <div class='mathjax-block'>\[ \operatorname {Cov}(3X+1,\,2X-4). \]</div>                                                                                                                  <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Are <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> independent? Justify your answer.                                                                     <span class='cmbx-10x-x-109'>(2
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (d) </dt><dd class='enumerate-enumitem'>Calculate the moment-generating function of <span class='mathjax-inline'>\(X\)</span>, namely <div class='mathjax-block'>\[ M_X(t)=E(e^{tX}). \]</div>                                                       <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (e) </dt><dd class='enumerate-enumitem'>Using <span class='mathjax-inline'>\(M_X(t)\)</span>, calculate <span class='mathjax-inline'>\(E(X)\)</span>.                                                                                                        <span class='cmbx-10x-x-109'>(2
+    points)</span>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+                                                                                               
+                                                                                               
+<!-- l. 420 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 198 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Recall that </p><div class='mathjax-block'>\[ \operatorname {Cov}(X,Y) = E(XY)-E(X)E(Y). \]</div>
+<!-- l. 205 --><p class='noindent'>First, </p><div class='mathjax-env mathjax-align*'>\begin{align*} E(X) &amp;= \int _0^\infty x f_X(x)\,dx\\ &amp;= \int _0^\infty x^2e^{-x}\,dx\\ &amp;=2. \end{align*}</div>
+<!-- l. 215 --><p class='noindent'>Next, </p><div class='mathjax-env mathjax-align*'>\begin{align*} E(Y) &amp;= \int _0^\infty y\frac {2}{(1+y)^3}\,dy\\ &amp;=1. \end{align*}</div>
+<!-- l. 223 --><p class='noindent'>To calculate <span class='mathjax-inline'>\(E(XY)\)</span>, use the joint density: </p><div class='mathjax-env mathjax-align*'>\begin{align*} E(XY) &amp;= \int _0^\infty \int _0^\infty xy\,x^2e^{-x(y+1)}\,dy\,dx\\ &amp;= \int _0^\infty x^3e^{-x} \left ( \int _0^\infty y e^{-xy}\,dy \right )dx. \end{align*}</div>
+<!-- l. 237 --><p class='noindent'>For <span class='mathjax-inline'>\(x&gt;0\)</span>, </p><div class='mathjax-block'>\[ \int _0^\infty y e^{-xy}\,dy = \frac {1}{x^2}. \]</div>
+<!-- l. 244 --><p class='noindent'>Therefore, </p><div class='mathjax-env mathjax-align*'>\begin{align*} E(XY) &amp;= \int _0^\infty xe^{-x}\,dx\\ &amp;=1. \end{align*}</div>
+<!-- l. 252 --><p class='noindent'>Hence </p><div class='mathjax-block'>\[ \operatorname {Cov}(X,Y) = 1-(2)(1) = -1. \]</div>
+<!-- l. 262 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Using </p><div class='mathjax-block'>\[ \operatorname {Cov}(aX+b,cX+d) = ac\,\operatorname {Var}(X), \]</div> we obtain <div class='mathjax-block'>\[ \operatorname {Cov}(3X+1,2X-4) = 6\operatorname {Var}(X). \]</div>
+<!-- l. 275 --><p class='noindent'>Now </p><div class='mathjax-block'>\[ E(X)=2, \]</div> and <div class='mathjax-env mathjax-align*'>\begin{align*} E(X^2) &amp;= \int _0^\infty x^2 f_X(x)\,dx\\ &amp;= \int _0^\infty x^3e^{-x}\,dx\\ &amp;=6. \end{align*}</div>
+<!-- l. 289 --><p class='noindent'>Thus </p><div class='mathjax-block'>\[ \operatorname {Var}(X) = E(X^2)-[E(X)]^2 = 6-4 = 2. \]</div>
+<!-- l. 300 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ \operatorname {Cov}(3X+1,2X-4) = 6(2) = 12. \]</div>
+<!-- l. 310 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>If <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> were independent, then we would have </p><div class='mathjax-block'>\[ f_{X,Y}(x,y)=f_X(x)f_Y(y) \]</div> on their support.
+<!-- l. 316 --><p class='noindent'>However, </p><div class='mathjax-block'>\[ f_X(x)f_Y(y) = xe^{-x}\frac {2}{(1+y)^3}, \]</div> whereas <div class='mathjax-block'>\[ f_{X,Y}(x,y) = x^2e^{-x(y+1)}. \]</div>
+<!-- l. 329 --><p class='noindent'>These are not equal in general. Therefore, <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are not independent.
+</p><!-- l. 332 --><p class='noindent'>Alternatively, part (a) already gives </p><div class='mathjax-block'>\[ \operatorname {Cov}(X,Y)=-1\neq 0. \]</div> Since independence would imply zero covariance, <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> cannot be
+independent.
+<!-- l. 340 --><p class='noindent'><span class='cmbx-10x-x-109'>(d) </span>By definition, </p><div class='mathjax-env mathjax-align*'>\begin{align*} M_X(t) &amp;= E(e^{tX})\\ &amp;= \int _0^\infty e^{tx}xe^{-x}\,dx\\ &amp;= \int _0^\infty xe^{-(1-t)x}\,dx. \end{align*}</div>
+<!-- l. 351 --><p class='noindent'>For <span class='mathjax-inline'>\(t&lt;1\)</span>, </p><div class='mathjax-block'>\[ \int _0^\infty xe^{-(1-t)x}\,dx = \frac {1}{(1-t)^2}. \]</div>
+<!-- l. 358 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ M_X(t) = \frac {1}{(1-t)^2}, \qquad t&lt;1. \]</div>
+<!-- l. 367 --><p class='noindent'><span class='cmbx-10x-x-109'>(e) </span>We know that </p><div class='mathjax-block'>\[ E(X)=M_X'(0). \]</div>
+<!-- l. 372 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ M_X(t)=(1-t)^{-2}, \]</div> we have <div class='mathjax-block'>\[ M_X'(t)=2(1-t)^{-3}. \]</div>
+<!-- l. 381 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ E(X) = M_X'(0) = 2. \]</div>
+<div class='tcolorbox finalanswerbox' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+<!-- l. 418 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ \text {(a)}\quad \operatorname {Cov}(X,Y)=-1. \]</div>
+<div class='mathjax-block'>\[ \text {(b)}\quad \operatorname {Cov}(3X+1,2X-4)=12. \]</div>
+<div class='mathjax-block'>\[ \text {(c)}\quad X\text { and }Y\text { are not independent.} \]</div>
+<div class='mathjax-block'>\[ \text {(d)}\quad M_X(t)=\frac {1}{(1-t)^2}, \qquad t&lt;1. \]</div>
+<div class='mathjax-block'>\[ \text {(e)}\quad E(X)=2. \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 423 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-content'><!-- l. 430 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.                                                                                         8 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 433 --><p class='noindent'>Let <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> be two positive independent continuous random variables with probability density functions <span class='mathjax-inline'>\(f_1(x)\)</span> and <span class='mathjax-inline'>\(f_2(y)\)</span>,
+respectively.
+</p><!-- l. 436 --><p class='noindent'>Find the probability density function of </p><div class='mathjax-block'>\[ U=\frac {X}{Y}. \]</div>
+<!-- l. 441 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: </span>Let <span class='mathjax-inline'>\(V=X\)</span>. Find the joint probability density function of <span class='mathjax-inline'>\(U\)</span> and <span class='mathjax-inline'>\(V\)</span> (Jacobian method), and then calculate the
+marginal probability density function of <span class='mathjax-inline'>\(U\)</span>.
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+<!-- l. 568 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 447 --><p class='noindent'>Define </p><div class='mathjax-block'>\[ U=\frac {X}{Y}, \qquad V=X. \]</div>
+<!-- l. 454 --><p class='noindent'>We first find the inverse transformation.
+</p><!-- l. 456 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ v=x \]</div> and <div class='mathjax-block'>\[ u=\frac {x}{y}, \]</div> we obtain <div class='mathjax-block'>\[ x=v, \qquad y=\frac {v}{u}. \]</div>
+<!-- l. 471 --><p class='noindent'>Because <span class='mathjax-inline'>\(X&gt;0\)</span> and <span class='mathjax-inline'>\(Y&gt;0\)</span>, the support of <span class='mathjax-inline'>\((U,V)\)</span> is </p><div class='mathjax-block'>\[ u&gt;0,\qquad v&gt;0. \]</div>
+<!-- l. 476 --><p class='noindent'>The Jacobian of the inverse transformation is </p><div class='mathjax-block'>\[ \frac {\partial (x,y)}{\partial (u,v)} = \begin {vmatrix} \dfrac {\partial x}{\partial u} &amp; \dfrac {\partial x}{\partial v} \\[2mm] \dfrac {\partial y}{\partial u} &amp; \dfrac {\partial y}{\partial v} \end {vmatrix}. \]</div>
+<!-- l. 491 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ x=v, \qquad y=\frac vu, \]</div> we have <div class='mathjax-block'>\[ \frac {\partial (x,y)}{\partial (u,v)} = \begin {vmatrix} 0 &amp; 1\\[2mm] -\dfrac {v}{u^2} &amp; \dfrac 1u \end {vmatrix} = \frac {v}{u^2}. \]</div>
+<!-- l. 509 --><p class='noindent'>Thus </p><div class='mathjax-block'>\[ \left | \frac {\partial (x,y)}{\partial (u,v)} \right | = \frac {v}{u^2}. \]</div>
+<!-- l. 518 --><p class='noindent'>Since <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are independent, </p><div class='mathjax-block'>\[ f_{X,Y}(x,y)=f_1(x)f_2(y). \]</div>
+<!-- l. 523 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ f_{U,V}(u,v) = f_1(v) f_2\left (\frac vu\right ) \frac {v}{u^2}, \qquad u,v&gt;0. \]</div>
+<!-- l. 533 --><p class='noindent'>Finally, integrate out <span class='mathjax-inline'>\(V\)</span>: </p><div class='mathjax-block'>\[ f_U(u) = \int _0^\infty f_1(v) f_2\left (\frac vu\right ) \frac {v}{u^2}\,dv, \qquad u&gt;0. \]</div>
+<!-- l. 544 --><p class='noindent'>For <span class='mathjax-inline'>\(u\leq 0\)</span>, </p><div class='mathjax-block'>\[ f_U(u)=0. \]</div>
+<div class='tcolorbox finalanswerbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 566 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ f_U(u) = \begin {cases} \displaystyle \frac {1}{u^2} \int _0^\infty v f_1(v) f_2\left (\frac vu\right )\,dv, &amp; u&gt;0,\\[4mm] 0, &amp; u\leq 0. \end {cases} \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 571 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-8'>     
+<div class='tcolorbox-content'><!-- l. 578 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.                                                                                         7 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 581 --><p class='noindent'>Let <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> be i.i.d. positive random variables.
+</p><!-- l. 583 --><p class='noindent'>For each part below, fill in the appropriate equality or inequality symbol.
+</p><!-- l. 585 --><p class='noindent'>Write <span class='mathjax-inline'>\(=\)</span> if the two sides are always equal, <span class='mathjax-inline'>\(\leq \)</span> if the left-hand side is less than or equal to the right-hand side but not
+necessarily equal, and similarly for <span class='mathjax-inline'>\(\geq \)</span>. If no relation holds in general, write <span class='mathjax-inline'>\(?\)</span>.
+</p><!-- l. 589 --><p class='noindent'>Justify each answer.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ E(\log X) \quad \underline {\hspace {1.2cm}} \quad \log (E(X)). \]</div>                                                                                                                               <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ P(X\leq Y) \quad \underline {\hspace {1.2cm}} \quad P(X\geq Y). \]</div>                                                                                                                               <span class='cmbx-10x-x-109'>(2
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ E(XY) \quad \underline {\hspace {1.2cm}} \quad \sqrt {E(X^2)E(Y^2)}. \]</div>                                                                                                                               <span class='cmbx-10x-x-109'>(2
+    points)</span>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 719 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 621 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>The function </p><div class='mathjax-block'>\[ g(x)=\log x \]</div> is concave on <span class='mathjax-inline'>\((0,\infty )\)</span>.
+<!-- l. 627 --><p class='noindent'>By Jensen’s inequality for a concave function, </p><div class='mathjax-block'>\[ E[g(X)]\leq g(E[X]). \]</div>
+<!-- l. 632 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ E(\log X)\leq \log (E(X)). \]</div>
+<!-- l. 638 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Since <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are i.i.d., the joint distribution of <span class='mathjax-inline'>\((X,Y)\)</span> is symmetric under interchange of <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span>.
+</p><!-- l. 641 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ P(X&lt;Y)=P(Y&lt;X). \]</div>
+<!-- l. 646 --><p class='noindent'>Also, </p><div class='mathjax-block'>\[ P(X\leq Y) = P(X&lt;Y)+P(X=Y) \]</div> and <div class='mathjax-block'>\[ P(X\geq Y) = P(X&gt;Y)+P(X=Y). \]</div>
+<!-- l. 659 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ P(X&lt;Y)=P(X&gt;Y), \]</div> it follows that <div class='mathjax-block'>\[ P(X\leq Y)=P(X\geq Y). \]</div>
+<!-- l. 669 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>By the Cauchy–Schwarz inequality, </p><div class='mathjax-block'>\[ |E(XY)| \leq \sqrt {E(X^2)E(Y^2)}. \]</div>
+<!-- l. 676 --><p class='noindent'>Since <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are positive, </p><div class='mathjax-block'>\[ E(XY)\geq 0. \]</div>
+<!-- l. 681 --><p class='noindent'>Hence </p><div class='mathjax-block'>\[ E(XY) \leq \sqrt {E(X^2)E(Y^2)}. \]</div>
+<!-- l. 688 --><p class='noindent'>In fact, because <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are independent, </p><div class='mathjax-block'>\[ E(XY)=E(X)E(Y), \]</div> but Cauchy–Schwarz gives the requested comparison directly.
+<div class='tcolorbox finalanswerbox' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+<!-- l. 717 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ \text {(a)}\quad E(\log X) \leq \log (E(X)). \]</div>
+<div class='mathjax-block'>\[ \text {(b)}\quad P(X\leq Y) = P(X\geq Y). \]</div>
+<div class='mathjax-block'>\[ \text {(c)}\quad E(XY) \leq \sqrt {E(X^2)E(Y^2)}. \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 722 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-11'>     
+<div class='tcolorbox-content'><!-- l. 729 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4.                                                                                         7 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 732 --><p class='noindent'>Suppose </p><div class='mathjax-block'>\[ X_1,\ldots ,X_n \]</div><p> are independent Bernoulli random variables with unknown success probability <span class='mathjax-inline'>\(p\)</span>, and define
+</p><div class='mathjax-block'>\[ \widehat p = \frac 1n\sum _{i=1}^n X_i. \]</div>
+<!-- l. 744 --><p class='noindent'>Let </p><div class='mathjax-block'>\[ \varepsilon &gt;0 \qquad \text {and}\qquad 0&lt;\alpha &lt;1. \]</div>
+<!-- l. 751 --><p class='noindent'>Using Chebyshev’s inequality, derive a condition on the sample size <span class='mathjax-inline'>\(n\)</span> that guarantees </p><div class='mathjax-block'>\[ P\left (|\widehat p-p|&lt;\varepsilon \right ) \geq 1-\alpha \]</div><p> for every
+</p><div class='mathjax-block'>\[ 0&lt;p&lt;1. \]</div>
+<div class='tcolorbox solutionbox' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+<!-- l. 882 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 765 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ X_i\sim \operatorname {Bernoulli}(p), \]</div> we have <div class='mathjax-block'>\[ E(X_i)=p, \qquad \operatorname {Var}(X_i)=p(1-p). \]</div>
+<!-- l. 776 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ E(\widehat p) = E\left ( \frac 1n\sum _{i=1}^nX_i \right ) = p. \]</div>
+<!-- l. 787 --><p class='noindent'>Since the <span class='mathjax-inline'>\(X_i\)</span>’s are independent, </p><div class='mathjax-env mathjax-align*'>\begin{align*} \operatorname {Var}(\widehat p) &amp;= \operatorname {Var} \left ( \frac 1n\sum _{i=1}^nX_i \right )\\ &amp;= \frac 1{n^2} \sum _{i=1}^n \operatorname {Var}(X_i)\\ &amp;= \frac {p(1-p)}{n}. \end{align*}</div>
+<!-- l. 803 --><p class='noindent'>Chebyshev’s inequality gives </p><div class='mathjax-block'>\[ P\left ( |\widehat p-p|\geq \varepsilon \right ) \leq \frac {\operatorname {Var}(\widehat p)} {\varepsilon ^2} = \frac {p(1-p)}{n\varepsilon ^2}. \]</div>
+<!-- l. 815 --><p class='noindent'>We want a bound that holds for every <span class='mathjax-inline'>\(0&lt;p&lt;1\)</span>.
+</p><!-- l. 817 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ p(1-p)\leq \frac 14, \]</div> we obtain <div class='mathjax-block'>\[ P\left ( |\widehat p-p|\geq \varepsilon \right ) \leq \frac {1}{4n\varepsilon ^2}. \]</div>
+<!-- l. 830 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ P\left ( |\widehat p-p|&lt;\varepsilon \right ) \geq 1-\frac {1}{4n\varepsilon ^2}. \]</div>
+<!-- l. 839 --><p class='noindent'>To guarantee that this is at least <span class='mathjax-inline'>\(1-\alpha \)</span>, it is sufficient that </p><div class='mathjax-block'>\[ \frac {1}{4n\varepsilon ^2} \leq \alpha . \]</div>
+<!-- l. 846 --><p class='noindent'>Solving for <span class='mathjax-inline'>\(n\)</span>, </p><div class='mathjax-block'>\[ n \geq \frac {1}{4\alpha \varepsilon ^2}. \]</div>
+<!-- l. 853 --><p class='noindent'>Since <span class='mathjax-inline'>\(n\)</span> must be an integer, one may take </p><div class='mathjax-block'>\[ n \geq \left \lceil \frac {1}{4\alpha \varepsilon ^2} \right \rceil . \]</div>
+<div class='tcolorbox finalanswerbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 880 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><!-- l. 864 --><p class='noindent'>A sufficient condition is </p><div class='mathjax-block'>\[ n \geq \frac {1}{4\alpha \varepsilon ^2}. \]</div>
+<!-- l. 871 --><p class='noindent'>Equivalently, for integer sample size, </p><div class='mathjax-block'>\[ n \geq \left \lceil \frac {1}{4\alpha \varepsilon ^2} \right \rceil . \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 885 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-14'>     
+<div class='tcolorbox-content'><!-- l. 892 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5.                                                                                         8 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 895 --><p class='noindent'>Let <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> be independent exponential random variables with common parameter <span class='mathjax-inline'>\(\lambda &gt;0\)</span>: </p><div class='mathjax-block'>\[ X,Y\overset {\mathrm {i.i.d.}}{\sim }\operatorname {Exp}(\lambda ), \]</div><p> with probability density
+function </p><div class='mathjax-block'>\[ f(w)= \begin {cases} \lambda e^{-\lambda w}, &amp; w&gt;0,\\ 0, &amp; \text {otherwise}. \end {cases} \]</div>
+<!-- l. 909 --><p class='noindent'>Define </p><div class='mathjax-block'>\[ T=X+Y. \]</div>
+<!-- l. 914 --><p class='noindent'>Using the convolution formula </p><div class='mathjax-block'>\[ f_T(t) = \int _{-\infty }^{\infty } f_X(x)f_Y(t-x)\,dx, \]</div><p> find the probability density function of <span class='mathjax-inline'>\(T\)</span>, including its support.
+</p><div class='tcolorbox solutionbox' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+<!-- l. 1014 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 925 --><p class='noindent'>Since </p><div class='mathjax-block'>\[ T=X+Y \]</div> and <span class='mathjax-inline'>\(X,Y&gt;0\)</span>, we must have <div class='mathjax-block'>\[ T&gt;0. \]</div>
+<!-- l. 934 --><p class='noindent'>Thus, for <span class='mathjax-inline'>\(t\leq 0\)</span>, </p><div class='mathjax-block'>\[ f_T(t)=0. \]</div>
+<!-- l. 939 --><p class='noindent'>Now suppose <span class='mathjax-inline'>\(t&gt;0\)</span>.
+</p><!-- l. 941 --><p class='noindent'>For the integrand </p><div class='mathjax-block'>\[ f_X(x)f_Y(t-x) \]</div> to be nonzero, we need <div class='mathjax-block'>\[ x&gt;0 \]</div> and <div class='mathjax-block'>\[ t-x&gt;0. \]</div>
+<!-- l. 954 --><p class='noindent'>Therefore, </p><div class='mathjax-block'>\[ 0&lt;x&lt;t. \]</div>
+<!-- l. 959 --><p class='noindent'>Using convolution, </p><div class='mathjax-env mathjax-align*'>\begin{align*} f_T(t) &amp;= \int _0^t f_X(x)f_Y(t-x)\,dx\\ &amp;= \int _0^t \lambda e^{-\lambda x} \lambda e^{-\lambda (t-x)} \,dx\\ &amp;= \lambda ^2e^{-\lambda t} \int _0^t dx\\ &amp;= \lambda ^2t e^{-\lambda t}. \end{align*}</div>
+<!-- l. 977 --><p class='noindent'>Hence </p><div class='mathjax-block'>\[ f_T(t) = \begin {cases} \lambda ^2t e^{-\lambda t}, &amp; t&gt;0,\\ 0, &amp; t\leq 0. \end {cases} \]</div>
+<!-- l. 989 --><p class='noindent'>Thus <span class='mathjax-inline'>\(T\)</span> does <span class='cmti-10x-x-109'>not </span>have an exponential distribution. It has a Gamma distribution with shape parameter <span class='mathjax-inline'>\(2\)</span> and
+rate parameter <span class='mathjax-inline'>\(\lambda \)</span>.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+<!-- l. 1012 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ f_T(t) = \begin {cases} \lambda ^2t e^{-\lambda t}, &amp; t&gt;0,\\ 0, &amp; t\leq 0. \end {cases} \]</div>
+<!-- l. 1006 --><p class='noindent'>Equivalently, </p><div class='mathjax-block'>\[ T\sim \operatorname {Gamma}(2,\lambda ) \]</div> under the shape-rate parameterization.
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 1017 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-17'>     
+<div class='tcolorbox-content'><!-- l. 1024 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6.                                                                                         8 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 1027 --><p class='noindent'>Let <span class='mathjax-inline'>\(X,Y,Z\)</span> be jointly continuous with joint probability density function </p><div class='mathjax-block'>\[ f_{X,Y,Z}(x,y,z) = \begin {cases} x^2e^{-x(1+y+z)}, &amp; x,y,z&gt;0,\\ 0, &amp; \text {otherwise}. \end {cases} \]</div>
+<!-- l. 1037 --><p class='noindent'>The marginal probability density functions are </p><div class='mathjax-block'>\[ f_X(x) = \begin {cases} e^{-x}, &amp; x&gt;0,\\ 0, &amp; \text {otherwise}, \end {cases} \]</div><p> and </p><div class='mathjax-block'>\[ f_Y(y) = \begin {cases} \dfrac {1}{(1+y)^2}, &amp; y&gt;0,\\ 0, &amp; \text {otherwise}, \end {cases} \qquad f_Z(z) = \begin {cases} \dfrac {1}{(1+z)^2}, &amp; z&gt;0,\\ 0, &amp; \text {otherwise}. \end {cases} \]</div>
+    <dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Are <span class='mathjax-inline'>\(X,Y,Z\)</span> pairwise independent? Justify your answer.                                                                <span class='cmbx-10x-x-109'>(5
+    points)</span>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Are <span class='mathjax-inline'>\(X,Y,Z\)</span> mutually independent? Justify your answer.                                                               <span class='cmbx-10x-x-109'>(3
+    points)</span>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-19'>     
+<div class='tcolorbox-title'>
+<!-- l. 1208 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 1075 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>To determine pairwise independence, we examine the joint density of each pair.
+</p><!-- l. 1078 --><p class='noindent'>First, consider <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span>. Integrating out <span class='mathjax-inline'>\(Z\)</span>, </p><div class='mathjax-env mathjax-align*'>\begin{align*} f_{X,Y}(x,y) &amp;= \int _0^\infty x^2e^{-x(1+y+z)}\,dz\\ &amp;= x^2e^{-x(1+y)} \int _0^\infty e^{-xz}\,dz\\ &amp;= x^2e^{-x(1+y)} \frac 1x\\ &amp;= xe^{-x(1+y)}, \qquad x,y&gt;0. \end{align*}</div>
+<!-- l. 1095 --><p class='noindent'>On the other hand, </p><div class='mathjax-block'>\[ f_X(x)f_Y(y) = e^{-x}\frac {1}{(1+y)^2}. \]</div>
+<!-- l. 1102 --><p class='noindent'>These are not equal in general: </p><div class='mathjax-block'>\[ xe^{-x(1+y)} \neq \frac {e^{-x}}{(1+y)^2}. \]</div>
+<!-- l. 1109 --><p class='noindent'>Therefore, <span class='mathjax-inline'>\(X\)</span> and <span class='mathjax-inline'>\(Y\)</span> are not independent.
+</p><!-- l. 1111 --><p class='noindent'>Consequently, <span class='mathjax-inline'>\(X,Y,Z\)</span> cannot be pairwise independent.
+</p><!-- l. 1113 --><p class='noindent'>For completeness, the same phenomenon occurs for the other pairs.
+</p><!-- l. 1115 --><p class='noindent'>By symmetry, </p><div class='mathjax-block'>\[ f_{X,Z}(x,z) = xe^{-x(1+z)}, \]</div> which is not equal to <div class='mathjax-block'>\[ f_X(x)f_Z(z) = \frac {e^{-x}}{(1+z)^2}. \]</div>
+<!-- l. 1128 --><p class='noindent'>For <span class='mathjax-inline'>\(Y\)</span> and <span class='mathjax-inline'>\(Z\)</span>, </p><div class='mathjax-env mathjax-align*'>\begin{align*} f_{Y,Z}(y,z) &amp;= \int _0^\infty x^2e^{-x(1+y+z)}\,dx. \end{align*}</div>
+<!-- l. 1136 --><p class='noindent'>Using </p><div class='mathjax-block'>\[ \int _0^\infty x^2e^{-ax}\,dx = \frac {2}{a^3}, \qquad a&gt;0, \]</div> we obtain <div class='mathjax-block'>\[ f_{Y,Z}(y,z) = \frac {2}{(1+y+z)^3}. \]</div>
+<!-- l. 1150 --><p class='noindent'>However, </p><div class='mathjax-block'>\[ f_Y(y)f_Z(z) = \frac {1}{(1+y)^2(1+z)^2}, \]</div> which is again different in general.
+<!-- l. 1158 --><p class='noindent'>Hence none of the three pairs is independent.
+</p><!-- l. 1161 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Mutual independence would require </p><div class='mathjax-block'>\[ f_{X,Y,Z}(x,y,z) = f_X(x)f_Y(y)f_Z(z) \]</div> for all points in the support.
+<!-- l. 1169 --><p class='noindent'>The product of the marginals is </p><div class='mathjax-block'>\[ f_X(x)f_Y(y)f_Z(z) = \frac {e^{-x}} {(1+y)^2(1+z)^2}. \]</div>
+<!-- l. 1177 --><p class='noindent'>But the joint density is </p><div class='mathjax-block'>\[ f_{X,Y,Z}(x,y,z) = x^2e^{-x(1+y+z)}. \]</div>
+<!-- l. 1184 --><p class='noindent'>These expressions are not equal in general.
+</p><!-- l. 1186 --><p class='noindent'>Therefore, <span class='mathjax-inline'>\(X,Y,Z\)</span> are not mutually independent.
+</p><!-- l. 1188 --><p class='noindent'>Also, since mutual independence implies pairwise independence and part (a) shows that they are not
+pairwise independent, mutual independence is impossible.
+</p>
+<div class='tcolorbox finalanswerbox' id='tcolobox-18'>     
+<div class='tcolorbox-title'>
+<!-- l. 1206 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ \text {(a)}\quad X,Y,Z\text { are not pairwise independent.} \]</div>
+<!-- l. 1199 --><p class='noindent'>In fact, none of the three pairs is independent.
+</p>
+<div class='mathjax-block'>\[ \text {(b)}\quad X,Y,Z\text { are not mutually independent.} \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+<!-- l. 1211 --><p class='noindent'>
+                                                                                               
+                                                                                               
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-20'>     
+<div class='tcolorbox-content'><!-- l. 1218 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7.                                                                                         6 points</span>
+</p> 
+</div> 
+</div>
+<!-- l. 1221 --><p class='noindent'>For each part below, select the <span class='cmbx-10x-x-109'>correct statement </span>of the indicated theorem. Only one choice is correct in each
+part.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'><span class='cmbx-10x-x-109'>Weak Law of Large Numbers (WLLN).</span>
+    <!-- l. 1229 --><p class='noindent'>Let <span class='mathjax-inline'>\(X_1,X_2,\ldots \)</span> be i.i.d. random variables with finite mean </p><div class='mathjax-block'>\[ E(X_i)=\mu \]</div> and finite variance <div class='mathjax-block'>\[ \operatorname {Var}(X_i)=\sigma ^2. \]</div> Let <div class='mathjax-block'>\[ \overline X_n=\frac 1n\sum _{i=1}^n X_i. \]</div>
+    <!-- l. 1242 --><p class='noindent'>Which of the following is the conclusion of the Weak Law of Large Numbers?                         <span class='cmbx-10x-x-109'>(2
+    points)</span>
+         </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+    (A) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(\varepsilon &gt;0\)</span>, <div class='mathjax-block'>\[ P\left ( |\overline X_n-\mu |&gt;\varepsilon \right )=0 \qquad \text {for every }n. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (B) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(\varepsilon &gt;0\)</span>, <div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( |\overline X_n-\mu |&gt;\varepsilon \right ) =0. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (C) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ P\left ( \lim _{n\to \infty }\overline X_n=\mu \right )=1. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (D) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(z\in \mathbb R\)</span>, <div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( \frac {\overline X_n-\mu }{\sigma /\sqrt n} \leq z \right ) = \Phi (z). \]</div>
+         </dd></dl>
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'><span class='cmbx-10x-x-109'>Strong Law of Large Numbers (SLLN).</span>
+    <!-- l. 1289 --><p class='noindent'>Let <span class='mathjax-inline'>\(X_1,X_2,\ldots \)</span> be i.i.d. random variables satisfying the same assumptions as in the Weak Law of Large Numbers, with
+    </p><div class='mathjax-block'>\[ E(X_i)=\mu \]</div> and finite variance <div class='mathjax-block'>\[ \operatorname {Var}(X_i)=\sigma ^2. \]</div>
+    <!-- l. 1299 --><p class='noindent'>Which of the following is the conclusion of the Strong Law of Large Numbers?                        <span class='cmbx-10x-x-109'>(2
+    points)</span>
+         </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+    (A) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ P\left ( \lim _{n\to \infty }\overline X_n=\mu \right )=1. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (B) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(\varepsilon &gt;0\)</span>, <div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( |\overline X_n-\mu |&gt;\varepsilon \right ) =0. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (C) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ \lim _{n\to \infty } P(\overline X_n=\mu ) =1. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (D) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ \frac {\overline X_n-\mu }{\sigma /\sqrt n} \xrightarrow []{d} N(0,1). \]</div>
+         </dd></dl>
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'><span class='cmbx-10x-x-109'>Central Limit Theorem (CLT).</span>
+    <!-- l. 1340 --><p class='noindent'>Let <span class='mathjax-inline'>\(X_1,X_2,\ldots \)</span> be i.i.d. random variables with </p><div class='mathjax-block'>\[ E(X_i)=\mu , \qquad \operatorname {Var}(X_i)=\sigma ^2&lt;\infty . \]</div>
+    <!-- l. 1347 --><p class='noindent'>Which of the following is the conclusion of the Central Limit Theorem?                                 <span class='cmbx-10x-x-109'>(2
+    points)</span>
+                                                                                               
+                                                                                               
+         </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+    (A) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ \overline X_n \xrightarrow []{P} N(\mu ,\sigma ^2). \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (B) </dt><dd class='enumerate-enumitem'><div class='mathjax-block'>\[ P\left ( \lim _{n\to \infty }\overline X_n=\mu \right )=1. \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (C) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(z\in \mathbb R\)</span>, <div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( \frac {\overline X_n-\mu }{\sigma /\sqrt n} \leq z \right ) = \Phi (z). \]</div>
+         </dd><dt class='enumerate-enumitem'>
+    (D) </dt><dd class='enumerate-enumitem'>For every <span class='mathjax-inline'>\(\varepsilon &gt;0\)</span>, <div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( |\overline X_n-\mu |&gt;\varepsilon \right ) =0. \]</div>
+         </dd></dl>
+    </dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-22'>     
+<div class='tcolorbox-title'>
+<!-- l. 1473 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 1392 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) Weak Law of Large Numbers.</span>
+</p><!-- l. 1394 --><p class='noindent'>The WLLN states that the sample mean converges to the population mean <span class='mathjax-inline'>\(\mu \) </span><span class='cmti-10x-x-109'>in probability</span>. That is,
+for every <span class='mathjax-inline'>\(\varepsilon &gt;0\)</span>, </p><div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( |\overline X_n-\mu |&gt;\varepsilon \right ) = 0. \]</div>
+<!-- l. 1405 --><p class='noindent'>Therefore, the correct answer is
+</p>
+<div class='mathjax-block'>\[ \textbf {B}. \]</div>
+<!-- l. 1412 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) Strong Law of Large Numbers.</span>
+</p><!-- l. 1414 --><p class='noindent'>The SLLN states that </p><div class='mathjax-block'>\[ \overline X_n\longrightarrow \mu \]</div> almost surely. Equivalently, <div class='mathjax-block'>\[ P\left ( \lim _{n\to \infty }\overline X_n=\mu \right ) = 1. \]</div>
+<!-- l. 1427 --><p class='noindent'>Therefore, the correct answer is
+</p>
+<div class='mathjax-block'>\[ \textbf {A}. \]</div>
+<!-- l. 1434 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) Central Limit Theorem.</span>
+</p><!-- l. 1436 --><p class='noindent'>The CLT states that the standardized sample mean converges in distribution to a standard normal
+random variable: </p><div class='mathjax-block'>\[ \frac {\overline X_n-\mu }{\sigma /\sqrt n} \xrightarrow []{d} N(0,1). \]</div>
+<!-- l. 1444 --><p class='noindent'>Equivalently, for every <span class='mathjax-inline'>\(z\in \mathbb R\)</span>, </p><div class='mathjax-block'>\[ \lim _{n\to \infty } P\left ( \frac {\overline X_n-\mu }{\sigma /\sqrt n} \leq z \right ) = \Phi (z). \]</div>
+<!-- l. 1455 --><p class='noindent'>Therefore, the correct answer is
+</p>
+<div class='mathjax-block'>\[ \textbf {C}. \]</div>
+<div class='tcolorbox finalanswerbox' id='tcolobox-21'>     
+<div class='tcolorbox-title'>
+<!-- l. 1471 --><p class='noindent'><span class='cmbx-10x-x-109'>Final Answer</span> </p></div> 
+<div class='tcolorbox-content'><div class='mathjax-block'>\[ \boxed {\text {(a) B}} \qquad \boxed {\text {(b) A}} \qquad \boxed {\text {(c) C}} \]</div>
+ 
+</div> 
+</div>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

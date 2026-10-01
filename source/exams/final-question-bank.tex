@@ -1,0 +1,9972 @@
+
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperlinks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple,
+    citecolor=uwpurple
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Practice Problems}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\setlist[enumerate]{
+    itemsep=0.35em,
+    topsep=0.35em
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Course Information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\documenttitle}{Question Bank with Solutions \\ (Final)}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+\newcommand{\term}{Summer 2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problem}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    before skip=1em,
+    after skip=0.5em
+}
+
+\newenvironment{problem}[1][]{
+    \refstepcounter{problem}
+    \begin{problemheader}
+        \textbf{Problem \theproblem%
+        \if\relax\detokenize{#1}\relax
+        \else. #1%
+        \fi}
+    \end{problemheader}
+}{
+    \vspace{0.5em}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Solution Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{solution}{
+    \par
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=uwgold,
+        boxrule=0.7pt,
+        arc=2mm,
+        left=3mm,
+        right=3mm,
+        top=2mm,
+        bottom=2mm,
+        breakable,
+        before skip=0.5em,
+        after skip=1em,
+        title=\textbf{Solution},
+        coltitle=uwpurple,
+        fonttitle=\bfseries
+    ]
+}{
+    \end{tcolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional Source Command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\source}[1]{%
+    \vspace{0.1cm}
+    
+    {\small\textit{Source: #1}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional Answer Boxes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\answerbox}{%
+    \begin{flushright}
+        \begin{tcolorbox}[
+            width=0.36\textwidth,
+            height=2cm,
+            colback=white,
+            colframe=uwpurple,
+            boxrule=0.7pt,
+            arc=1mm
+        ]
+            {\small\textbf{Final Answer}}
+        \end{tcolorbox}
+    \end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+    \begin{flushright}
+        \begin{tcolorbox}[
+            width=0.36\textwidth,
+            height=2cm,
+            colback=white,
+            colframe=uwpurple,
+            boxrule=0.7pt,
+            arc=1mm
+        ]
+            {\small\textbf{Final Answer for Part #1}}
+        \end{tcolorbox}
+    \end{flushright}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematical Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\cC}{\mathcal{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    \thispagestyle{empty}
+
+    \begin{center}
+
+        \vspace*{1.2in}
+
+        {\color{uwpurple}\rule{\textwidth}{1.5pt}}
+
+        \vspace{0.45in}
+
+        {\LARGE\bfseries\color{uwpurple}
+        \documenttitle}
+
+        \vspace{0.25in}
+
+        {\Large\bfseries
+        \course}
+
+        \vspace{0.45in}
+
+        {\color{uwgold}\rule{0.65\textwidth}{1.2pt}}
+
+        \vfill
+
+        \begin{tcolorbox}[
+            width=0.72\textwidth,
+            colback=softpurple,
+            colframe=uwpurple,
+            boxrule=0.8pt,
+            arc=2mm,
+            left=5mm,
+            right=5mm,
+            top=4mm,
+            bottom=4mm
+        ]
+            \centering
+            \large
+            \textbf{Instructor}\\
+            \instructor
+
+            \vspace{0.3cm}
+
+            \textbf{Term}\\
+            \term
+        \end{tcolorbox}
+
+        \vfill
+
+        {\large\bfseries\university}
+
+        \vspace{0.1in}
+
+        {\large\department}
+
+        \vspace{0.6in}
+
+        {\color{uwpurple}\rule{\textwidth}{1.5pt}}
+
+    \end{center}
+\end{titlepage}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FINAL EXAM QUESTION BANK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  MOMENTS PROBLEM  %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[]
+
+Let \(X\) be a continuous random variable with probability density function
+\[
+f_X(x)
+=
+\begin{cases}
+2x, & 0<x<1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item Find the general \(k\)-th raw moment
+    \[
+    \E(X^k),
+    \qquad k=1,2,\ldots
+    \]
+
+    \item Let \(M_X(t)\) denote the moment generating function of \(X\).
+    Using your result from part (a), find
+    \[
+    M_X^{(k)}(0),
+    \qquad k=1,2,\ldots,
+    \]
+    where \(M_X^{(k)}\) denotes the \(k\)-th derivative of \(M_X\).
+
+    In particular, find
+    \[
+    M_X'(0),\qquad
+    M_X''(0),\qquad
+    M_X^{(3)}(0),\qquad
+    M_X^{(4)}(0).
+    \]
+
+    \item Find
+    \[
+    \operatorname{Var}(X).
+    \]
+
+    \item Find the median \(m\) of \(X\).
+
+    \item Find the skewness
+    \[
+    \gamma_1
+    =
+    \frac{\mathbb{E}[(X-\mu)^3]}{\sigma^3},
+    \]
+    where
+    \[
+    \mu=\E(X),
+    \qquad
+    \sigma^2=\operatorname{Var}(X).
+    \]
+
+    \item Find the kurtosis
+    \[
+    \gamma_2
+    =
+    \frac{\mathbb{E}[(X-\mu)^4]}{\sigma^4}.
+    \]
+
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For \(k\geq1\),
+\[
+\begin{aligned}
+\E(X^k)
+&=
+\int_{-\infty}^{\infty}x^k f_X(x)\,dx\\
+&=
+\int_0^1 x^k(2x)\,dx\\
+&=
+2\int_0^1 x^{k+1}\,dx\\
+&=
+2\left[\frac{x^{k+2}}{k+2}\right]_0^1\\
+&=
+\frac{2}{k+2}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\E(X^k)=\frac{2}{k+2}.
+\]
+
+
+\item Recall that, whenever the moment generating function exists in a
+neighborhood of \(0\),
+\[
+M_X^{(k)}(0)=\E(X^k).
+\]
+
+From part (a),
+\[
+\E(X^k)=\frac{2}{k+2}.
+\]
+
+Therefore,
+\[
+M_X^{(k)}(0)
+=
+\frac{2}{k+2},
+\qquad k=1,2,\ldots
+\]
+
+In particular,
+\[
+M_X'(0)=\frac23,
+\qquad
+M_X''(0)=\frac12,
+\qquad
+M_X^{(3)}(0)=\frac25,
+\qquad
+M_X^{(4)}(0)=\frac13.
+\]
+
+
+\item We have
+\[
+\E(X)=M_X'(0)=\frac23
+\]
+and
+\[
+\E(X^2)=M_X''(0)=\frac12.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\operatorname{Var}(X)
+&=
+\E(X^2)-[\E(X)]^2\\
+&=
+\frac12-\left(\frac23\right)^2\\
+&=
+\frac12-\frac49\\
+&=
+\frac1{18}.
+\end{aligned}
+\]
+
+Thus,
+\[
+\sigma^2=\frac1{18},
+\qquad
+\sigma=\frac{1}{3\sqrt2}.
+\]
+
+
+\item First calculate the CDF. For \(0\leq x\leq1\),
+\[
+\begin{aligned}
+F_X(x)
+&=
+P(X\leq x)\\
+&=
+\int_0^x 2t\,dt\\
+&=
+x^2.
+\end{aligned}
+\]
+
+The median \(m\) satisfies
+\[
+F_X(m)=\frac12.
+\]
+
+Hence,
+\[
+m^2=\frac12.
+\]
+
+Since \(m\in(0,1)\),
+\[
+m=\frac1{\sqrt2}.
+\]
+
+
+\item The third central moment is
+\[
+\mathbb{E}[(X-\mu)^3].
+\]
+
+Expanding,
+\[
+(X-\mu)^3
+=
+X^3-3\mu X^2+3\mu^2X-\mu^3.
+\]
+
+Therefore,
+\[
+\mathbb{E}[(X-\mu)^3]
+=
+\E(X^3)
+-3\mu\E(X^2)
++3\mu^2\E(X)
+-\mu^3.
+\]
+
+Using
+\[
+\mu=\frac23,
+\qquad
+\E(X^2)=\frac12,
+\qquad
+\E(X^3)=\frac25,
+\]
+we obtain
+\[
+\begin{aligned}
+\mathbb{E}[(X-\mu)^3]
+&=
+\frac25
+-
+3\left(\frac23\right)\left(\frac12\right)
++
+3\left(\frac23\right)^2\left(\frac23\right)
+-
+\left(\frac23\right)^3\\
+&=
+\frac25-1+\frac89-\frac8{27}\\
+&=
+-\frac1{135}.
+\end{aligned}
+\]
+
+Also,
+\[
+\sigma^3
+=
+\left(\frac1{18}\right)^{3/2}
+=
+\frac{1}{54\sqrt2}.
+\]
+
+Hence,
+\[
+\begin{aligned}
+\gamma_1
+&=
+\frac{\mathbb{E}[(X-\mu)^3]}{\sigma^3}\\
+&=
+\frac{-1/135}{1/(54\sqrt2)}\\
+&=
+-\frac{2\sqrt2}{5}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\gamma_1=-\frac{2\sqrt2}{5}.
+\]
+
+Since the skewness is negative, the distribution is negatively skewed.
+
+
+\item The fourth central moment is
+\[
+\mathbb{E}[(X-\mu)^4].
+\]
+
+Expanding,
+\[
+(X-\mu)^4
+=
+X^4
+-4\mu X^3
++6\mu^2X^2
+-4\mu^3X
++\mu^4.
+\]
+
+Therefore,
+\[
+\mathbb{E}[(X-\mu)^4]
+=
+\E(X^4)
+-4\mu\E(X^3)
++6\mu^2\E(X^2)
+-4\mu^3\E(X)
++\mu^4.
+\]
+
+Using
+\[
+\mu=\frac23,
+\qquad
+\E(X^2)=\frac12,
+\qquad
+\E(X^3)=\frac25,
+\qquad
+\E(X^4)=\frac13,
+\]
+we obtain
+\[
+\begin{aligned}
+\mathbb{E}[(X-\mu)^4]
+&=
+\frac13
+-
+4\left(\frac23\right)\left(\frac25\right)
++
+6\left(\frac23\right)^2\left(\frac12\right)\\
+&\qquad
+-
+4\left(\frac23\right)^3\left(\frac23\right)
++
+\left(\frac23\right)^4\\
+&=
+\frac13
+-\frac{16}{15}
++\frac43
+-\frac{64}{81}
++\frac{16}{81}\\
+&=
+\frac1{135}.
+\end{aligned}
+\]
+
+Also,
+\[
+\sigma^4
+=
+\left(\frac1{18}\right)^2
+=
+\frac1{324}.
+\]
+
+Hence,
+\[
+\begin{aligned}
+\gamma_2
+&=
+\frac{\mathbb{E}[(X-\mu)^4]}{\sigma^4}\\
+&=
+\frac{1/135}{1/324}\\
+&=
+\frac{12}{5}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\gamma_2=\frac{12}{5}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  MGF PROBLEM  %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[ ]
+
+Let \(X\) and \(Y\) be independent random variables with moment generating
+functions
+\[
+M_X(t)=e^{2(e^t-1)}
+\]
+and
+\[
+M_Y(t)=\frac{3}{3-t},
+\qquad t<3.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item Find the moment generating function of
+    \[
+    X+Y.
+    \]
+
+    \item More generally, let \(a,b\in\mathbb{R}\). Find the moment
+    generating function of
+    \[
+    Z=aX+bY.
+    \]
+
+    State the values of \(t\) for which your answer is valid.
+
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Since \(X\) and \(Y\) are independent,
+\[
+\begin{aligned}
+M_{X+Y}(t)
+&=
+\E\left(e^{t(X+Y)}\right)\\
+&=
+\E\left(e^{tX}e^{tY}\right)\\
+&=
+\E\left(e^{tX}\right)
+\E\left(e^{tY}\right)\\
+&=
+M_X(t)M_Y(t).
+\end{aligned}
+\]
+
+Therefore,
+\[
+M_{X+Y}(t)
+=
+e^{2(e^t-1)}
+\frac{3}{3-t},
+\qquad t<3.
+\]
+
+
+\item Let
+\[
+Z=aX+bY.
+\]
+
+By definition,
+\[
+\begin{aligned}
+M_Z(t)
+&=
+\E\left(e^{tZ}\right)\\
+&=
+\E\left(e^{t(aX+bY)}\right)\\
+&=
+\E\left(e^{atX}e^{btY}\right).
+\end{aligned}
+\]
+
+Since \(X\) and \(Y\) are independent,
+\[
+\begin{aligned}
+M_Z(t)
+&=
+\E\left(e^{atX}\right)
+\E\left(e^{btY}\right)\\
+&=
+M_X(at)M_Y(bt).
+\end{aligned}
+\]
+
+Now,
+\[
+M_X(at)
+=
+e^{2(e^{at}-1)}
+\]
+and
+\[
+M_Y(bt)
+=
+\frac{3}{3-bt}.
+\]
+
+Hence,
+\[
+M_{aX+bY}(t)
+=
+e^{2(e^{at}-1)}
+\frac{3}{3-bt}.
+\]
+
+The restriction comes from \(M_Y(bt)\), which requires
+\[
+bt<3.
+\]
+
+Thus,
+\[
+M_{aX+bY}(t)
+=
+\frac{3e^{2(e^{at}-1)}}{3-bt},
+\qquad bt<3.
+\]
+
+Equivalently, the domain is
+\[
+\begin{cases}
+t<3/b, & b>0,\\
+t>3/b, & b<0,\\
+t\in\mathbb{R}, & b=0.
+\end{cases}
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{problem}
+
+Let the joint probability mass function of discrete random variables \(X\) and
+\(Y\) be given by
+\[
+p(x,y)
+=
+\begin{cases}
+c(x+y),
+&
+x=1,2,3,\quad y=1,2,\\[1mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Determine
+
+\begin{enumerate}[label=(\alph*)]
+    \item the value of the constant \(c\);
+    \item the marginal probability mass functions of \(X\) and \(Y\);
+    \item \(P(X\geq2\mid Y=1)\);
+    \item \(E(X)\) and \(E(Y)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Since the total probability must equal \(1\),
+\[
+\sum_{x=1}^{3}\sum_{y=1}^{2}c(x+y)=1.
+\]
+
+Thus,
+\[
+c[(2+3)+(3+4)+(4+5)]=1.
+\]
+
+Therefore,
+\[
+21c=1,
+\]
+and hence
+\[
+c=\frac1{21}.
+\]
+
+\item For \(x=1,2,3\),
+\[
+\begin{aligned}
+p_X(x)
+&=
+\sum_{y=1}^{2}p(x,y)\\
+&=
+\frac1{21}\left[(x+1)+(x+2)\right]\\
+&=
+\frac{2x+3}{21}.
+\end{aligned}
+\]
+
+Thus,
+\[
+p_X(x)
+=
+\begin{cases}
+\dfrac{2x+3}{21}, & x=1,2,3,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For \(y=1,2\),
+\[
+\begin{aligned}
+p_Y(y)
+&=
+\sum_{x=1}^{3}p(x,y)\\
+&=
+\frac1{21}\left[(1+y)+(2+y)+(3+y)\right]\\
+&=
+\frac{6+3y}{21}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+p_Y(y)
+=
+\begin{cases}
+\dfrac37, & y=1,\\[1mm]
+\dfrac47, & y=2,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item
+\[
+P(X\geq2\mid Y=1)
+=
+\frac{P(X\geq2,Y=1)}{P(Y=1)}.
+\]
+
+The numerator is
+\[
+\begin{aligned}
+P(X\geq2,Y=1)
+&=
+p(2,1)+p(3,1)\\
+&=
+\frac3{21}+\frac4{21}\\
+&=
+\frac7{21}.
+\end{aligned}
+\]
+
+Also,
+\[
+P(Y=1)=\frac37=\frac9{21}.
+\]
+
+Therefore,
+\[
+P(X\geq2\mid Y=1)
+=
+\frac{7/21}{9/21}
+=
+\frac79.
+\]
+
+\item
+\[
+\begin{aligned}
+E(X)
+&=
+\sum_{x=1}^{3}x\,p_X(x)\\
+&=
+1\left(\frac5{21}\right)
++
+2\left(\frac7{21}\right)
++
+3\left(\frac9{21}\right)\\
+&=
+\frac{46}{21}.
+\end{aligned}
+\]
+
+Similarly,
+\[
+E(Y)
+=
+1\left(\frac37\right)
++
+2\left(\frac47\right)
+=
+\frac{11}{7}.
+\]
+
+Thus,
+\[
+E(X)=\frac{46}{21},
+\qquad
+E(Y)=\frac{11}{7}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability density function of random variables \(X\) and \(Y\)
+be given by
+\[
+f(x,y)
+=
+\begin{cases}
+8xy,
+&
+0\leq y\leq x\leq1,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the marginal probability density functions of \(X\) and
+    \(Y\).
+    \item Calculate \(E(X)\) and \(E(Y)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+The support of the joint density is
+\[
+0\leq y\leq x\leq1.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For a fixed \(x\in[0,1]\), the possible values of \(y\) satisfy
+\[
+0\leq y\leq x.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_0^x 8xy\,dy\\
+&=
+8x\left[\frac{y^2}{2}\right]_0^x\\
+&=
+4x^3.
+\end{aligned}
+\]
+
+Hence,
+\[
+f_X(x)
+=
+\begin{cases}
+4x^3, & 0\leq x\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For a fixed \(y\in[0,1]\), the support requires
+\[
+y\leq x\leq1.
+\]
+
+Thus,
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_y^1 8xy\,dx\\
+&=
+8y\left[\frac{x^2}{2}\right]_y^1\\
+&=
+4y(1-y^2).
+\end{aligned}
+\]
+
+Therefore,
+\[
+f_Y(y)
+=
+\begin{cases}
+4y(1-y^2), & 0\leq y\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item Using the marginal density of \(X\),
+\[
+\begin{aligned}
+E(X)
+&=
+\int_0^1 x f_X(x)\,dx\\
+&=
+\int_0^1 4x^4\,dx\\
+&=
+\frac45.
+\end{aligned}
+\]
+
+Similarly,
+\[
+\begin{aligned}
+E(Y)
+&=
+\int_0^1 y f_Y(y)\,dy\\
+&=
+4\int_0^1 y^2(1-y^2)\,dy\\
+&=
+4\left(\frac13-\frac15\right)\\
+&=
+\frac8{15}.
+\end{aligned}
+\]
+
+Thus,
+\[
+E(X)=\frac45,
+\qquad
+E(Y)=\frac8{15}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 4  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability density function of random variables \(X\) and \(Y\)
+be given by
+\[
+f(x,y)
+=
+\begin{cases}
+\dfrac12 ye^{-x},
+&
+x>0,\quad 0<y<2,\\[2mm]
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Find the marginal probability density functions of \(X\) and \(Y\).
+
+\end{problem}
+
+\begin{solution}
+
+For \(x>0\),
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_0^2 \frac12 ye^{-x}\,dy\\
+&=
+\frac12e^{-x}
+\left[\frac{y^2}{2}\right]_0^2\\
+&=
+e^{-x}.
+\end{aligned}
+\]
+
+Thus,
+\[
+f_X(x)
+=
+\begin{cases}
+e^{-x}, & x>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For \(0<y<2\),
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^\infty \frac12 ye^{-x}\,dx\\
+&=
+\frac y2\int_0^\infty e^{-x}\,dx\\
+&=
+\frac y2.
+\end{aligned}
+\]
+
+Therefore,
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac y2, & 0<y<2,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 5  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) have the joint probability density function
+\[
+f(x,y)
+=
+\begin{cases}
+1,
+&
+0\leq x\leq1,\quad 0\leq y\leq1,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Calculate
+\[
+P\left(X+Y\leq\frac12\right),
+\qquad
+P\left(X-Y\leq\frac12\right),
+\]
+\[
+P\left(XY\leq\frac14\right),
+\qquad
+P(X^2+Y^2\leq1).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since the density is equal to \(1\) on the unit square, each desired
+probability is equal to the area of the corresponding region inside
+\([0,1]^2\).
+
+First,
+\[
+X+Y\leq\frac12
+\]
+describes a right triangle with legs of length \(1/2\). Hence,
+\[
+P\left(X+Y\leq\frac12\right)
+=
+\frac12\left(\frac12\right)\left(\frac12\right)
+=
+\frac18.
+\]
+
+Next,
+\[
+X-Y\leq\frac12.
+\]
+
+It is easier to subtract the region
+\[
+X-Y>\frac12.
+\]
+
+This is a right triangle in the lower-right portion of the unit square with
+legs of length \(1/2\). Therefore,
+\[
+P\left(X-Y>\frac12\right)=\frac18,
+\]
+and hence
+\[
+P\left(X-Y\leq\frac12\right)
+=
+1-\frac18
+=
+\frac78.
+\]
+
+For the third probability,
+\[
+XY\leq\frac14.
+\]
+
+If \(0\leq x\leq1/4\), every \(0\leq y\leq1\) satisfies the inequality.
+
+If \(1/4<x\leq1\), then
+\[
+y\leq\frac{1}{4x}.
+\]
+
+Thus,
+\[
+\begin{aligned}
+P\left(XY\leq\frac14\right)
+&=
+\int_0^{1/4}\int_0^1dy\,dx
++
+\int_{1/4}^{1}\int_0^{1/(4x)}dy\,dx\\
+&=
+\frac14
++
+\frac14\int_{1/4}^{1}\frac1x\,dx\\
+&=
+\frac14+\frac14\ln4.
+\end{aligned}
+\]
+
+Finally,
+\[
+X^2+Y^2\leq1
+\]
+describes the quarter of the unit disk lying in the first quadrant.
+Therefore,
+\[
+P(X^2+Y^2\leq1)
+=
+\frac{\pi}{4}.
+\]
+
+Hence,
+\[
+P\left(X+Y\leq\frac12\right)=\frac18,
+\]
+\[
+P\left(X-Y\leq\frac12\right)=\frac78,
+\]
+\[
+P\left(XY\leq\frac14\right)
+=
+\frac14+\frac14\ln4,
+\]
+and
+\[
+P(X^2+Y^2\leq1)=\frac{\pi}{4}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 6  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that \(h\) is the probability density function of a continuous random
+variable. Let the joint probability density function of \(X\) and \(Y\) be
+given by
+\[
+f(x,y)=h(x)h(y),
+\qquad
+x,y\in\mathbb R.
+\]
+
+Prove that
+\[
+P(X\geq Y)=\frac12.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+f(x,y)=h(x)h(y),
+\]
+\(X\) and \(Y\) are independent and identically distributed continuous random
+variables.
+
+Because \(X\) and \(Y\) have the same distribution, symmetry gives
+\[
+P(X>Y)=P(Y>X).
+\]
+
+Moreover, since \(X\) and \(Y\) are continuous,
+\[
+P(X=Y)=0.
+\]
+
+The events
+\[
+\{X>Y\},
+\qquad
+\{Y>X\},
+\qquad
+\{X=Y\}
+\]
+partition the sample space. Therefore,
+\[
+P(X>Y)+P(Y>X)+P(X=Y)=1.
+\]
+
+Hence,
+\[
+2P(X>Y)=1,
+\]
+so
+\[
+P(X>Y)=\frac12.
+\]
+
+Finally,
+\[
+P(X\geq Y)
+=
+P(X>Y)+P(X=Y)
+=
+\frac12.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 7  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be continuous random variables with joint probability
+density function \(f(x,y)\). Define
+\[
+Z=\frac{Y}{X},
+\qquad X\neq0.
+\]
+
+Prove that the probability density function of \(Z\) is
+\[
+f_Z(z)
+=
+\int_{-\infty}^{\infty}
+|x|f(x,xz)\,dx.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Introduce the transformation
+\[
+Z=\frac{Y}{X},
+\qquad
+W=X.
+\]
+
+Then
+\[
+z=\frac{y}{x},
+\qquad
+w=x.
+\]
+
+Solving for \(x\) and \(y\) in terms of \(z\) and \(w\),
+\[
+x=w,
+\qquad
+y=wz.
+\]
+
+The Jacobian matrix of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(z,w)}
+=
+\begin{pmatrix}
+0 & 1\\
+w & z
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\det
+\frac{\partial(x,y)}{\partial(z,w)}
+=
+-w,
+\]
+and hence
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(z,w)}
+\right|
+=
+|w|.
+\]
+
+By the change-of-variables formula,
+\[
+f_{Z,W}(z,w)
+=
+f(w,wz)|w|.
+\]
+
+To obtain the marginal density of \(Z\), integrate out \(W\):
+\[
+\begin{aligned}
+f_Z(z)
+&=
+\int_{-\infty}^{\infty}
+f_{Z,W}(z,w)\,dw\\
+&=
+\int_{-\infty}^{\infty}
+|w|f(w,wz)\,dw.
+\end{aligned}
+\]
+
+Renaming the variable of integration from \(w\) to \(x\),
+\[
+f_Z(z)
+=
+\int_{-\infty}^{\infty}
+|x|f(x,xz)\,dx.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 8  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Prove that random variables \(X\) and \(Y\) with joint probability density
+function
+\[
+f(x,y)
+=
+\begin{cases}
+8xy,
+&
+0\leq x\leq y\leq1,\\
+0,
+&
+\text{otherwise},
+\end{cases}
+\]
+are not independent.
+
+\end{problem}
+
+\begin{solution}
+
+We first calculate the marginal densities.
+
+For \(0\leq x\leq1\),
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_x^1 8xy\,dy\\
+&=
+8x\left[\frac{y^2}{2}\right]_x^1\\
+&=
+4x(1-x^2).
+\end{aligned}
+\]
+
+Thus,
+\[
+f_X(x)
+=
+\begin{cases}
+4x(1-x^2), & 0\leq x\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For \(0\leq y\leq1\),
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^y8xy\,dx\\
+&=
+8y\left[\frac{x^2}{2}\right]_0^y\\
+&=
+4y^3.
+\end{aligned}
+\]
+
+Hence,
+\[
+f_Y(y)
+=
+\begin{cases}
+4y^3, & 0\leq y\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+If \(X\) and \(Y\) were independent, we would have
+\[
+f(x,y)=f_X(x)f_Y(y)
+\]
+for all \(x,y\).
+
+However,
+\[
+f_X(x)f_Y(y)
+=
+16xy^3(1-x^2),
+\]
+which is not equal to
+\[
+f(x,y)=8xy
+\]
+on the support.
+
+Therefore, \(X\) and \(Y\) are not independent.
+
+There is also a geometric reason for the dependence. The support
+\[
+0\leq x\leq y\leq1
+\]
+is triangular rather than a Cartesian product of one-dimensional supports.
+In particular, knowing the value of \(Y\) restricts the possible values of
+\(X\).
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 9  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability mass function of random variables \(X\) and \(Y\)
+be given by
+\[
+p(x,y)
+=
+\begin{cases}
+\dfrac17x^2y,
+&
+(x,y)=(1,1),(1,2),(2,1),\\[2mm]
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Are \(X\) and \(Y\) independent? Why or why not?
+
+\end{problem}
+
+\begin{solution}
+
+The nonzero joint probabilities are
+\[
+p(1,1)=\frac17,
+\qquad
+p(1,2)=\frac27,
+\qquad
+p(2,1)=\frac47.
+\]
+
+Therefore,
+\[
+P(X=1)
+=
+\frac17+\frac27
+=
+\frac37,
+\]
+and
+\[
+P(X=2)=\frac47.
+\]
+
+Similarly,
+\[
+P(Y=1)
+=
+\frac17+\frac47
+=
+\frac57,
+\]
+and
+\[
+P(Y=2)=\frac27.
+\]
+
+If \(X\) and \(Y\) were independent, then
+\[
+P(X=2,Y=2)
+=
+P(X=2)P(Y=2).
+\]
+
+However,
+\[
+P(X=2,Y=2)=0,
+\]
+whereas
+\[
+P(X=2)P(Y=2)
+=
+\frac47\frac27
+=
+\frac8{49}>0.
+\]
+
+Therefore,
+\[
+P(X=2,Y=2)
+\neq
+P(X=2)P(Y=2),
+\]
+so \(X\) and \(Y\) are not independent.
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 10  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability density function of random variables \(X\) and \(Y\)
+be given by
+\[
+f(x,y)
+=
+\begin{cases}
+x^2e^{-x(y+1)},
+&
+x\geq0,\quad y\geq0,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Are \(X\) and \(Y\) independent? Why or why not?
+
+\end{problem}
+
+\begin{solution}
+
+We calculate the marginal densities.
+
+For \(x>0\),
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_0^\infty x^2e^{-x(y+1)}\,dy\\
+&=
+x^2e^{-x}
+\int_0^\infty e^{-xy}\,dy\\
+&=
+x^2e^{-x}\left(\frac1x\right)\\
+&=
+xe^{-x}.
+\end{aligned}
+\]
+
+Thus,
+\[
+f_X(x)
+=
+\begin{cases}
+xe^{-x}, & x>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For \(y\geq0\),
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^\infty x^2e^{-(y+1)x}\,dx.
+\end{aligned}
+\]
+
+Using
+\[
+\int_0^\infty x^2e^{-ax}\,dx
+=
+\frac{2}{a^3},
+\qquad a>0,
+\]
+we obtain
+\[
+f_Y(y)
+=
+\frac{2}{(y+1)^3},
+\qquad y\geq0.
+\]
+
+Therefore,
+\[
+f_X(x)f_Y(y)
+=
+\frac{2xe^{-x}}{(y+1)^3}.
+\]
+
+But the joint density is
+\[
+f(x,y)
+=
+x^2e^{-x(y+1)}.
+\]
+
+These are not equal in general. Hence,
+\[
+f(x,y)\neq f_X(x)f_Y(y),
+\]
+and therefore \(X\) and \(Y\) are not independent.
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 11  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that \(X\) and \(Y\) are independent, identically distributed
+exponential random variables with mean \(1/\lambda\). Prove that
+\[
+\frac{X}{X+Y}
+\]
+is uniformly distributed on \((0,1)\).
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X,Y\overset{\text{i.i.d.}}{\sim}\operatorname{Exp}(\lambda),
+\]
+their joint density is
+\[
+f_{X,Y}(x,y)
+=
+\lambda^2e^{-\lambda(x+y)},
+\qquad x>0,\ y>0.
+\]
+
+Define
+\[
+U=\frac{X}{X+Y},
+\qquad
+V=X+Y.
+\]
+
+Then
+\[
+X=UV
+\]
+and
+\[
+Y=(1-U)V.
+\]
+
+Since \(X>0\) and \(Y>0\), the support of \((U,V)\) is
+\[
+0<u<1,
+\qquad
+v>0.
+\]
+
+The Jacobian matrix is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+v & u\\
+-v & 1-u
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+v(1-u)+uv
+=
+v.
+\]
+
+Hence,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+v.
+\]
+
+The joint density of \(U\) and \(V\) is therefore
+\[
+\begin{aligned}
+f_{U,V}(u,v)
+&=
+f_{X,Y}(uv,(1-u)v)v\\
+&=
+\lambda^2e^{-\lambda v}v,
+\end{aligned}
+\]
+for
+\[
+0<u<1,\qquad v>0.
+\]
+
+Now integrate out \(V\):
+\[
+\begin{aligned}
+f_U(u)
+&=
+\int_0^\infty
+\lambda^2ve^{-\lambda v}\,dv\\
+&=
+1,
+\qquad 0<u<1.
+\end{aligned}
+\]
+
+Thus,
+\[
+f_U(u)
+=
+\begin{cases}
+1, & 0<u<1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Therefore,
+\[
+\frac{X}{X+Y}
+\sim
+\operatorname{Unif}(0,1).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 12  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability mass function of discrete random variables \(X\) and
+\(Y\) be given by
+\[
+p(x,y)
+=
+\begin{cases}
+\dfrac1{25}(x^2+y^2),
+&
+x=1,2,\quad y=0,1,2,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Find
+
+\begin{enumerate}[label=(\alph*)]
+    \item \(p_{X\mid Y}(x\mid y)\);
+    \item \(P(X=2\mid Y=1)\);
+    \item \(E(X\mid Y=1)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+First find the marginal PMF of \(Y\). For \(y=0,1,2\),
+\[
+\begin{aligned}
+p_Y(y)
+&=
+\sum_{x=1}^{2}p(x,y)\\
+&=
+\frac1{25}
+\left[
+(1+y^2)+(4+y^2)
+\right]\\
+&=
+\frac{5+2y^2}{25}.
+\end{aligned}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item By definition,
+\[
+p_{X\mid Y}(x\mid y)
+=
+\frac{p(x,y)}{p_Y(y)}.
+\]
+
+Therefore,
+\[
+p_{X\mid Y}(x\mid y)
+=
+\frac{x^2+y^2}{5+2y^2},
+\qquad
+x=1,2,\quad y=0,1,2.
+\]
+
+\item When \(Y=1\),
+\[
+P(X=2\mid Y=1)
+=
+\frac{2^2+1^2}{5+2(1)^2}
+=
+\frac57.
+\]
+
+\item When \(Y=1\),
+\[
+P(X=1\mid Y=1)
+=
+\frac{1^2+1^2}{7}
+=
+\frac27,
+\]
+and
+\[
+P(X=2\mid Y=1)
+=
+\frac57.
+\]
+
+Hence,
+\[
+\begin{aligned}
+E(X\mid Y=1)
+&=
+1\left(\frac27\right)
++
+2\left(\frac57\right)\\
+&=
+\frac{12}{7}.
+\end{aligned}
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 13  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the conditional probability density function of \(X\) given \(Y=y\) be
+\[
+f_{X\mid Y}(x\mid y)
+=
+\frac{3(x^2+y^2)}{3y^2+1},
+\qquad
+0<x<1,\quad 0<y<1.
+\]
+
+Find
+\[
+P\left(
+\frac14<X<\frac12
+\,\middle|\,
+Y=\frac34
+\right).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Substituting
+\[
+y=\frac34
+\]
+into the conditional density gives
+\[
+f_{X\mid Y}\left(x\mid\frac34\right)
+=
+\frac{
+3\left(x^2+\frac9{16}\right)
+}{
+3\left(\frac9{16}\right)+1
+}.
+\]
+
+Since
+\[
+3\left(\frac9{16}\right)+1
+=
+\frac{43}{16},
+\]
+we obtain
+\[
+f_{X\mid Y}\left(x\mid\frac34\right)
+=
+\frac{48}{43}
+\left(x^2+\frac9{16}\right).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+P\left(
+\frac14<X<\frac12
+\,\middle|\,
+Y=\frac34
+\right)
+&=
+\int_{1/4}^{1/2}
+f_{X\mid Y}\left(x\mid\frac34\right)\,dx\\
+&=
+\frac{48}{43}
+\int_{1/4}^{1/2}
+\left(x^2+\frac9{16}\right)\,dx\\
+&=
+\frac{48}{43}
+\left[
+\frac{x^3}{3}
++
+\frac9{16}x
+\right]_{1/4}^{1/2}\\
+&=
+\frac{17}{86}.
+\end{aligned}
+\]
+
+Thus,
+\[
+P\left(
+\frac14<X<\frac12
+\,\middle|\,
+Y=\frac34
+\right)
+=
+\frac{17}{86}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 14  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be continuous random variables with joint probability
+density function
+\[
+f(x,y)
+=
+\begin{cases}
+x+y,
+&
+0\leq x\leq1,\quad 0\leq y\leq1,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Calculate \(f_{X\mid Y}(x\mid y)\).
+
+\end{problem}
+
+\begin{solution}
+
+First calculate the marginal density of \(Y\):
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^1(x+y)\,dx\\
+&=
+\left[\frac{x^2}{2}+xy\right]_0^1\\
+&=
+\frac12+y,
+\end{aligned}
+\]
+for
+\[
+0\leq y\leq1.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&=
+\frac{f(x,y)}{f_Y(y)}\\
+&=
+\frac{x+y}{y+\frac12},
+\end{aligned}
+\]
+for
+\[
+0\leq x\leq1,
+\qquad
+0\leq y\leq1.
+\]
+
+Thus,
+\[
+f_{X\mid Y}(x\mid y)
+=
+\begin{cases}
+\dfrac{x+y}{y+\frac12},
+&
+0\leq x\leq1,\quad 0\leq y\leq1,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 15  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+The joint probability density function of \(X\) and \(Y\) is given by
+\[
+f(x,y)
+=
+\begin{cases}
+ce^{-x},
+&
+x\geq0,\quad |y|<x,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Determine the constant \(c\).
+    \item Find \(f_{X\mid Y}(x\mid y)\) and \(f_{Y\mid X}(y\mid x)\).
+    \item Calculate \(E(Y\mid X=x)\) and
+    \(\operatorname{Var}(Y\mid X=x)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+The support is
+\[
+x\geq0,
+\qquad
+-x<y<x.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item The density must integrate to \(1\):
+\[
+\int_0^\infty
+\int_{-x}^{x}
+ce^{-x}\,dy\,dx
+=
+1.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+1
+&=
+c\int_0^\infty
+2xe^{-x}\,dx\\
+&=
+2c.
+\end{aligned}
+\]
+
+Hence,
+\[
+c=\frac12.
+\]
+
+Thus,
+\[
+f(x,y)
+=
+\frac12e^{-x}
+\]
+on the support.
+
+\item First,
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_{-x}^{x}\frac12e^{-x}\,dy\\
+&=
+xe^{-x},
+\qquad x>0.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_{Y\mid X}(y\mid x)
+&=
+\frac{f(x,y)}{f_X(x)}\\
+&=
+\frac{\frac12e^{-x}}{xe^{-x}}\\
+&=
+\frac1{2x},
+\end{aligned}
+\]
+for
+\[
+-x<y<x.
+\]
+
+Thus,
+\[
+f_{Y\mid X}(y\mid x)
+=
+\begin{cases}
+\dfrac1{2x}, & -x<y<x,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Hence, conditional on \(X=x\),
+\[
+Y\mid X=x
+\sim
+\operatorname{Unif}(-x,x).
+\]
+
+Next, for a fixed \(y\), the condition
+\[
+|y|<x
+\]
+implies
+\[
+x>|y|.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_{|y|}^{\infty}
+\frac12e^{-x}\,dx\\
+&=
+\frac12e^{-|y|}.
+\end{aligned}
+\]
+
+Hence,
+\[
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&=
+\frac{f(x,y)}{f_Y(y)}\\
+&=
+\frac{\frac12e^{-x}}
+{\frac12e^{-|y|}}\\
+&=
+e^{-(x-|y|)},
+\end{aligned}
+\]
+for
+\[
+x>|y|.
+\]
+
+Thus,
+\[
+f_{X\mid Y}(x\mid y)
+=
+\begin{cases}
+e^{-(x-|y|)}, & x>|y|,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item Since
+\[
+Y\mid X=x
+\sim
+\operatorname{Unif}(-x,x),
+\]
+symmetry gives
+\[
+E(Y\mid X=x)=0.
+\]
+
+The variance of a uniform random variable on \((a,b)\) is
+\[
+\frac{(b-a)^2}{12}.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\operatorname{Var}(Y\mid X=x)
+&=
+\frac{(x-(-x))^2}{12}\\
+&=
+\frac{4x^2}{12}\\
+&=
+\frac{x^2}{3}.
+\end{aligned}
+\]
+
+ 
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 16  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent random variables, each uniformly
+distributed on \((0,1)\). Find the joint probability density function of
+\[
+U=-2\ln X
+\qquad\text{and}\qquad
+V=-2\ln Y.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X,Y\overset{\text{i.i.d.}}{\sim}\operatorname{Unif}(0,1),
+\]
+their joint density is
+\[
+f_{X,Y}(x,y)=1,
+\qquad
+0<x<1,\quad0<y<1.
+\]
+
+The transformation is
+\[
+u=-2\ln x,
+\qquad
+v=-2\ln y.
+\]
+
+Solving for \(x\) and \(y\),
+\[
+x=e^{-u/2},
+\qquad
+y=e^{-v/2}.
+\]
+
+Since \(0<x,y<1\), we have
+\[
+u>0,
+\qquad
+v>0.
+\]
+
+The Jacobian matrix of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+-\dfrac12e^{-u/2} & 0\\[2mm]
+0 & -\dfrac12e^{-v/2}
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac14e^{-(u+v)/2}.
+\]
+
+Hence,
+\[
+f_{U,V}(u,v)
+=
+f_{X,Y}
+\left(
+e^{-u/2},e^{-v/2}
+\right)
+\frac14e^{-(u+v)/2}.
+\]
+
+Since the original joint density equals \(1\) on its support,
+\[
+f_{U,V}(u,v)
+=
+\begin{cases}
+\dfrac14e^{-(u+v)/2},
+&
+u>0,\quad v>0,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 17  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be two positive independent continuous random variables
+with probability density functions \(f_1(x)\) and \(f_2(y)\), respectively.
+Find the probability density function of
+\[
+U=\frac{X}{Y}.
+\]
+
+\textit{Hint:} Let \(V=X\); find the joint probability density function of
+\(U\) and \(V\), and then calculate the marginal probability density function
+of \(U\).
+
+\end{problem}
+
+\begin{solution}
+
+Define
+\[
+U=\frac{X}{Y},
+\qquad
+V=X.
+\]
+
+Then
+\[
+u=\frac{x}{y},
+\qquad
+v=x.
+\]
+
+Solving for \(x\) and \(y\),
+\[
+x=v,
+\qquad
+y=\frac vu.
+\]
+
+Since \(X\) and \(Y\) are positive,
+\[
+u>0,
+\qquad
+v>0.
+\]
+
+The Jacobian matrix is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+0 & 1\\[2mm]
+-\dfrac{v}{u^2} & \dfrac1u
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac{v}{u^2}.
+\]
+
+Since \(X\) and \(Y\) are independent,
+\[
+f_{X,Y}(x,y)
+=
+f_1(x)f_2(y).
+\]
+
+Thus,
+\[
+f_{U,V}(u,v)
+=
+f_1(v)
+f_2\left(\frac vu\right)
+\frac{v}{u^2},
+\qquad
+u>0,\quad v>0.
+\]
+
+Integrating out \(V\),
+\[
+f_U(u)
+=
+\int_0^\infty
+f_1(v)
+f_2\left(\frac vu\right)
+\frac{v}{u^2}\,dv,
+\qquad u>0.
+\]
+
+Therefore,
+\[
+f_U(u)
+=
+\begin{cases}
+\displaystyle
+\int_0^\infty
+\frac{v}{u^2}
+f_1(v)
+f_2\left(\frac vu\right)\,dv,
+&
+u>0,\\[4mm]
+0,
+&
+u\leq0.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 18  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent random variables with common probability
+density function
+\[
+f(x)
+=
+\begin{cases}
+\dfrac1{x^2},
+&
+x\geq1,\\[2mm]
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Calculate the joint probability density function of
+\[
+U=\frac XY
+\qquad\text{and}\qquad
+V=XY.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+The transformation is
+\[
+u=\frac xy,
+\qquad
+v=xy.
+\]
+
+Since \(x>0\) and \(y>0\),
+\[
+uv=x^2,
+\]
+and
+\[
+\frac vu=y^2.
+\]
+
+Therefore,
+\[
+x=\sqrt{uv},
+\qquad
+y=\sqrt{\frac vu}.
+\]
+
+The Jacobian matrix of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}.
+\]
+
+Its absolute determinant is
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac1{2u}.
+\]
+
+Since \(X\) and \(Y\) are independent,
+\[
+f_{X,Y}(x,y)
+=
+\frac1{x^2y^2},
+\qquad x\geq1,\quad y\geq1.
+\]
+
+But
+\[
+x^2y^2=(xy)^2=v^2.
+\]
+
+Therefore,
+\[
+f_{X,Y}(x,y)=\frac1{v^2}.
+\]
+
+It remains to determine the support.
+
+The condition \(x\geq1\) gives
+\[
+\sqrt{uv}\geq1,
+\]
+so
+\[
+uv\geq1
+\]
+and therefore
+\[
+v\geq\frac1u.
+\]
+
+The condition \(y\geq1\) gives
+\[
+\sqrt{\frac vu}\geq1,
+\]
+so
+\[
+v\geq u.
+\]
+
+Thus,
+\[
+u>0,
+\qquad
+v\geq\max\left\{u,\frac1u\right\}.
+\]
+
+Hence,
+\[
+f_{U,V}(u,v)
+=
+\begin{cases}
+\dfrac{1}{2uv^2},
+&
+u>0,\quad
+v\geq\max\left\{u,\dfrac1u\right\},\\[3mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 19  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+Let \(X\) and \(Y\) be independent random variables with common probability
+density function
+\[
+f(x)
+=
+\begin{cases}
+e^{-x},
+&
+x>0,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Find the joint probability density function of
+\[
+U=X+Y
+\qquad\text{and}\qquad
+V=e^X.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+The transformation is
+\[
+u=x+y,
+\qquad
+v=e^x.
+\]
+
+From $v=e^x,$ we obtain  $x=\ln v.$ Therefore, $y=u-\ln v.$ Since \(x>0\), $\ln v>0,$  so $ v>1.$ Since \(y>0\), $u-\ln v>0,$
+so $u>\ln v.$
+ 
+The Jacobian matrix of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+0 & \dfrac1v\\[2mm]
+1 & -\dfrac1v
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac1v.
+\]
+
+Because \(X\) and \(Y\) are independent,
+\[
+f_{X,Y}(x,y)
+=
+e^{-x}e^{-y}
+=
+e^{-(x+y)}.
+\]
+
+Since
+\[
+x+y=u,
+\]
+we have
+\[
+f_{X,Y}(x,y)=e^{-u}.
+\]
+
+Hence,
+\[
+f_{U,V}(u,v)
+=
+\begin{cases}
+\dfrac{e^{-u}}{v},
+&
+v>1,\quad u>\ln v,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 20  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that \(X\) and \(Y\) are independent standard Normal random variables.
+Prove that
+\[
+X+Y
+\qquad\text{and}\qquad
+X-Y
+\]
+are independent random variables.
+
+\end{problem}
+
+\begin{solution}
+
+Define
+\[
+U=X+Y,
+\qquad
+V=X-Y.
+\]
+
+Solving for \(X\) and \(Y\),
+\[
+X=\frac{U+V}{2},
+\qquad
+Y=\frac{U-V}{2}.
+\]
+
+The Jacobian matrix of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+\dfrac12 & \dfrac12\\[2mm]
+\dfrac12 & -\dfrac12
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac12.
+\]
+
+Since \(X\) and \(Y\) are independent standard Normal random variables,
+\[
+f_{X,Y}(x,y)
+=
+\frac1{2\pi}
+\exp\left(
+-\frac{x^2+y^2}{2}
+\right).
+\]
+
+Now
+\[
+\begin{aligned}
+x^2+y^2
+&=
+\left(\frac{u+v}{2}\right)^2
++
+\left(\frac{u-v}{2}\right)^2\\
+&=
+\frac{u^2+v^2}{2}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_{U,V}(u,v)
+&=
+\frac1{2\pi}
+\exp\left(
+-\frac{u^2+v^2}{4}
+\right)
+\frac12\\
+&=
+\frac1{4\pi}
+e^{-u^2/4}
+e^{-v^2/4}.
+\end{aligned}
+\]
+
+But
+\[
+\frac1{\sqrt{4\pi}}e^{-u^2/4}
+\]
+is the density of a \(N(0,2)\) random variable. Hence,
+\[
+f_U(u)
+=
+\frac1{\sqrt{4\pi}}e^{-u^2/4}
+\]
+and
+\[
+f_V(v)
+=
+\frac1{\sqrt{4\pi}}e^{-v^2/4}.
+\]
+
+Consequently, $f_{U,V}(u,v)
+=
+f_U(u)f_V(v)$ and thus the independence.
+ 
+
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 21  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent strictly positive exponential random
+variables, each with parameter \(\lambda\). Are the random variables
+\[
+X+Y
+\qquad\text{and}\qquad
+\frac XY
+\]
+independent?
+
+\end{problem}
+
+\begin{solution}
+
+Define
+\[
+U=X+Y,
+\qquad
+V=\frac XY.
+\]
+
+Since
+\[
+v=\frac xy,
+\]
+we have
+\[
+x=vy.
+\]
+
+Substituting into
+\[
+u=x+y
+\]
+gives
+\[
+u=(v+1)y.
+\]
+
+Therefore,
+\[
+y=\frac{u}{1+v}
+\]
+and
+\[
+x=\frac{uv}{1+v}.
+\]
+
+Since \(X,Y>0\),
+\[
+u>0,
+\qquad
+v>0.
+\]
+
+The Jacobian matrix is
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{pmatrix}
+\dfrac{v}{1+v}
+&
+\dfrac{u}{(1+v)^2}
+\\[3mm]
+\dfrac1{1+v}
+&
+-\dfrac{u}{(1+v)^2}
+\end{pmatrix}.
+\]
+
+Therefore,
+\[
+\left|
+\det
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+=
+\frac{u}{(1+v)^2}.
+\]
+
+Because \(X\) and \(Y\) are independent exponential random variables,
+\[
+f_{X,Y}(x,y)
+=
+\lambda^2e^{-\lambda(x+y)},
+\qquad x,y>0.
+\]
+
+Since
+\[
+x+y=u,
+\]
+the transformed joint density is
+\[
+\begin{aligned}
+f_{U,V}(u,v)
+&=
+\lambda^2e^{-\lambda u}
+\frac{u}{(1+v)^2}\\
+&=
+\left(
+\lambda^2u e^{-\lambda u}
+\right)
+\left(
+\frac1{(1+v)^2}
+\right),
+\end{aligned}
+\]
+for
+\[
+u>0,
+\qquad
+v>0.
+\]
+
+The first factor is a density on \(u>0\), since
+\[
+\int_0^\infty
+\lambda^2u e^{-\lambda u}\,du
+=
+1.
+\]
+
+The second factor is also a density on \(v>0\), since
+\[
+\int_0^\infty
+\frac1{(1+v)^2}\,dv
+=
+1.
+\]
+
+Thus,
+\[
+f_U(u)
+=
+\lambda^2u e^{-\lambda u},
+\qquad u>0,
+\]
+and
+\[
+f_V(v)
+=
+\frac1{(1+v)^2},
+\qquad v>0.
+\]
+
+Therefore,
+\[
+f_{U,V}(u,v)
+=
+f_U(u)f_V(v).
+\]
+
+Hence,
+\[
+X+Y
+\qquad\text{and}\qquad
+\frac XY
+\]
+are independent.
+
+\end{solution}
+
+
+
+
+ 
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 22  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+p(x,y,z)=\frac{xyz}{162},
+\qquad
+x=4,5,\quad
+y=1,2,3,\quad
+z=1,2,
+\]
+be the joint probability mass function of random variables \(X,Y,Z\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the joint marginal probability mass functions of
+    \((X,Y)\), \((Y,Z)\), and \((X,Z)\).
+    \item Find \(E(YZ)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item To obtain the joint marginal PMF of \(X\) and \(Y\), sum over all
+possible values of \(Z\):
+\[
+\begin{aligned}
+p_{X,Y}(x,y)
+&=
+\sum_{z=1}^{2}p(x,y,z)\\
+&=
+\sum_{z=1}^{2}\frac{xyz}{162}\\
+&=
+\frac{xy}{162}(1+2)\\
+&=
+\frac{xy}{54}.
+\end{aligned}
+\]
+
+Thus,
+\[
+p_{X,Y}(x,y)
+=
+\begin{cases}
+\dfrac{xy}{54},
+&
+x=4,5,\quad y=1,2,3,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Similarly,
+\[
+\begin{aligned}
+p_{Y,Z}(y,z)
+&=
+\sum_{x=4}^{5}p(x,y,z)\\
+&=
+\frac{yz}{162}(4+5)\\
+&=
+\frac{yz}{18}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+p_{Y,Z}(y,z)
+=
+\begin{cases}
+\dfrac{yz}{18},
+&
+y=1,2,3,\quad z=1,2,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Finally,
+\[
+\begin{aligned}
+p_{X,Z}(x,z)
+&=
+\sum_{y=1}^{3}p(x,y,z)\\
+&=
+\frac{xz}{162}(1+2+3)\\
+&=
+\frac{xz}{27}.
+\end{aligned}
+\]
+
+Hence,
+\[
+p_{X,Z}(x,z)
+=
+\begin{cases}
+\dfrac{xz}{27},
+&
+x=4,5,\quad z=1,2,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\item Using the joint marginal PMF of \(Y\) and \(Z\),
+\[
+E(YZ)
+=
+\sum_{y=1}^{3}\sum_{z=1}^{2}
+yz\,p_{Y,Z}(y,z).
+\]
+
+Thus,
+\[
+\begin{aligned}
+E(YZ)
+&=
+\sum_{y=1}^{3}\sum_{z=1}^{2}
+yz\frac{yz}{18}\\
+&=
+\frac1{18}
+\left(\sum_{y=1}^{3}y^2\right)
+\left(\sum_{z=1}^{2}z^2\right)\\
+&=
+\frac1{18}(1+4+9)(1+4)\\
+&=
+\frac{70}{18}\\
+&=
+\frac{35}{9}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+E(YZ)=\frac{35}{9}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 23  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability density function of \(X,Y,Z\) be
+\[
+f(x,y,z)
+=
+\begin{cases}
+6e^{-x-y-z},
+&
+0<x<y<z<\infty,\\
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the joint marginal probability density functions of
+    \((X,Y)\), \((X,Z)\), and \((Y,Z)\).
+    \item Find \(E(X)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+The support is
+\[
+0<x<y<z<\infty.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For fixed \(x\) and \(y\) satisfying \(0<x<y\),
+\[
+z>y.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_{X,Y}(x,y)
+&=
+\int_y^\infty
+6e^{-x-y-z}\,dz\\
+&=
+6e^{-x-y}
+\int_y^\infty e^{-z}\,dz\\
+&=
+6e^{-x-2y}.
+\end{aligned}
+\]
+
+Hence,
+\[
+f_{X,Y}(x,y)
+=
+\begin{cases}
+6e^{-x-2y}, & 0<x<y,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+For fixed \(x\) and \(z\) satisfying \(0<x<z\),
+\[
+x<y<z.
+\]
+
+Thus,
+\[
+\begin{aligned}
+f_{X,Z}(x,z)
+&=
+\int_x^z
+6e^{-x-y-z}\,dy\\
+&=
+6e^{-x-z}
+\left(e^{-x}-e^{-z}\right)\\
+&=
+6\left(
+e^{-2x-z}-e^{-x-2z}
+\right).
+\end{aligned}
+\]
+
+Therefore,
+\[
+f_{X,Z}(x,z)
+=
+\begin{cases}
+6\left(e^{-2x-z}-e^{-x-2z}\right),
+&
+0<x<z,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+For fixed \(y\) and \(z\) satisfying \(0<y<z\),
+\[
+0<x<y.
+\]
+
+Hence,
+\[
+\begin{aligned}
+f_{Y,Z}(y,z)
+&=
+\int_0^y
+6e^{-x-y-z}\,dx\\
+&=
+6e^{-y-z}(1-e^{-y}).
+\end{aligned}
+\]
+
+Thus,
+\[
+f_{Y,Z}(y,z)
+=
+\begin{cases}
+6e^{-y-z}(1-e^{-y}),
+&
+0<y<z,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\item We first find the marginal density of \(X\):
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_x^\infty
+\int_y^\infty
+6e^{-x-y-z}\,dz\,dy\\
+&=
+6e^{-x}
+\int_x^\infty
+e^{-y}
+\left(
+\int_y^\infty e^{-z}\,dz
+\right)dy\\
+&=
+6e^{-x}
+\int_x^\infty e^{-2y}\,dy\\
+&=
+6e^{-x}
+\left(\frac12e^{-2x}\right)\\
+&=
+3e^{-3x},
+\qquad x>0.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+E(X)
+&=
+\int_0^\infty
+x\,3e^{-3x}\,dx\\
+&=
+\frac13.
+\end{aligned}
+\]
+
+Thus,
+\[
+E(X)=\frac13.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 24  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X,Y,Z\) be jointly continuous with joint probability density function
+\[
+f(x,y,z)
+=
+\begin{cases}
+x^2e^{-x(1+y+z)},
+&
+x,y,z>0,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Are \(X,Y,Z\) mutually independent? Are they pairwise independent?
+
+\end{problem}
+
+\begin{solution}
+
+We first calculate the marginal densities.
+
+For \(x>0\),
+\[
+\begin{aligned}
+f_X(x)
+&=
+\int_0^\infty
+\int_0^\infty
+x^2e^{-x(1+y+z)}
+\,dy\,dz\\
+&=
+x^2e^{-x}
+\left(
+\int_0^\infty e^{-xy}\,dy
+\right)
+\left(
+\int_0^\infty e^{-xz}\,dz
+\right)\\
+&=
+x^2e^{-x}
+\left(\frac1x\right)
+\left(\frac1x\right)\\
+&=
+e^{-x}.
+\end{aligned}
+\]
+
+For \(y>0\),
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^\infty
+\int_0^\infty
+x^2e^{-x(1+y+z)}
+\,dz\,dx\\
+&=
+\int_0^\infty
+xe^{-x(1+y)}\,dx\\
+&=
+\frac{1}{(1+y)^2}.
+\end{aligned}
+\]
+
+By symmetry,
+\[
+f_Z(z)=\frac{1}{(1+z)^2},
+\qquad z>0.
+\]
+
+If \(X,Y,Z\) were mutually independent, then
+\[
+f(x,y,z)
+=
+f_X(x)f_Y(y)f_Z(z).
+\]
+
+However,
+\[
+f_X(x)f_Y(y)f_Z(z)
+=
+\frac{e^{-x}}
+{(1+y)^2(1+z)^2},
+\]
+which is not equal to
+\[
+x^2e^{-x(1+y+z)}.
+\]
+
+Therefore, the three random variables are not mutually independent.
+
+We now examine pairwise independence.
+
+For \(x,y>0\),
+\[
+\begin{aligned}
+f_{X,Y}(x,y)
+&=
+\int_0^\infty
+x^2e^{-x(1+y+z)}\,dz\\
+&=
+xe^{-x(1+y)}.
+\end{aligned}
+\]
+
+But
+\[
+f_X(x)f_Y(y)
+=
+\frac{e^{-x}}{(1+y)^2},
+\]
+which is not equal to \(f_{X,Y}(x,y)\). Hence \(X\) and \(Y\) are not
+independent.
+
+Similarly, \(X\) and \(Z\) are not independent.
+
+Finally,
+\[
+\begin{aligned}
+f_{Y,Z}(y,z)
+&=
+\int_0^\infty
+x^2e^{-x(1+y+z)}\,dx\\
+&=
+\frac{2}{(1+y+z)^3},
+\end{aligned}
+\]
+whereas
+\[
+f_Y(y)f_Z(z)
+=
+\frac{1}{(1+y)^2(1+z)^2}.
+\]
+
+Thus \(Y\) and \(Z\) are not independent either.
+
+Therefore, \(X,Y,Z\) are neither mutually independent nor pairwise
+independent.
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 25  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint cumulative distribution function of \(X,Y,Z\) be
+\[
+F(x,y,z)
+=
+\left(1-e^{-\lambda_1x}\right)
+\left(1-e^{-\lambda_2y}\right)
+\left(1-e^{-\lambda_3z}\right),
+\qquad x,y,z>0,
+\]
+where
+\[
+\lambda_1,\lambda_2,\lambda_3>0.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Are \(X,Y,Z\) independent?
+    \item Find the joint probability density function of \(X,Y,Z\).
+    \item Find \(P(X<Y<Z)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item The joint CDF factors as
+\[
+F(x,y,z)
+=
+F_X(x)F_Y(y)F_Z(z),
+\]
+where
+\[
+F_X(x)=1-e^{-\lambda_1x},
+\]
+\[
+F_Y(y)=1-e^{-\lambda_2y},
+\]
+and
+\[
+F_Z(z)=1-e^{-\lambda_3z},
+\]
+for positive arguments.
+
+Therefore,
+\[
+X\sim\operatorname{Exp}(\lambda_1),
+\qquad
+Y\sim\operatorname{Exp}(\lambda_2),
+\qquad
+Z\sim\operatorname{Exp}(\lambda_3),
+\]
+and \(X,Y,Z\) are mutually independent.
+
+\item Differentiating the joint CDF,
+\[
+f(x,y,z)
+=
+\frac{\partial^3}
+{\partial x\,\partial y\,\partial z}
+F(x,y,z).
+\]
+
+Therefore,
+\[
+f(x,y,z)
+=
+\lambda_1\lambda_2\lambda_3
+e^{-\lambda_1x-\lambda_2y-\lambda_3z},
+\qquad
+x,y,z>0.
+\]
+
+Thus,
+\[
+f(x,y,z)
+=
+\begin{cases}
+\lambda_1\lambda_2\lambda_3
+e^{-\lambda_1x-\lambda_2y-\lambda_3z},
+&
+x,y,z>0,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\item We calculate
+\[
+P(X<Y<Z)
+=
+\int_0^\infty
+\int_x^\infty
+\int_y^\infty
+f(x,y,z)\,dz\,dy\,dx.
+\]
+
+Hence,
+\[
+\begin{aligned}
+P(X<Y<Z)
+&=
+\int_0^\infty
+\int_x^\infty
+\int_y^\infty
+\lambda_1\lambda_2\lambda_3
+e^{-\lambda_1x-\lambda_2y-\lambda_3z}
+\,dz\,dy\,dx\\
+&=
+\int_0^\infty
+\int_x^\infty
+\lambda_1\lambda_2
+e^{-\lambda_1x-(\lambda_2+\lambda_3)y}
+\,dy\,dx\\
+&=
+\frac{\lambda_1\lambda_2}
+{\lambda_2+\lambda_3}
+\int_0^\infty
+e^{-(\lambda_1+\lambda_2+\lambda_3)x}
+\,dx\\
+&=
+\frac{\lambda_1\lambda_2}
+{(\lambda_2+\lambda_3)
+(\lambda_1+\lambda_2+\lambda_3)}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+P(X<Y<Z)
+=
+\frac{\lambda_1\lambda_2}
+{(\lambda_1+\lambda_2+\lambda_3)(\lambda_2+\lambda_3)}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 26  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that \(h\) is the probability density function of a continuous random
+variable. Let the joint probability density function of \(X,Y,Z\) be
+\[
+f(x,y,z)=h(x)h(y)h(z),
+\qquad
+x,y,z\in\mathbb R.
+\]
+
+Prove that
+\[
+P(X<Y<Z)=\frac16.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+f(x,y,z)=h(x)h(y)h(z),
+\]
+the random variables \(X,Y,Z\) are independent and identically distributed.
+
+Because their common distribution is continuous, ties occur with probability
+zero:
+\[
+P(X=Y)=P(X=Z)=P(Y=Z)=0.
+\]
+
+Therefore, with probability \(1\), the three values occur in exactly one of
+the six possible strict orderings:
+\[
+X<Y<Z,
+\]
+\[
+X<Z<Y,
+\]
+\[
+Y<X<Z,
+\]
+\[
+Y<Z<X,
+\]
+\[
+Z<X<Y,
+\]
+or
+\[
+Z<Y<X.
+\]
+
+Since \(X,Y,Z\) are identically distributed, symmetry implies that all six
+orderings have the same probability.
+
+Their probabilities sum to \(1\), so each must have probability
+\[
+\frac16.
+\]
+
+Hence,
+\[
+P(X<Y<Z)=\frac16.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 27  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be random variables with finite second moments, and let
+\(a,b\) be constants. Prove that
+\[
+\operatorname{Var}(aX+bY)
+=
+a^2\operatorname{Var}(X)
++
+b^2\operatorname{Var}(Y)
++
+2ab\operatorname{Cov}(X,Y).
+\]
+
+Deduce that if \(X\) and \(Y\) are independent, then
+\[
+\operatorname{Var}(aX+bY)
+=
+a^2\operatorname{Var}(X)
++
+b^2\operatorname{Var}(Y).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+By definition,
+\[
+\operatorname{Var}(aX+bY)
+=
+E\left[
+(aX+bY)-E(aX+bY)
+\right]^2.
+\]
+
+By linearity of expectation,
+\[
+E(aX+bY)=aE(X)+bE(Y).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\operatorname{Var}(aX+bY)
+&=
+E\left[
+a(X-E(X))
++
+b(Y-E(Y))
+\right]^2\\
+&=
+E\Big[
+a^2(X-E(X))^2
++
+b^2(Y-E(Y))^2\\
+&\hspace{2.7cm}
++
+2ab(X-E(X))(Y-E(Y))
+\Big].
+\end{aligned}
+\]
+
+Using linearity of expectation,
+\[
+\begin{aligned}
+\operatorname{Var}(aX+bY)
+&=
+a^2E[(X-E(X))^2]
++
+b^2E[(Y-E(Y))^2]\\
+&\qquad
++
+2abE[(X-E(X))(Y-E(Y))].
+\end{aligned}
+\]
+
+Thus,
+\[
+\operatorname{Var}(aX+bY)
+=
+a^2\operatorname{Var}(X)
++
+b^2\operatorname{Var}(Y)
++
+2ab\operatorname{Cov}(X,Y).
+\]
+
+If \(X\) and \(Y\) are independent, then
+\[
+\operatorname{Cov}(X,Y)=0.
+\]
+
+Hence,
+\[
+\operatorname{Var}(aX+bY)
+=
+a^2\operatorname{Var}(X)
++
+b^2\operatorname{Var}(Y).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 28  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X_1,\ldots,X_n\) be random variables with finite second moments, and let
+\(a_1,\ldots,a_n\) be constants. Prove that
+\[
+\operatorname{Var}
+\left(
+\sum_{i=1}^{n}a_iX_i
+\right)
+=
+\sum_{i=1}^{n}
+a_i^2\operatorname{Var}(X_i)
++
+2\sum_{i<j}
+a_ia_j\operatorname{Cov}(X_i,X_j).
+\]
+
+In particular, show that
+\[
+\operatorname{Var}
+\left(
+\sum_{i=1}^{n}X_i
+\right)
+=
+\sum_{i=1}^{n}
+\operatorname{Var}(X_i)
++
+2\sum_{i<j}
+\operatorname{Cov}(X_i,X_j).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+S=\sum_{i=1}^{n}a_iX_i.
+\]
+
+Then
+\[
+E(S)
+=
+\sum_{i=1}^{n}a_iE(X_i).
+\]
+
+Therefore,
+\[
+S-E(S)
+=
+\sum_{i=1}^{n}
+a_i\bigl(X_i-E(X_i)\bigr).
+\]
+
+Hence,
+\[
+\operatorname{Var}(S)
+=
+E\left[
+\left(
+\sum_{i=1}^{n}
+a_i(X_i-E(X_i))
+\right)^2
+\right].
+\]
+
+Expanding the square,
+\[
+\begin{aligned}
+\operatorname{Var}(S)
+&=
+E\left[
+\sum_{i=1}^{n}
+a_i^2(X_i-E(X_i))^2
+\right.\\
+&\qquad\left.
++
+2\sum_{i<j}
+a_ia_j
+(X_i-E(X_i))(X_j-E(X_j))
+\right].
+\end{aligned}
+\]
+
+By linearity of expectation,
+\[
+\operatorname{Var}(S)
+=
+\sum_{i=1}^{n}
+a_i^2\operatorname{Var}(X_i)
++
+2\sum_{i<j}
+a_ia_j\operatorname{Cov}(X_i,X_j).
+\]
+
+Taking
+\[
+a_i=1,
+\qquad i=1,\ldots,n,
+\]
+gives
+\[
+\operatorname{Var}
+\left(
+\sum_{i=1}^{n}X_i
+\right)
+=
+\sum_{i=1}^{n}
+\operatorname{Var}(X_i)
++
+2\sum_{i<j}
+\operatorname{Cov}(X_i,X_j).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 29  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X_1,\ldots,X_n\) be a random sample from a distribution with mean
+\(\mu\) and variance \(\sigma^2\). Define
+\[
+\overline X
+=
+\frac1n\sum_{i=1}^{n}X_i.
+\]
+
+Prove that
+\[
+E(\overline X)=\mu
+\]
+and
+\[
+\operatorname{Var}(\overline X)
+=
+\frac{\sigma^2}{n}.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since \(X_1,\ldots,X_n\) form a random sample,
+\[
+E(X_i)=\mu
+\]
+and
+\[
+\operatorname{Var}(X_i)=\sigma^2
+\]
+for every \(i\), and the random variables are independent.
+
+By linearity of expectation,
+\[
+\begin{aligned}
+E(\overline X)
+&=
+E\left(
+\frac1n\sum_{i=1}^{n}X_i
+\right)\\
+&=
+\frac1n
+\sum_{i=1}^{n}E(X_i)\\
+&=
+\frac1n(n\mu)\\
+&=
+\mu.
+\end{aligned}
+\]
+
+For the variance, independence implies
+\[
+\operatorname{Cov}(X_i,X_j)=0
+\qquad
+(i\neq j).
+\]
+
+Hence,
+\[
+\begin{aligned}
+\operatorname{Var}(\overline X)
+&=
+\operatorname{Var}
+\left(
+\frac1n\sum_{i=1}^{n}X_i
+\right)\\
+&=
+\frac1{n^2}
+\sum_{i=1}^{n}
+\operatorname{Var}(X_i)\\
+&=
+\frac1{n^2}(n\sigma^2)\\
+&=
+\frac{\sigma^2}{n}.
+\end{aligned}
+\]
+
+Thus,
+\[
+E(\overline X)=\mu,
+\qquad
+\operatorname{Var}(\overline X)=\frac{\sigma^2}{n}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 30  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be uniformly distributed on \((-1,1)\), and define
+\[
+Y=X^2.
+\]
+
+Show that \(X\) and \(Y\) are dependent but uncorrelated.
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+Y=X^2,
+\]
+the value of \(Y\) is completely determined by \(X\). Therefore, \(X\) and
+\(Y\) are not independent.
+
+We now calculate their covariance.
+
+By symmetry of the uniform distribution on \((-1,1)\),
+\[
+E(X)=0.
+\]
+
+Also,
+\[
+E(X^3)=0,
+\]
+because \(x^3\) is an odd function and the distribution of \(X\) is symmetric
+about zero.
+
+Since
+\[
+Y=X^2,
+\]
+we have
+\[
+XY=X^3.
+\]
+
+Thus,
+\[
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&=
+E(XY)-E(X)E(Y)\\
+&=
+E(X^3)-E(X)E(X^2)\\
+&=
+0-0\cdot E(X^2)\\
+&=
+0.
+\end{aligned}
+\]
+
+Therefore, \(X\) and \(Y\) are dependent but uncorrelated.
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 31  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let the joint probability mass function of random variables \(X\) and \(Y\)
+be
+\[
+p(x,y)
+=
+\begin{cases}
+\dfrac1{70}x(x+y),
+&
+x=1,2,3,\quad y=3,4,\\[2mm]
+0,
+&
+\text{elsewhere}.
+\end{cases}
+\]
+
+Find
+\[
+\operatorname{Cov}(X,Y).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Recall that
+\[
+\operatorname{Cov}(X,Y)
+=
+E(XY)-E(X)E(Y).
+\]
+
+First calculate \(E(X)\):
+\[
+\begin{aligned}
+E(X)
+&=
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+x\,p(x,y)\\
+&=
+\frac1{70}
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+x^2(x+y).
+\end{aligned}
+\]
+
+Evaluating the six terms,
+\[
+E(X)
+=
+\frac{156}{70}
+=
+\frac{78}{35}.
+\]
+
+Next,
+\[
+\begin{aligned}
+E(Y)
+&=
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+y\,p(x,y)\\
+&=
+\frac1{70}
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+xy(x+y)\\
+&=
+\frac{249}{70}.
+\end{aligned}
+\]
+
+Finally,
+\[
+\begin{aligned}
+E(XY)
+&=
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+xy\,p(x,y)\\
+&=
+\frac1{70}
+\sum_{x=1}^{3}
+\sum_{y=3}^{4}
+x^2y(x+y)\\
+&=
+\frac{558}{70}\\
+&=
+\frac{279}{35}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\operatorname{Cov}(X,Y)
+&=
+\frac{279}{35}
+-
+\left(\frac{78}{35}\right)
+\left(\frac{249}{70}\right)\\
+&=
+\frac{279}{35}
+-
+\frac{9711}{1225}\\
+&=
+\frac{54}{1225}.
+\end{aligned}
+\]
+
+ 
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 32  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X,Y,Z\) be random variables with finite second moments.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Prove that
+    \[
+    \operatorname{Cov}(X+Y,Z)
+    =
+    \operatorname{Cov}(X,Z)
+    +
+    \operatorname{Cov}(Y,Z).
+    \]
+
+    \item Prove that
+    \[
+    \operatorname{Cov}(X,Y+Z)
+    =
+    \operatorname{Cov}(X,Y)
+    +
+    \operatorname{Cov}(X,Z).
+    \]
+
+    \item Deduce that
+    \[
+    \operatorname{Cov}(X+Y,X-Y)
+    =
+    \operatorname{Var}(X)-\operatorname{Var}(Y).
+    \]
+
+    \item Deduce that
+    \[
+    \operatorname{Var}(X-Y)
+    =
+    \operatorname{Var}(X)
+    +
+    \operatorname{Var}(Y)
+    -
+    2\operatorname{Cov}(X,Y).
+    \]
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+Recall that
+\[
+\operatorname{Cov}(A,B)
+=
+E(AB)-E(A)E(B).
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+\begin{aligned}
+\operatorname{Cov}(X+Y,Z)
+&=
+E[(X+Y)Z]
+-
+E(X+Y)E(Z)\\
+&=
+E(XZ)+E(YZ)
+-
+[E(X)+E(Y)]E(Z)\\
+&=
+[E(XZ)-E(X)E(Z)]\\
+&\qquad+
+[E(YZ)-E(Y)E(Z)]\\
+&=
+\operatorname{Cov}(X,Z)
++
+\operatorname{Cov}(Y,Z).
+\end{aligned}
+\]
+
+\item Similarly,
+\[
+\begin{aligned}
+\operatorname{Cov}(X,Y+Z)
+&=
+E[X(Y+Z)]
+-
+E(X)E(Y+Z)\\
+&=
+\operatorname{Cov}(X,Y)
++
+\operatorname{Cov}(X,Z).
+\end{aligned}
+\]
+
+\item Using bilinearity,
+\[
+\begin{aligned}
+\operatorname{Cov}(X+Y,X-Y)
+&=
+\operatorname{Cov}(X,X)
+-
+\operatorname{Cov}(X,Y)\\
+&\qquad+
+\operatorname{Cov}(Y,X)
+-
+\operatorname{Cov}(Y,Y).
+\end{aligned}
+\]
+
+Since
+\[
+\operatorname{Cov}(X,X)=\operatorname{Var}(X),
+\]
+\[
+\operatorname{Cov}(Y,Y)=\operatorname{Var}(Y),
+\]
+and
+\[
+\operatorname{Cov}(X,Y)=\operatorname{Cov}(Y,X),
+\]
+the middle terms cancel. Therefore,
+\[
+\operatorname{Cov}(X+Y,X-Y)
+=
+\operatorname{Var}(X)-\operatorname{Var}(Y).
+\]
+
+\item Since
+\[
+\operatorname{Var}(X-Y)
+=
+\operatorname{Cov}(X-Y,X-Y),
+\]
+bilinearity gives
+\[
+\begin{aligned}
+\operatorname{Var}(X-Y)
+&=
+\operatorname{Cov}(X,X)
+-
+\operatorname{Cov}(X,Y)\\
+&\qquad
+-
+\operatorname{Cov}(Y,X)
++
+\operatorname{Cov}(Y,Y)\\
+&=
+\operatorname{Var}(X)
++
+\operatorname{Var}(Y)
+-
+2\operatorname{Cov}(X,Y).
+\end{aligned}
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 33  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X_1,\ldots,X_n\) and \(Y_1,\ldots,Y_m\) be random variables with finite
+second moments, and let \(a_1,\ldots,a_n\) and \(b_1,\ldots,b_m\) be constants.
+
+Prove that
+\[
+\operatorname{Cov}
+\left(
+\sum_{i=1}^{n}a_iX_i,
+\sum_{j=1}^{m}b_jY_j
+\right)
+=
+\sum_{i=1}^{n}
+\sum_{j=1}^{m}
+a_ib_j\operatorname{Cov}(X_i,Y_j).
+\]
+
+Deduce, as a special case, that for constants \(a,b,c,d\),
+\[
+\operatorname{Cov}(aX+b,cY+d)
+=
+ac\,\operatorname{Cov}(X,Y).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Using bilinearity of covariance repeatedly,
+\[
+\begin{aligned}
+\operatorname{Cov}
+\left(
+\sum_{i=1}^{n}a_iX_i,
+\sum_{j=1}^{m}b_jY_j
+\right)
+&=
+\sum_{i=1}^{n}
+a_i
+\operatorname{Cov}
+\left(
+X_i,
+\sum_{j=1}^{m}b_jY_j
+\right)\\
+&=
+\sum_{i=1}^{n}
+a_i
+\sum_{j=1}^{m}
+b_j\operatorname{Cov}(X_i,Y_j)\\
+&=
+\sum_{i=1}^{n}
+\sum_{j=1}^{m}
+a_ib_j\operatorname{Cov}(X_i,Y_j).
+\end{aligned}
+\]
+
+For the special case,
+\[
+\operatorname{Cov}(aX+b,cY+d),
+\]
+constants have zero covariance with every random variable. Hence,
+\[
+\begin{aligned}
+\operatorname{Cov}(aX+b,cY+d)
+&=
+ac\,\operatorname{Cov}(X,Y).
+\end{aligned}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 34  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(A\) and \(B\) be events with
+\[
+P(A)>0,
+\qquad
+P(B)>0.
+\]
+
+Let \(I_A\) and \(I_B\) denote their indicator random variables:
+\[
+I_A=
+\begin{cases}
+1, & \text{if }A\text{ occurs},\\
+0, & \text{otherwise},
+\end{cases}
+\]
+and
+\[
+I_B=
+\begin{cases}
+1, & \text{if }B\text{ occurs},\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Show that \(I_A\) and \(I_B\) are positively correlated if and only if
+\[
+P(A\mid B)>P(A),
+\]
+and equivalently if and only if
+\[
+P(B\mid A)>P(B).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+We have
+\[
+E(I_A)=P(A),
+\qquad
+E(I_B)=P(B).
+\]
+
+Also,
+\[
+I_AI_B=I_{A\cap B},
+\]
+so
+\[
+E(I_AI_B)=P(A\cap B).
+\]
+
+Therefore,
+\[
+\operatorname{Cov}(I_A,I_B)
+=
+P(A\cap B)-P(A)P(B).
+\]
+
+The indicators are positively correlated if and only if
+\[
+\operatorname{Cov}(I_A,I_B)>0.
+\]
+
+Thus,
+\[
+P(A\cap B)>P(A)P(B).
+\]
+
+Since \(P(B)>0\), dividing by \(P(B)\) gives
+\[
+\frac{P(A\cap B)}{P(B)}>P(A),
+\]
+or
+\[
+P(A\mid B)>P(A).
+\]
+
+Similarly, since \(P(A)>0\),
+\[
+P(A\cap B)>P(A)P(B)
+\]
+is equivalent to
+\[
+\frac{P(A\cap B)}{P(A)}>P(B),
+\]
+which is
+\[
+P(B\mid A)>P(B).
+\]
+
+Hence,
+\[
+\operatorname{Cov}(I_A,I_B)>0
+\]
+if and only if
+\[
+P(A\mid B)>P(A),
+\]
+and if and only if
+\[
+P(B\mid A)>P(B).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 35  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be integrable random variables.
+
+Prove the \textbf{Law of Total Expectation}, also called the
+\textbf{Tower Property}:
+\[
+E\!\left[E(X\mid Y)\right]
+=
+E(X).
+\]
+
+Give a proof for the jointly continuous case.
+
+\end{problem}
+
+\begin{solution}
+
+Suppose \(X\) and \(Y\) have joint density \(f_{X,Y}(x,y)\).
+
+By definition,
+\[
+E(X\mid Y=y)
+=
+\int_{-\infty}^{\infty}
+x f_{X\mid Y}(x\mid y)\,dx.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+E[E(X\mid Y)]
+&=
+\int_{-\infty}^{\infty}
+E(X\mid Y=y)f_Y(y)\,dy\\
+&=
+\int_{-\infty}^{\infty}
+\left[
+\int_{-\infty}^{\infty}
+x f_{X\mid Y}(x\mid y)\,dx
+\right]
+f_Y(y)\,dy.
+\end{aligned}
+\]
+
+Interchanging the order of integration,
+\[
+\begin{aligned}
+E[E(X\mid Y)]
+&=
+\int_{-\infty}^{\infty}
+x
+\left[
+\int_{-\infty}^{\infty}
+f_{X\mid Y}(x\mid y)f_Y(y)\,dy
+\right]dx.
+\end{aligned}
+\]
+
+Since
+\[
+f_{X\mid Y}(x\mid y)
+=
+\frac{f_{X,Y}(x,y)}{f_Y(y)},
+\]
+we have
+\[
+f_{X\mid Y}(x\mid y)f_Y(y)
+=
+f_{X,Y}(x,y).
+\]
+
+Hence,
+\[
+\begin{aligned}
+E[E(X\mid Y)]
+&=
+\int_{-\infty}^{\infty}
+x
+\left[
+\int_{-\infty}^{\infty}
+f_{X,Y}(x,y)\,dy
+\right]dx\\
+&=
+\int_{-\infty}^{\infty}
+x f_X(x)\,dx\\
+&=
+E(X).
+\end{aligned}
+\]
+
+Therefore,
+\[
+E[E(X\mid Y)]=E(X).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 36  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be random variables with \(E(X^2)<\infty\).
+
+Prove the \textbf{Law of Total Variance}:
+\[
+\operatorname{Var}(X)
+=
+E\!\left[\operatorname{Var}(X\mid Y)\right]
++
+\operatorname{Var}\!\left(E(X\mid Y)\right).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Recall that
+\[
+\operatorname{Var}(X)
+=
+E(X^2)-[E(X)]^2.
+\]
+
+For each value of \(Y\),
+\[
+\operatorname{Var}(X\mid Y)
+=
+E(X^2\mid Y)-[E(X\mid Y)]^2.
+\]
+
+Taking expectations,
+\[
+\begin{aligned}
+E[\operatorname{Var}(X\mid Y)]
+&=
+E[E(X^2\mid Y)]
+-
+E\left([E(X\mid Y)]^2\right).
+\end{aligned}
+\]
+
+By the Law of Total Expectation,
+\[
+E[E(X^2\mid Y)]
+=
+E(X^2).
+\]
+
+Therefore,
+\[
+E[\operatorname{Var}(X\mid Y)]
+=
+E(X^2)
+-
+E\left([E(X\mid Y)]^2\right).
+\]
+
+Also,
+\[
+\begin{aligned}
+\operatorname{Var}(E(X\mid Y))
+&=
+E\left([E(X\mid Y)]^2\right)
+-
+\left(E[E(X\mid Y)]\right)^2.
+\end{aligned}
+\]
+
+Again using the Law of Total Expectation,
+\[
+E[E(X\mid Y)]
+=
+E(X).
+\]
+
+Thus,
+\[
+\operatorname{Var}(E(X\mid Y))
+=
+E\left([E(X\mid Y)]^2\right)
+-
+[E(X)]^2.
+\]
+
+Adding the two expressions,
+\[
+\begin{aligned}
+&E[\operatorname{Var}(X\mid Y)]
++
+\operatorname{Var}(E(X\mid Y))\\
+&=
+E(X^2)
+-
+E\left([E(X\mid Y)]^2\right)
++
+E\left([E(X\mid Y)]^2\right)
+-
+[E(X)]^2\\
+&=
+E(X^2)-[E(X)]^2\\
+&=
+\operatorname{Var}(X).
+\end{aligned}
+\]
+
+Therefore,
+\[
+\operatorname{Var}(X)
+=
+E[\operatorname{Var}(X\mid Y)]
++
+\operatorname{Var}(E(X\mid Y)).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 37  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be continuous random variables with joint probability
+density function
+\[
+f(x,y)
+=
+\begin{cases}
+\dfrac32(x^2+y^2),
+&
+0<x<1,\quad 0<y<1,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Find the random variable
+\[
+E(X\mid Y).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+We first find the marginal density of \(Y\).
+
+For \(0<y<1\),
+\[
+\begin{aligned}
+f_Y(y)
+&=
+\int_0^1
+\frac32(x^2+y^2)\,dx\\
+&=
+\frac32
+\left(
+\frac13+y^2
+\right)\\
+&=
+\frac12+\frac32y^2\\
+&=
+\frac{3y^2+1}{2}.
+\end{aligned}
+\]
+
+Thus,
+\[
+\begin{aligned}
+f_{X\mid Y}(x\mid y)
+&=
+\frac{f(x,y)}{f_Y(y)}\\
+&=
+\frac{
+\frac32(x^2+y^2)
+}{
+\frac12(3y^2+1)
+}\\
+&=
+\frac{3(x^2+y^2)}
+{3y^2+1},
+\end{aligned}
+\]
+for \(0<x<1\).
+
+Therefore,
+\[
+\begin{aligned}
+E(X\mid Y=y)
+&=
+\int_0^1
+x f_{X\mid Y}(x\mid y)\,dx\\
+&=
+\frac{3}{3y^2+1}
+\int_0^1
+(x^3+xy^2)\,dx\\
+&=
+\frac{3}{3y^2+1}
+\left(
+\frac14+\frac{y^2}{2}
+\right)\\
+&=
+\frac{3(2y^2+1)}
+{4(3y^2+1)}.
+\end{aligned}
+\]
+
+Hence the conditional expectation as a random variable is
+\[
+E(X\mid Y)
+=
+\frac{3(2Y^2+1)}
+{4(3Y^2+1)}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 38  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+For given random variables \(Y\) and \(Z\), suppose that \(X\) is selected
+according to
+\[
+X=
+\begin{cases}
+Y, & \text{with probability }p,\\
+Z, & \text{with probability }1-p,
+\end{cases}
+\]
+where the random choice determining whether \(Y\) or \(Z\) is selected is
+independent of \(Y\) and \(Z\).
+
+Find \(E(X)\) in terms of \(E(Y)\) and \(E(Z)\).
+
+\end{problem}
+
+\begin{solution}
+
+Let \(I\) be the indicator of the event that \(Y\) is selected. Then
+\[
+P(I=1)=p,
+\qquad
+P(I=0)=1-p,
+\]
+and
+\[
+X=IY+(1-I)Z.
+\]
+
+Since \(I\) is independent of \(Y\) and \(Z\),
+\[
+E(IY)=E(I)E(Y)=pE(Y),
+\]
+and
+\[
+E[(1-I)Z]
+=
+E(1-I)E(Z)
+=
+(1-p)E(Z).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+E(X)
+&=
+E[IY+(1-I)Z]\\
+&=
+pE(Y)+(1-p)E(Z).
+\end{aligned}
+\]
+
+Hence,
+\[
+E(X)
+=
+pE(Y)+(1-p)E(Z).
+\]
+
+\end{solution}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 39  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be a continuous random variable with probability density function
+\[
+f(x)
+=
+\begin{cases}
+6x(1-x), & 0\leq x\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the moment-generating function \(M_X(t)\).
+    \item Using \(M_X(t)\), find \(E(X)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item By definition,
+\[
+M_X(t)
+=
+E(e^{tX})
+=
+\int_{-\infty}^{\infty}
+e^{tx}f(x)\,dx.
+\]
+
+Therefore,
+\[
+M_X(t)
+=
+6\int_0^1
+x(1-x)e^{tx}\,dx.
+\]
+
+Writing
+\[
+x(1-x)=x-x^2,
+\]
+we have
+\[
+M_X(t)
+=
+6\left[
+\int_0^1 xe^{tx}\,dx
+-
+\int_0^1 x^2e^{tx}\,dx
+\right].
+\]
+
+After integration by parts,
+\[
+M_X(t)
+=
+\frac{
+6\left[
+t+(t-2)e^t+2
+\right]
+}{t^3},
+\qquad t\neq0.
+\]
+
+At \(t=0\),
+\[
+M_X(0)=1.
+\]
+
+Thus,
+\[
+M_X(t)
+=
+\begin{cases}
+\dfrac{
+6\left[t+(t-2)e^t+2\right]
+}{t^3},
+&
+t\neq0,\\[3mm]
+1,
+&
+t=0.
+\end{cases}
+\]
+
+\item Recall that
+\[
+E(X)=M_X'(0).
+\]
+
+To evaluate this derivative conveniently, expand \(M_X(t)\) around \(t=0\).
+Using
+\[
+e^t
+=
+1+t+\frac{t^2}{2}
++\frac{t^3}{6}
++\frac{t^4}{24}
++\cdots,
+\]
+we obtain
+\[
+M_X(t)
+=
+1+\frac12t+\frac{3}{20}t^2+\cdots.
+\]
+
+Therefore,
+\[
+M_X'(0)=\frac12.
+\]
+
+Hence,
+\[
+E(X)=\frac12.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 40  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be uniformly distributed on the interval \((a,b)\), where
+\(a<b\). Find the moment-generating function of \(X\).
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X\sim\operatorname{Unif}(a,b),
+\]
+its density is
+\[
+f_X(x)
+=
+\frac1{b-a},
+\qquad a<x<b.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+M_X(t)
+&=
+E(e^{tX})\\
+&=
+\frac1{b-a}
+\int_a^b e^{tx}\,dx.
+\end{aligned}
+\]
+
+For \(t\neq0\),
+\[
+\begin{aligned}
+M_X(t)
+&=
+\frac1{b-a}
+\left[
+\frac{e^{tx}}{t}
+\right]_a^b\\
+&=
+\frac{e^{bt}-e^{at}}
+{(b-a)t}.
+\end{aligned}
+\]
+
+Also,
+\[
+M_X(0)=1.
+\]
+
+Thus,
+\[
+M_X(t)
+=
+\begin{cases}
+\dfrac{e^{bt}-e^{at}}
+{(b-a)t},
+&
+t\neq0,\\[3mm]
+1,
+&
+t=0.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 41  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be a geometric random variable with parameter \(p\), using the
+convention
+\[
+P(X=k)=p(1-p)^{k-1},
+\qquad
+k=1,2,\ldots.
+\]
+
+Let
+\[
+q=1-p.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that
+    \[
+    M_X(t)
+    =
+    \frac{pe^t}{1-qe^t},
+    \qquad
+    t<-\ln q.
+    \]
+
+    \item Use \(M_X(t)\) to find \(E(X)\) and
+    \(\operatorname{Var}(X)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item By definition,
+\[
+\begin{aligned}
+M_X(t)
+&=
+E(e^{tX})\\
+&=
+\sum_{k=1}^{\infty}
+e^{tk}p q^{k-1}.
+\end{aligned}
+\]
+
+Factor out \(pe^t\):
+\[
+M_X(t)
+=
+pe^t
+\sum_{k=1}^{\infty}
+(qe^t)^{k-1}.
+\]
+
+The geometric series converges when
+\[
+|qe^t|<1.
+\]
+
+Since \(q>0\), this is equivalent to
+\[
+t<-\ln q.
+\]
+
+Therefore,
+\[
+M_X(t)
+=
+\frac{pe^t}{1-qe^t},
+\qquad
+t<-\ln q.
+\]
+
+\item Differentiate:
+\[
+M_X'(t)
+=
+\frac{pe^t}
+{(1-qe^t)^2}.
+\]
+
+Hence,
+\[
+E(X)
+=
+M_X'(0)
+=
+\frac{p}{(1-q)^2}.
+\]
+
+Since
+\[
+1-q=p,
+\]
+we obtain
+\[
+E(X)=\frac1p.
+\]
+
+Differentiate again:
+\[
+M_X''(t)
+=
+\frac{
+pe^t(1+qe^t)
+}{
+(1-qe^t)^3
+}.
+\]
+
+Therefore,
+\[
+E(X^2)
+=
+M_X''(0)
+=
+\frac{1+q}{p^2}.
+\]
+
+Thus,
+\[
+\begin{aligned}
+\operatorname{Var}(X)
+&=
+E(X^2)-[E(X)]^2\\
+&=
+\frac{1+q}{p^2}
+-
+\frac1{p^2}\\
+&=
+\frac{q}{p^2}.
+\end{aligned}
+\]
+
+Since \(q=1-p\),
+\[
+\operatorname{Var}(X)
+=
+\frac{1-p}{p^2}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 42  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that
+\[
+M_X(t)=\frac1{1-t},
+\qquad t<1,
+\]
+is the moment-generating function of a random variable \(X\).
+
+Find the moment-generating function of
+\[
+Y=2X+1.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+By definition,
+\[
+M_Y(t)
+=
+E(e^{tY}).
+\]
+
+Since
+\[
+Y=2X+1,
+\]
+we have
+\[
+\begin{aligned}
+M_Y(t)
+&=
+E\left(e^{t(2X+1)}\right)\\
+&=
+e^tE(e^{2tX})\\
+&=
+e^tM_X(2t).
+\end{aligned}
+\]
+
+Therefore,
+\[
+M_Y(t)
+=
+e^t
+\frac1{1-2t}.
+\]
+
+The MGF \(M_X(2t)\) is finite provided
+\[
+2t<1,
+\]
+that is,
+\[
+t<\frac12.
+\]
+
+Hence,
+\[
+M_Y(t)
+=
+\frac{e^t}{1-2t},
+\qquad
+t<\frac12.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 43  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+For a random variable \(X\),
+\[
+M_X(t)
+=
+\left(
+\frac{2}{2-t}
+\right)^3.
+\]
+
+Find \(E(X)\) and \(\operatorname{Var}(X)\).
+
+\end{problem}
+
+\begin{solution}
+
+Write
+\[
+M_X(t)
+=
+8(2-t)^{-3}.
+\]
+
+Differentiating,
+\[
+M_X'(t)
+=
+24(2-t)^{-4}.
+\]
+
+Therefore,
+\[
+E(X)
+=
+M_X'(0)
+=
+\frac{24}{16}
+=
+\frac32.
+\]
+
+Differentiating again,
+\[
+M_X''(t)
+=
+96(2-t)^{-5}.
+\]
+
+Thus,
+\[
+E(X^2)
+=
+M_X''(0)
+=
+\frac{96}{32}
+=
+3.
+\]
+
+Hence,
+\[
+\begin{aligned}
+\operatorname{Var}(X)
+&=
+E(X^2)-[E(X)]^2\\
+&=
+3-\left(\frac32\right)^2\\
+&=
+3-\frac94\\
+&=
+\frac34.
+\end{aligned}
+\]
+
+Therefore,
+\[
+E(X)=\frac32,
+\qquad
+\operatorname{Var}(X)=\frac34.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 44  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+Z\sim N(0,1).
+\]
+
+Using
+\[
+M_Z(t)=e^{t^2/2},
+\]
+calculate
+\[
+E(Z^n),
+\]
+where \(n\) is a positive integer.
+
+\end{problem}
+
+\begin{solution}
+
+The moment-generating function has the power-series representation
+\[
+M_Z(t)
+=
+\sum_{n=0}^{\infty}
+\frac{E(Z^n)}{n!}t^n.
+\]
+
+On the other hand,
+\[
+M_Z(t)
+=
+e^{t^2/2}.
+\]
+
+Expanding the exponential,
+\[
+\begin{aligned}
+e^{t^2/2}
+&=
+\sum_{k=0}^{\infty}
+\frac1{k!}
+\left(\frac{t^2}{2}\right)^k\\
+&=
+\sum_{k=0}^{\infty}
+\frac{t^{2k}}{2^k k!}.
+\end{aligned}
+\]
+
+There are no odd powers of \(t\). Therefore,
+\[
+E(Z^n)=0
+\]
+whenever \(n\) is odd.
+
+If
+\[
+n=2k,
+\]
+then comparison of the coefficient of \(t^{2k}\) gives
+\[
+\frac{E(Z^{2k})}{(2k)!}
+=
+\frac1{2^k k!}.
+\]
+
+Thus,
+\[
+E(Z^{2k})
+=
+\frac{(2k)!}{2^k k!}.
+\]
+
+Equivalently,
+\[
+E(Z^{2k})
+=
+(2k-1)!!.
+\]
+
+Therefore,
+\[
+E(Z^n)
+=
+\begin{cases}
+0,
+&
+n\text{ odd},\\[2mm]
+\dfrac{n!}
+{2^{n/2}(n/2)!},
+&
+n\text{ even}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 45  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X_1,\ldots,X_n
+\]
+be independent random variables with
+\[
+X_i\sim N(\mu_i,\sigma_i^2),
+\qquad
+i=1,\ldots,n.
+\]
+
+Let
+\[
+a_1,\ldots,a_n
+\]
+be constants.
+
+Using moment-generating functions, prove that
+\[
+\sum_{i=1}^{n}a_iX_i
+\sim
+N\left(
+\sum_{i=1}^{n}a_i\mu_i,
+\,
+\sum_{i=1}^{n}a_i^2\sigma_i^2
+\right).
+\]
+
+Deduce that if
+\[
+X_1,\ldots,X_n
+\overset{\text{i.i.d.}}{\sim}
+N(\mu,\sigma^2),
+\]
+then
+\[
+\overline X
+=
+\frac1n\sum_{i=1}^{n}X_i
+\sim
+N\left(
+\mu,\frac{\sigma^2}{n}
+\right).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+For
+\[
+X_i\sim N(\mu_i,\sigma_i^2),
+\]
+the MGF is
+\[
+M_{X_i}(t)
+=
+\exp\left(
+\mu_i t+\frac12\sigma_i^2t^2
+\right).
+\]
+
+Let
+\[
+S=\sum_{i=1}^{n}a_iX_i.
+\]
+
+Then
+\[
+M_S(t)
+=
+E\left[
+e^{t\sum_{i=1}^{n}a_iX_i}
+\right].
+\]
+
+Since the \(X_i\)'s are independent,
+\[
+\begin{aligned}
+M_S(t)
+&=
+\prod_{i=1}^{n}
+E(e^{ta_iX_i})\\
+&=
+\prod_{i=1}^{n}
+M_{X_i}(a_it).
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+M_S(t)
+&=
+\prod_{i=1}^{n}
+\exp\left(
+a_i\mu_i t
++
+\frac12a_i^2\sigma_i^2t^2
+\right)\\
+&=
+\exp\left[
+t\sum_{i=1}^{n}a_i\mu_i
++
+\frac{t^2}{2}
+\sum_{i=1}^{n}a_i^2\sigma_i^2
+\right].
+\end{aligned}
+\]
+
+This is the MGF of a Normal random variable with mean
+\[
+\sum_{i=1}^{n}a_i\mu_i
+\]
+and variance
+\[
+\sum_{i=1}^{n}a_i^2\sigma_i^2.
+\]
+
+Hence,
+\[
+\sum_{i=1}^{n}a_iX_i
+\sim
+N\left(
+\sum_{i=1}^{n}a_i\mu_i,
+\,
+\sum_{i=1}^{n}a_i^2\sigma_i^2
+\right).
+\]
+
+For the sample mean, take
+\[
+a_i=\frac1n,
+\qquad
+\mu_i=\mu,
+\qquad
+\sigma_i^2=\sigma^2.
+\]
+
+Then
+\[
+E(\overline X)
+=
+\sum_{i=1}^{n}
+\frac1n\mu
+=
+\mu,
+\]
+and
+\[
+\operatorname{Var}(\overline X)
+=
+\sum_{i=1}^{n}
+\frac1{n^2}\sigma^2
+=
+\frac{\sigma^2}{n}.
+\]
+
+Therefore,
+\[
+\overline X
+\sim
+N\left(
+\mu,\frac{\sigma^2}{n}
+\right).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 46  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X_1,X_2,\ldots,X_n
+\]
+be independent geometric random variables, each with parameter \(p\), using
+the convention
+\[
+P(X_i=k)
+=
+p(1-p)^{k-1},
+\qquad k=1,2,\ldots.
+\]
+
+Using moment-generating functions, prove that
+\[
+X_1+\cdots+X_n
+\]
+has a negative binomial distribution with parameters \((n,p)\).
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+q=1-p.
+\]
+
+The MGF of a geometric random variable under this convention is
+\[
+M_{X_i}(t)
+=
+\frac{pe^t}{1-qe^t},
+\qquad
+t<-\ln q.
+\]
+
+Define
+\[
+S_n=X_1+\cdots+X_n.
+\]
+
+Since \(X_1,\ldots,X_n\) are independent,
+\[
+\begin{aligned}
+M_{S_n}(t)
+&=
+\prod_{i=1}^{n}M_{X_i}(t)\\
+&=
+\left(
+\frac{pe^t}{1-qe^t}
+\right)^n.
+\end{aligned}
+\]
+
+Now recall that if
+\[
+W\sim\operatorname{NegBin}(n,p),
+\]
+where \(W\) denotes the trial on which the \(n\)-th success occurs, then
+\[
+P(W=k)
+=
+\binom{k-1}{n-1}
+p^nq^{k-n},
+\qquad
+k=n,n+1,\ldots.
+\]
+
+Its MGF is
+\[
+M_W(t)
+=
+\left(
+\frac{pe^t}{1-qe^t}
+\right)^n.
+\]
+
+Thus,
+\[
+M_{S_n}(t)=M_W(t)
+\]
+in a neighborhood of \(0\).
+
+By uniqueness of moment-generating functions,
+\[
+S_n
+=
+X_1+\cdots+X_n
+\sim
+\operatorname{NegBin}(n,p).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 47  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent binomial random variables with
+\[
+X\sim\operatorname{Bin}(n,p),
+\qquad
+Y\sim\operatorname{Bin}(m,p).
+\]
+
+Calculate
+\[
+P(X=i\mid X+Y=j)
+\]
+and interpret the result.
+
+\end{problem}
+
+\begin{solution}
+
+Since \(X\) and \(Y\) are independent,
+\[
+X+Y
+\sim
+\operatorname{Bin}(n+m,p).
+\]
+
+Therefore,
+\[
+P(X=i\mid X+Y=j)
+=
+\frac{
+P(X=i,Y=j-i)
+}{
+P(X+Y=j)
+}.
+\]
+
+The numerator is
+\[
+\begin{aligned}
+P(X=i,Y=j-i)
+&=
+P(X=i)P(Y=j-i)\\
+&=
+\binom ni
+p^i(1-p)^{n-i}\\
+&\qquad\times
+\binom m{j-i}
+p^{j-i}(1-p)^{m-j+i}.
+\end{aligned}
+\]
+
+Thus,
+\[
+P(X=i,Y=j-i)
+=
+\binom ni
+\binom m{j-i}
+p^j(1-p)^{n+m-j}.
+\]
+
+Also,
+\[
+P(X+Y=j)
+=
+\binom{n+m}{j}
+p^j(1-p)^{n+m-j}.
+\]
+
+Hence,
+\[
+P(X=i\mid X+Y=j)
+=
+\frac{
+\binom ni
+\binom m{j-i}
+}{
+\binom{n+m}{j}
+},
+\]
+for
+\[
+\max\{0,j-m\}
+\leq i
+\leq
+\min\{n,j\}.
+\]
+
+This is the probability mass function of a hypergeometric random variable.
+
+Conditional on there being exactly \(j\) total successes among the
+\(n+m\) Bernoulli trials, all choices of the \(j\) successful trials are
+equally likely. The random variable \(X\) counts how many of those \(j\)
+successes occur among the first \(n\) trials.
+
+Therefore,
+\[
+X\mid(X+Y=j)
+\sim
+\operatorname{Hypergeom}(n+m,n,j).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 48  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X,Y,Z\) be independent Poisson random variables with parameters
+\[
+\lambda_1,\lambda_2,\lambda_3,
+\]
+respectively.
+
+For
+\[
+y=0,1,\ldots,t,
+\]
+calculate
+\[
+P(Y=y\mid X+Y+Z=t).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+T=X+Y+Z.
+\]
+
+Since independent Poisson random variables add,
+\[
+T
+\sim
+\operatorname{Pois}
+(\lambda_1+\lambda_2+\lambda_3).
+\]
+
+Also,
+\[
+X+Z
+\sim
+\operatorname{Pois}(\lambda_1+\lambda_3),
+\]
+and \(X+Z\) is independent of \(Y\).
+
+Therefore,
+\[
+\begin{aligned}
+P(Y=y\mid T=t)
+&=
+\frac{
+P(Y=y,\ X+Z=t-y)
+}{
+P(T=t)
+}\\
+&=
+\frac{
+P(Y=y)
+P(X+Z=t-y)
+}{
+P(T=t)
+}.
+\end{aligned}
+\]
+
+Substituting the Poisson probabilities,
+\[
+\begin{aligned}
+P(Y=y\mid T=t)
+&=
+\frac{
+e^{-\lambda_2}
+\dfrac{\lambda_2^y}{y!}
+\,
+e^{-(\lambda_1+\lambda_3)}
+\dfrac{(\lambda_1+\lambda_3)^{t-y}}{(t-y)!}
+}{
+e^{-(\lambda_1+\lambda_2+\lambda_3)}
+\dfrac{
+(\lambda_1+\lambda_2+\lambda_3)^t
+}{t!}
+}.
+\end{aligned}
+\]
+
+The exponential terms cancel, giving
+\[
+P(Y=y\mid T=t)
+=
+\binom ty
+\frac{
+\lambda_2^y
+(\lambda_1+\lambda_3)^{t-y}
+}{
+(\lambda_1+\lambda_2+\lambda_3)^t
+}.
+\]
+
+Equivalently,
+\[
+P(Y=y\mid T=t)
+=
+\binom ty
+\left(
+\frac{\lambda_2}
+{\lambda_1+\lambda_2+\lambda_3}
+\right)^y
+\left(
+\frac{\lambda_1+\lambda_3}
+{\lambda_1+\lambda_2+\lambda_3}
+\right)^{t-y}.
+\]
+
+Thus,
+\[
+Y\mid(X+Y+Z=t)
+\sim
+\operatorname{Bin}
+\left(
+t,
+\frac{\lambda_2}
+{\lambda_1+\lambda_2+\lambda_3}
+\right).
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 49  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%  INEQUALITIES PROBLEM  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}[]
+
+Let \(X\) and \(Y\) be i.i.d. positive random variables, and let \(c>0\).
+
+For each part below, fill in the appropriate equality or inequality symbol.
+
+Write \(=\) if the two sides are always equal, \(\leq\) if the left-hand
+side is less than or equal to the right-hand side but not necessarily equal,
+and similarly for \(\geq\). If no relation holds in general, write \(?\).
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item
+    \[
+    E(\log X)
+    \ \underline{\hspace{1cm}}\
+    \log(E X).
+    \]
+
+    \item
+    \[
+    E(X)
+    \ \underline{\hspace{1cm}}\
+    \sqrt{E(X^2)}.
+    \]
+
+    \item
+    \[
+    E(\sin^2 X)+E(\cos^2 X)
+    \ \underline{\hspace{1cm}}\
+    1.
+    \]
+
+    \item
+    \[
+    E(|X|)
+    \ \underline{\hspace{1cm}}\
+    \sqrt{E(X^2)}.
+    \]
+
+    \item
+    \[
+    P(X>c)
+    \ \underline{\hspace{1cm}}\
+    \frac{E(X^3)}{c^3}.
+    \]
+
+    \item
+    \[
+    P(X\leq Y)
+    \ \underline{\hspace{1cm}}\
+    P(X\geq Y).
+    \]
+
+    \item
+    \[
+    E(XY)
+    \ \underline{\hspace{1cm}}\
+    \sqrt{E(X^2)E(Y^2)}.
+    \]
+
+    \item
+    \[
+    P(X+Y>10)
+    \ \underline{\hspace{1cm}}\
+    P(X>5\text{ or }Y>5).
+    \]
+
+    \item
+    \[
+    E(\min(X,Y))
+    \ \underline{\hspace{1cm}}\
+    \min(E X,E Y).
+    \]
+
+    \item
+    \[
+    E\left(\frac{X}{Y}\right)
+    \ \underline{\hspace{1cm}}\
+    \frac{E X}{E Y}.
+    \]
+
+    \item
+    \[
+    E\left(X^2(X^2+1)\right)
+    \ \underline{\hspace{1cm}}\
+    E\left(X^2(Y^2+1)\right).
+    \]
+
+    \item
+    \[
+    E\left(\frac{X^3}{X^3+Y^3}\right)
+    \ \underline{\hspace{1cm}}\
+    E\left(\frac{Y^3}{X^3+Y^3}\right).
+    \]
+
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+E(\log X)\leq \log(E X).
+\]
+
+Since \(\log x\) is concave on \((0,\infty)\), Jensen's inequality gives
+\[
+E(\log X)\leq \log(E X).
+\]
+
+
+\item
+\[
+E(X)\leq \sqrt{E(X^2)}.
+\]
+
+By Cauchy--Schwarz,
+\[
+[E(X)]^2\leq E(X^2).
+\]
+
+Since \(X>0\),
+\[
+E(X)\leq \sqrt{E(X^2)}.
+\]
+
+
+\item
+\[
+E(\sin^2 X)+E(\cos^2 X)=1.
+\]
+
+Indeed,
+\[
+\sin^2 X+\cos^2 X=1
+\]
+for every value of \(X\). Therefore,
+\[
+\begin{aligned}
+E(\sin^2 X)+E(\cos^2 X)
+&=
+E(\sin^2 X+\cos^2 X)\\
+&=
+E(1)\\
+&=
+1.
+\end{aligned}
+\]
+
+
+\item
+\[
+E(|X|)\leq \sqrt{E(X^2)}.
+\]
+
+By Cauchy--Schwarz,
+\[
+[E(|X|)]^2
+\leq
+E(|X|^2)
+=
+E(X^2).
+\]
+
+Hence,
+\[
+E(|X|)
+\leq
+\sqrt{E(X^2)}.
+\]
+
+
+\item
+\[
+P(X>c)\leq \frac{E(X^3)}{c^3}.
+\]
+
+Since \(X>0\),
+\[
+X>c
+\quad\Longleftrightarrow\quad
+X^3>c^3.
+\]
+
+Applying Markov's inequality to the nonnegative random variable \(X^3\),
+\[
+P(X>c)
+=
+P(X^3>c^3)
+\leq
+\frac{E(X^3)}{c^3}.
+\]
+
+
+\item
+\[
+P(X\leq Y)=P(X\geq Y).
+\]
+
+Since \(X\) and \(Y\) are identically distributed and independent, the joint
+distribution of \((X,Y)\) is unchanged when \(X\) and \(Y\) are exchanged.
+
+Therefore,
+\[
+P(X\leq Y)=P(Y\leq X)=P(X\geq Y).
+\]
+
+
+\item
+\[
+E(XY)\leq \sqrt{E(X^2)E(Y^2)}.
+\]
+
+This follows directly from the Cauchy--Schwarz inequality:
+\[
+|E(XY)|
+\leq
+\sqrt{E(X^2)E(Y^2)}.
+\]
+
+Since \(X\) and \(Y\) are positive,
+\[
+E(XY)\geq0,
+\]
+and hence
+\[
+E(XY)
+\leq
+\sqrt{E(X^2)E(Y^2)}.
+\]
+
+
+\item
+\[
+P(X+Y>10)
+\leq
+P(X>5\text{ or }Y>5).
+\]
+
+Indeed,
+\[
+\{X+Y>10\}
+\subseteq
+\{X>5\}\cup\{Y>5\}.
+\]
+
+Therefore,
+\[
+P(X+Y>10)
+\leq
+P(X>5\text{ or }Y>5).
+\]
+
+
+\item
+\[
+E(\min(X,Y))
+\leq
+\min(E X,E Y).
+\]
+
+Pointwise,
+\[
+\min(X,Y)\leq X
+\]
+and
+\[
+\min(X,Y)\leq Y.
+\]
+
+Taking expectations gives
+\[
+E(\min(X,Y))\leq E(X)
+\]
+and
+\[
+E(\min(X,Y))\leq E(Y).
+\]
+
+Therefore,
+\[
+E(\min(X,Y))
+\leq
+\min(E X,E Y).
+\]
+
+
+\item
+\[
+E\left(\frac{X}{Y}\right)
+\ ?\
+\frac{E X}{E Y}.
+\]
+
+No fixed relation holds in general.
+
+By independence,
+\[
+E\left(\frac{X}{Y}\right)
+=
+E(X)E\left(\frac1Y\right),
+\]
+provided the expectations exist. This is generally not equal to
+\[
+\frac{E(X)}{E(Y)}.
+\]
+
+
+\item
+\[
+E\left(X^2(X^2+1)\right)
+\geq
+E\left(X^2(Y^2+1)\right).
+\]
+
+For the left-hand side,
+\[
+E\left(X^2(X^2+1)\right)
+=
+E(X^4)+E(X^2).
+\]
+
+For the right-hand side, independence gives
+\[
+\begin{aligned}
+E\left(X^2(Y^2+1)\right)
+&=
+E(X^2Y^2)+E(X^2)\\
+&=
+E(X^2)E(Y^2)+E(X^2).
+\end{aligned}
+\]
+
+Since \(X\) and \(Y\) are identically distributed,
+\[
+E(Y^2)=E(X^2),
+\]
+so
+\[
+E\left(X^2(Y^2+1)\right)
+=
+[E(X^2)]^2+E(X^2).
+\]
+
+Finally,
+\[
+E(X^4)\geq [E(X^2)]^2
+\]
+because
+\[
+\operatorname{Var}(X^2)\geq0.
+\]
+
+Therefore,
+\[
+E\left(X^2(X^2+1)\right)
+\geq
+E\left(X^2(Y^2+1)\right).
+\]
+
+
+\item
+\[
+E\left(\frac{X^3}{X^3+Y^3}\right)
+=
+E\left(\frac{Y^3}{X^3+Y^3}\right).
+\]
+
+Since \(X\) and \(Y\) are i.i.d., exchanging \(X\) and \(Y\) does not change
+their joint distribution. Hence,
+\[
+E\left(\frac{X^3}{X^3+Y^3}\right)
+=
+E\left(\frac{Y^3}{X^3+Y^3}\right).
+\]
+
+In fact, since
+\[
+\frac{X^3}{X^3+Y^3}
++
+\frac{Y^3}{X^3+Y^3}
+=
+1,
+\]
+the two equal expectations must each be
+\[
+\frac12.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 50  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%  PROBABILITY INEQUALITIES PROBLEM  %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be an exponential random variable with parameter \(1\), so that
+\[
+f_X(x)
+=
+\begin{cases}
+e^{-x}, & x>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Recall that
+\[
+E(X)=1,
+\qquad
+\operatorname{Var}(X)=1,
+\]
+and the moment generating function of \(X\) is
+\[
+M_X(t)=\frac{1}{1-t},
+\qquad t<1.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item Use Markov's inequality to find an upper bound for
+    \[
+    P(X\geq 10).
+    \]
+
+    \item Use Chebyshev's inequality to find an upper bound for
+    \[
+    P(X\geq 10).
+    \]
+
+    \item Recall that, for any \(t>0\),
+    \[
+    P(X\geq a)
+    \leq
+    e^{-ta}M_X(t).
+    \]
+    Use this Chernoff bound to show that
+    \[
+    P(X\geq 10)
+    \leq
+    \frac{e^{-10t}}{1-t},
+    \qquad 0<t<1.
+    \]
+
+    Find the value of \(t\) that gives the best bound, and calculate the
+    resulting Chernoff bound.
+
+    \item Compare the three bounds obtained above. Which inequality gives
+    the sharpest upper bound for \(P(X\geq10)\)?
+
+    Also calculate the exact value of \(P(X\geq10)\) and compare it with
+    the three bounds.
+
+    \item Compare
+    \[
+    E\left(\frac{1}{1+X}\right)
+    \qquad\text{and}\qquad
+    \frac{1}{1+E(X)}
+    \]
+    i.e., determine whether \(=\), \(\leq\), or \(\geq\) always holds.
+
+    \textit{Hint:} Consider the function
+    \[
+    g(x)=\frac{1}{1+x}.
+    \]
+    Check whether the conditions for Jensen's inequality are satisfied.
+
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Markov's inequality states that, for a nonnegative random variable,
+\[
+P(X\geq a)
+\leq
+\frac{E(X)}{a}.
+\]
+
+Since
+\[
+E(X)=1,
+\]
+we obtain
+\[
+P(X\geq10)
+\leq
+\frac{1}{10}.
+\]
+
+Thus, the Markov bound is
+\[
+P(X\geq10)\leq 0.1.
+\]
+
+
+\item To apply Chebyshev's inequality, observe that
+\[
+X\geq10
+\]
+implies
+\[
+X-E(X)\geq9.
+\]
+
+Therefore,
+\[
+\{X\geq10\}
+\subseteq
+\{|X-E(X)|\geq9\}.
+\]
+
+Hence,
+\[
+\begin{aligned}
+P(X\geq10)
+&\leq
+P(|X-E(X)|\geq9)\\
+&\leq
+\frac{\operatorname{Var}(X)}{9^2}\\
+&=
+\frac{1}{81}.
+\end{aligned}
+\]
+
+Thus, the Chebyshev bound is
+\[
+P(X\geq10)
+\leq
+\frac{1}{81}
+\approx
+0.01235.
+\]
+
+
+\item For \(t>0\), the Chernoff bound gives
+\[
+P(X\geq10)
+\leq
+e^{-10t}M_X(t).
+\]
+
+Since
+\[
+M_X(t)=\frac{1}{1-t},
+\qquad t<1,
+\]
+we have
+\[
+P(X\geq10)
+\leq
+\frac{e^{-10t}}{1-t},
+\qquad 0<t<1.
+\]
+
+We now minimize
+\[
+h(t)=\frac{e^{-10t}}{1-t}.
+\]
+
+It is convenient to minimize its logarithm:
+\[
+\log h(t)
+=
+-10t-\log(1-t).
+\]
+
+Differentiating,
+\[
+\frac{d}{dt}\log h(t)
+=
+-10+\frac{1}{1-t}.
+\]
+
+Setting this equal to zero,
+\[
+-10+\frac{1}{1-t}=0.
+\]
+
+Thus,
+\[
+\frac{1}{1-t}=10,
+\]
+so
+\[
+1-t=\frac{1}{10},
+\]
+and therefore
+\[
+t=\frac{9}{10}.
+\]
+
+Substituting this value into the Chernoff bound,
+\[
+\begin{aligned}
+P(X\geq10)
+&\leq
+\frac{e^{-10(9/10)}}{1-9/10}\\
+&=
+\frac{e^{-9}}{1/10}\\
+&=
+10e^{-9}.
+\end{aligned}
+\]
+
+Thus, the optimized Chernoff bound is
+\[
+P(X\geq10)
+\leq
+10e^{-9}
+\approx
+0.001234.
+\]
+
+
+\item The three bounds are
+\[
+\begin{array}{c|c}
+\text{Method} & \text{Upper bound}\\
+\hline
+\text{Markov} & \dfrac{1}{10}\\[2mm]
+\text{Chebyshev} & \dfrac{1}{81}\\[2mm]
+\text{Chernoff} & 10e^{-9}
+\end{array}
+\]
+
+Numerically,
+\[
+\frac{1}{10}=0.1,
+\]
+\[
+\frac{1}{81}\approx0.01235,
+\]
+and
+\[
+10e^{-9}\approx0.001234.
+\]
+
+Therefore,
+\[
+10e^{-9}
+<
+\frac{1}{81}
+<
+\frac{1}{10}.
+\]
+
+Hence, among these three inequalities, the Chernoff bound gives the
+sharpest upper bound.
+
+The exact probability can be calculated directly from the exponential
+distribution:
+\[
+\begin{aligned}
+P(X\geq10)
+&=
+\int_{10}^{\infty}e^{-x}\,dx\\
+&=
+e^{-10}.
+\end{aligned}
+\]
+
+Numerically,
+\[
+e^{-10}\approx0.0000454.
+\]
+
+Thus,
+\[
+\underbrace{e^{-10}}_{\text{exact}}
+<
+\underbrace{10e^{-9}}_{\text{Chernoff}}
+<
+\underbrace{\frac{1}{81}}_{\text{Chebyshev}}
+<
+\underbrace{\frac{1}{10}}_{\text{Markov}}.
+\]
+
+
+\item Define
+\[
+g(x)=\frac{1}{1+x},
+\qquad x>0.
+\]
+
+We have
+\[
+g'(x)
+=
+-\frac{1}{(1+x)^2}
+\]
+and
+\[
+g''(x)
+=
+\frac{2}{(1+x)^3}.
+\]
+
+Since
+\[
+g''(x)>0
+\qquad\text{for }x>0,
+\]
+the function \(g\) is convex on the support of \(X\).
+
+Therefore, Jensen's inequality gives
+\[
+g(E(X))
+\leq
+E(g(X)).
+\]
+
+Hence,
+\[
+\frac{1}{1+E(X)}
+\leq
+E\left(\frac{1}{1+X}\right).
+\]
+
+Equivalently,
+\[
+E\left(\frac{1}{1+X}\right)
+\geq
+\frac{1}{1+E(X)}.
+\]
+
+Since \(E(X)=1\),
+\[
+E\left(\frac{1}{1+X}\right)
+\geq
+\frac12.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 51  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that the number \(X\) of letters handled by a post office on a given
+day satisfies
+\[
+E(X)=10{,}000
+\]
+and
+\[
+\operatorname{Var}(X)=2000.
+\]
+
+Using Chebyshev's inequality, find a lower bound for
+\[
+P(8000<X<12{,}000).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+We can write
+\[
+8000<X<12{,}000
+\]
+as
+\[
+-2000<X-10{,}000<2000.
+\]
+
+Thus,
+\[
+P(8000<X<12{,}000)
+=
+P(|X-10{,}000|<2000).
+\]
+
+Using the complement,
+\[
+P(|X-10{,}000|<2000)
+=
+1-
+P(|X-10{,}000|\geq2000).
+\]
+
+By Chebyshev's inequality,
+\[
+P(|X-10{,}000|\geq2000)
+\leq
+\frac{2000}{2000^2}.
+\]
+
+Therefore,
+\[
+P(|X-10{,}000|\geq2000)
+\leq
+0.0005.
+\]
+
+Hence,
+\[
+P(8000<X<12{,}000)
+\geq
+1-0.0005
+=
+0.9995.
+\]
+
+Thus,
+\[
+P(8000<X<12{,}000)
+\geq
+0.9995.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 52  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Roll a fair six-sided die and let \(X\) denote the outcome.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate \(E(X)\) and \(\operatorname{Var}(X)\).
+
+    \item Use Markov's inequality to obtain an upper bound for
+    \[
+    P(X\geq6).
+    \]
+
+    \item Use Chebyshev's inequality to obtain an upper bound for
+    \[
+    P\left(
+    \left|X-\frac{21}{6}\right|
+    \geq
+    \frac32
+    \right).
+    \]
+
+    \item Calculate both probabilities exactly and compare the exact
+    probabilities with the bounds.
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Since each outcome has probability \(1/6\),
+\[
+E(X)
+=
+\frac16(1+2+3+4+5+6)
+=
+\frac{21}{6}
+=
+\frac72.
+\]
+
+Also,
+\[
+E(X^2)
+=
+\frac16
+(1^2+2^2+3^2+4^2+5^2+6^2)
+=
+\frac{91}{6}.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\operatorname{Var}(X)
+&=
+E(X^2)-[E(X)]^2\\
+&=
+\frac{91}{6}
+-
+\frac{49}{4}\\
+&=
+\frac{35}{12}.
+\end{aligned}
+\]
+
+\item By Markov's inequality,
+\[
+P(X\geq6)
+\leq
+\frac{E(X)}6.
+\]
+
+Hence,
+\[
+P(X\geq6)
+\leq
+\frac{7/2}{6}
+=
+\frac7{12}
+\approx0.5833.
+\]
+
+\item By Chebyshev's inequality,
+\[
+P\left(
+\left|X-\frac72\right|
+\geq
+\frac32
+\right)
+\leq
+\frac{
+35/12
+}{
+(3/2)^2
+}.
+\]
+
+Therefore,
+\[
+P\left(
+\left|X-\frac72\right|
+\geq
+\frac32
+\right)
+\leq
+\frac{35}{27}
+\approx1.296.
+\]
+
+Since probabilities cannot exceed \(1\), this bound is trivial. The useful
+upper bound is simply
+\[
+1.
+\]
+
+\item Exactly,
+\[
+P(X\geq6)
+=
+P(X=6)
+=
+\frac16.
+\]
+
+Also,
+\[
+\left|X-\frac72\right|
+\geq
+\frac32
+\]
+occurs when
+\[
+X\leq2
+\qquad\text{or}\qquad
+X\geq5.
+\]
+
+Thus,
+\[
+P\left(
+\left|X-\frac72\right|
+\geq
+\frac32
+\right)
+=
+\frac46
+=
+\frac23.
+\]
+
+Therefore, both inequalities give valid upper bounds, but the bounds may be
+far from the exact probabilities.
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 53  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+The scores on an achievement test have population mean
+\[
+\mu=500
+\]
+and population standard deviation
+\[
+\sigma=100.
+\]
+
+Let
+\[
+\overline X
+\]
+be the sample mean of a random sample of \(10\) students.
+
+Without assuming that the population distribution is Normal, use Chebyshev's
+inequality to find a lower bound for
+\[
+P(460<\overline X<540).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since the sample consists of independent observations,
+\[
+E(\overline X)=500
+\]
+and
+\[
+\operatorname{Var}(\overline X)
+=
+\frac{\sigma^2}{n}
+=
+\frac{100^2}{10}
+=
+1000.
+\]
+
+Now,
+\[
+\begin{aligned}
+P(460<\overline X<540)
+&=
+P(-40<\overline X-500<40)\\
+&=
+P(|\overline X-500|<40).
+\end{aligned}
+\]
+
+Using the complement,
+\[
+P(|\overline X-500|<40)
+=
+1-
+P(|\overline X-500|\geq40).
+\]
+
+By Chebyshev's inequality,
+\[
+P(|\overline X-500|\geq40)
+\leq
+\frac{1000}{40^2}.
+\]
+
+Thus,
+\[
+P(|\overline X-500|\geq40)
+\leq
+\frac{1000}{1600}
+=
+\frac58.
+\]
+
+Therefore,
+\[
+P(460<\overline X<540)
+\geq
+1-\frac58
+=
+\frac38.
+\]
+
+Hence,
+\[
+P(460<\overline X<540)
+\geq
+\frac38.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 54  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose
+\[
+X_1,\ldots,X_n
+\]
+are independent Bernoulli random variables with unknown success probability
+\(p\), and define
+\[
+\widehat p
+=
+\frac1n\sum_{i=1}^{n}X_i.
+\]
+
+Let
+\[
+\varepsilon>0
+\qquad\text{and}\qquad
+0<\alpha<1.
+\]
+
+Using Chebyshev's inequality, derive a sample-size condition that guarantees
+\[
+P(|\widehat p-p|<\varepsilon)
+\geq
+1-\alpha
+\]
+for every
+\[
+0<p<1.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X_i\sim\operatorname{Bernoulli}(p),
+\]
+we have
+\[
+E(X_i)=p
+\]
+and
+\[
+\operatorname{Var}(X_i)=p(1-p).
+\]
+
+Therefore,
+\[
+E(\widehat p)=p,
+\]
+and by independence,
+\[
+\operatorname{Var}(\widehat p)
+=
+\frac{p(1-p)}{n}.
+\]
+
+By Chebyshev's inequality,
+\[
+P(|\widehat p-p|\geq\varepsilon)
+\leq
+\frac{
+p(1-p)
+}{
+n\varepsilon^2
+}.
+\]
+
+Hence,
+\[
+P(|\widehat p-p|<\varepsilon)
+\geq
+1-
+\frac{
+p(1-p)
+}{
+n\varepsilon^2
+}.
+\]
+
+To guarantee
+\[
+P(|\widehat p-p|<\varepsilon)
+\geq
+1-\alpha,
+\]
+it is sufficient that
+\[
+\frac{
+p(1-p)
+}{
+n\varepsilon^2
+}
+\leq
+\alpha.
+\]
+
+Equivalently,
+\[
+n
+\geq
+\frac{
+p(1-p)
+}{
+\varepsilon^2\alpha
+}.
+\]
+
+However, \(p\) is unknown. Since
+\[
+p(1-p)
+\leq
+\frac14
+\]
+for every \(0<p<1\), a sufficient condition that does not depend on \(p\) is
+\[
+n
+\geq
+\frac{
+1
+}{
+4\varepsilon^2\alpha
+}.
+\]
+
+Thus, choosing
+\[
+n
+\geq
+\frac1{4\varepsilon^2\alpha}
+\]
+guarantees
+\[
+P(|\widehat p-p|<\varepsilon)
+\geq
+1-\alpha
+\]
+for every Bernoulli success probability \(p\).
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 55  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+A quality-control officer wants to estimate the proportion \(p\) of defective
+nails produced by a company.
+
+A random sample of \(n\) nails is inspected, and
+\[
+\widehat p
+\]
+denotes the fraction of defective nails in the sample.
+
+Using Chebyshev's inequality, determine a sample size sufficient to guarantee
+that, with probability at least \(98\%\),
+\[
+|\widehat p-p|<0.03,
+\]
+regardless of the unknown value of \(p\).
+
+\end{problem}
+
+\begin{solution}
+
+From the general Bernoulli estimation bound,
+\[
+n
+\geq
+\frac1{4\varepsilon^2\alpha}
+\]
+is sufficient to guarantee
+\[
+P(|\widehat p-p|<\varepsilon)
+\geq
+1-\alpha.
+\]
+
+Here,
+\[
+\varepsilon=0.03
+\]
+and
+\[
+1-\alpha=0.98,
+\]
+so
+\[
+\alpha=0.02.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+n
+&\geq
+\frac{
+1
+}{
+4(0.03)^2(0.02)
+}\\
+&=
+13888.888\ldots.
+\end{aligned}
+\]
+
+Since the sample size must be an integer,
+\[
+n\geq13889.
+\]
+
+Thus, at least
+\[
+13{,}889
+\]
+nails should be inspected.
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 56  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+A coin has an unknown probability \(p\) of landing heads.
+
+The coin is flipped independently \(3000\) times, and
+\[
+\widehat p
+\]
+denotes the fraction of flips that result in heads.
+
+Use Chebyshev's inequality to show that
+\[
+P(|\widehat p-p|<0.03)
+\geq0.90.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X_i
+=
+\begin{cases}
+1, & \text{if the \(i\)-th flip is heads},\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Then
+\[
+X_i\sim\operatorname{Bernoulli}(p)
+\]
+and
+\[
+\widehat p
+=
+\frac1{3000}
+\sum_{i=1}^{3000}X_i.
+\]
+
+Therefore,
+\[
+E(\widehat p)=p
+\]
+and
+\[
+\operatorname{Var}(\widehat p)
+=
+\frac{p(1-p)}{3000}.
+\]
+
+By Chebyshev's inequality,
+\[
+P(|\widehat p-p|\geq0.03)
+\leq
+\frac{
+p(1-p)
+}{
+(0.03)^2(3000)
+}.
+\]
+
+Since
+\[
+p(1-p)\leq\frac14,
+\]
+we obtain
+\[
+P(|\widehat p-p|\geq0.03)
+\leq
+\frac{
+1
+}{
+4(0.03)^2(3000)
+}.
+\]
+
+Thus,
+\[
+\begin{aligned}
+P(|\widehat p-p|<0.03)
+&\geq
+1-
+\frac{
+1
+}{
+4(0.03)^2(3000)
+}\\
+&=
+1-\frac1{10.8}\\
+&\approx
+0.9074.
+\end{aligned}
+\]
+
+Therefore,
+\[
+P(|\widehat p-p|<0.03)
+\geq
+0.9074
+>
+0.90.
+\]
+
+Hence,
+\[
+P(|\widehat p-p|<0.03)
+\geq0.90.
+\]
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 57  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) be a random variable and let \(k>0\) be a constant. Prove that
+\[
+P(X>t)
+\leq
+\frac{E(e^{kX})}{e^{kt}},
+\]
+whenever \(E(e^{kX})<\infty\).
+
+\end{problem}
+
+\begin{solution}
+
+Since the exponential function is increasing and \(k>0\),
+\[
+X>t
+\]
+implies
+\[
+e^{kX}>e^{kt}.
+\]
+
+Therefore,
+\[
+P(X>t)
+=
+P(e^{kX}>e^{kt}).
+\]
+
+The random variable
+\[
+e^{kX}
+\]
+is nonnegative. Hence, by Markov's inequality,
+\[
+P(e^{kX}\geq e^{kt})
+\leq
+\frac{E(e^{kX})}{e^{kt}}.
+\]
+
+Since
+\[
+\{e^{kX}>e^{kt}\}
+\subseteq
+\{e^{kX}\geq e^{kt}\},
+\]
+we obtain
+\[
+P(X>t)
+\leq
+\frac{E(e^{kX})}{e^{kt}}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 58  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Suppose that random variables \(X\) and \(Y\) satisfy
+\[
+E[(X-Y)^2]=0.
+\]
+
+Prove that
+\[
+P(X=Y)=1.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+The random variable
+\[
+(X-Y)^2
+\]
+is nonnegative.
+
+For every \(\varepsilon>0\), Markov's inequality gives
+\[
+P\left((X-Y)^2\geq\varepsilon\right)
+\leq
+\frac{E[(X-Y)^2]}{\varepsilon}.
+\]
+
+Since
+\[
+E[(X-Y)^2]=0,
+\]
+we obtain
+\[
+P\left((X-Y)^2\geq\varepsilon\right)=0
+\]
+for every \(\varepsilon>0\).
+
+Now
+\[
+\{X\neq Y\}
+=
+\{(X-Y)^2>0\}.
+\]
+
+Also,
+\[
+\{(X-Y)^2>0\}
+=
+\bigcup_{n=1}^{\infty}
+\left\{
+(X-Y)^2\geq\frac1n
+\right\}.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+P(X\neq Y)
+&\leq
+\sum_{n=1}^{\infty}
+P\left(
+(X-Y)^2\geq\frac1n
+\right)\\
+&=
+0.
+\end{aligned}
+\]
+
+Hence,
+\[
+P(X\neq Y)=0,
+\]
+and therefore
+\[
+P(X=Y)=1.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 59  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X_1,X_2,\ldots
+\]
+be independent and identically distributed nonnegative random variables with
+density
+\[
+f(x)
+=
+\begin{cases}
+4x(1-x), & 0\leq x\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Find
+\[
+\lim_{n\to\infty}
+\frac{X_1+\cdots+X_n}{n}.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+As written, the proposed function is not a probability density function,
+because
+\[
+\begin{aligned}
+\int_0^1 4x(1-x)\,dx
+&=
+4\int_0^1(x-x^2)\,dx\\
+&=
+4\left(
+\frac12-\frac13
+\right)\\
+&=
+\frac23
+\neq1.
+\end{aligned}
+\]
+
+Therefore, the problem as stated does not define a valid distribution.
+
+If the intended normalized density is
+\[
+f(x)=6x(1-x),
+\qquad
+0\leq x\leq1,
+\]
+then
+\[
+\begin{aligned}
+E(X_i)
+&=
+\int_0^1
+x\,6x(1-x)\,dx\\
+&=
+6\int_0^1(x^2-x^3)\,dx\\
+&=
+6\left(
+\frac13-\frac14
+\right)\\
+&=
+\frac12.
+\end{aligned}
+\]
+
+By the Strong Law of Large Numbers,
+\[
+\frac{X_1+\cdots+X_n}{n}
+\longrightarrow
+E(X_1)
+\]
+with probability \(1\).
+
+Thus, under the normalized density,
+\[
+\frac{X_1+\cdots+X_n}{n}
+\longrightarrow
+\frac12
+\qquad
+\text{almost surely}.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 60  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+The time \(X\), measured in hours, required for a student to finish an
+aptitude test has probability density function
+\[
+f(x)
+=
+\begin{cases}
+6(x-1)(2-x),
+&
+1<x<2,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+A random sample of \(15\) students is selected.
+
+Using the Central Limit Theorem, approximate the probability that the average
+time required to complete the test is less than \(1\) hour and \(25\)
+minutes.
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X_1,\ldots,X_{15}
+\]
+be the completion times and let
+\[
+\overline X
+=
+\frac1{15}
+\sum_{i=1}^{15}X_i.
+\]
+
+First calculate the population mean:
+\[
+\begin{aligned}
+E(X)
+&=
+\int_1^2
+x\,6(x-1)(2-x)\,dx\\
+&=
+\frac32.
+\end{aligned}
+\]
+
+Also,
+\[
+\begin{aligned}
+E(X^2)
+&=
+\int_1^2
+x^2\,6(x-1)(2-x)\,dx\\
+&=
+\frac{23}{10}.
+\end{aligned}
+\]
+
+Hence,
+\[
+\begin{aligned}
+\operatorname{Var}(X)
+&=
+E(X^2)-[E(X)]^2\\
+&=
+\frac{23}{10}
+-
+\frac94\\
+&=
+\frac1{20}.
+\end{aligned}
+\]
+
+Thus,
+\[
+\mu=\frac32,
+\qquad
+\sigma^2=\frac1{20}.
+\]
+
+By the Central Limit Theorem,
+\[
+\overline X
+\approx
+N\left(
+\frac32,
+\frac{1}{20(15)}
+\right)
+=
+N\left(
+\frac32,
+\frac1{300}
+\right).
+\]
+
+Now
+\[
+1\text{ hour }25\text{ minutes}
+=
+1+\frac{25}{60}
+=
+\frac{17}{12}
+\]
+hours.
+
+Therefore,
+\[
+\begin{aligned}
+P\left(
+\overline X<\frac{17}{12}
+\right)
+&\approx
+P\left(
+Z<
+\frac{
+\frac{17}{12}-\frac32
+}{
+1/\sqrt{300}
+}
+\right)\\
+&=
+P(Z<-1.443).
+\end{aligned}
+\]
+
+Hence,
+\[
+P\left(
+\overline X<\frac{17}{12}
+\right)
+\approx
+\Phi(-1.443)
+\approx
+0.075.
+\]
+
+Thus, the approximate probability is
+\[
+0.075.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 61  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Twenty numbers are selected independently and uniformly from the interval
+\((0,1)\).
+
+Using the Central Limit Theorem, approximate the probability that their sum
+is at least \(8\).
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X_1,\ldots,X_{20}
+\overset{\text{i.i.d.}}{\sim}
+\operatorname{Unif}(0,1)
+\]
+and define
+\[
+S_{20}
+=
+\sum_{i=1}^{20}X_i.
+\]
+
+For a \(\operatorname{Unif}(0,1)\) random variable,
+\[
+E(X_i)=\frac12
+\]
+and
+\[
+\operatorname{Var}(X_i)=\frac1{12}.
+\]
+
+Therefore,
+\[
+E(S_{20})
+=
+20\left(\frac12\right)
+=
+10,
+\]
+and
+\[
+\operatorname{Var}(S_{20})
+=
+20\left(\frac1{12}\right)
+=
+\frac53.
+\]
+
+By the Central Limit Theorem,
+\[
+S_{20}
+\approx
+N\left(
+10,\frac53
+\right).
+\]
+
+Hence,
+\[
+\begin{aligned}
+P(S_{20}\geq8)
+&\approx
+P\left(
+Z\geq
+\frac{8-10}{\sqrt{5/3}}
+\right)\\
+&=
+P(Z\geq-1.549).
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+P(S_{20}\geq8)
+&\approx
+1-\Phi(-1.549)\\
+&=
+\Phi(1.549)\\
+&\approx
+0.939.
+\end{aligned}
+\]
+
+Thus, the approximate probability is
+\[
+0.939.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 62  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+A biologist wants to estimate the mean lifetime \(\ell\) of a certain type of
+insect.
+
+Suppose the insect lifetimes are independent random variables with
+\[
+E(X_i)=\ell
+\]
+and
+\[
+\operatorname{Var}(X_i)=1.5
+\]
+days squared.
+
+The biologist estimates \(\ell\) using the sample mean
+\[
+\overline X.
+\]
+
+Using the Central Limit Theorem, determine approximately how large the sample
+size \(n\) should be so that
+\[
+P(|\overline X-\ell|<0.2)
+\approx
+0.98.
+\]
+
+\end{problem}
+
+\begin{solution}
+
+For a sample of size \(n\), $E(\overline X)=\ell$ and $\operatorname{Var}(\overline X)
+=
+\frac{1.5}{n}.$ By the Central Limit Theorem,
+\[
+\frac{
+\overline X-\ell
+}{
+\sqrt{1.5/n}
+}
+\approx
+N(0,1).
+\]
+
+Thus,
+\[
+\begin{aligned}
+P(|\overline X-\ell|<0.2)
+&\approx
+P\left(
+\left|
+Z
+\right|
+<
+\frac{0.2\sqrt n}{\sqrt{1.5}}
+\right).
+\end{aligned}
+\]
+
+We want this probability to be approximately \(0.98\). Therefore,
+\[
+P(-z<Z<z)=0.98.
+\]
+
+This requires
+\[
+\Phi(z)=0.99.
+\]
+
+Using
+\[
+z_{0.99}\approx2.33,
+\]
+we set
+\[
+\frac{0.2\sqrt n}{\sqrt{1.5}}
+\approx
+2.33.
+\]
+
+Hence,
+\[
+\sqrt n
+\approx
+\frac{
+2.33\sqrt{1.5}
+}{0.2}.
+\]
+
+Squaring,
+\[
+n
+\approx
+\left(
+\frac{
+2.33\sqrt{1.5}
+}{0.2}
+\right)^2
+\approx
+203.58.
+\]
+
+Therefore, the sample size should be rounded up to
+\[
+n=204.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 63  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+A random sample of size \(24\) is taken from a distribution with probability
+density function
+\[
+f(x)
+=
+\begin{cases}
+\dfrac19\left(x+\dfrac52\right),
+&
+1<x<3,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+Let \(\overline X\) be the sample mean.
+
+Using the Central Limit Theorem, approximate
+\[
+P(2<\overline X<2.15).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+First calculate the population mean:
+\[
+\begin{aligned}
+\mu
+&=
+E(X)\\
+&=
+\int_1^3
+x
+\frac19
+\left(x+\frac52\right)
+\,dx\\
+&=
+\frac{56}{27}.
+\end{aligned}
+\]
+
+Next,
+\[
+\begin{aligned}
+E(X^2)
+&=
+\int_1^3
+x^2
+\frac19
+\left(x+\frac52\right)
+\,dx\\
+&=
+\frac{125}{27}.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\sigma^2
+&=
+E(X^2)-[E(X)]^2\\
+&=
+\frac{125}{27}
+-
+\left(\frac{56}{27}\right)^2\\
+&=
+\frac{239}{729}.
+\end{aligned}
+\]
+
+For \(n=24\),
+\[
+E(\overline X)
+=
+\frac{56}{27},
+\]
+and
+\[
+\operatorname{Var}(\overline X)
+=
+\frac{239}{729(24)}.
+\]
+
+Thus,
+\[
+\operatorname{SD}(\overline X)
+=
+\sqrt{
+\frac{239}{729(24)}
+}.
+\]
+
+By the Central Limit Theorem,
+\[
+\overline X
+\approx
+N\left(
+\frac{56}{27},
+\frac{239}{729(24)}
+\right).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+P(2<\overline X<2.15)
+&\approx
+P\left(
+\frac{
+2-\frac{56}{27}
+}{
+\sqrt{239/[729(24)]}
+}
+<
+Z
+<
+\frac{
+2.15-\frac{56}{27}
+}{
+\sqrt{239/[729(24)]}
+}
+\right)\\
+&=
+P(-0.634<Z<0.650).
+\end{aligned}
+\]
+
+Hence,
+\[
+\begin{aligned}
+P(2<\overline X<2.15)
+&\approx
+\Phi(0.650)-\Phi(-0.634)\\
+&\approx
+0.479.
+\end{aligned}
+\]
+
+Thus, the approximate probability is
+\[
+0.479.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 64  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+A random sample of size \(n\geq1\) is taken from the distribution with
+probability density function
+\[
+f(x)
+=
+\frac12e^{-|x|},
+\qquad
+-\infty<x<\infty.
+\]
+
+Let
+\[
+\overline X
+=
+\frac1n
+\sum_{i=1}^{n}X_i.
+\]
+
+Find
+\[
+P(\overline X>0).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+The density satisfies
+\[
+f(x)=f(-x),
+\]
+so the distribution of each \(X_i\) is symmetric about \(0\).
+
+Since the \(X_i\)'s are independent, their sum
+\[
+S_n=X_1+\cdots+X_n
+\]
+is also symmetric about \(0\).
+
+Because the distribution is continuous,
+\[
+P(S_n=0)=0.
+\]
+
+By symmetry,
+\[
+P(S_n>0)
+=
+P(S_n<0).
+\]
+
+These two probabilities sum to \(1\), so
+\[
+P(S_n>0)=\frac12.
+\]
+
+Since
+\[
+\overline X>0
+\]
+if and only if
+\[
+S_n>0,
+\]
+we obtain
+\[
+P(\overline X>0)=\frac12.
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 65  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+For the scores on an achievement test given to a certain population of
+students, the population mean is
+\[
+\mu=500
+\]
+and the population standard deviation is
+\[
+\sigma=100.
+\]
+
+Let \(\overline X\) be the mean of the scores of a random sample of
+\(35\) students.
+
+Using the Central Limit Theorem, estimate
+\[
+P(460<\overline X<540).
+\]
+
+\end{problem}
+
+\begin{solution}
+
+For a sample of size
+\[
+n=35,
+\]
+the sample mean satisfies
+\[
+E(\overline X)=500
+\]
+and
+\[
+\operatorname{SD}(\overline X)
+=
+\frac{100}{\sqrt{35}}.
+\]
+
+By the Central Limit Theorem,
+\[
+\overline X
+\approx
+N\left(
+500,
+\frac{100^2}{35}
+\right).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+P(460<\overline X<540)
+&\approx
+P\left(
+\frac{460-500}{100/\sqrt{35}}
+<
+Z
+<
+\frac{540-500}{100/\sqrt{35}}
+\right)\\
+&=
+P(-2.366<Z<2.366).
+\end{aligned}
+\]
+
+Hence,
+\[
+\begin{aligned}
+P(460<\overline X<540)
+&\approx
+\Phi(2.366)-\Phi(-2.366)\\
+&=
+2\Phi(2.366)-1\\
+&\approx
+0.982.
+\end{aligned}
+\]
+
+Thus, the approximate probability is
+\[
+0.982.
+\]
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%  UNIVARIATE TRANSFORMATION -- 1  %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X\sim\operatorname{Unif}(0,1),
+\]
+and define
+\[
+Y=-\ln X.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the cumulative distribution function \(F_Y(y)\).
+    \item Find the probability density function \(f_Y(y)\).
+    \item Identify the distribution of \(Y\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+0<X<1,
+\]
+we have
+\[
+-\ln X>0.
+\]
+Therefore,
+\[
+Y>0.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For \(y\leq0\),
+\[
+F_Y(y)=0.
+\]
+
+Now suppose \(y>0\). Then
+\[
+\begin{aligned}
+F_Y(y)
+&=
+P(Y\leq y)\\
+&=
+P(-\ln X\leq y).
+\end{aligned}
+\]
+
+Since
+\[
+-\ln X\leq y
+\]
+is equivalent to
+\[
+\ln X\geq -y,
+\]
+and hence
+\[
+X\geq e^{-y},
+\]
+we obtain
+\[
+\begin{aligned}
+F_Y(y)
+&=
+P(X\geq e^{-y})\\
+&=
+1-P(X<e^{-y}).
+\end{aligned}
+\]
+
+Because
+\[
+X\sim\operatorname{Unif}(0,1),
+\]
+we have
+\[
+P(X<e^{-y})=e^{-y}.
+\]
+
+Therefore,
+\[
+F_Y(y)
+=
+1-e^{-y},
+\qquad y>0.
+\]
+
+Thus,
+\[
+F_Y(y)
+=
+\begin{cases}
+0, & y\leq0,\\[1mm]
+1-e^{-y}, & y>0.
+\end{cases}
+\]
+
+\item Differentiating the CDF,
+\[
+f_Y(y)
+=
+F_Y'(y).
+\]
+
+Hence,
+\[
+f_Y(y)
+=
+\begin{cases}
+e^{-y}, & y>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item This is the density of an exponential random variable with parameter
+\(1\). Therefore,
+\[
+Y\sim\operatorname{Exp}(1).
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%  UNIVARIATE TRANSFORMATION -- 2  %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X\sim N(0,1),
+\]
+and define
+\[
+Y=X^2.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Explain why the transformation
+    \[
+    g(x)=x^2
+    \]
+    is not one-to-one.
+
+    \item Find the cumulative distribution function \(F_Y(y)\).
+
+    \item Find the probability density function \(f_Y(y)\).
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item The transformation
+\[
+g(x)=x^2
+\]
+is not one-to-one because, for every \(x\neq0\),
+\[
+g(x)=g(-x).
+\]
+
+
+Thus, a given positive value of \(Y\) has two possible preimages:
+\[
+x=\sqrt y
+\qquad\text{and}\qquad
+x=-\sqrt y.
+\]
+
+\item Since
+\[
+Y=X^2,
+\]
+we have
+\[
+Y\geq0.
+\]
+
+Therefore,
+\[
+F_Y(y)=0,
+\qquad y<0.
+\]
+
+Now suppose \(y\geq0\). Then
+\[
+\begin{aligned}
+F_Y(y)
+&=
+P(Y\leq y)\\
+&=
+P(X^2\leq y).
+\end{aligned}
+\]
+
+The event
+\[
+X^2\leq y
+\]
+is equivalent to
+\[
+-\sqrt y\leq X\leq\sqrt y.
+\]
+
+Hence,
+\[
+\begin{aligned}
+F_Y(y)
+&=
+P(-\sqrt y\leq X\leq\sqrt y)\\
+&=
+\Phi(\sqrt y)-\Phi(-\sqrt y).
+\end{aligned}
+\]
+
+Using
+\[
+\Phi(-a)=1-\Phi(a),
+\]
+we obtain
+\[
+F_Y(y)
+=
+2\Phi(\sqrt y)-1.
+\]
+
+Thus,
+\[
+F_Y(y)
+=
+\begin{cases}
+0, & y<0,\\[1mm]
+2\Phi(\sqrt y)-1, & y\geq0.
+\end{cases}
+\]
+
+\item For \(y>0\),
+\[
+f_Y(y)
+=
+\frac{d}{dy}
+\left[
+2\Phi(\sqrt y)-1
+\right].
+\]
+
+Using the chain rule,
+\[
+\begin{aligned}
+f_Y(y)
+&=
+2\phi(\sqrt y)
+\frac{1}{2\sqrt y}\\
+&=
+\frac{\phi(\sqrt y)}{\sqrt y}.
+\end{aligned}
+\]
+
+Since
+\[
+\phi(x)
+=
+\frac1{\sqrt{2\pi}}
+e^{-x^2/2},
+\]
+we have
+\[
+\phi(\sqrt y)
+=
+\frac1{\sqrt{2\pi}}
+e^{-y/2}.
+\]
+
+Therefore,
+\[
+f_Y(y)
+=
+\frac{1}{\sqrt{2\pi y}}
+e^{-y/2},
+\qquad y>0.
+\]
+
+Thus,
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac{1}{\sqrt{2\pi y}}e^{-y/2},
+&
+y>0,\\[2mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%  CONVOLUTION -- 1  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent exponential random variables with common
+parameter \(\lambda>0\):
+\[
+X,Y
+\overset{\text{i.i.d.}}{\sim}
+\operatorname{Exp}(\lambda).
+\]
+
+Define
+\[
+T=X+Y.
+\]
+
+Using the convolution formula
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx,
+\]
+find the probability density function of \(T\).
+
+Be sure to determine the correct limits of integration and the support of
+\(T\).
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X,Y\sim\operatorname{Exp}(\lambda),
+\]
+their common density is
+\[
+f_X(x)=f_Y(x)
+=
+\begin{cases}
+\lambda e^{-\lambda x}, & x>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Since \(X>0\) and \(Y>0\),
+\[
+T=X+Y>0.
+\]
+
+Therefore,
+\[
+f_T(t)=0,
+\qquad t\leq0.
+\]
+
+Now suppose \(t>0\). The convolution formula gives
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+\]
+
+For the integrand to be nonzero, we need both
+\[
+x>0
+\]
+and
+\[
+t-x>0.
+\]
+
+Thus,
+\[
+0<x<t.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+f_T(t)
+&=
+\int_0^t
+\lambda e^{-\lambda x}
+\lambda e^{-\lambda(t-x)}
+\,dx\\
+&=
+\lambda^2
+e^{-\lambda t}
+\int_0^t dx\\
+&=
+\lambda^2 t e^{-\lambda t}.
+\end{aligned}
+\]
+
+Hence,
+\[
+f_T(t)
+=
+\begin{cases}
+\lambda^2 t e^{-\lambda t},
+&
+t>0,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+ 
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%  CONVOLUTION -- 2  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let
+\[
+X,Y
+\overset{\text{i.i.d.}}{\sim}
+\operatorname{Unif}(0,1),
+\]
+with \(X\) and \(Y\) independent, and define
+\[
+T=X+Y.
+\]
+
+Using the convolution formula
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx,
+\]
+find the probability density function of \(T\).
+
+\end{problem}
+
+\begin{solution}
+
+Since
+\[
+X,Y\sim\operatorname{Unif}(0,1),
+\]
+we have
+\[
+f_X(x)=f_Y(x)
+=
+\begin{cases}
+1, & 0<x<1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Also,
+\[
+0<X<1
+\qquad\text{and}\qquad
+0<Y<1,
+\]
+so
+\[
+0<T<2.
+\]
+
+Therefore,
+\[
+f_T(t)=0
+\]
+outside the interval \((0,2)\).
+
+For \(0<t\leq1\), the convolution formula gives
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+\]
+
+For the integrand to be nonzero, we need
+\[
+0<x<1
+\]
+and
+\[
+0<t-x<1.
+\]
+
+When \(0<t\leq1\), these conditions reduce to
+\[
+0<x<t.
+\]
+
+Therefore,
+\[
+f_T(t)
+=
+\int_0^t1\,dx
+=
+t.
+\]
+
+Now suppose
+\[
+1<t<2.
+\]
+
+Again, we need
+\[
+0<x<1
+\]
+and
+\[
+0<t-x<1.
+\]
+
+The second inequality gives
+\[
+t-1<x<t.
+\]
+
+Combining this with \(0<x<1\), we obtain
+\[
+t-1<x<1.
+\]
+
+Hence,
+\[
+f_T(t)
+=
+\int_{t-1}^{1}1\,dx
+=
+2-t.
+\]
+
+Therefore,
+\[
+f_T(t)
+=
+\begin{cases}
+t,
+&
+0<t\leq1,\\[1mm]
+2-t,
+&
+1<t<2,\\[1mm]
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%  PAIRWISE VS. MUTUAL INDEPENDENCE  %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) be independent random variables satisfying
+\[
+P(X=1)=P(X=-1)=\frac12,
+\]
+and
+\[
+P(Y=1)=P(Y=-1)=\frac12.
+\]
+
+Define
+\[
+Z=XY.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the probability mass function of \(Z\).
+
+    \item Show that \(X\) and \(Z\) are independent.
+
+    \item Show that \(Y\) and \(Z\) are independent.
+
+    \item Conclude that \(X,Y,Z\) are pairwise independent.
+
+    \item Show that \(X,Y,Z\) are not mutually independent.
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+The four possible values of \((X,Y)\) are
+\[
+(1,1),\quad
+(1,-1),\quad
+(-1,1),\quad
+(-1,-1),
+\]
+each with probability \(1/4\).
+
+Since
+\[
+Z=XY,
+\]
+we obtain the table
+\[
+\begin{array}{c|c|c}
+X & Y & Z\\
+\hline
+1 & 1 & 1\\
+1 & -1 & -1\\
+-1 & 1 & -1\\
+-1 & -1 & 1
+\end{array}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item We have
+\[
+P(Z=1)
+=
+P(X=Y)
+=
+\frac12,
+\]
+and
+\[
+P(Z=-1)
+=
+P(X\neq Y)
+=
+\frac12.
+\]
+
+Thus,
+\[
+p_Z(z)
+=
+\begin{cases}
+\dfrac12,
+&
+z=1,-1,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\item To show that \(X\) and \(Z\) are independent, consider their joint
+probabilities.
+
+For example,
+\[
+P(X=1,Z=1)
+=
+P(X=1,Y=1)
+=
+\frac14.
+\]
+
+Also,
+\[
+P(X=1)P(Z=1)
+=
+\frac12\cdot\frac12
+=
+\frac14.
+\]
+
+Similarly,
+\[
+P(X=1,Z=-1)
+=
+P(X=1,Y=-1)
+=
+\frac14,
+\]
+and
+\[
+P(X=1)P(Z=-1)
+=
+\frac14.
+\]
+
+The same calculation holds for \(X=-1\). Therefore,
+\[
+P(X=x,Z=z)
+=
+P(X=x)P(Z=z)
+\]
+for every
+\[
+x,z\in\{-1,1\}.
+\]
+
+Hence, \(X\) and \(Z\) are independent.
+
+\item By symmetry, the same argument shows that
+\[
+Y
+\]
+and
+\[
+Z
+\]
+are independent.
+
+Explicitly,
+\[
+P(Y=y,Z=z)
+=
+P(Y=y)P(Z=z)
+\]
+for all
+\[
+y,z\in\{-1,1\}.
+\]
+
+\item We are given that \(X\) and \(Y\) are independent. We have also shown
+that \(X\) and \(Z\) are independent and that \(Y\) and \(Z\) are
+independent.
+
+Therefore, \(X,Y,Z\) are pairwise independent.
+
+\item However,
+\[
+XYZ
+=
+XY(XY)
+=
+X^2Y^2
+=
+1
+\]
+with probability \(1\).
+
+Thus, the three random variables satisfy a deterministic relationship.
+
+For example,
+\[
+P(X=1,Y=1,Z=-1)=0.
+\]
+
+But
+\[
+P(X=1)P(Y=1)P(Z=-1)
+=
+\frac12\cdot\frac12\cdot\frac12
+=
+\frac18.
+\]
+
+Therefore,
+\[
+P(X=1,Y=1,Z=-1)
+\neq
+P(X=1)P(Y=1)P(Z=-1).
+\]
+
+Hence, \(X,Y,Z\) are not mutually independent.
+
+\end{enumerate}
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%  JOINT CDF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{problem}
+
+Let \(X\) and \(Y\) have joint probability density function
+\[
+f(x,y)
+=
+\begin{cases}
+2,
+&
+0<y<x<1,\\
+0,
+&
+\text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the joint cumulative distribution function
+    \[
+    F_{X,Y}(x,y)
+    =
+    P(X\leq x,Y\leq y).
+    \]
+
+    \item Use the joint CDF to find the marginal CDFs
+    \[
+    F_X(x)
+    \qquad\text{and}\qquad
+    F_Y(y).
+    \]
+
+    \item Use the joint CDF to calculate
+    \[
+    P\left(
+    \frac14<X\leq\frac34,\,
+    \frac14<Y\leq\frac12
+    \right).
+    \]
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+
+The support is the triangular region
+\[
+0<y<x<1.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item We calculate
+\[
+F_{X,Y}(x,y)
+=
+P(X\leq x,Y\leq y).
+\]
+
+If
+\[
+x\leq0
+\qquad\text{or}\qquad
+y\leq0,
+\]
+then
+\[
+F_{X,Y}(x,y)=0.
+\]
+
+Now consider
+\[
+0<x<1,
+\qquad
+0<y<x.
+\]
+
+For a fixed value \(v\) of \(Y\), the support requires
+\[
+v<u<x,
+\]
+where \(u\) denotes the value of \(X\).
+
+Thus,
+\[
+\begin{aligned}
+F_{X,Y}(x,y)
+&=
+\int_0^y
+\int_v^x
+2\,du\,dv\\
+&=
+2\int_0^y(x-v)\,dv\\
+&=
+2xy-y^2.
+\end{aligned}
+\]
+
+Next consider
+\[
+0<x<1,
+\qquad
+y\geq x.
+\]
+
+In this case, the condition \(Y\leq y\) does not further restrict the support
+below \(X=x\). Therefore,
+\[
+\begin{aligned}
+F_{X,Y}(x,y)
+&=
+P(X\leq x)\\
+&=
+\int_0^x
+\int_0^u
+2\,dv\,du\\
+&=
+\int_0^x2u\,du\\
+&=
+x^2.
+\end{aligned}
+\]
+
+Now suppose
+\[
+x\geq1.
+\]
+
+If
+\[
+0<y<1,
+\]
+then the condition \(X\leq x\) imposes no restriction, so
+\[
+\begin{aligned}
+F_{X,Y}(x,y)
+&=
+P(Y\leq y)\\
+&=
+\int_0^y
+\int_v^1
+2\,du\,dv\\
+&=
+2\int_0^y(1-v)\,dv\\
+&=
+2y-y^2.
+\end{aligned}
+\]
+
+Finally, if
+\[
+x\geq1
+\qquad\text{and}\qquad
+y\geq1,
+\]
+then
+\[
+F_{X,Y}(x,y)=1.
+\]
+
+Thus,
+\[
+F_{X,Y}(x,y)
+=
+\begin{cases}
+0,
+&
+x\leq0\text{ or }y\leq0,\\[1mm]
+2xy-y^2,
+&
+0<y<x<1,\\[1mm]
+x^2,
+&
+0<x<1,\ y\geq x,\\[1mm]
+2y-y^2,
+&
+x\geq1,\ 0<y<1,\\[1mm]
+1,
+&
+x\geq1,\ y\geq1.
+\end{cases}
+\]
+
+\item The marginal CDF of \(X\) is
+\[
+F_X(x)
+=
+\lim_{y\to\infty}
+F_{X,Y}(x,y).
+\]
+
+Hence,
+\[
+F_X(x)
+=
+\begin{cases}
+0,
+&
+x\leq0,\\[1mm]
+x^2,
+&
+0<x<1,\\[1mm]
+1,
+&
+x\geq1.
+\end{cases}
+\]
+
+Similarly,
+\[
+F_Y(y)
+=
+\lim_{x\to\infty}
+F_{X,Y}(x,y).
+\]
+
+Thus,
+\[
+F_Y(y)
+=
+\begin{cases}
+0,
+&
+y\leq0,\\[1mm]
+2y-y^2,
+&
+0<y<1,\\[1mm]
+1,
+&
+y\geq1.
+\end{cases}
+\]
+
+\item For a joint CDF,
+\[
+\begin{aligned}
+&P(a<X\leq b,\ c<Y\leq d)\\
+&=
+F_{X,Y}(b,d)
+-
+F_{X,Y}(a,d)
+-
+F_{X,Y}(b,c)
++
+F_{X,Y}(a,c).
+\end{aligned}
+\]
+
+Here,
+\[
+a=\frac14,
+\qquad
+b=\frac34,
+\qquad
+c=\frac14,
+\qquad
+d=\frac12.
+\]
+
+First,
+\[
+F_{X,Y}\left(\frac34,\frac12\right)
+=
+2\left(\frac34\right)\left(\frac12\right)
+-
+\left(\frac12\right)^2
+=
+\frac12.
+\]
+
+Next, since
+\[
+\frac12\geq\frac14,
+\]
+we use the \(y\geq x\) case:
+\[
+F_{X,Y}\left(\frac14,\frac12\right)
+=
+\left(\frac14\right)^2
+=
+\frac1{16}.
+\]
+
+Also,
+\[
+F_{X,Y}\left(\frac34,\frac14\right)
+=
+2\left(\frac34\right)\left(\frac14\right)
+-
+\left(\frac14\right)^2
+=
+\frac5{16}.
+\]
+
+Finally,
+\[
+F_{X,Y}\left(\frac14,\frac14\right)
+=
+\left(\frac14\right)^2
+=
+\frac1{16}.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+&P\left(
+\frac14<X\leq\frac34,\,
+\frac14<Y\leq\frac12
+\right)\\
+&=
+\frac12
+-
+\frac1{16}
+-
+\frac5{16}
++
+\frac1{16}\\
+&=
+\frac3{16}.
+\end{aligned}
+\]
+
+Thus,
+\[
+P\left(
+\frac14<X\leq\frac34,\,
+\frac14<Y\leq\frac12
+\right)
+=
+\frac3{16}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section*{References}
+
+\begin{enumerate}
+
+    \item Sheldon Ross,
+    \textit{A First Course in Probability},
+    10th ed.,
+    Pearson, 2019.
+
+    \item Arman Jahangiri,
+    \textit{MATH 394: Probability I --- Lecture Notes},
+    Department of Mathematics,
+    University of Washington,
+    Summer 2026.
+
+    \item Arman Jahangiri,
+    \textit{MATH 394: Probability I --- Homework Problems and Solutions},
+    Department of Mathematics,
+    University of Washington,
+    Summer 2026.
+
+\end{enumerate}
+
+
+
+\end{document}
+
+
+
+
+
+

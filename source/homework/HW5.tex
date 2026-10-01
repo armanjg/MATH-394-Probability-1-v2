@@ -1,0 +1,413 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 5}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 4, Problem #1.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 5}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1. (10 points)}
+\end{problemheader}
+\source{18}
+
+A fair coin is tossed repeatedly, until it has landed Heads at least once and has landed Tails at least once.
+
+Find the expected number of tosses.
+
+ 
+ 
+\textit{Hint}: Define \(T\) to be the total number of tosses required. After the first toss,
+only one outcome remains to be observed. Write
+\[
+T=1+X,
+\]
+where \(X\) is the number of additional tosses needed to obtain the outcome
+opposite to the first toss. $X$ follows a well-known distribution! So if you find that, the rest is to use the linearity of expectation.
+ 
+ 
+ 
+\newpage
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2. (10 points) }
+\end{problemheader} 
+\source{30}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Use LOTUS to show that for $X\sim \operatorname{Pois}(\lambda)$ and any function $g$,
+    \[
+    E\bigl(Xg(X)\bigr)=\lambda E\bigl(g(X+1)\bigr),
+    \]
+    assuming that both sides exist. This is called the \emph{Stein--Chen identity} for the Poisson.
+
+    \item Find the third moment $E(X^3)$ for $X\sim\operatorname{Pois}(\lambda)$ by using the identity from part (a) and a bit of algebra to reduce the calculation to the fact that $X$ has mean $\lambda$ and variance $\lambda$.
+\end{enumerate}
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+
+% ------------------------------------------------------------
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.  (30 points)}
+\end{problemheader}
+\source{54}
+
+\textbf{Note.}
+This problem introduces several fundamental ideas in data analysis, including
+sampling, estimation, uncertainty, bias, and statistical precision. Pay
+particular attention to this problem, specially if you'd like to smile, remembering this course, years later in a job that contains data collection/analysis. :)
+
+A population consists of \(N\) people, with ID numbers \(1,\dots,N\). For each
+person \(j\), let \(y_j\) be the value of some numerical variable, and define the
+population mean by
+\[
+\bar y=\frac{1}{N}\sum_{j=1}^N y_j.
+\]
+
+A quantity such as \(\bar y\) is called a \emph{population parameter}. Once the
+population is fixed, its value is fixed, although it may be unknown to us.
+Population parameters are often denoted by symbols such as
+\(\theta\), \(\mu\), or \(\bar y\).
+
+In contrast, a quantity computed from a random sample is called a
+\emph{sample statistic}. For example, if \(W_1,\dots,W_n\) are the values
+observed in a random sample, then
+\[
+\bar W
+=
+\frac{1}{n}\sum_{r=1}^n W_r
+\]
+is a sample statistic. Since the selected sample is random, \(\bar W\) is a
+random variable whose value may vary from one sample to another. More generally,
+a statistic may be written as
+\[
+T=T(W_1,\dots,W_n),
+\]
+emphasizing that it is a function of the observed sample.
+
+One of the primary goals of statistics is to use sample statistics to estimate
+unknown population parameters.
+
+Suppose a researcher wants to estimate the population parameter
+\[
+\theta:=\bar y,
+\]
+but it is not feasible to measure every person in the population (which is required for computing $\bar y$ based on its formula). The researcher
+therefore selects a simple random sample of size \(n\), where \(n\ll N\),
+without replacement. Thus, every subset of \(n\) people is equally likely to be
+selected.
+
+Let \(W_1,\dots,W_n\) denote the values observed for the selected people, where
+the sampled people are listed in a uniformly random order, and let
+\[
+\bar W=\frac{1}{n}\sum_{r=1}^n W_r
+\]
+be the sample mean.
+
+For each population member \(1\leq j\leq N\), define
+\[
+I_j=
+\begin{cases}
+1, & \text{if person \(j\) is included in the sample},\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Define the finite-population variance by
+\[
+S_y^2
+=
+\frac{1}{N-1}\sum_{j=1}^N (y_j-\bar y)^2.
+\]
+
+Answer the following questions.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+
+\item Explain carefully why \(y_1,\dots,y_N\) are not random variables, while
+\(W_1,\dots,W_n\), \(I_1,\dots,I_N\), and \(\bar W\) are random variables.
+
+\item Show by symmetry that, for every sample position \(r\),
+\[
+P(W_r=y_j)=\frac{1}{N},
+\qquad j=1,\dots,N.
+\]
+Use this fact to prove that
+\[
+E(\bar W)=\bar y.
+\]
+
+\item Show that
+\[
+\bar W=\frac{1}{n}\sum_{j=1}^N I_jy_j.
+\]
+Then compute \(E(I_j)\) and use linearity of expectation to give a second proof
+that
+\[
+E(\bar W)=\bar y.
+\]
+
+\item Since the sample contains exactly \(n\) people, show that
+\[
+\sum_{j=1}^N I_j=n
+\]
+with probability \(1\). Explain why this identity does not imply that the
+individual indicators \(I_1,\dots,I_N\) are constants.
+
+
+
+\item Compute \(\operatorname{Var}(I_j)\). Then use the indicator
+representation of \(\bar W\) and the definition of variance to show that
+\[
+\operatorname{Var}(\bar W)
+=
+\frac{N-n}{Nn}S_y^2
+=
+\left(1-\frac{n}{N}\right)\frac{S_y^2}{n}.
+\]
+You may use the fact that, for \(i\neq j\),
+\[
+P(I_i=1 \text{ and } I_j=1)
+=
+\frac{n(n-1)}{N(N-1)}.
+\]
+The factor
+\[
+1-\frac{n}{N}
+\]
+is called the \emph{finite-population correction}.
+
+
+
+
+
+ 
+
+\item Explain what the variance formula predicts in each of the following
+cases:
+\begin{enumerate}[label=(\roman*), leftmargin=2em]
+    \item \(n=1\);
+    \item \(n=N\);
+    \item all population values are equal;
+    \item \(n\) increases while the population remains fixed.
+\end{enumerate}
+
+\item Suppose instead that the researcher samples \(n\) people independently
+\emph{with replacement}. Let \(\bar W_{\mathrm{rep}}\) be the resulting sample
+mean. Show that
+\[
+\operatorname{Var}(\bar W_{\mathrm{rep}})
+=
+\frac{N-1}{N}\frac{S_y^2}{n}.
+\]
+Compare this with the variance under sampling without replacement. Why is
+sampling without replacement more precise?
+
+\item The bias and mean squared error of an estimator \(T\) for a population
+parameter \(\theta\) are defined by
+\[
+\operatorname{Bias}(T)=E(T)-\theta
+\]
+and
+\[
+\operatorname{MSE}(T)=E\bigl[(T-\theta)^2\bigr].
+\]
+Show that
+\[
+\operatorname{MSE}(T)
+=
+\operatorname{Var}(T)+\operatorname{Bias}(T)^2.
+\]
+Use this identity to find \(\operatorname{Bias}(\bar W)\) and
+\(\operatorname{MSE}(\bar W)\).
+
+\item A researcher says:
+\begin{quote}
+``Because \(\bar W\) is unbiased, the sample mean must equal the population mean
+for every possible sample.''
+\end{quote}
+Explain why this statement is false. What does unbiasedness actually mean?
+
+\end{enumerate}
+ 
+
+\end{document}

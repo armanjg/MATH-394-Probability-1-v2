@@ -1,0 +1,1744 @@
+\setcounter{framenumber}{0}
+%26
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item define and interpret the mean, median, and mode;
+    \item define moments, standardized moments, and standardized moments;
+    \item define skewness and kurtosis;
+    \item understand symmetry of distributions;
+    \item define sample moments;
+    \item compute the mean and variance of the sample mean.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Summaries of a Distribution}
+
+\begin{frame}{Why Summaries Matter}
+A probability distribution contains a large amount of information.
+
+\vspace{0.25cm}
+
+Often we want simpler numerical summaries:
+\begin{itemize}
+    \item Where is the center?
+    \item How spread out is the distribution?
+    \item Is it symmetric?
+    \item Are extreme values  common?
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main idea}
+Moments provide numerical summaries of distributions.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Measures of Standardized Tendency}
+Three common summaries of the center are:
+
+\begin{itemize}
+    \item Mean (expected value)
+
+    \item Median
+
+    \item Mode
+\end{itemize}
+
+\vspace{0.25cm}
+
+These summarize different aspects of a distribution.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Important}
+Different notions of “center” can give very different values.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Median}
+\begin{keybox}{Definition}
+A number $m$ is a median of $X$ if
+\[
+\Prob(X\leq m)\geq \frac12
+\]
+and
+\[
+\Prob(X\geq m)\geq \frac12.
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+Intuitively:
+\begin{itemize}
+    \item at least half the distribution lies to the left;
+    \item at least half lies to the right.
+\end{itemize}
+
+\vspace{0.25cm}
+
+Medians are less sensitive to extreme values than means.
+\end{frame}
+\begin{frame}{Mode}
+
+\begin{keybox}{Definition}
+A value \(c\) is called a \emph{mode} of a random variable \(X\) if it maximizes:
+
+\[
+\begin{cases}
+p(c), & \text{for a discrete random variable with PMF } p(x),\\[0.2cm]
+f(c), & \text{for a continuous random variable with PDF } f(x).
+\end{cases}
+\]
+
+Equivalently,
+
+\[
+\begin{cases}
+p(c)\geq p(x), & \forall x,\\[0.2cm]
+f(c)\geq f(x), & \forall x.
+\end{cases}
+\]
+\end{keybox}
+
+
+
+\begin{keybox}{Interpretation}
+The mode is the most likely value (discrete case) or the point of highest density (continuous case).
+\end{keybox}
+
+\end{frame}
+
+\begin{frame}{Mean vs Median}
+Suppose salaries are:
+
+\[
+40,\ 42,\ 45,\ 46,\ 48,\ 50,\ 1000.
+\]
+
+Then:
+\[
+\text{median}=46,
+\]
+while
+\[
+\text{mean}\approx 181.6.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Observation}
+The mean is heavily affected by extreme values (outliers), while the median is robust.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Best Prediction Depends on Loss Function}
+Suppose we predict an unknown random variable $X$ by a constant $c$.
+
+\vspace{0.25cm}
+
+Two common error measures:
+
+\[
+\mathbb{E}(X-c)^2
+\]
+(mean squared error)
+
+\vspace{0.1cm}
+
+and
+
+\[
+\mathbb{E}|X-c|
+\]
+(mean absolute error).
+
+\vspace{0.25cm}
+
+\begin{keybox}{Key fact}
+The mean minimizes mean squared error.
+
+A median minimizes mean absolute error.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Mean and Variance Are Not Enough}
+Two distributions can have:
+\[
+\text{same mean},
+\qquad
+\text{same variance},
+\]
+yet look very different.
+
+\vspace{0.25cm}
+
+Possible differences:
+\begin{itemize}
+    \item asymmetry;
+    \item heavy tails;
+    \item sharp peaks;
+    \item multiple modes.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Conclusion}
+Higher moments help describe these additional features. 
+\end{keybox}
+\end{frame}
+
+\lecturepart{Moments and Symmetry}
+
+\begin{frame}{Kinds of Population Moments}
+\begin{keybox}{Definitions}
+The $n$th population moment:
+\[
+\mu^\prime_n = \mathbb{E}(X^n).
+\]
+
+The $n$th central population moment:
+$$\mu_n = E\left[\left({X - \mu}\right)^n\right]$$
+The $n$th standardized population moment:
+\[
+ \tilde{\mu}_n = \frac{\mu_n}{\sigma^n} = \mathbb{E}\left(
+\left(
+\frac{X-\mu}{\sigma}
+\right)^n
+\right),
+\]
+\end{keybox}
+So, we have the following relations
+\begin{itemize}
+    \item \textbf{Mean} is the 1st population moment
+$\mu'_1 = \mu$, determines center
+
+\item \textbf{Variance} is the 2nd standardized population moment)
+$\mu_2 = \sigma^2$,  determines  spread
+
+\item \textbf{Skewness} is the 3rd standardized population moment
+$\frac{\mu_3}{\sigma^3}$,  determines asymmetry
+
+\item \textbf{Kurtosis} is the 4th standardized population moment
+$\frac{\mu_4}{\sigma^4}$, determines tail behavior
+\end{itemize}
+\end{frame}
+
+
+ 
+\begin{frame}{Symmetry About a Point}
+
+\begin{keybox}{Definition}
+A random variable $X$ is symmetric about $\mu$ if
+\[
+X-\mu \overset{d}{=} \mu-X=-(X-\mu),
+\]
+where $\overset{d}{=}$ denotes equality in distribution.
+\end{keybox}
+
+Let
+\[
+Y=X-\mu.
+\]
+Then the CDF of $Y$ is
+\[
+F_Y(y)
+=
+P(Y\le y)
+=
+P(X-\mu\le y)
+=
+P(X\le y+\mu)
+=
+F_X(y+\mu).
+\]
+
+If $X$ has PDF $f_X$, then differentiating gives
+\[
+f_Y(y)=f_X(y+\mu).
+\]
+
+Similarly, for $-Y=\mu-X$,
+\[
+f_{-Y}(y)=f_Y(-y)=f_X(\mu-y).
+\]
+
+
+\end{frame}
+ 
+
+\begin{frame}{Symmetry About a Point (Continue)}
+    
+Therefore, $X$ is symmetric about $\mu$ when
+\[
+f_X(\mu+y)=f_X(\mu-y)
+\qquad \text{for all } y.
+\]
+
+\begin{itemize}
+    \item In this example, values far to the left (from $\mu$ the center) act "better" compared to the values far to the right.
+    \item The graph of $f_X$ is a mirror image across the vertical line $x=\mu$.
+    \item If the mean exists, then the center of symmetry is the mean:
+    \[
+    E[X]=\mu.
+    \]
+    \item More generally, all odd central moments that exist are zero:
+    \[
+    E\left[(X-\mu)^{2k+1}\right]=0.
+    \]
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Symmetry and Odd Central Moments}
+\small
+
+Suppose $X$ is symmetric about $\mu$. Then
+\[
+f_X(\mu+t)=f_X(\mu-t).
+\]
+
+Consider an odd central moment, say the $(2k+1)$st:
+\[
+\mu_{2k+1}
+=
+\mathbb{E}\left[(X-\mu)^{2k+1}\right]
+=
+\int_{-\infty}^{\infty}
+(x-\mu)^{2k+1}f_X(x)\,dx.
+\]
+
+Make the change of variable
+\[
+t=x-\mu.
+\]
+Then $x=\mu+t$, so
+\[
+\mu_{2k+1}
+=
+\int_{-\infty}^{\infty}
+{t^{2k+1}} 
+{f_X(\mu+t)}_{\text{ }}
+\,dt.
+\]
+
+Now define
+\[
+g(t)=t^{2k+1}f_X(\mu+t).
+\]
+Then
+\[
+\begin{aligned}
+g(-t)
+&=
+\underbrace{(-t)^{2k+1}}_{=-t^{2k+1}}
+\underbrace{f_X(\mu-t)}_{=f_X(\mu+t)}\\
+&=-g(t).
+\end{aligned}
+\]
+
+Thus $g$ is an \textbf{odd function}. Therefore,
+\[
+\underbrace{
+\int_{-\infty}^{\infty} g(t)\,dt
+}_{\substack{\text{integral of an odd function}\\
+\text{over a symmetric interval}}}
+=0.
+\]
+
+Hence,
+\[
+\boxed{
+\mathbb{E}\left[(X-\mu)^{2k+1}\right]=0
+}
+\]
+for every odd central moment that exists.
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{A second way of proving it...}
+
+\begin{keybox}{Proposition}
+Let \(X\) be a random variable symmetric about \(\mu\).
+Then, for every integer \(k\geq 0\),
+\[
+\mathbb{E}\!\left[(X-\mu)^{2k+1}\right]=0,
+\]
+provided the moment exists.
+\end{keybox}
+
+\begin{proof}
+Let $Y=X-\mu.$ By symmetry, $Y \overset{d}{=} -Y.
+$. Therefore, $\mathbb{E}\left[Y^{2k+1}\right]
+=
+\mathbb{E}\left[(-Y)^{2k+1}\right].$ But since \(2k+1\) is odd, $(-Y)^{2k+1}=-Y^{2k+1}.$ Hence, $\mathbb{E}\left[Y^{2k+1}\right]
+=
+-\mathbb{E}\left[Y^{2k+1}\right].$ So, $2\mathbb{E}\left[Y^{2k+1}\right]=0,$ and therefore $\mathbb{E}\left[Y^{2k+1}\right]=0.$ Since \(Y=X-\mu\), $\mathbb{E}\!\left[(X-\mu)^{2k+1}\right]=0.$
+\end{proof}
+
+\end{frame}
+
+
+
+\begin{frame}{Examples of Symmetry}
+\small
+
+A distribution is symmetric about $\mu$ when points equally far from $\mu$
+have the same probability density:
+\[
+f_X(\mu+t)=f_X(\mu-t).
+\]
+
+\begin{itemize}
+    \item \textbf{Normal distribution:}
+    If $X\sim N(\mu,\sigma^2)$, then
+    \[
+    f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}
+    \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right).
+    \]
+    For any $t$,
+    \[
+    f_X(\mu+t)
+    =
+    \frac{1}{\sigma\sqrt{2\pi}}
+    e^{-t^2/(2\sigma^2)}
+    =
+    f_X(\mu-t).
+    \]
+    Thus, the normal distribution is symmetric about $\mu$.
+
+    \item \textbf{Uniform distribution on a symmetric interval:}
+    If $X\sim \operatorname{Unif}(\mu-a,\mu+a)$, then
+    \[
+    f_X(x)=
+    \begin{cases}
+        \dfrac{1}{2a}, & \mu-a\le x\le \mu+a,\\
+        0, & \text{otherwise}.
+    \end{cases}
+    \]
+    Hence, for every $t$, $   f_X(\mu+t)=f_X(\mu-t),$ since either both points lie inside the interval and have density
+    $\frac{1}{2a}$, or both lie outside and have density $0$.
+
+    \item \textbf{Binomial distribution with $p=\frac12$:}
+    If $X\sim\operatorname{Bin}(n,\frac12)$, then
+    \[
+    P(X=k)=\binom{n}{k}\left(\frac12\right)^n=\binom{n}{n-k}\left(\frac12\right)^n=P(X=n-k).
+    \]
+    Thus, the distribution is symmetric about $\frac n2$.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Skewness}
+\begin{keybox}{Definition}
+The skewness of $X$ is
+\[
+\boxed{
+\operatorname{Skew}(X)
+=
+\mathbb{E}
+\left(
+\left(
+\frac{X-\mu}{\sigma}
+\right)^3
+\right).
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+Interpretation:
+\begin{itemize}
+    \item positive skewness:
+    long right tail;
+
+    \item negative skewness:
+    long left tail;
+
+    \item zero skewness:
+    often indicates symmetry.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Examples of Skewness}
+\begin{itemize}
+    \item Exponential distributions are right-skewed.
+    \item Income distributions are often right-skewed.
+    \item Normal distributions have skewness $0$.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Important}
+Zero skewness does not necessarily imply symmetry.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Kurtosis}
+\begin{keybox}{Definition}
+The kurtosis of $X$ is
+\[
+\boxed{
+\operatorname{Kurt}(X)
+=
+\mathbb{E}
+\left(
+\left(
+\frac{X-\mu}{\sigma}
+\right)^4
+\right).
+}
+\]
+\end{keybox}
+
+
+\begin{itemize}
+    \item Kurtosis measures tail heaviness and extremeness.
+
+
+\item Kurt($N(\mu,\sigma^2)$)=3. If $Kurt(X)><3$ then $f_X$ has heavier/lighter tails compared to normal.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Common Discrete Distributions}
+
+\scriptsize
+
+\renewcommand{\arraystretch}{1.45}
+
+\begin{center}
+\begin{tabular}{p{2.1cm} p{1.7cm} p{1.7cm} p{1.8cm} p{1.8cm} p{1.8cm} p{1.8cm}}
+\toprule
+\textbf{Distribution}
+&
+\textbf{Mean}
+&
+\textbf{Median}
+&
+\textbf{Mode}
+&
+\textbf{Variance}
+&
+\textbf{Skewness}
+&
+\textbf{Kurtosis}
+\\
+\midrule
+
+Bernoulli\((p)\)
+&
+\(p\)
+&
+\(\begin{cases}
+0,& p<1/2\\
+1/2,& p=1/2\\
+1,& p>1/2
+\end{cases}\)
+&
+\(\begin{cases}
+0,& p<1/2\\
+0,1,& p=1/2\\
+1,& p>1/2
+\end{cases}\)
+&
+\(p(1-p)\)
+&
+\(
+\dfrac{1-2p}{\sqrt{p(1-p)}}
+\)
+&
+\(
+\dfrac{1-6p(1-p)}{p(1-p)}+3
+\)
+\\
+
+\midrule
+
+Binomial\((n,p)\)
+&
+\(np\)
+&
+\(\approx np\)
+&
+\(\lfloor (n+1)p \rfloor\)
+&
+\(np(1-p)\)
+&
+\(
+\dfrac{1-2p}{\sqrt{np(1-p)}}
+\)
+&
+\(
+\dfrac{1-6p(1-p)}{np(1-p)}+3
+\)
+\\
+
+\midrule
+
+Discrete Uniform\((1,\dots,n)\)
+&
+\(
+\dfrac{n+1}{2}
+\)
+&
+\(
+\dfrac{n+1}{2}
+\)
+&
+none
+&
+\(
+\dfrac{n^2-1}{12}
+\)
+&
+\(0\)
+&
+\(
+\dfrac{9}{5}
+\cdot
+\dfrac{n^2+1}{n^2-1}
+\)
+\\
+
+\midrule
+
+Geometric\((p)\)
+&
+\(\dfrac1p\)
+&
+\(
+\left\lceil
+\dfrac{-1}{\log_2(1-p)}
+\right\rceil
+\)
+&
+\(1\)
+&
+\(
+\dfrac{1-p}{p^2}
+\)
+&
+\(
+\dfrac{2-p}{\sqrt{1-p}}
+\)
+&
+\(
+6+\dfrac{p^2}{1-p}+3
+\)
+\\
+
+\midrule
+
+Poisson\((\lambda)\)
+&
+\(\lambda\)
+&
+\(\approx \lfloor\lambda+\frac13-\frac{0.02}{\lambda} \rfloor\)
+&
+\(\lfloor \lambda \rfloor  -1 , \lfloor \lambda \rfloor\) 
+&
+\(\lambda\)
+&
+\(
+\dfrac1{\sqrt{\lambda}}
+\)
+&
+\(
+\dfrac1{\lambda}+3
+\)
+\\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+Click \href{https://armanjg.github.io/MATH-394-Probability-1/distributions.pdf}{here} to see a bigger table, which you can bring a copy on the exams too. It is on the \href{https://armanjg.github.io/MATH-394-Probability-1/}{instructor's course website}.
+\end{frame}
+
+
+
+\begin{frame}{Common Continuous Distributions}
+
+\scriptsize
+
+\renewcommand{\arraystretch}{1.45}
+
+\begin{center}
+\begin{tabular}{p{2.1cm} p{1.7cm} p{1.7cm} p{1.8cm} p{1.8cm} p{1.8cm} p{1.8cm}}
+\toprule
+\textbf{Distribution}
+&
+\textbf{Mean}
+&
+\textbf{Median}
+&
+\textbf{Mode}
+&
+\textbf{Variance}
+&
+\textbf{Skewness}
+&
+\textbf{Kurtosis}
+\\
+\midrule
+
+Uniform\((a,b)\)
+&
+\(
+\dfrac{a+b}{2}
+\)
+&
+\(
+\dfrac{a+b}{2}
+\)
+&
+none
+&
+\(
+\dfrac{(b-a)^2}{12}
+\)
+&
+\(0\)
+&
+\(
+\dfrac95
+\)
+\\
+
+\midrule
+
+Normal\((\mu,\sigma^2)\)
+&
+\(\mu\)
+&
+\(\mu\)
+&
+\(\mu\)
+&
+\(\sigma^2\)
+&
+\(0\)
+&
+\(3\)
+\\
+
+\midrule
+
+Exponential\((\lambda)\)
+&
+\(
+\dfrac1\lambda
+\)
+&
+\(
+\dfrac{\log 2}{\lambda}
+\)
+&
+\(0\)
+&
+\(
+\dfrac1{\lambda^2}
+\)
+&
+\(2\)
+&
+\(9\)
+\\
+
+\midrule
+
+Gamma\((\alpha,\lambda)\)
+&
+\(
+\dfrac{\alpha}{\lambda}
+\)
+&
+(no closed form)
+&
+\(
+\dfrac{\alpha-1}{\lambda}
+\quad (\alpha>1)
+\)
+&
+\(
+\dfrac{\alpha}{\lambda^2}
+\)
+&
+\(
+\dfrac{2}{\sqrt{\alpha}}
+\)
+&
+\(
+\dfrac{6}{\alpha}+3
+\)
+\\
+
+\midrule
+
+Beta\((\alpha,\beta)\)
+&
+\(
+\dfrac{\alpha}{\alpha+\beta}
+\)
+&
+(no closed form)
+&
+\(
+\dfrac{\alpha-1}{\alpha+\beta-2}
+\)
+&
+\(
+\dfrac{\alpha\beta}
+{(\alpha+\beta)^2(\alpha+\beta+1)}
+\)
+&
+\(
+\dfrac{2(\beta-\alpha)\sqrt{\alpha+\beta+1}}
+{(\alpha+\beta+2)\sqrt{\alpha\beta}}
+\)
+&
+*
+\\
+
+\bottomrule
+\end{tabular}
+
+\end{center}
+
+* Kurt(Beta($\alpha, \beta$)) $=\frac{
+6\left[
+(\alpha-\beta)^2(\alpha+\beta+1)
+-
+\alpha\beta(\alpha+\beta+2)
+\right]
+}{
+\alpha\beta(\alpha+\beta+2)(\alpha+\beta+3)
+}
++3$ 
+
+Click \href{https://armanjg.github.io/MATH-394-Probability-1/distributions.pdf}{here} to see a bigger table, which you can bring a copy on the exams too. It is on the \href{https://armanjg.github.io/MATH-394-Probability-1/}{instructor's course website}.
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\lecturepart{Sample Moments}
+
+\begin{frame}{Sample Moments}
+Suppose
+\[
+X_1,\dots,X_n
+\]
+are i.i.d. random variables.
+
+\begin{keybox}{Definition}
+The $k$th sample moment is
+\[
+M_k
+=
+\frac1n
+\sum_{j=1}^n X_j^k.
+\]
+\end{keybox}
+
+
+\begin{itemize}
+    \item Sample moments estimate population moments.
+    \item The first sample moment, $M_1 = \frac1n
+\sum_{j=1}^n X_j$, is an important quantity in Statistics, also known as the \textit{Sample Mean}, denoted by $\bar X$. It estimates the first population moment, i.e., $\mu^\prime_1=\mathbb{E}[X]$, the population mean.
+\end{itemize}
+\end{frame}
+
+
+
+
+%------------------------------------------------
+\begin{frame}{Point-Mass (Degenerate) Distribution - Applicable in HW6 - Problem 6 Part (f)}
+
+\small
+
+\begin{keybox}{Definition}
+A random variable \(X\) has a \emph{point-mass distribution at \(c\)} if
+\[
+\Prob(X=c)=1.
+\]
+
+Equivalently, \(X=c\) almost surely. We may write
+\[
+X\sim\delta_c,
+\]
+where \(\delta_c\) denotes the point mass at \(c\).
+\end{keybox}
+
+Its PMF is
+\[
+p_X(x)=\Prob(X=x)
+=
+\begin{cases}
+1, & x=c,\\
+0, & x\neq c.
+\end{cases}
+\]
+
+Its CDF is
+\[
+F_X(x)=\Prob(X\leq x)
+=
+\begin{cases}
+0, & x<c,\\
+1, & x\geq c.
+\end{cases}
+\]
+
+Thus, the CDF has a jump of size \(1\) at \(x=c\):
+\[
+F_X(c)-F_X(c^-)=\Prob(X=c)=1.
+\]
+
+
+\end{frame}
+%------------------------------------------------
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+\begin{frame}{i.i.d.\ Random Variables (Random Samples)}
+
+\small
+
+\begin{keybox}{Definition: i.i.d.\ Random Variables}
+We say that the random variables $X_1,\dots,X_n
+$ are \emph{independent and identically distributed} (i.i.d.) with distribution \(F\), and write
+\[
+X_1,\dots,X_n
+\overset{\text{i.i.d.}}{\sim}
+F, 
+\]
+if:
+\begin{itemize}
+\item \(X_1,\dots,X_n\) are independent;
+\item each \(X_j\) has distribution \(F\).
+\end{itemize}
+\end{keybox}
+
+\textbf{Terminology}: If $X_1,\dots,X_n
+\overset{\text{i.i.d.}}{\sim}
+F,$ then we also call a \emph{random sample} of size \(n\) from the population distribution \(F\).
+
+Quantities associated with \(F\) are called \emph{population quantities}, while quantities computed from the random sample are called \emph{sample quantities}.
+
+\begin{keybox}{Example}
+If
+\[
+X_1,\dots,X_n
+\overset{\text{i.i.d.}}{\sim}
+N(\mu,\sigma^2),
+\]
+then for every \(j=1,\dots,n\),
+\begin{equation*}
+   \forall i \in \{1\,\dots , n \},\   X_i\sim N(\mu,\sigma^2), \text{(idential distribution)} \quad and  \ \  \forall i,j\in\{1,\dots, n \}, \ X_i \perp X_j \ \text{(independence)}
+\end{equation*}
+
+
+\end{keybox}
+
+\end{frame}
+
+\begin{frame}{Example of a Random Sample}
+
+\small
+
+Suppose the population consists of the GPAs of all University of Washington undergraduate students.
+
+Let \(F\) denote the population distribution of undergraduate GPAs.
+
+Now suppose we randomly select \(12\) undergraduate students and record their GPAs:
+\[
+X_1,\dots,X_{12}
+\overset{\text{i.i.d.}}{\sim}
+F.
+\]
+
+Here:
+\begin{itemize}
+\item each \(X_j\) represents one student's GPA;
+\item all \(X_j\)'s have distribution \(F\);
+\item the observations are assumed to be independent.
+\end{itemize}
+
+A possible sample (after observing $X_1,\dots ,X_n$) is 3.5,\ 3.7,\ 4.0,\ 2.9,\ 3.1,\ 3.8,\ 3.4,\ 2.7,\ 3.9,\ 3.2,\ 3.6,\ 3.3.
+ 
+\textbf{Remark 1}: $Xi's$ are random variables (non deterministic) in theory. Once we perform the random experiment, they become known to us. We would then call those numbers an observation of our random variables. If we perform the experiment again, we will see another observation (possibly different numbers). For example, let the population be \textit{Seattle's residents} and define $X=income$. Then, drawing a random sample $X_1,\dots, X_n$   results in a few numbers (observations) such as $30,000, 40,000, \dots, 150,000, 24,000$. These are the values that the random variables $X_1,\dots ,X_n$ have taken in our random experiment. So we would write $x_1=30,000, x_2 = 40,000, \dots, x_{n-1}=150,000, x_n = 24,000$.
+
+\textbf{Remark 2}:
+In practice, we usually do not know the population distribution \(F\) or its parameters, such as the population mean \(\mu\) and variance \(\sigma^2\).
+
+Instead, we observe a random sample
+\[
+X_1,\dots,X_n
+\]
+from the population and use the random sample to estimate unknown population quantities.
+ 
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Sample Mean and Sample Variance}
+
+\small
+
+Let
+\[
+X_1,\dots,X_n \overset{\text{i.i.d.}}{\sim} F,
+\qquad 
+\mathbb{E}(X_j)=\mu,
+\qquad 
+\operatorname{Var}(X_j)=\sigma^2.
+\]
+
+\begin{keybox}{Definitions}
+The \emph{sample mean} and \emph{sample variance} are
+\[
+\bar X_n=\frac1n\sum_{j=1}^n X_j,
+\qquad
+S_n^2=\frac{1}{n-1}\sum_{j=1}^n (X_j-\bar X_n)^2.
+\]
+\end{keybox}
+
+\begin{keybox}{Mean and Variance of the Sample Mean and Sample Variance}
+\[
+\mathbb{E}(\bar X_n)=\mu,
+\qquad
+\operatorname{Var}(\bar X_n)=\frac{\sigma^2}{n}.
+\]
+
+\[
+\mathbb{E}(S_n^2)=\sigma^2,
+\qquad
+\operatorname{Var}(S_n^2)
+=
+\frac1n
+\left(
+\mu_4
+-
+\frac{n-3}{n-1}\sigma^4
+\right),
+\]
+where
+\[
+\mu_4=\mathbb{E}\bigl[(X_j-\mu)^4\bigr].
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+%------------------------------------------------
+\begin{frame}{Proofs (Sample Mean)}
+
+\begin{keybox}{Expected Value}
+By linearity of expectation,
+\[
+\begin{aligned}
+\mathbb{E}(\bar X_n)
+&=
+\mathbb{E}\left(\frac1n\sum_{j=1}^n X_j\right)
+=
+\frac1n\sum_{j=1}^n \mathbb{E}(X_j)
+=
+\frac1n\sum_{j=1}^n \mu
+=\mu.
+\end{aligned}
+\]
+Thus, \(\bar X_n\) is an unbiased estimator of \(\mu\).
+\end{keybox}
+
+\begin{keybox}{Variance}
+Since \(X_1,\dots,X_n\) are independent,
+\[
+\begin{aligned}
+\operatorname{Var}(\bar X_n)
+=
+\operatorname{Var}\left(\frac1n\sum_{j=1}^n X_j\right)=
+\frac1{n^2}\sum_{j=1}^n \operatorname{Var}(X_j)
+=
+\frac1{n^2}\sum_{j=1}^n \sigma^2=
+\frac{\sigma^2}{n}.
+\end{aligned}
+\]
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}{A Useful Identity (for the Sample Variance, before the proofs)}
+
+\small
+
+To study \(S_n^2\), first rewrite its numerator.
+
+\begin{keybox}{Sum-of-Squares Identity}
+\[
+\boxed{
+\sum_{j=1}^n(X_j-\bar X_n)^2
+=
+\sum_{j=1}^n(X_j-\mu)^2
+-
+n(\bar X_n-\mu)^2
+}
+\]
+\end{keybox}
+
+\textbf{Proof.} Write
+\[
+X_j-\bar X_n
+=
+(X_j-\mu)-(\bar X_n-\mu).
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\sum_{j=1}^n(X_j-\bar X_n)^2
+&=
+\sum_{j=1}^n
+\left[
+(X_j-\mu)-(\bar X_n-\mu)
+\right]^2\\
+&=
+\sum_{j=1}^n(X_j-\mu)^2
+-2(\bar X_n-\mu)\sum_{j=1}^n(X_j-\mu)\\
+&\qquad
++n(\bar X_n-\mu)^2.
+\end{aligned}
+\]
+
+But $\sum_{j=1}^n(X_j-\mu)
+=
+n(\bar X_n-\mu).$ Hence,
+\[
+\sum_{j=1}^n(X_j-\bar X_n)^2
+=
+\sum_{j=1}^n(X_j-\mu)^2
+-
+n(\bar X_n-\mu)^2.
+\]
+\end{frame}
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+\begin{frame}{Proofs (Sample Variance)}
+ 
+
+Using the identity from the previous slide, $(n-1)S_n^2
+=
+\sum_{j=1}^n(X_j-\mu)^2
+-
+n(\bar X_n-\mu)^2.$
+Take expectations:
+
+\[
+\begin{aligned}
+(n-1)\mathbb{E}(S_n^2)
+&=
+\sum_{j=1}^n
+\mathbb{E}\bigl[(X_j-\mu)^2\bigr]
+-
+n\mathbb{E}\bigl[(\bar X_n-\mu)^2\bigr].
+\end{aligned}
+\]
+
+Since $\mathbb{E}\bigl[(X_j-\mu)^2\bigr]=\sigma^2$ and $\mathbb{E}\bigl[(\bar X_n-\mu)^2\bigr]
+=
+\operatorname{Var}(\bar X_n)
+=
+\frac{\sigma^2}{n},$
+ we obtain
+\[
+\begin{aligned}
+(n-1)\mathbb{E}(S_n^2)
+=
+n\sigma^2
+-
+n\left(\frac{\sigma^2}{n}\right) =
+n\sigma^2-\sigma^2 =
+(n-1)\sigma^2.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\boxed{\mathbb{E}(S_n^2)=\sigma^2.}
+\]
+
+\begin{keybox}{Why Do We Divide by \(n-1\)?}
+The denominator \(n-1\), rather than \(n\), corrects for the downward bias caused
+by replacing the unknown population mean \(\mu\) with the sample mean \(\bar X_n\).
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+\begin{frame}{Proofs (Sample Variance)}
+
+\small
+
+Using the identity from the previous slide,
+\[
+(n-1)S_n^2
+=
+\sum_{j=1}^n(X_j-\mu)^2
+-
+n(\bar X_n-\mu)^2.
+\]
+
+Take expectations:
+
+\[
+\begin{aligned}
+(n-1)\mathbb{E}(S_n^2)
+&=
+\sum_{j=1}^n
+\mathbb{E}\bigl[(X_j-\mu)^2\bigr]
+-
+n\mathbb{E}\bigl[(\bar X_n-\mu)^2\bigr].
+\end{aligned}
+\]
+
+Since
+\[
+\mathbb{E}\bigl[(X_j-\mu)^2\bigr]=\sigma^2
+\]
+and
+\[
+\mathbb{E}\bigl[(\bar X_n-\mu)^2\bigr]
+=
+\operatorname{Var}(\bar X_n)
+=
+\frac{\sigma^2}{n},
+\]
+we obtain
+\[
+\begin{aligned}
+(n-1)\mathbb{E}(S_n^2)
+&=
+n\sigma^2
+-
+n\left(\frac{\sigma^2}{n}\right)\\
+&=
+n\sigma^2-\sigma^2\\
+&=
+(n-1)\sigma^2.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\boxed{\mathbb{E}(S_n^2)=\sigma^2.}
+\]
+
+\begin{keybox}{Why Do We Divide by \(n-1\)?}
+The denominator \(n-1\), rather than \(n\), corrects for the downward bias caused
+by replacing the unknown population mean \(\mu\) with the sample mean \(\bar X_n\).
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+
+
+%------------------------------------------------
+\begin{frame}{Proof Setup: Variance of the Sample Variance}
+
+\small
+
+Define the centered random variables
+\[
+Y_j=X_j-\mu.
+\]
+
+Then
+\[
+\mathbb{E}(Y_j)=0,
+\qquad
+\mathbb{E}(Y_j^2)=\sigma^2,
+\qquad
+\mathbb{E}(Y_j^4)=\mu_4.
+\]
+
+Also define
+\[
+A=\sum_{j=1}^n Y_j^2,
+\qquad
+B=\sum_{j=1}^n Y_j.
+\]
+
+Because
+\[
+\bar X_n-\mu=\frac{B}{n},
+\]
+the sum-of-squares identity gives
+\[
+(n-1)S_n^2
+=
+A-\frac{B^2}{n}.
+\]
+
+Therefore,
+\[
+S_n^2
+=
+\frac{1}{n-1}
+\left(
+A-\frac{B^2}{n}
+\right).
+\]
+
+Thus,
+\[
+\operatorname{Var}(S_n^2)
+=
+\frac{1}{(n-1)^2}
+\operatorname{Var}\left(A-\frac{B^2}{n}\right).
+\]
+
+Equivalently,
+\[
+\operatorname{Var}(S_n^2)
+=
+\frac{1}{(n-1)^2}
+\left[
+\mathbb{E}\left(A-\frac{B^2}{n}\right)^2
+-
+\bigl((n-1)\sigma^2\bigr)^2
+\right].
+\]
+
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}{Required Calculations}
+
+\small
+
+We need three quantities:
+\[
+\mathbb{E}(A^2),
+\qquad
+\mathbb{E}(AB^2),
+\qquad
+\mathbb{E}(B^4).
+\]
+
+\begin{keybox}{First Calculation}
+Since
+\[
+A^2
+=
+\left(\sum_{j=1}^nY_j^2\right)^2
+=
+\sum_{j=1}^nY_j^4
++
+2\sum_{i<j}Y_i^2Y_j^2,
+\]
+independence gives
+\[
+\begin{aligned}
+\mathbb{E}(A^2)
+&=
+n\mu_4
++
+2\binom{n}{2}\sigma^4 =
+n\mu_4+n(n-1)\sigma^4.
+\end{aligned}
+\]
+\end{keybox}
+
+\begin{keybox}{Second Calculation}
+Because $B^2
+=
+A+2\sum_{i<j}Y_iY_j,$ we have $AB^2
+=
+A^2
++
+2A\sum_{i<j}Y_iY_j.$
+Every term in the second part has at least one independent centered factor
+appearing to the first power, so its expectation is zero. Hence,
+\[
+\boxed{
+\mathbb{E}(AB^2)
+=
+\mathbb{E}(A^2)
+=
+n\mu_4+n(n-1)\sigma^4.
+}
+\]
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+
+
+%------------------------------------------------
+\begin{frame}{The Fourth Moment of the Centered Sum}
+
+\small
+
+Recall that
+\[
+B=\sum_{j=1}^nY_j,
+\qquad
+\mathbb{E}(Y_j)=0.
+\]
+
+When expanding \(B^4\), only terms in which every index appears at least twice
+have nonzero expectation.
+
+Thus, the surviving terms are:
+
+\[
+\sum_{j=1}^nY_j^4 \quad and \quad 6\sum_{i<j}Y_i^2Y_j^2.
+\]
+Therefore,
+\[
+B^4
+=
+\sum_{j=1}^nY_j^4
++
+6\sum_{i<j}Y_i^2Y_j^2
++
+\text{terms having expectation zero}.
+\]
+
+Taking expectations,
+\[
+\begin{aligned}
+\mathbb{E}(B^4)
+&=
+n\mu_4
++
+6\binom{n}{2}\sigma^4 =
+n\mu_4
++
+3n(n-1)\sigma^4.
+\end{aligned}
+\]
+
+\begin{keybox}{Important Point}
+No assumption of symmetry is needed. Terms such as
+\(\mathbb{E}(Y_i^3Y_j)\) vanish because
+\[
+\mathbb{E}(Y_i^3Y_j)
+=
+\mathbb{E}(Y_i^3)\mathbb{E}(Y_j)=0.
+\]
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+
+ \begin{frame}{Proof: Variance of the Sample Variance}
+
+\scriptsize
+
+Recall that
+\[
+(n-1)S_n^2=A-\frac{B^2}{n}.
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\mathbb{E}\left[\left((n-1)S_n^2\right)^2\right]
+&=
+\mathbb{E}\left[\left(A-\frac{B^2}{n}\right)^2\right]\\
+&=
+\mathbb{E}(A^2)
+-\frac{2}{n}\mathbb{E}(AB^2)
++\frac{1}{n^2}\mathbb{E}(B^4).
+\end{aligned}
+\]
+
+Substituting the previous results,
+\[
+\begin{aligned}
+\mathbb{E}\left[\left((n-1)S_n^2\right)^2\right]
+&=
+\left(1-\frac{2}{n}\right)
+\left[n\mu_4+n(n-1)\sigma^4\right]\\
+&\qquad
++\frac{1}{n^2}
+\left[n\mu_4+3n(n-1)\sigma^4\right]\\
+&=
+\frac{(n-1)^2}{n}\mu_4
++
+\frac{(n-1)(n^2-2n+3)}{n}\sigma^4.
+\end{aligned}
+\]
+
+Since $\mathbb{E}\bigl[(n-1)S_n^2\bigr]
+=
+(n-1)\sigma^2,$ we obtain
+\[
+\begin{aligned}
+\operatorname{Var}\bigl((n-1)S_n^2\bigr)
+&=
+\mathbb{E}\left[\left((n-1)S_n^2\right)^2\right]
+-
+\left(
+\mathbb{E}\bigl[(n-1)S_n^2\bigr]
+\right)^2\\
+&=
+\mathbb{E}\left[\left((n-1)S_n^2\right)^2\right]
+-
+(n-1)^2\sigma^4\\
+&=
+\frac{(n-1)^2}{n}\mu_4
+-
+\frac{(n-1)(n-3)}{n}\sigma^4.
+\end{aligned}
+\]
+
+Dividing by \((n-1)^2\),
+\[
+\boxed{
+\operatorname{Var}(S_n^2)
+=
+\frac1n
+\left(
+\mu_4-\frac{n-3}{n-1}\sigma^4
+\right)
+}.
+\]
+
+\end{frame}
+
+
+
+
+%------------------------------------------------
+\begin{frame}{What Do These Results Tell Us?}
+
+\small
+
+\begin{keybox}{Sample Mean}
+\[
+\mathbb{E}(\bar X_n)=\mu,
+\qquad
+\operatorname{Var}(\bar X_n)=\frac{\sigma^2}{n} \xrightarrow{n\to \infty}{} 0.
+\]
+
+Thus, \(\bar X_n\) is unbiased, and its variability decreases at rate \(1/n\).
+Equivalently,
+\[
+\operatorname{SD}(\bar X_n)=\frac{\sigma}{\sqrt n}.
+\]
+\end{keybox}
+
+\begin{keybox}{Sample Variance}
+\[
+\mathbb{E}(S_n^2)=\sigma^2,
+\]
+Thus, \(S_n^2\) is an unbiased estimator of the population variance.
+
+Its variance is
+\[
+\operatorname{Var}(S_n^2)
+=
+\frac1n
+\left(
+\mu_4-\frac{n-3}{n-1}\sigma^4
+\right) \xrightarrow{n\to \infty}{} 0.
+\]
+
+Therefore, the accuracy of \(S_n^2\) depends not only on \(\sigma^2\), but also
+on the fourth central moment \(\mu_4\), which measures the influence of large
+deviations and heavy tails.
+\end{keybox}
+
+
+\end{frame}
+%------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+%------------------------------------------------
+\begin{frame}{Summary: Population Quantities}
+
+\small
+
+\begin{itemize}
+    \item Mean, median, and mode describe different notions of center.
+
+    \item The mean is sensitive to extreme values, while the median is more robust.
+
+    \item Population moments summarize different features:
+    \[
+    \mathbb{E}(X),\qquad
+    \operatorname{Var}(X),\qquad
+    \operatorname{Skew}(X),\qquad
+    \operatorname{Kurt}(X).
+    \]
+
+    \item Skewness measures asymmetry, while kurtosis describes the influence of
+    extreme deviations and tail behavior.
+
+    \item  \(X\) is symmetric about \(\mu\) if
+    \[
+    X-\mu\overset{d}{=}-(X-\mu),
+    \]
+    and all existing odd central moments are zero.
+\end{itemize}
+
+\begin{keybox}{Important}
+Mean and variance alone do not completely determine the shape of a distribution.
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}{Summary: Sample Quantities}
+
+\small
+
+Suppose
+\[
+X_1,\dots,X_n\overset{\text{i.i.d.}}{\sim}F,
+\qquad
+\mathbb{E}(X_j)=\mu,
+\qquad
+\operatorname{Var}(X_j)=\sigma^2.
+\]
+
+\begin{itemize}
+    \item Sample moments are used to estimate population moments.
+
+    \item The sample mean and sample variance are
+    \[
+    \bar X_n=\frac1n\sum_{j=1}^nX_j,
+    \qquad
+    S_n^2=\frac1{n-1}\sum_{j=1}^n(X_j-\bar X_n)^2.
+    \]
+
+    \item Both are unbiased:
+    \[
+    \mathbb{E}(\bar X_n)=\mu,
+    \qquad
+    \mathbb{E}(S_n^2)=\sigma^2.
+    \]
+
+    \item Their variances decrease to zero as \(n\to\infty\):
+    \[
+    \operatorname{Var}(\bar X_n)=\frac{\sigma^2}{n},
+    \qquad
+    \operatorname{Var}(S_n^2)
+    =
+    \frac1n\left(
+    \mu_4-\frac{n-3}{n-1}\sigma^4
+    \right).
+    \]
+\end{itemize}
+
+\begin{keybox}{Main idea}
+Larger random samples produce more stable estimates of population quantities.
+\end{keybox}
+
+\end{frame}
+%------------------------------------------------

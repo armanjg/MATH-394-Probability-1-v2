@@ -1,0 +1,7062 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperlinks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple,
+    citecolor=uwpurple
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Practice Problems}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\headheight}{14pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\setlist[enumerate]{
+    itemsep=0.35em,
+    topsep=0.35em
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Course Information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\documenttitle}{Question Bank with Solutions \\ (Midterm)}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+\newcommand{\term}{Summer 2026}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{problem}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    before skip=1em,
+    after skip=0.5em
+}
+
+\newenvironment{problem}[1][]{
+    \refstepcounter{problem}
+    \begin{problemheader}
+        \textbf{Problem \theproblem%
+        \if\relax\detokenize{#1}\relax
+        \else. #1%
+        \fi}
+    \end{problemheader}
+}{
+    \vspace{0.5em}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Solution Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{solution}{
+    \par
+    \begin{tcolorbox}[
+        colback=white,
+        colframe=uwgold,
+        boxrule=0.7pt,
+        arc=2mm,
+        left=3mm,
+        right=3mm,
+        top=2mm,
+        bottom=2mm,
+        breakable,
+        before skip=0.5em,
+        after skip=1em,
+        title=\textbf{Solution},
+        coltitle=uwpurple,
+        fonttitle=\bfseries
+    ]
+}{
+    \end{tcolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional Source Command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\source}[1]{%
+    \vspace{0.1cm}
+    
+    {\small\textit{Source: #1}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional Answer Boxes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\answerbox}{%
+    \begin{flushright}
+        \begin{tcolorbox}[
+            width=0.36\textwidth,
+            height=2cm,
+            colback=white,
+            colframe=uwpurple,
+            boxrule=0.7pt,
+            arc=1mm
+        ]
+            {\small\textbf{Final Answer}}
+        \end{tcolorbox}
+    \end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+    \begin{flushright}
+        \begin{tcolorbox}[
+            width=0.36\textwidth,
+            height=2cm,
+            colback=white,
+            colframe=uwpurple,
+            boxrule=0.7pt,
+            arc=1mm
+        ]
+            {\small\textbf{Final Answer for Part #1}}
+        \end{tcolorbox}
+    \end{flushright}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematical Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\cC}{\mathcal{C}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    \thispagestyle{empty}
+
+    \begin{center}
+
+        \vspace*{1.2in}
+
+        {\color{uwpurple}\rule{\textwidth}{1.5pt}}
+
+        \vspace{0.45in}
+
+        {\LARGE\bfseries\color{uwpurple}
+        \documenttitle}
+
+        \vspace{0.25in}
+
+        {\Large\bfseries
+        \course}
+
+        \vspace{0.45in}
+
+        {\color{uwgold}\rule{0.65\textwidth}{1.2pt}}
+
+        \vfill
+
+        \begin{tcolorbox}[
+            width=0.72\textwidth,
+            colback=softpurple,
+            colframe=uwpurple,
+            boxrule=0.8pt,
+            arc=2mm,
+            left=5mm,
+            right=5mm,
+            top=4mm,
+            bottom=4mm
+        ]
+            \centering
+            \large
+            \textbf{Instructor}\\
+            \instructor
+
+            \vspace{0.3cm}
+
+            \textbf{Term}\\
+            \term
+        \end{tcolorbox}
+
+        \vfill
+
+        {\large\bfseries\university}
+
+        \vspace{0.1in}
+
+        {\large\department}
+
+        \vspace{0.6in}
+
+        {\color{uwpurple}\rule{\textwidth}{1.5pt}}
+
+    \end{center}
+\end{titlepage}
+
+\setcounter{page}{1}
+
+
+
+
+
+
+\setcounter{problem}{0}
+
+
+
+\begin{problem}
+How many different seven-place license plates are possible if the first two places are for letters and the other five are for digits?
+\begin{enumerate}[label=(\alph*)]
+    \item Repetition is allowed.
+    \item No letter or digit can be repeated on a single license plate.
+\end{enumerate}
+\end{problem}
+
+
+\begin{solution}
+There are 26 choices for each letter and 10 choices for each digit.
+
+\begin{enumerate}[label=(\alph*)]
+    \item With repetition allowed,
+    \[
+    26^2\,10^5=67{,}600{,}000.
+    \]
+
+    \item Without repetition, the two letter positions can be filled in
+    \(26\cdot25\) ways and the five digit positions in
+    \(10\cdot9\cdot8\cdot7\cdot6\) ways. Thus
+    \[
+    26\cdot25\cdot10\cdot9\cdot8\cdot7\cdot6
+    =196{,}560{,}000.
+    \]
+\end{enumerate}
+\end{solution}
+
+
+
+
+
+
+
+   \newpage \begin{problem}
+When all letters are used, how many different letter arrangements can be made from the letters in each word?
+\begin{enumerate}[label=(\alph*)]
+    \item FLUKE
+    \item PROPOSE
+    \item MISSISSIPPI
+    \item ARRANGE
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+For \(n\) letters with repeated-letter multiplicities \(n_1,\ldots,n_r\), the number of distinct arrangements is
+\[
+\frac{n!}{n_1!\cdots n_r!}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item FLUKE has five distinct letters:
+    \[
+    5!=120.
+    \]
+
+    \item PROPOSE has seven letters, with \(P\) repeated twice and \(O\) repeated twice:
+    \[
+    \frac{7!}{2!\,2!}=1260.
+    \]
+
+    \item MISSISSIPPI has 11 letters, with
+    \(I\) repeated four times, \(S\) four times, \(P\) twice, and \(M\) once:
+    \[
+    \frac{11!}{4!\,4!\,2!}=34{,}650.
+    \]
+
+    \item ARRANGE has seven letters, with \(A\) repeated twice and \(R\) repeated twice:
+    \[
+    \frac{7!}{2!\,2!}=1260.
+    \]
+\end{enumerate}
+\end{solution}
+
+
+
+
+
+
+
+    \newpage \begin{problem}
+\begin{enumerate}[label=(\alph*)]
+    \item Show that
+    \[
+    \sum_{k=0}^{n}\binom{n}{k}2^k=3^n.
+    \]
+    \item Simplify
+    \[
+    \sum_{k=0}^{n}\binom{n}{k}x^k.
+    \]
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+The binomial theorem states
+\[
+(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Set \(a=1\) and \(b=2\):
+    \[
+    \sum_{k=0}^{n}\binom{n}{k}2^k
+    =
+    (1+2)^n
+    =
+    3^n.
+    \]
+
+    \item Set \(a=1\) and \(b=x\):
+    \[
+    \sum_{k=0}^{n}\binom{n}{k}x^k
+    =
+    (1+x)^n.
+    \]
+\end{enumerate}
+\end{solution}
+ 
+
+
+
+
+
+   \newpage \begin{problem}
+If 12 people are to be divided into three committees of respective sizes \(3\), \(4\), and \(5\), how many divisions are possible?
+\end{problem}
+\begin{solution}
+Choose 3 of the 12 people for the first committee, then 4 of the remaining 9 for the second; the final 5 form the third:
+\[
+\binom{12}{3}\binom{9}{4}\binom{5}{5}
+=
+\frac{12!}{3!\,4!\,5!}
+=
+27{,}720.
+\]
+\end{solution}
+
+
+ 
+
+
+
+
+
+
+   \newpage \begin{problem}
+
+
+\begin{enumerate}
+    \item Expand $(3x^2+y)^5$. 
+\item Without considering part (a), i.e., without using the expansion, write down the third term.
+\end{enumerate}
+
+\end{problem}
+
+
+\begin{solution}
+(1) By the binomial theorem,
+\[
+(3x^2+y)^5
+=
+\sum_{k=0}^{5}\binom{5}{k}(3x^2)^{5-k}y^k.
+\]
+Therefore,
+\[
+ {
+(3x^2+y)^5
+=
+243x^{10}
++405x^8y
++270x^6y^2
++90x^4y^3
++15x^2y^4
++y^5.
+}
+\]
+
+
+(2) The $(k+1)^{th}$ term is given by $\binom{n}{k} a^{k}b^{n-k}$. Thus, the third term is given by $\binom{5}{2} (y)^2(3x^2)^{5-2}.$
+\end{solution}
+
+
+
+
+
+
+
+
+
+   \newpage \begin{problem}
+Prove that
+\[
+\binom{n+m}{r}
+=
+\binom{n}{0}\binom{m}{r}
++\binom{n}{1}\binom{m}{r-1}
++\cdots+
+\binom{n}{r}\binom{m}{0}.
+\]
+\emph{Hint:} Consider a group of \(n\) men and \(m\) women and count groups of size \(r\).
+\end{problem}
+\begin{solution}
+Count the number of ways to form a group of \(r\) people from \(n\) men and \(m\) women.
+
+Directly, there are
+\[
+\binom{n+m}{r}
+\]
+such groups.
+
+Alternatively, classify the group according to the number \(k\) of men selected. If exactly \(k\) men are selected, then \(r-k\) women are selected, giving
+\[
+\binom{n}{k}\binom{m}{r-k}
+\]
+possibilities. Summing over all feasible values of \(k\) gives
+\[
+\binom{n+m}{r}
+=
+\sum_{k=0}^{r}\binom{n}{k}\binom{m}{r-k}.
+\]
+Terms with impossible choices are interpreted as zero.
+\end{solution}
+ 
+
+
+   \newpage \begin{problem}
+\begin{enumerate}[label=(\alph*)]
+    \item Give a combinatorial proof of
+    \[
+    \sum_{k=1}^{n}k\binom{n}{k}=n2^{n-1}.
+    \]
+    Interpret both sides as the number of ways to select a nonempty committee from \(n\) people and choose its chairperson.
+
+    \item Verify for \(n=1,2,3,4,5\), and then prove combinatorially, that
+    \[
+    \sum_{k=1}^{n}\binom{n}{k}k^2
+    =
+    2^{n-2}n(n+1).
+    \]
+    Interpret both sides as the number of ways to select a committee, its chairperson, and its secretary, where the chairperson and secretary may be the same person.
+
+    \item Prove that
+    \[
+    \sum_{k=1}^{n}\binom{n}{k}k^3
+    =
+    2^{n-3}n^2(n+3).
+    \]
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Count pairs consisting of a nonempty committee and its chairperson.
+
+    If the committee has size \(k\), choose its members in \(\binom nk\) ways and its chairperson in \(k\) ways. This gives
+    \[
+    \sum_{k=1}^{n}k\binom nk.
+    \]
+
+    Alternatively, first choose the chairperson in \(n\) ways. Each of the other \(n-1\) people may independently be included or excluded, giving \(2^{n-1}\) choices. Hence
+    \[
+    \sum_{k=1}^{n}k\binom nk=n2^{n-1}.
+    \]
+Count selections of a committee, a chairperson, and a secretary, where the two officers may coincide. A committee of size \(k\) contributes \(k^2\binom nk\), so the total is the left-hand side.
+
+    Split into two cases.
+
+    If the chairperson and secretary are the same, choose that person in \(n\) ways and choose any subset of the remaining \(n-1\) people:
+    \[
+    n2^{n-1}.
+    \]
+
+    If they are different, choose the chairperson and secretary as an ordered pair in \(n(n-1)\) ways, and choose any subset of the remaining \(n-2\) people:
+    \[
+    n(n-1)2^{n-2}.
+    \]
+
+    Therefore,
+    \[
+    \sum_{k=1}^{n}\binom nk k^2
+    =
+    n2^{n-1}+n(n-1)2^{n-2}
+    =
+    2^{n-2}n(n+1).
+    \]
+
+    \item Count selections of a committee together with three ordered offices, where a person may hold more than one office. A committee of size \(k\) contributes \(k^3\binom nk\).
+
+    Classify according to the number of distinct officeholders.
+
+    One distinct officeholder:
+    \[
+    n2^{n-1}.
+    \]
+
+    Exactly two distinct officeholders: choose which one of the three offices is held by the person who holds only one office (\(3\) choices), then choose the two distinct people in order (\(n(n-1)\) choices), and choose any subset of the remaining \(n-2\) people:
+    \[
+    3n(n-1)2^{n-2}.
+    \]
+
+    Three distinct officeholders:
+    \[
+    n(n-1)(n-2)2^{n-3}.
+    \]
+
+    Adding,
+    \begin{align*}
+    \sum_{k=1}^{n}\binom nk k^3
+    &=
+    n2^{n-1}
+    +3n(n-1)2^{n-2}
+    +n(n-1)(n-2)2^{n-3}\\
+    &=
+    2^{n-3}n^2(n+3).
+    \end{align*}
+\end{enumerate}
+\end{solution}
+ 
+
+
+   \newpage \begin{problem}
+Show that, for \(n>0\),
+\[
+\sum_{i=0}^{n}(-1)^i\binom{n}{i}=0.
+\]
+\end{problem}
+\begin{solution}
+Apply the binomial theorem to \((1-1)^n\):
+\[
+(1-1)^n
+=
+\sum_{i=0}^{n}\binom ni1^{n-i}(-1)^i
+=
+\sum_{i=0}^{n}(-1)^i\binom ni.
+\]
+For \(n>0\), the left-hand side is \(0^n=0\). Therefore,
+\[
+\sum_{i=0}^{n}(-1)^i\binom ni=0.
+\]
+\end{solution}
+ 
+
+
+   \newpage \begin{problem}
+A total of \(28\%\) of American males smoke cigarettes, \(7\%\) smoke cigars, and \(5\%\) smoke both cigars and cigarettes.
+\begin{enumerate}[label=(\alph*)]
+    \item What percentage smoke neither cigars nor cigarettes?
+    \item What percentage smoke cigars but not cigarettes?
+\end{enumerate}
+\end{problem}
+\begin{solution}
+Let \(C\) be the event of smoking cigarettes and \(G\) the event of smoking cigars. Then
+\[
+P(C)=0.28,\qquad P(G)=0.07,\qquad P(C\cap G)=0.05.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \[
+    P(C\cup G)=0.28+0.07-0.05=0.30.
+    \]
+    Thus
+    \[
+    P((C\cup G)^c)=1-0.30=0.70.
+    \]
+    The answer is \( {70\%}\).
+
+    \item
+    \[
+    P(G\cap C^c)=P(G)-P(G\cap C)=0.07-0.05=0.02.
+    \]
+    The answer is \( {2\%}\).
+\end{enumerate}
+\end{solution}
+ 
+
+
+   \newpage \begin{problem}
+Two cards are chosen uniformly at random without replacement from a standard deck of 52 playing cards. What is the probability that they
+\begin{enumerate}[label=(\alph*)]
+    \item are both aces?
+    \item have the same rank?
+\end{enumerate}
+\end{problem}
+\begin{solution}
+There are \(\binom{52}{2}\) unordered pairs of cards.
+
+\begin{enumerate}[label=(\alph*)]
+    \item There are \(\binom42\) pairs of aces:
+    \[
+    P(\text{both aces})
+    =
+    \frac{\binom42}{\binom{52}{2}}
+    =
+    \frac{6}{1326}
+    =
+     {\frac1{221}}.
+    \]
+
+    \item For each of the 13 ranks, choose 2 of the 4 suits:
+    \[
+    P(\text{same rank})
+    =
+    \frac{13\binom42}{\binom{52}{2}}
+    =
+    \frac{78}{1326}
+    =
+     {\frac1{17}}.
+    \]
+\end{enumerate}
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+Let \(E,F,\) and \(G\) be three events. Write expressions for the events that
+\begin{enumerate}[label=(\alph*)]
+    \item only \(E\) occurs;
+    \item both \(E\) and \(G\), but not \(F\), occur;
+    \item at least one of the events occurs;
+    \item at least two of the events occur;
+    \item all three events occur;
+    \item none of the events occurs;
+    \item at most one of the events occurs;
+    \item at most two of the events occur;
+    \item exactly two of the events occur;
+    \item at most three of the events occur.
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{enumerate}[label=(\alph*)]
+    \item Only \(E\): $E\cap F^c\cap G^c.$
+
+
+    \item \(E\) and \(G\), but not \(F\): $    E\cap F^c\cap G.$
+    
+
+    \item At least one: $    E\cup F\cup G.
+$ 
+
+    \item At least two: $    (E\cap F)\cup(E\cap G)\cup(F\cap G).
+$
+ 
+
+    \item All three: $  E\cap F\cap G.$
+  
+
+    \item None: $    E^c\cap F^c\cap G^c=(E\cup F\cup G)^c.$
+   
+
+    \item At most one:
+    \[
+    (E^c\cap F^c\cap G^c)
+    \cup(E\cap F^c\cap G^c)
+    \cup(E^c\cap F\cap G^c)
+    \cup(E^c\cap F^c\cap G).
+    \]
+    Equivalently,
+    \[
+    \bigl[(E\cap F)\cup(E\cap G)\cup(F\cap G)\bigr]^c.
+    \]
+
+    \item At most two:
+    \[
+    (E\cap F\cap G)^c.
+    \]
+
+    \item Exactly two:
+    \[
+    (E\cap F\cap G^c)
+    \cup(E\cap F^c\cap G)
+    \cup(E^c\cap F\cap G).
+    \]
+
+    \item At most three:
+    \[
+    \Omega,
+    \]
+    because there are only three events.
+\end{enumerate}
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+If \(P(E)=0.9\) and \(P(F)=0.8\), show that \(P(E\cap F)\geq 0.7\). More generally, prove
+\[
+P(E\cap F)\geq P(E)+P(F)-1.
+\]
+\end{problem}
+\begin{solution}
+The addition rule gives
+\[
+P(E\cup F)=P(E)+P(F)-P(E\cap F).
+\]
+Because \(P(E\cup F)\leq1\),
+\[
+P(E)+P(F)-P(E\cap F)\leq1,
+\]
+and therefore
+\[
+P(E\cap F)\geq P(E)+P(F)-1.
+\]
+For \(P(E)=0.9\) and \(P(F)=0.8\),
+\[
+P(E\cap F)\geq0.9+0.8-1=0.7.
+\]
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+Prove that
+\[
+P(E\cap F^c)=P(E)-P(E\cap F).
+\]
+\end{problem}
+\begin{solution}
+The event \(E\) is the disjoint union
+\[
+E=(E\cap F)\cup(E\cap F^c).
+\]
+Hence, by additivity,
+\[
+P(E)=P(E\cap F)+P(E\cap F^c).
+\]
+Rearranging gives
+\[
+P(E\cap F^c)=P(E)-P(E\cap F).
+\]
+\end{solution}
+ 
+
+
+
+   \newpage \begin{problem}
+A laboratory blood test has sensitivity \(0.95\): when a person has a certain disease, the test is positive with probability \(0.95\). The false-positive probability is \(0.01\): when a person is healthy, the test is positive with probability \(0.01\). If \(0.5\%\) of the population has the disease, find the probability that a person has the disease given that the test result is positive.
+\end{problem}
+\begin{solution}
+Let \(D\) be the event that the person has the disease and \(+\) the event that the test is positive. Then
+\[
+P(D)=0.005,\quad
+P(D^c)=0.995,\quad
+P(+\mid D)=0.95,\quad
+P(+\mid D^c)=0.01.
+\]
+By Bayes' rule,
+\begin{align*}
+P(D\mid +)
+&=
+\frac{P(+\mid D)P(D)}
+{P(+\mid D)P(D)+P(+\mid D^c)P(D^c)}\\
+&=
+\frac{(0.95)(0.005)}
+{(0.95)(0.005)+(0.01)(0.995)}\\
+&=
+\frac{0.00475}{0.01470}
+=
+\frac{95}{294}
+\approx
+ {0.3231}.
+\end{align*}
+Thus, given a positive result, the probability of having the disease is about \(32.3\%\).
+\end{solution}
+ 
+
+
+   \newpage \begin{problem}
+Let \(A\subseteq B\). Express the following probabilities as simply as possible:
+\[
+P(A\mid B),\qquad
+P(A\mid B^c),\qquad
+P(B\mid A),\qquad
+P(B\mid A^c).
+\]
+State any conditions needed for the conditional probabilities to be defined.
+\end{problem}
+\begin{solution}
+Because \(A\subseteq B\), we have \(A\cap B=A\), \(A\cap B^c=\varnothing\), and \(B\cap A=A\).
+
+Provided \(P(B)>0\),
+\[
+P(A\mid B)
+=
+\frac{P(A\cap B)}{P(B)}
+=
+ {\frac{P(A)}{P(B)}}.
+\]
+
+Provided \(P(B^c)>0\),
+\[
+P(A\mid B^c)
+=
+\frac{P(A\cap B^c)}{P(B^c)}
+=
+ {0}.
+\]
+
+Provided \(P(A)>0\),
+\[
+P(B\mid A)
+=
+\frac{P(B\cap A)}{P(A)}
+=
+ {1}.
+\]
+
+Provided \(P(A^c)>0\),
+\[
+P(B\mid A^c)
+=
+\frac{P(B\cap A^c)}{P(A^c)}
+=
+ {\frac{P(B)-P(A)}{1-P(A)}}.
+\]
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+Two fair dice are rolled, and \(X\) is the product of the two outcomes. Compute \(P(X=i)\) for \(i=1,\ldots,36\).
+\end{problem}
+\begin{solution}
+The 36 ordered outcomes are equally likely. The nonzero probabilities are
+\[
+\begin{array}{c|cccccccccccccccccc}
+i
+&1&2&3&4&5&6&8&9&10&12&15&16&18&20&24&25&30&36\\ \hline
+36P(X=i)
+&1&2&2&3&2&4&2&1&2&4&2&1&2&2&2&1&2&1
+\end{array}
+\]
+Thus
+\[
+P(X=i)=
+\begin{cases}
+\dfrac{1}{36},
+&i\in\{1,9,16,25,36\},\\[1mm]
+\dfrac{1}{18},
+&i\in\{2,3,5,8,10,15,18,20,24,30\},\\[1mm]
+\dfrac{1}{12},
+&i=4,\\[1mm]
+\dfrac{1}{9},
+&i\in\{6,12\},\\[1mm]
+0,
+&\text{otherwise}.
+\end{cases}
+\]
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+Suppose the distribution function of \(X\) is
+\[
+F(b)=
+\begin{cases}
+0, & b<0,\\[2mm]
+\dfrac{b}{4}, & 0\leq b<1,\\[2mm]
+\dfrac12+\dfrac{b-1}{4}, & 1\leq b<2,\\[2mm]
+\dfrac{11}{12}, & 2\leq b<3,\\[2mm]
+1, & b\geq 3.
+\end{cases}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Find \(P(X=i)\) for \(i=1,2,3\).
+    \item Find
+    \[
+    P\left(\frac12<X<\frac32\right).
+    \]
+\end{enumerate}
+\end{problem}
+\begin{solution}
+For any point \(a\),
+\[
+P(X=a)=F(a)-F(a^-),
+\]
+the size of the jump of the CDF at \(a\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item At \(1\),
+    \[
+    P(X=1)
+    =
+    F(1)-F(1^-)
+    =
+    \frac12-\frac14
+    =
+     {\frac14}.
+    \]
+
+    At \(2\),
+    \[
+    P(X=2)
+    =
+    F(2)-F(2^-)
+    =
+    \frac{11}{12}-\frac34
+    =
+     {\frac16}.
+    \]
+
+    At \(3\),
+    \[
+    P(X=3)
+    =
+    F(3)-F(3^-)
+    =
+    1-\frac{11}{12}
+    =
+     {\frac1{12}}.
+    \]
+
+    \item Since there is no point mass at \(1/2\) or \(3/2\),
+    \begin{align*}
+    P\left(\frac12<X<\frac32\right)
+    &=
+    F\left(\frac32\right)-F\left(\frac12\right)\\
+    &=
+    \left(\frac12+\frac{(3/2)-1}{4}\right)
+    -\frac{1/2}{4}\\
+    &=
+    \frac58-\frac18
+    =
+     {\frac12}.
+    \end{align*}
+\end{enumerate}
+\end{solution}
+ 
+
+   \newpage \begin{problem}
+Suppose
+\[
+F(b)=
+\begin{cases}
+0, & b<0,\\[1mm]
+\dfrac12, & 0\leq b<1,\\[1mm]
+\dfrac35, & 1\leq b<2,\\[1mm]
+\dfrac45, & 2\leq b<3,\\[1mm]
+\dfrac9{10}, & 3\leq b<3.5,\\[1mm]
+1, & b\geq 3.5.
+\end{cases}
+\]
+Calculate the probability mass function of \(X\).
+\end{problem}
+\begin{solution}
+The probability at each support point is the jump of the CDF:
+\[
+p_X(x)=P(X=x)=F(x)-F(x^-).
+\]
+Therefore,
+\[
+P(X=0)=\frac12,
+\]
+\[
+P(X=1)=\frac35-\frac12=\frac1{10},
+\]
+\[
+P(X=2)=\frac45-\frac35=\frac15,
+\]
+\[
+P(X=3)=\frac9{10}-\frac45=\frac1{10},
+\]
+and
+\[
+P(X=3.5)=1-\frac9{10}=\frac1{10}.
+\]
+Hence
+\[
+ {
+p_X(x)=
+\begin{cases}
+\dfrac12, & x=0,\\[1mm]
+\dfrac1{10}, & x=1,\\[1mm]
+\dfrac15, & x=2,\\[1mm]
+\dfrac1{10}, & x=3,\\[1mm]
+\dfrac1{10}, & x=3.5,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}}
+\]
+The probabilities sum to
+\[
+\frac12+\frac1{10}+\frac15+\frac1{10}+\frac1{10}=1.
+\]
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 24  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The expected number of typographical errors on a page of a certain
+magazine is \(0.2\). Assuming that the number of errors on a page has a
+Poisson distribution, find the probability that the next page contains
+
+\begin{enumerate}[label=(\alph*)]
+    \item no typographical errors;
+    \item two or more typographical errors.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+Let \(X\) denote the number of typographical errors on the next page.
+Under the Poisson assumption,
+
+\[
+X\sim\operatorname{Pois}(0.2).
+\]
+
+Thus,
+
+\[
+P(X=k)=e^{-0.2}\frac{(0.2)^k}{k!}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\[
+P(X=0)
+=
+e^{-0.2}
+\approx
+ {0.8187}.
+\]
+
+\item Using the complement,
+
+\[
+\begin{aligned}
+P(X\geq 2)
+&=
+1-P(X=0)-P(X=1)\\
+&=
+1-e^{-0.2}-(0.2)e^{-0.2}\\
+&=
+1-1.2e^{-0.2}\\
+&\approx
+ {0.0175}.
+\end{aligned}
+\]
+
+\end{enumerate}
+
+The expected value alone does not uniquely determine these probabilities.
+The calculation requires the additional assumption that the number of
+errors follows a Poisson distribution.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 25  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The monthly worldwide average number of airplane crashes involving
+commercial airlines is \(3.5\). Assuming a Poisson model, find the
+probability that there will be
+
+\begin{enumerate}[label=(\alph*)]
+    \item at least two such accidents in the next month;
+    \item at most one such accident in the next month.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+Let \(X\) denote the number of accidents during the next month. Under the
+Poisson assumption,
+
+\[
+X\sim\operatorname{Pois}(3.5).
+\]
+
+Therefore,
+
+\[
+P(X=k)=e^{-3.5}\frac{3.5^k}{k!}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\[
+\begin{aligned}
+P(X\geq 2)
+&=
+1-P(X=0)-P(X=1)\\
+&=
+1-e^{-3.5}-3.5e^{-3.5}\\
+&=
+1-4.5e^{-3.5}\\
+&\approx
+ {0.8641}.
+\end{aligned}
+\]
+
+\item
+
+\[
+\begin{aligned}
+P(X\leq 1)
+&=
+P(X=0)+P(X=1)\\
+&=
+e^{-3.5}+3.5e^{-3.5}\\
+&=
+4.5e^{-3.5}\\
+&\approx
+ {0.1359}.
+\end{aligned}
+\]
+
+Notice that the answers in parts (a) and (b) are complements.
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 26  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Approximately \(80{,}000\) marriages took place in the state of New York
+last year. Estimate the probability that, for at least one of these
+couples,
+
+\begin{enumerate}[label=(\alph*)]
+    \item both partners were born on April 30;
+    \item both partners celebrate their birthdays on the same day of the
+    year.
+\end{enumerate}
+
+State the assumptions used.
+\end{problem}
+\begin{solution}
+
+Assume that:
+
+\begin{itemize}
+    \item birthdays are uniformly distributed among the \(365\) days of
+    the year;
+    \item leap days are ignored;
+    \item the birthdays of the two partners are independent;
+    \item different couples may be treated independently.
+\end{itemize}
+
+Let \(n=80{,}000\).
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For a particular couple, the probability that both partners were
+born on April 30 is
+
+\[
+p=\left(\frac{1}{365}\right)^2.
+\]
+
+Thus, the exact probability that at least one couple has this property is
+
+\[
+\begin{aligned}
+P(\text{at least one})
+&=
+1-(1-p)^{80{,}000}\\
+&=
+1-\left(1-\frac{1}{365^2}\right)^{80{,}000}.
+\end{aligned}
+\]
+
+Because \(n\) is large and \(p\) is small, a Poisson approximation with
+
+\[
+\lambda=np
+=
+\frac{80{,}000}{365^2}
+\approx0.60049
+\]
+
+gives
+
+\[
+P(\text{at least one})
+\approx
+1-e^{-0.60049}
+\approx
+ {0.4515}.
+\]
+
+\item For a particular couple, condition on the birthday of the first
+partner. The probability that the second partner has the same birthday is
+
+\[
+p=\frac{1}{365}.
+\]
+
+Therefore,
+
+\[
+P(\text{at least one matching couple})
+=
+1-\left(1-\frac{1}{365}\right)^{80{,}000}.
+\]
+
+Using a Poisson approximation,
+
+\[
+\lambda
+=
+\frac{80{,}000}{365}
+\approx219.18,
+\]
+
+so
+
+\[
+P(\text{at least one matching couple})
+\approx
+1-e^{-219.18}\approx 1.
+\]
+
+ 
+
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 27  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Compare the Poisson approximation with the exact binomial probability in
+each of the following cases:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \(P(X=2)\), where \(n=8\) and \(p=0.1\);
+    \item \(P(X=9)\), where \(n=10\) and \(p=0.95\);
+    \item \(P(X=0)\), where \(n=10\) and \(p=0.1\);
+    \item \(P(X=4)\), where \(n=9\) and \(p=0.2\).
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+If $X\sim\operatorname{Bin}(n,p),
+$ then the exact probability is
+
+\[
+P(X=k)=\binom nkp^k(1-p)^{n-k}.
+\]
+
+The usual Poisson approximation uses
+
+\[
+Y\sim\operatorname{Pois}(\lambda),
+\qquad
+\lambda=np,
+\]
+
+and
+
+\[
+P(X=k)\approx P(Y=k)
+=
+e^{-\lambda}\frac{\lambda^k}{k!}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Here \(n=8\), \(p=0.1\), \(k=2\), and \(\lambda=0.8\). The exact probability is
+
+\[
+\begin{aligned}
+P(X=2)
+&=
+\binom82(0.1)^2(0.9)^6\\
+&\approx
+ {0.1488}.
+\end{aligned}
+\]
+The Poisson approximation is reasonably accurate:
+\[
+\begin{aligned}
+P(Y=2)
+&=
+e^{-0.8}\frac{0.8^2}{2!}\\
+&\approx
+ {0.1438}.
+\end{aligned}
+\]
+
+\item Here \(n=10\), \(p=0.95\), \(k=9\), and \(\lambda=9.5\). The exact probability is
+
+\[
+\begin{aligned}
+P(X=9)
+&=
+\binom{10}{9}(0.95)^9(0.05)\\
+&\approx
+ {0.3151}.
+\end{aligned}
+\]
+
+The direct Poisson approximation is
+poor because \(p=0.95\) is not small.
+\[
+\begin{aligned}
+P(Y=9)
+&=
+e^{-9.5}\frac{9.5^9}{9!}\\
+&\approx
+ {0.1300}.
+\end{aligned}
+\]
+
+ 
+
+A better approach is to let $Z=10-X,$ the number of failures. Then $Z\sim\operatorname{Bin}(10,0.05),
+$ and \(X=9\) is equivalent to \(Z=1\). Approximating \(Z\) by
+\(\operatorname{Pois}(0.5)\) gives the following, which is much closer to the exact value:
+\[
+P(X=9)
+=
+P(Z=1)
+\approx
+e^{-0.5}(0.5)
+\approx0.3033,
+\]
+
+\item Here \(n=10\), \(p=0.1\), \(k=0\), and \(\lambda=1\). The exact probability is
+\[
+P(X=0)
+=
+(0.9)^{10}
+\approx
+ {0.3487}.
+\]
+
+The Poisson approximation is reasonably accurate: $P(Y=0)
+=
+e^{-1}
+\approx
+ {0.3679}.$
+ 
+
+\item Here \(n=9\), \(p=0.2\), \(k=4\), and \(\lambda=1.8\). The exact probability is
+
+\[
+\begin{aligned}
+P(X=4)
+&=
+\binom94(0.2)^4(0.8)^5\\
+&\approx
+ {0.0661}.
+\end{aligned}
+\]
+
+The Poisson approximation is 
+
+\[
+\begin{aligned}
+P(Y=4)
+&=
+e^{-1.8}\frac{1.8^4}{4!}\\
+&\approx
+ {0.0723}.
+\end{aligned}
+\]
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 28  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The rate of a certain event in a state is one event per \(100{,}000\)
+inhabitants per month.
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item Find the probability that a city of \(400{,}000\) inhabitants
+    experiences eight or more events in a given month.
+
+    \item Find the probability that at least two months during a
+    twelve-month year have eight or more events.
+
+    \item Counting the present month as month \(1\), find the probability
+    that the first month having eight or more events is month \(i\), where
+    \(i\geq1\).
+
+\end{enumerate}
+
+State the assumptions used.
+\end{problem}
+\begin{solution}
+
+Assume that monthly event counts are independent and identically
+distributed Poisson random variables and that the rate remains constant
+over time.
+
+For a city of \(400{,}000\) inhabitants, the expected monthly number is
+
+\[
+\lambda
+=
+400{,}000\left(\frac{1}{100{,}000}\right)
+=
+4.
+\]
+
+Thus, if \(X\) is the number of events in a given month,
+
+\[
+X\sim\operatorname{Pois}(4).
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Let $q=P(X\geq8).$ Then
+
+\[
+\begin{aligned}
+q
+&=
+1-P(X\leq7)\\
+&=
+1-\sum_{k=0}^{7}e^{-4}\frac{4^k}{k!}\\
+&\approx
+ {0.05113}.
+\end{aligned}
+\]
+
+\item Let \(Y\) be the number of months, among the next 12 months, that
+have at least eight events. Under the independence assumption,
+
+\[
+Y\sim\operatorname{Bin}(12,q),
+\]
+
+where \(q\approx0.05113\).
+
+Therefore,
+
+\[
+\begin{aligned}
+P(Y\geq2)
+&=
+1-P(Y=0)-P(Y=1)\\
+&=
+1-(1-q)^{12}
+-12q(1-q)^{11}\\
+&\approx
+ {0.1229}.
+\end{aligned}
+\]
+
+\item Let \(T\) denote the first month with at least eight events. Each
+month is a success with probability \(q\), independently of other months.
+Therefore,
+
+\[
+T\sim\operatorname{Geom}(q),
+\]
+
+using the convention that \(T\) is the trial number of the first success.
+
+Hence,
+
+\[
+ {
+P(T=i)=(1-q)^{i-1}q,
+\qquad i=1,2,\ldots,
+}
+\]
+
+where
+
+\[
+q
+=
+1-\sum_{k=0}^{7}e^{-4}\frac{4^k}{k!}
+\approx0.05113.
+\]
+
+Numerically, $P(T=i)
+\approx
+(0.94887)^{i-1}(0.05113).$
+
+ 
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 24  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The expected number of typographical errors on a page of a certain
+magazine is \(0.2\). Assuming that the number of errors on a page has a
+Poisson distribution, find the probability that the next page contains
+
+\begin{enumerate}[label=(\alph*)]
+    \item no typographical errors;
+    \item two or more typographical errors.
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+Let \(X\) denote the number of typographical errors on the next page.
+Under the Poisson assumption,
+
+\[
+X\sim\operatorname{Pois}(0.2).
+\]
+
+Thus,
+
+\[
+P(X=k)=e^{-0.2}\frac{(0.2)^k}{k!}.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\[
+P(X=0)
+=
+e^{-0.2}
+\approx
+ {0.8187}.
+\]
+
+\item Using the complement,
+
+\[
+\begin{aligned}
+P(X\geq 2)
+&=
+1-P(X=0)-P(X=1)\\
+&=
+1-e^{-0.2}-(0.2)e^{-0.2}\\
+&=
+1-1.2e^{-0.2}\\
+&\approx
+ {0.0175}.
+\end{aligned}
+\]
+
+\end{enumerate}
+
+The expected value alone does not uniquely determine these probabilities.
+The calculation requires the additional assumption that the number of
+errors follows a Poisson distribution.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 25  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 26  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 27  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 28  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 29  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+A random variable \(X\) is said to have the Yule--Simon distribution if
+
+\[
+P(X=n)=\frac{4}{n(n+1)(n+2)},
+\qquad n=1,2,\ldots
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that this is a probability mass function.
+    \item Show that \(E[X]=2\).
+    \item Show that \(E[X^2]=\infty\).
+\end{enumerate}
+
+ \hrule 
+
+The proposed probabilities are nonnegative. It remains to verify that
+they sum to one.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item First observe that
+
+\[
+\frac{1}{n(n+1)(n+2)}
+=
+\frac12
+\left(
+\frac{1}{n(n+1)}
+-
+\frac{1}{(n+1)(n+2)}
+\right).
+\]
+
+Therefore,
+
+\[
+\frac{4}{n(n+1)(n+2)}
+=
+2
+\left(
+\frac{1}{n(n+1)}
+-
+\frac{1}{(n+1)(n+2)}
+\right).
+\]
+
+For \(N\geq1\),
+
+\begin{align*}
+\sum_{n=1}^{N}\frac{4}{n(n+1)(n+2)}
+&=
+2\sum_{n=1}^{N}
+\left(
+\frac{1}{n(n+1)}
+-
+\frac{1}{(n+1)(n+2)}
+\right)\\
+&=
+2\left(
+\frac{1}{1\cdot2}
+-
+\frac{1}{(N+1)(N+2)}
+\right).
+\end{align*}
+
+Letting \(N\to\infty\),
+
+\[
+\sum_{n=1}^{\infty}\frac{4}{n(n+1)(n+2)}
+=
+2\left(\frac12\right)
+=
+1.
+\]
+
+Hence the given function is a probability mass function.
+
+\item
+
+\begin{align*}
+E[X]
+&=
+\sum_{n=1}^{\infty}
+n\frac{4}{n(n+1)(n+2)}\\
+&=
+4\sum_{n=1}^{\infty}
+\frac{1}{(n+1)(n+2)}.
+\end{align*}
+
+Using
+
+\[
+\frac{1}{(n+1)(n+2)}
+=
+\frac{1}{n+1}-\frac{1}{n+2},
+\]
+
+we obtain
+
+\begin{align*}
+E[X]
+&=
+4\sum_{n=1}^{\infty}
+\left(
+\frac{1}{n+1}-\frac{1}{n+2}
+\right)\\
+&=
+4\left(\frac12\right)\\
+&=
+ {2}.
+\end{align*}
+
+\item
+
+\begin{align*}
+E[X^2]
+&=
+\sum_{n=1}^{\infty}
+n^2\frac{4}{n(n+1)(n+2)}\\
+&=
+4\sum_{n=1}^{\infty}
+\frac{n}{(n+1)(n+2)}.
+\end{align*}
+
+For \(n\geq2\),
+
+\[
+n+1\leq2n,
+\qquad
+n+2\leq2n,
+\]
+
+and hence
+
+\[
+\frac{n}{(n+1)(n+2)}
+\geq
+\frac{n}{(2n)(2n)}
+=
+\frac{1}{4n}.
+\]
+
+Therefore,
+
+\[
+E[X^2]
+\geq
+4\sum_{n=2}^{\infty}\frac{1}{4n}
+=
+\sum_{n=2}^{\infty}\frac1n
+=
+\infty.
+\]
+
+Thus,
+
+\[
+ {E[X^2]=\infty}.
+\]
+
+In particular, \(X\) has a finite mean but does not have a finite
+variance.
+
+\end{enumerate}
+
+ 
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 30  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) be a random variable with
+
+\[
+E[X]=\mu
+\qquad\text{and}\qquad
+\operatorname{Var}(X)=\sigma^2,
+\]
+
+where \(\sigma>0\). Define
+
+\[
+Y=\frac{X-\mu}{\sigma}.
+\]
+
+Find \(E[Y]\) and \(\operatorname{Var}(Y)\).
+\end{problem}
+\begin{solution}
+
+Using linearity of expectation,
+
+\begin{align*}
+E[Y]
+&=
+E\left[\frac{X-\mu}{\sigma}\right]\\
+&=
+\frac{1}{\sigma}
+\left(E[X]-\mu\right)\\
+&=
+\frac{1}{\sigma}(\mu-\mu)\\
+&=
+ {0}.
+\end{align*}
+
+For the variance, use
+
+\[
+\operatorname{Var}(aX+b)
+=
+a^2\operatorname{Var}(X).
+\]
+
+Thus,
+
+\begin{align*}
+\operatorname{Var}(Y)
+&=
+\operatorname{Var}
+\left(
+\frac{X-\mu}{\sigma}
+\right)\\
+&=
+\frac{1}{\sigma^2}\operatorname{Var}(X)\\
+&=
+\frac{\sigma^2}{\sigma^2}\\
+&=
+ {1}.
+\end{align*}
+
+Therefore, the standardized random variable \(Y\) has mean \(0\) and
+variance \(1\).
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 31  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Show how the binomial probability formula
+
+\[
+P(X=i)
+=
+\binom ni p^i(1-p)^{n-i},
+\qquad i=0,\ldots,n,
+\]
+
+leads to a proof of the binomial theorem
+
+\[
+(x+y)^n
+=
+\sum_{i=0}^{n}
+\binom ni x^iy^{n-i}
+\]
+
+when \(x\) and \(y\) are nonnegative.
+\end{problem}
+\begin{solution}
+
+First suppose that \(x+y>0\), and define
+
+\[
+p=\frac{x}{x+y}.
+\]
+
+Then
+
+\[
+1-p=\frac{y}{x+y}.
+\]
+
+If \(X\sim\operatorname{Bin}(n,p)\), the probabilities of all possible
+values of \(X\) sum to one:
+
+\[
+\sum_{i=0}^{n}
+\binom ni p^i(1-p)^{n-i}
+=
+1.
+\]
+
+Substituting the expressions for \(p\) and \(1-p\),
+
+\[
+\sum_{i=0}^{n}
+\binom ni
+\left(\frac{x}{x+y}\right)^i
+\left(\frac{y}{x+y}\right)^{n-i}
+=
+1.
+\]
+
+Because every term has denominator \((x+y)^n\),
+
+\[
+\frac{1}{(x+y)^n}
+\sum_{i=0}^{n}
+\binom ni x^iy^{n-i}
+=
+1.
+\]
+
+Multiplying by \((x+y)^n\) gives
+
+\[
+ {
+(x+y)^n
+=
+\sum_{i=0}^{n}
+\binom ni x^iy^{n-i}.
+}
+\]
+
+If \(x=y=0\), the identity also holds directly for \(n>0\), because both
+sides equal zero.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 32  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) be a Poisson random variable with parameter \(\lambda>0\).
+Show that \(P(X=i)\) first increases and then decreases as \(i\)
+increases. Determine where the maximum occurs.
+\end{problem}
+\begin{solution}
+
+The Poisson probability mass function is
+
+\[
+p_i=P(X=i)=e^{-\lambda}\frac{\lambda^i}{i!},
+\qquad i=0,1,2,\ldots
+\]
+
+For \(i\geq1\), consider the ratio of consecutive probabilities:
+
+\begin{align*}
+\frac{p_i}{p_{i-1}}
+&=
+\frac{e^{-\lambda}\lambda^i/i!}
+{e^{-\lambda}\lambda^{i-1}/(i-1)!}\\
+&=
+\frac{\lambda}{i}.
+\end{align*}
+
+Therefore,
+
+\[
+p_i>p_{i-1}
+\quad\Longleftrightarrow\quad
+i<\lambda,
+\]
+
+and
+
+\[
+p_i<p_{i-1}
+\quad\Longleftrightarrow\quad
+i>\lambda.
+\]
+
+Thus the probabilities increase while \(i<\lambda\) and decrease once
+\(i>\lambda\).
+
+If \(\lambda\) is not an integer, the unique mode is
+
+\[
+ {\lfloor\lambda\rfloor}.
+\]
+
+If \(\lambda=m\) is a positive integer, then
+
+\[
+\frac{p_m}{p_{m-1}}
+=
+\frac{m}{m}
+=
+1,
+\]
+
+so
+
+\[
+p_{m-1}=p_m.
+\]
+
+Hence there are two modes:
+
+\[
+ {m-1\ \text{and}\ m}.
+\]
+
+In particular, \(\lfloor\lambda\rfloor\) is always a mode, but when
+\(\lambda\) is an integer, it is not the only mode.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 33  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 34  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) be a geometric random variable with success probability \(p\),
+where \(X\) is the trial number on which the first success occurs. Show
+analytically that
+
+\[
+P(X=n+k\mid X>n)=P(X=k),
+\qquad n\geq0,\quad k\geq1.
+\]
+
+Also give a verbal explanation.
+\end{problem}
+\begin{solution}
+
+Because \(X\) is geometric,
+
+\[
+P(X=j)=(1-p)^{j-1}p,
+\qquad j=1,2,\ldots
+\]
+
+Also,
+
+\[
+P(X>n)=(1-p)^n.
+\]
+
+Since the event \(\{X=n+k\}\) is contained in the event \(\{X>n\}\),
+
+\begin{align*}
+P(X=n+k\mid X>n)
+&=
+\frac{P(X=n+k)}{P(X>n)}\\
+&=
+\frac{(1-p)^{n+k-1}p}{(1-p)^n}\\
+&=
+(1-p)^{k-1}p\\
+&=
+P(X=k).
+\end{align*}
+
+Therefore,
+
+\[
+ {
+P(X=n+k\mid X>n)=P(X=k).
+}
+\]
+
+For the verbal argument, the condition \(X>n\) means that the first
+\(n\) trials were failures. Because the trials are independent, those
+failures do not affect the outcomes of future trials. Starting after
+trial \(n\), the waiting time until the first success has the same
+geometric distribution as it had at the beginning. This property is
+called the \emph{memoryless property}.
+
+\end{solution}
+ 
+
+
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 35  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Compute \(E[X]\) for each of the following density functions.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+f(x)=
+\begin{cases}
+\dfrac14xe^{-x/2}, & x>0,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item
+\[
+f(x)=
+\begin{cases}
+c(1-x^2), & -1<x<1,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\item
+\[
+f(x)=
+\begin{cases}
+\dfrac{5}{x^2}, & x>5,\\[1mm]
+0, & x\leq5.
+\end{cases}
+\]
+
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item By definition,
+
+\[
+E[X]
+=
+\int_{0}^{\infty}x f(x)\,dx.
+\]
+
+Therefore,
+
+\begin{align*}
+E[X]
+&=
+\int_{0}^{\infty}
+x\left(\frac14xe^{-x/2}\right)\,dx\\
+&=
+\frac14
+\int_{0}^{\infty}x^2e^{-x/2}\,dx.
+\end{align*}
+Using integration by parts, we have
+
+\[
+\int_{0}^{\infty}x^2e^{-x/2}\,dx
+=
+\frac{2!}{(1/2)^3}
+=
+16.
+\]
+
+Equivalently, \(X\) has a gamma distribution with shape \(2\) and scale
+\(2\), whose mean is \(2\cdot2=4\).
+
+\item First determine \(c\) by requiring the density to integrate to one:
+
+\begin{align*}
+1
+&=
+\int_{-1}^{1}c(1-x^2)\,dx\\
+&=
+c\left[x-\frac{x^3}{3}\right]_{-1}^{1}\\
+&=
+c\left(\frac43\right)\Rightarrow c=\frac{3}{4}
+\end{align*}
+
+
+Now,
+
+\[
+E[X]
+=
+\int_{-1}^{1}x\frac34(1-x^2)\,dx = 0 \ \ \text{(symmetric interval around 0 of an odd function is zero)}.
+\]
+
+
+\item First verify that \(f\) is a density:
+
+\[
+\int_{5}^{\infty}\frac{5}{x^2}\,dx
+=
+5\left[-\frac1x\right]_{5}^{\infty}
+=
+1.
+\]
+
+The expected value is
+
+\begin{align*}
+E[X]
+&=
+\int_{5}^{\infty}x\frac{5}{x^2}\,dx\\
+&=
+5\int_{5}^{\infty}\frac1x\,dx.
+\end{align*}
+
+The integral diverges. Hence, $ {E[X]=\infty}.$
+
+
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 36  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Suppose \(X\) has density
+
+\[
+f(x)=
+\begin{cases}
+a+bx^2, & 0\leq x\leq1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+If
+
+\[
+E[X]=\frac35,
+\]
+
+find \(a\) and \(b\).
+\end{problem}
+\begin{solution}
+
+Because \(f\) is a probability density function,
+
+\[
+\int_{0}^{1}(a+bx^2)\,dx=1.
+\]
+
+Thus,
+
+\[
+a+\frac{b}{3}=1.
+\]
+
+Also,
+
+\begin{align*}
+E[X]
+&=
+\int_{0}^{1}x(a+bx^2)\,dx\\
+&=
+\frac{a}{2}+\frac{b}{4}.
+\end{align*}
+
+Since \(E[X]=\frac35\),
+
+\[
+\frac{a}{2}+\frac{b}{4}
+=
+\frac35.
+\]
+
+We therefore solve
+
+\[
+\begin{cases}
+a+\dfrac{b}{3}=1,\\[2mm]
+\dfrac{a}{2}+\dfrac{b}{4}=\dfrac35.
+\end{cases}
+\]
+
+From the first equation,
+
+\[
+a=1-\frac{b}{3}.
+\]
+
+Substituting into the second equation gives
+
+\begin{align*}
+\frac12\left(1-\frac{b}{3}\right)+\frac{b}{4}
+&=
+\frac35,\\
+\frac12+\frac{b}{12}
+&=
+\frac35,\\
+\frac{b}{12}
+&=
+\frac1{10}.
+\end{align*}
+
+Hence,
+
+\[
+b=\frac65.
+\]
+
+Then
+
+\[
+a
+=
+1-\frac{1}{3}\left(\frac65\right)
+=
+1-\frac25
+=
+\frac35.
+\]
+
+Therefore,
+
+\[
+ {
+a=\frac35,
+\qquad
+b=\frac65.
+}
+\]
+
+The resulting density is nonnegative on \([0,1]\), as required.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 37  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The lifetime \(X\), measured in hours, of an electronic tube has density
+
+\[
+f(x)=xe^{-x},
+\qquad x\geq0.
+\]
+
+Compute the expected lifetime.
+\end{problem}
+\begin{solution}
+
+The expected lifetime is
+
+\begin{align*}
+E[X]
+&=
+\int_{0}^{\infty}x f(x)\,dx\\
+&=
+\int_{0}^{\infty}x^2e^{-x}\,dx.
+\end{align*}
+
+Using
+
+\[
+\int_{0}^{\infty}x^ne^{-x}\,dx=n!,
+\]
+
+we obtain
+
+\[
+E[X]
+=
+2!
+=
+ {2}.
+\]
+
+Thus the expected lifetime is
+
+\[
+ {2\text{ hours}}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 38  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem} 
+
+\textbf{ *} A point is chosen at random on a line segment of length \(L\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Give a mathematical interpretation of the statement that the
+    point is chosen at random.
+    \item Find the probability that the ratio of the shorter resulting
+    segment to the longer resulting segment is less than \(\frac14\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+Let \(X\) be the distance from the left endpoint of the segment to the
+randomly selected point.
+
+Choosing the point uniformly at random means that
+
+\[
+X\sim\operatorname{Unif}(0,L),
+\]
+
+with density
+
+\[
+f_X(x)=\frac1L,
+\qquad 0<x<L.
+\]
+
+The two resulting segment lengths are
+
+\[
+X
+\qquad\text{and}\qquad
+L-X.
+\]
+
+By symmetry, first consider \(0<X\leq L/2\). In this case, \(X\) is the
+shorter segment and \(L-X\) is the longer segment. The desired condition is
+
+\[
+\frac{X}{L-X}<\frac14.
+\]
+
+Solving,
+
+\begin{align*}
+4X&<L-X,\\
+5X&<L,\\
+X&<\frac{L}{5}.
+\end{align*}
+
+By symmetry, the same condition occurs near the right endpoint when
+
+\[
+X>\frac{4L}{5}.
+\]
+
+Thus the favorable set is
+
+\[
+\left(0,\frac{L}{5}\right)
+\cup
+\left(\frac{4L}{5},L\right).
+\]
+
+Its total length is
+
+\[
+\frac{L}{5}+\frac{L}{5}
+=
+\frac{2L}{5}.
+\]
+
+Therefore,
+
+\[
+P\left(
+\frac{\text{shorter segment}}{\text{longer segment}}<\frac14
+\right)
+=
+\frac{2L/5}{L}
+=
+ {\frac25}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 39  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let
+
+\[
+X\sim N(10,36).
+\]
+
+Compute the following probabilities:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \(P(X>5)\);
+    \item \(P(4<X<16)\);
+    \item \(P(X<8)\);
+    \item \(P(X<20)\);
+
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+Since
+
+\[
+X\sim N(10,36),
+\]
+
+the mean is
+
+\[
+\mu=10
+\]
+
+and the standard deviation is
+
+\[
+\sigma=6.
+\]
+
+Define the standardized random variable
+
+\[
+Z=\frac{X-10}{6},
+\]
+
+so that \(Z\sim N(0,1)\). Let \(\Phi\) denote the standard normal CDF.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\begin{align*}
+P(X>5)
+&=
+P\left(
+Z>\frac{5-10}{6}
+\right)\\
+&=
+P\left(Z>-\frac56\right)\\
+&=
+\Phi\left(\frac56\right)\\
+&\approx
+ {0.7977}.
+\end{align*}
+
+\item
+
+\begin{align*}
+P(4<X<16)
+&=
+P\left(
+\frac{4-10}{6}<Z<
+\frac{16-10}{6}
+\right)\\
+&=
+P(-1<Z<1)\\
+&=
+\Phi(1)-\Phi(-1)\\
+&\approx
+ {0.6827}.
+\end{align*}
+
+\item
+
+\begin{align*}
+P(X<8)
+&=
+P\left(
+Z<\frac{8-10}{6}
+\right)\\
+&=
+P\left(Z<-\frac13\right)\\
+&=
+\Phi\left(-\frac13\right)\\
+&\approx
+ {0.3694}.
+\end{align*}
+
+\item
+
+\begin{align*}
+P(X<20)
+&=
+P\left(
+Z<\frac{20-10}{6}
+\right)\\
+&=
+P\left(Z<\frac53\right)\\
+&=
+\Phi\left(\frac53\right) \approx  {0.9522}.
+\end{align*}
+
+\item
+
+\begin{align*}
+P(X>16)
+&=
+P\left(
+Z>\frac{16-10}{6}
+\right)\\
+&=
+P(Z>1)\\
+&=
+1-\Phi(1)\\
+&\approx
+ {0.1587}.
+\end{align*}
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 40  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The salaries of physicians in a certain specialty are approximately
+normally distributed. Suppose that
+
+\[
+P(X<180{,}000)=0.25
+\]
+
+and
+
+\[
+P(X>320{,}000)=0.25.
+\]
+
+Approximately what fraction of physicians earn
+
+\begin{enumerate}[label=(\alph*)]
+    \item less than \(\$200{,}000\)?
+    \item between \(\$280{,}000\) and \(\$320{,}000\)?
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+The lower and upper quartiles are
+
+\[
+Q_1=180{,}000,
+\qquad
+Q_3=320{,}000.
+\]
+
+Because the normal distribution is symmetric, its mean is the midpoint:
+
+\[
+\mu
+=
+\frac{180{,}000+320{,}000}{2}
+=
+250{,}000.
+\]
+
+For a standard normal random variable,
+
+\[
+\Phi^{-1}(0.75)\approx0.67449.
+\]
+
+Thus,
+
+\[
+\frac{320{,}000-250{,}000}{\sigma}
+=
+0.67449.
+\]
+
+Therefore,
+
+\[
+\sigma
+=
+\frac{70{,}000}{0.67449}
+\approx
+103{,}782.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Standardize \(200{,}000\):
+
+\[
+z
+=
+\frac{200{,}000-250{,}000}{103{,}782}
+\approx
+-0.4818.
+\]
+
+Hence,
+
+\[
+\begin{aligned}
+P(X<200{,}000)
+&=
+\Phi(-0.4818)\\
+&\approx
+ {0.3150}.
+\end{aligned}
+\]
+
+Thus approximately \(31.5\%\) of physicians earn less than
+\(\$200{,}000\).
+
+\item Standardize \(280{,}000\):
+
+\[
+z
+=
+\frac{280{,}000-250{,}000}{103{,}782}
+\approx
+0.2891.
+\]
+
+Also, because \(320{,}000\) is the upper quartile,
+
+\[
+P(X<320{,}000)=0.75.
+\]
+
+Therefore,
+
+\begin{align*}
+P(280{,}000<X<320{,}000)
+&=
+P(X<320{,}000)-P(X<280{,}000)\\
+&=
+0.75-\Phi(0.2891)\\
+&\approx
+0.75-0.6137\\
+&=
+ {0.1363}.
+\end{align*}
+
+Thus approximately \(13.6\%\) of physicians earn between
+\(\$280{,}000\) and \(\$320{,}000\).
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 41  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{*} Let \(Y\) be a continuous random variable with density \(f_Y\), and assume
+that \(E[|Y|]<\infty\). Show that
+
+\[
+E[Y]
+=
+\int_{0}^{\infty}P(Y>y)\,dy
+-
+\int_{0}^{\infty}P(Y<-y)\,dy.
+\]
+\end{problem}
+\begin{solution}
+
+Write $Y=Y^+-Y^-,$ where $Y^+=\max(Y,0),
+\text{ and }
+Y^-=\max(-Y,0).$ Then $E[Y]=E[Y^+]-E[Y^-].
+$
+We first consider the positive part. Since
+
+\[
+P(Y>y)
+=
+\int_y^\infty f_Y(x)\,dx,
+\]
+
+Tonelli's theorem gives
+
+\begin{align*}
+\int_0^\infty P(Y>y)\,dy
+&=
+\int_0^\infty
+\int_y^\infty f_Y(x)\,dx\,dy\\
+&=
+\int_0^\infty
+\int_0^x dy\, f_Y(x)\,dx\\
+&=
+\int_0^\infty x f_Y(x)\,dx\\
+&=
+E[Y^+].
+\end{align*}
+
+Similarly,
+
+\[
+P(Y<-y)
+=
+\int_{-\infty}^{-y}f_Y(x)\,dx.
+\]
+
+Hence,
+
+\begin{align*}
+\int_0^\infty P(Y<-y)\,dy
+&=
+\int_0^\infty
+\int_{-\infty}^{-y}f_Y(x)\,dx\,dy.
+\end{align*}
+
+For a fixed \(x<0\), the condition \(x<-y\) is equivalent to
+
+\[
+0<y<-x.
+\]
+
+Therefore, changing the order of integration gives
+
+\begin{align*}
+\int_0^\infty P(Y<-y)\,dy
+&=
+\int_{-\infty}^{0}
+\int_0^{-x}dy\, f_Y(x)\,dx\\
+&=
+\int_{-\infty}^{0}(-x)f_Y(x)\,dx\\
+&=
+-\int_{-\infty}^{0}x f_Y(x)\,dx\\
+&=
+E[Y^-].
+\end{align*}
+
+Combining the two identities,
+
+\begin{align*}
+E[Y]
+&=
+E[Y^+]-E[Y^-]\\
+&=
+\int_{0}^{\infty}P(Y>y)\,dy
+-
+\int_{0}^{\infty}P(Y<-y)\,dy.
+\end{align*}
+
+Thus,
+
+\[
+ {
+E[Y]
+=
+\int_{0}^{\infty}P(Y>y)\,dy
+-
+\int_{0}^{\infty}P(Y<-y)\,dy.
+}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 42  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(Z\sim N(0,1)\). For \(x>0\), show that
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \[
+    P(Z>x)=P(Z<-x);
+    \]
+
+    \item
+    \[
+    P(|Z|>x)=2P(Z>x);
+    \]
+
+    \item
+    \[
+    P(|Z|<x)=2P(Z<x)-1.
+    \]
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+The standard normal density is
+
+\[
+\phi(z)
+=
+\frac{1}{\sqrt{2\pi}}e^{-z^2/2}.
+\]
+
+Because
+
+\[
+\phi(-z)=\phi(z),
+\]
+
+the density is symmetric about zero.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\begin{align*}
+P(Z<-x)
+&=
+\int_{-\infty}^{-x}\phi(z)\,dz.
+\end{align*}
+
+Using the substitution \(u=-z\),
+
+\begin{align*}
+P(Z<-x)
+&=
+\int_x^\infty \phi(-u)\,du\\
+&=
+\int_x^\infty \phi(u)\,du\\
+&=
+P(Z>x).
+\end{align*}
+
+Therefore,
+
+\[
+ {P(Z>x)=P(Z<-x)}.
+\]
+
+\item The events \(\{Z>x\}\) and \(\{Z<-x\}\) are disjoint, so
+
+\begin{align*}
+P(|Z|>x)
+&=
+P(Z>x)+P(Z<-x)\\
+&=
+2P(Z>x).
+\end{align*}
+
+Thus,
+
+\[
+ {P(|Z|>x)=2P(Z>x)}.
+\]
+
+\item By symmetry,
+
+\[
+P(Z\leq -x)=P(Z\geq x)=1-\Phi(x).
+\]
+
+Therefore,
+
+\begin{align*}
+P(|Z|<x)
+&=
+P(-x<Z<x)\\
+&=
+\Phi(x)-\Phi(-x)\\
+&=
+\Phi(x)-\bigl(1-\Phi(x)\bigr)\\
+&=
+2\Phi(x)-1.
+\end{align*}
+
+Since \(\Phi(x)=P(Z<x)\), $P(|Z|<x)=2P(Z<x)-1.$
+
+
+
+\end{enumerate}
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 43  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+ Let
+
+\[
+f(x)
+=
+\frac{1}{\sigma\sqrt{2\pi}}
+\exp\left(
+-\frac{(x-\mu)^2}{2\sigma^2}
+\right)
+\]
+
+be the density of a normal random variable with mean \(\mu\) and variance
+\(\sigma^2\). Show that
+
+\[
+x=\mu-\sigma
+\qquad\text{and}\qquad
+x=\mu+\sigma
+\]
+
+are inflection points of \(f\).
+\end{problem}
+\begin{solution}
+
+Differentiate \(f\). By the chain rule,
+
+\begin{align*}
+f'(x)
+&=
+f(x)
+\left(
+-\frac{x-\mu}{\sigma^2}
+\right)\\
+&=
+-\frac{x-\mu}{\sigma^2}f(x).
+\end{align*}
+
+Differentiating again,
+
+\begin{align*}
+f''(x)
+&=
+-\frac{1}{\sigma^2}f(x)
+-
+\frac{x-\mu}{\sigma^2}f'(x)\\
+&=
+-\frac{1}{\sigma^2}f(x)
++
+\frac{(x-\mu)^2}{\sigma^4}f(x)\\
+&=
+\frac{(x-\mu)^2-\sigma^2}{\sigma^4}f(x).
+\end{align*}
+
+Since \(f(x)>0\) for every \(x\),
+
+\[
+f''(x)=0
+\]
+
+if and only if
+
+\[
+(x-\mu)^2-\sigma^2=0.
+\]
+
+Thus,
+
+\[
+(x-\mu)^2=\sigma^2,
+\]
+
+which gives
+
+\[
+x-\mu=\pm\sigma.
+\]
+
+Therefore,
+
+\[
+ {x=\mu-\sigma\quad\text{or}\quad x=\mu+\sigma}.
+\]
+
+Moreover,
+
+\[
+f''(x)>0
+\]
+
+when \(|x-\mu|>\sigma\), while
+
+\[
+f''(x)<0
+\]
+
+when \(|x-\mu|<\sigma\). Hence the concavity changes at both points, so
+they are indeed inflection points.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 44  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The median of a continuous random variable with CDF \(F\) is a value
+\(m\) satisfying
+
+\[
+F(m)=\frac12.
+\]
+
+Find the median when \(X\) is
+
+\begin{enumerate}[label=(\alph*)]
+    \item uniformly distributed on \((a,b)\);
+    \item normally distributed with parameters \(\mu\) and \(\sigma^2\);
+    \item exponentially distributed with rate \(\lambda\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item If \(X\sim\operatorname{Unif}(a,b)\), then for \(a\leq x\leq b\),
+
+\[
+F(x)=\frac{x-a}{b-a}.
+\]
+
+Set \(F(m)=1/2\):
+
+\begin{align*}
+\frac{m-a}{b-a}
+&=
+\frac12,\\
+m-a
+&=
+\frac{b-a}{2},\\
+m
+&=
+\frac{a+b}{2}.
+\end{align*}
+
+Thus,
+
+\[
+ {m=\frac{a+b}{2}}.
+\]
+
+\item A normal distribution is symmetric about its mean \(\mu\). Hence
+
+\[
+P(X<\mu)=\frac12.
+\]
+
+Therefore,
+
+\[
+ {m=\mu}.
+\]
+
+\item If \(X\sim\operatorname{Exp}(\lambda)\), then for \(x\geq0\),
+
+\[
+F(x)=1-e^{-\lambda x}.
+\]
+
+Set \(F(m)=1/2\):
+
+\begin{align*}
+1-e^{-\lambda m}
+&=
+\frac12,\\
+e^{-\lambda m}
+&=
+\frac12,\\
+-\lambda m
+&=
+-\log 2.
+\end{align*}
+
+Therefore,
+
+\[
+ {m=\frac{\log 2}{\lambda}}.
+\]
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 45  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+ Let \(X\) be a continuous random variable with continuous cumulative
+distribution function \(F\). Define
+
+\[
+Y=F(X).
+\]
+
+Show that \(Y\) is uniformly distributed on \((0,1)\).
+\end{problem}
+\begin{solution}
+
+Let \(0<y<1\), and let
+
+\[
+F^{-1}(y)
+=
+\inf\{x:F(x)\geq y\}
+\]
+
+denote the generalized inverse of \(F\).
+
+Because \(F\) is continuous,
+
+\[
+F(F^{-1}(y))=y.
+\]
+
+Now,
+
+\begin{align*}
+P(Y\leq y)
+&=
+P(F(X)\leq y)\\
+&=
+P(X\leq F^{-1}(y))\\
+&=
+F(F^{-1}(y))\\
+&=
+y.
+\end{align*}
+
+Therefore, the CDF of \(Y\) is
+
+\[
+F_Y(y)
+=
+\begin{cases}
+0, & y\leq0,\\
+y, & 0<y<1,\\
+1, & y\geq1.
+\end{cases}
+\]
+
+This is the CDF of a uniform random variable on \((0,1)\). Hence,
+
+\[
+ {F(X)\sim\operatorname{Unif}(0,1)}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 46  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 47  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 48  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let
+
+\[
+\Phi(x)=P(Z\leq x),
+\]
+
+where \(Z\sim N(0,1)\). Determine which of the following statements are
+true:
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \[
+    \Phi(-x)=\Phi(x);
+    \]
+
+    \item
+    \[
+    \Phi(x)+\Phi(-x)=1;
+    \]
+
+    \item
+    \[
+    \Phi(-x)=\frac{1}{\Phi(x)}.
+    \]
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+By symmetry of the standard normal distribution,
+
+\[
+P(Z\leq -x)=P(Z\geq x).
+\]
+
+Since the normal distribution is continuous,
+
+\[
+P(Z\geq x)=1-P(Z\leq x)=1-\Phi(x).
+\]
+
+Therefore,
+
+\[
+ {\Phi(-x)=1-\Phi(x)}.
+\]
+
+It follows that:
+
+\begin{enumerate}[label=(\alph*)]
+
+\item The statement
+
+\[
+\Phi(-x)=\Phi(x)
+\]
+
+is generally false. It holds only when \(x=0\).
+
+\item
+
+\[
+\Phi(x)+\Phi(-x)
+=
+\Phi(x)+1-\Phi(x)
+=
+1.
+\]
+
+Thus this statement is
+
+\[
+ {\text{true}}.
+\]
+
+\item The statement
+
+\[
+\Phi(-x)=\frac{1}{\Phi(x)}
+\]
+
+is false. In fact,
+
+\[
+\Phi(-x)=1-\Phi(x).
+\]
+
+\end{enumerate}
+
+Hence, only statement \( {\text{(b)}}\) is true for every real
+\(x\).
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 49  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let
+
+\[
+f(x)=
+\begin{cases}
+\dfrac13e^x, & x<0,\\[2mm]
+\dfrac13, & 0\leq x<1,\\[2mm]
+\dfrac13e^{-(x-1)}, & x\geq1.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that \(f\) is a probability density function.
+    \item If \(X\) has density \(f\), find \(E[X]\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Clearly,
+
+\[
+f(x)\geq0
+\]
+
+for every \(x\). Also,
+
+\begin{align*}
+\int_{-\infty}^{\infty}f(x)\,dx
+&=
+\frac13\int_{-\infty}^{0}e^x\,dx
++
+\frac13\int_{0}^{1}1\,dx
++
+\frac13\int_{1}^{\infty}e^{-(x-1)}\,dx\\
+&=
+\frac13(1)
++
+\frac13(1)
++
+\frac13(1)\\
+&=
+1.
+\end{align*}
+
+Therefore, \(f\) is a probability density function.
+
+\item
+
+\begin{align*}
+E[X]
+&=
+\frac13\int_{-\infty}^{0}xe^x\,dx
++
+\frac13\int_{0}^{1}x\,dx
++
+\frac13\int_{1}^{\infty}xe^{-(x-1)}\,dx.
+\end{align*}
+
+For the first integral,
+
+\[
+\int xe^x\,dx=(x-1)e^x,
+\]
+
+so
+
+\[
+\int_{-\infty}^{0}xe^x\,dx=-1.
+\]
+
+For the second integral,
+
+\[
+\int_0^1x\,dx=\frac12.
+\]
+
+For the third integral, let \(u=x-1\). Then \(x=u+1\), so
+
+\begin{align*}
+\int_{1}^{\infty}xe^{-(x-1)}\,dx
+&=
+\int_{0}^{\infty}(u+1)e^{-u}\,du\\
+&=
+\int_0^\infty ue^{-u}\,du
++
+\int_0^\infty e^{-u}\,du\\
+&=
+1+1\\
+&=
+2.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+E[X]
+&=
+\frac13(-1)
++
+\frac13\left(\frac12\right)
++
+\frac13(2) =  {\frac12}.
+\end{align*}
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 50  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+Let
+
+\[
+f(x)
+=
+\frac{\theta^2}{1+\theta}(1+x)e^{-\theta x},
+\qquad x>0,
+\]
+
+where \(\theta>0\), and let \(f(x)=0\) for \(x\leq0\).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Show that \(f\) is a probability density function.
+    \item Find \(E[X]\).
+    \item Find \(\operatorname{Var}(X)\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+Since \(\theta>0\), $f(x)\geq0.$ We will use the gamma-integral identity
+
+\[
+\int_0^\infty x^k e^{-\theta x}\,dx
+=
+\frac{k!}{\theta^{k+1}},
+\qquad k=0,1,2,\ldots
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\begin{align*}
+\int_0^\infty f(x)\,dx
+&=
+\frac{\theta^2}{1+\theta}
+\int_0^\infty(1+x)e^{-\theta x}\,dx\\
+&=
+\frac{\theta^2}{1+\theta}
+\left(
+\frac1\theta+\frac1{\theta^2}
+\right)\\
+&=
+\frac{\theta^2}{1+\theta}
+\left(
+\frac{\theta+1}{\theta^2}
+\right)\\
+&=
+1.
+\end{align*}
+
+\item
+
+\begin{align*}
+E[X]
+&=
+\int_0^\infty x f(x)\,dx\\
+&=
+\frac{\theta^2}{1+\theta}
+\int_0^\infty x(1+x)e^{-\theta x}\,dx\\
+&=
+\frac{\theta^2}{1+\theta}
+\left(
+\int_0^\infty xe^{-\theta x}\,dx
++
+\int_0^\infty x^2e^{-\theta x}\,dx
+\right)\\
+&=
+\frac{\theta^2}{1+\theta}
+\left(
+\frac1{\theta^2}
++
+\frac2{\theta^3}
+\right) =  {
+\frac{\theta+2}{\theta(\theta+1)}
+}.
+\end{align*}
+
+\item First compute the second moment:
+
+\begin{align*}
+E[X^2]
+&=
+\int_0^\infty x^2f(x)\,dx\\
+&=
+\frac{\theta^2}{1+\theta}
+\int_0^\infty x^2(1+x)e^{-\theta x}\,dx\\
+&=
+\frac{\theta^2}{1+\theta}
+\left(
+\frac2{\theta^3}
++
+\frac6{\theta^4}
+\right)\\
+&=
+\frac{2(\theta+3)}
+{\theta^2(\theta+1)}.
+\end{align*}
+
+Hence,
+
+\begin{align*}
+\operatorname{Var}(X)
+&=
+E[X^2]-E[X]^2\\
+&=
+\frac{2(\theta+3)}
+{\theta^2(\theta+1)}
+-
+\left(
+\frac{\theta+2}
+{\theta(\theta+1)}
+\right)^2\\
+&=
+\frac{
+2(\theta+3)(\theta+1)-(\theta+2)^2
+}
+{\theta^2(\theta+1)^2}\\
+&=
+\frac{
+2\theta^2+8\theta+6
+-
+(\theta^2+4\theta+4)
+}
+{\theta^2(\theta+1)^2} =  {
+\frac{\theta^2+4\theta+2}
+{\theta^2(\theta+1)^2}
+}.
+\end{align*}
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 51  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 52  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 53  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* } Let \(A_1,A_2,\ldots\) be a sequence of events. Prove that
+
+\[
+P\left(\bigcup_{n=1}^{\infty}A_n\right)
+\leq
+\sum_{n=1}^{\infty}P(A_n).
+\]
+\end{problem}
+\begin{solution}
+
+Define disjoint events
+
+\[
+B_1=A_1
+\]
+
+and, for \(n\geq2\),
+
+\[
+B_n
+=
+A_n\setminus\bigcup_{j=1}^{n-1}A_j.
+\]
+
+Then the events \(B_1,B_2,\ldots\) are pairwise disjoint and
+
+\[
+\bigcup_{n=1}^{\infty}B_n
+=
+\bigcup_{n=1}^{\infty}A_n.
+\]
+
+Also,
+
+\[
+B_n\subseteq A_n,
+\]
+
+so
+
+\[
+P(B_n)\leq P(A_n).
+\]
+
+By countable additivity,
+
+\begin{align*}
+P\left(\bigcup_{n=1}^{\infty}A_n\right)
+&=
+P\left(\bigcup_{n=1}^{\infty}B_n\right)\\
+&=
+\sum_{n=1}^{\infty}P(B_n)\\
+&\leq
+\sum_{n=1}^{\infty}P(A_n).
+\end{align*}
+
+Thus,
+
+\[
+ {
+P\left(\bigcup_{n=1}^{\infty}A_n\right)
+\leq
+\sum_{n=1}^{\infty}P(A_n).
+}
+\]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 54  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* }Let \(A_1,A_2,\ldots\) be a sequence of events. Prove that
+
+\[
+P\left(\bigcap_{n=1}^{\infty}A_n\right)
+\geq
+1-\sum_{n=1}^{\infty}P(A_n^c).
+\]
+\end{problem}
+\begin{solution}
+
+By De Morgan's law,
+
+\[
+\left(\bigcap_{n=1}^{\infty}A_n\right)^c
+=
+\bigcup_{n=1}^{\infty}A_n^c.
+\]
+
+Therefore,
+
+\begin{align*}
+P\left(\bigcap_{n=1}^{\infty}A_n\right)
+&=
+1-
+P\left(
+\bigcup_{n=1}^{\infty}A_n^c
+\right).
+\end{align*}
+
+By Boole's inequality,
+
+\[
+P\left(
+\bigcup_{n=1}^{\infty}A_n^c
+\right)
+\leq
+\sum_{n=1}^{\infty}P(A_n^c).
+\]
+
+Hence,
+
+\[
+ {
+P\left(\bigcap_{n=1}^{\infty}A_n\right)
+\geq
+1-\sum_{n=1}^{\infty}P(A_n^c).
+}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 55  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Determine whether each statement is true. If it is true, prove it. If it
+is false, give a counterexample.
+
+\begin{enumerate}[label=(\alph*)]
+    \item If \(P(A)=1\), then \(A=\Omega\).
+    \item If \(P(B)=0\), then \(B=\varnothing\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+Both statements are false in general.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Consider
+
+\[
+\Omega=[0,1]
+\]
+
+with the uniform probability distribution, and let
+
+\[
+A=(0,1].
+\]
+
+Then
+
+\[
+A\neq\Omega,
+\]
+
+because \(0\notin A\), but
+
+\[
+P(A)=1.
+\]
+
+Thus, an event may have probability \(1\) without being the entire sample
+space.
+
+\item In the same probability space, let
+
+\[
+B=\left\{\frac12\right\}.
+\]
+
+Then
+
+\[
+B\neq\varnothing,
+\]
+
+but a singleton has probability zero under the uniform distribution:
+
+\[
+P(B)=0.
+\]
+
+Thus, a nonempty event may have probability zero.
+
+\end{enumerate}
+
+The statements would be true in certain finite probability spaces in
+which every individual outcome has positive probability, but they are
+not true for arbitrary probability spaces.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 56  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(A\) and \(B\) be events satisfying
+
+\[
+P(A)=P(B)=1.
+\]
+
+Show that
+
+\[
+P(A\cap B)=1.
+\]
+\end{problem}
+\begin{solution}
+
+By Bonferroni's inequality,
+
+\[
+P(A\cap B)
+\geq
+P(A)+P(B)-1.
+\]
+
+Therefore,
+
+\[
+P(A\cap B)
+\geq
+1+1-1
+=
+1.
+\]
+
+Since no probability can exceed \(1\),
+
+\[
+ {P(A\cap B)=1}.
+\]
+
+Alternatively,
+
+\[
+(A\cap B)^c=A^c\cup B^c.
+\]
+
+Since
+
+\[
+P(A^c)=P(B^c)=0,
+\]
+
+Boole's inequality gives
+
+\[
+P((A\cap B)^c)
+\leq
+P(A^c)+P(B^c)
+=
+0.
+\]
+
+Hence \(P(A\cap B)=1\).
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 57  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Is it possible to define a probability measure on a countably infinite
+sample space so that all outcomes are equally probable?
+\end{problem}
+\begin{solution}
+
+Let
+
+\[
+\Omega=\{\omega_1,\omega_2,\ldots\}
+\]
+
+be countably infinite, and suppose every outcome has the same probability
+\(p\).
+
+If \(p>0\), then by countable additivity,
+
+\[
+P(\Omega)
+=
+\sum_{n=1}^{\infty}P(\{\omega_n\})
+=
+\sum_{n=1}^{\infty}p
+=
+\infty,
+\]
+
+which contradicts \(P(\Omega)=1\).
+
+If \(p=0\), then
+
+\[
+P(\Omega)
+=
+\sum_{n=1}^{\infty}0
+=
+0,
+\]
+
+which again contradicts \(P(\Omega)=1\).
+
+Therefore,
+
+No countably infinite sample space can have equally probable
+outcomes under a countably additive probability measure
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 58  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+Let \(A_1,\ldots,A_n\) be events satisfying
+
+\[
+P(A_1)=\cdots=P(A_n)=1.
+\]
+
+Show that
+
+\[
+P(A_1\cap\cdots\cap A_n)=1.
+\]
+\end{problem}
+\begin{solution}
+
+By De Morgan's law,
+
+\[
+(A_1\cap\cdots\cap A_n)^c
+=
+A_1^c\cup\cdots\cup A_n^c.
+\]
+
+Since \(P(A_i)=1\),
+
+\[
+P(A_i^c)=0
+\]
+
+for every \(i\).
+
+By Boole's inequality,
+
+\[
+P(A_1^c\cup\cdots\cup A_n^c)
+\leq
+\sum_{i=1}^{n}P(A_i^c)
+=
+0.
+\]
+
+Thus,
+
+\[
+P((A_1\cap\cdots\cap A_n)^c)=0,
+\]
+
+and consequently,
+
+\[
+ {
+P(A_1\cap\cdots\cap A_n)=1.
+}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 59  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+How many \(n\times m\) matrices with entries in \(\{0,1\}\) are there?
+\end{problem}
+\begin{solution}
+
+An \(n\times m\) matrix contains
+
+\[
+nm
+\]
+
+entries. Each entry can independently be chosen to be either \(0\) or
+\(1\), giving two choices per entry.
+
+By the multiplication rule, the number of matrices is
+
+\[
+ {2^{nm}}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 60  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+How many four-digit numbers can be formed using only the digits
+
+\[
+2,4,6,8,9?
+\]
+
+How many of these numbers have at least one repeated digit?
+\end{problem}
+\begin{solution}
+
+There are five choices for each of the four digit positions. Since none of
+the available digits is zero, every resulting string is a four-digit
+number.
+
+Thus, the total number is
+
+\[
+5^4=625.
+\]
+
+To count numbers with at least one repeated digit, first count those with
+all four digits distinct.
+
+There are
+
+\[
+5\cdot4\cdot3\cdot2
+=
+120
+\]
+
+such numbers.
+
+Therefore, the number with at least one repeated digit is
+
+\[
+625-120
+=
+ {505}.
+\]
+
+Hence,
+
+\[
+ {625\text{ total numbers},\qquad505\text{ with repetition}.}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 61  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Six fair dice are tossed. Find the probability that at least two of them
+show the same face.
+\end{problem}
+\begin{solution}
+
+Let \(A\) be the event that at least two dice show the same face.
+
+Its complement \(A^c\) is the event that all six dice show different
+faces.
+
+There are
+
+\[
+6^6
+\]
+
+equally likely ordered outcomes.
+
+For all six faces to be different, every face \(1,\ldots,6\) must appear
+exactly once. There are
+
+\[
+6!
+\]
+
+such outcomes.
+
+Therefore,
+
+\[
+\begin{aligned}
+P(A)
+&=
+1-P(A^c)\\
+&=
+1-\frac{6!}{6^6}\\
+&=
+1-\frac{720}{46656}\\
+&=
+ {\frac{899}{900}}.
+\end{aligned}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 62  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+Show that if
+
+\[
+P(A)=1,
+\]
+
+then
+
+\[
+P(B\mid A)=P(B).
+\]
+\end{problem}
+\begin{solution}
+
+Since \(P(A)=1\),
+
+\[
+P(A^c)=0.
+\]
+
+Now,
+
+\[
+B=(B\cap A)\cup(B\cap A^c),
+\]
+
+where the union is disjoint. Therefore,
+
+\[
+P(B)
+=
+P(B\cap A)+P(B\cap A^c).
+\]
+
+Since
+
+\[
+B\cap A^c\subseteq A^c,
+\]
+
+we have
+
+\[
+P(B\cap A^c)=0.
+\]
+
+Thus,
+
+\[
+P(B\cap A)=P(B).
+\]
+
+Because \(P(A)=1>0\),
+
+\[
+P(B\mid A)
+=
+\frac{P(B\cap A)}{P(A)}
+=
+\frac{P(B)}{1}
+=
+ {P(B)}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 63  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* }An integer is selected uniformly at random from
+
+\[
+\{1,2,\ldots,10{,}000\}
+\]
+
+and is observed to be odd. Find the conditional probability that it is
+
+\begin{enumerate}[label=(\alph*)]
+    \item divisible by \(3\);
+    \item divisible by neither \(3\) nor \(5\).
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+There are exactly
+
+\[
+5000
+\]
+
+odd integers between \(1\) and \(10{,}000\).
+
+\begin{enumerate}[label=(\alph*)]
+
+\item An odd integer divisible by \(3\) is an odd multiple of \(3\).
+
+There are
+
+\[
+\left\lfloor\frac{10{,}000}{3}\right\rfloor
+=
+3333
+\]
+
+multiples of \(3\). Among these, the odd multiples correspond to odd
+multipliers \(1,3,\ldots,3333\), of which there are
+
+\[
+1667.
+\]
+
+Therefore,
+
+\[
+ {
+P(3\mid\text{odd})
+=
+\frac{1667}{5000}.
+}
+\]
+
+\item Among the \(5000\) odd integers, count those divisible by \(3\) or
+\(5\).
+
+The number of odd multiples of \(3\) is \(1667\).
+
+There are
+
+\[
+\left\lfloor\frac{10{,}000}{5}\right\rfloor=2000
+\]
+
+multiples of \(5\), of which \(1000\) are odd.
+
+The numbers divisible by both \(3\) and \(5\) are multiples of \(15\).
+There are
+
+\[
+\left\lfloor\frac{10{,}000}{15}\right\rfloor=666
+\]
+
+multiples of \(15\), of which \(333\) are odd.
+
+By inclusion--exclusion, the number of odd integers divisible by \(3\) or
+\(5\) is
+
+\[
+1667+1000-333=2334.
+\]
+
+Thus, the number divisible by neither is
+
+\[
+5000-2334=2666.
+\]
+
+Therefore,
+
+\[
+ {
+P(\text{neither }3\text{ nor }5\mid\text{odd})
+=
+\frac{2666}{5000}
+=
+\frac{1333}{2500}.
+}
+\]
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 64  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+A judge initially assigns probability \(0.65\) to the event that Susan is
+guilty. Robert knows whether Susan is guilty or innocent. If Susan is
+guilty, Robert lies with probability \(0.25\). If Susan is innocent,
+Robert tells the truth. Find the probability that Robert commits perjury.
+\end{problem}
+\begin{solution}
+
+Let \(G\) be the event that Susan is guilty and \(L\) the event that
+Robert lies.
+
+We are given
+
+\[
+P(G)=0.65,
+\]
+
+\[
+P(L\mid G)=0.25,
+\]
+
+and
+
+\[
+P(L\mid G^c)=0.
+\]
+
+By the law of total probability,
+
+\begin{align*}
+P(L)
+&=
+P(L\mid G)P(G)
++
+P(L\mid G^c)P(G^c)\\
+&=
+(0.25)(0.65)
++
+(0)(0.35)\\
+&=
+ {0.1625}.
+\end{align*}
+
+Thus, the probability that Robert commits perjury is
+
+\[
+ {16.25\%}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 65  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* }Let \(X\) denote the time until a new car breaks down, and define
+
+\[
+Y=
+\begin{cases}
+X, & X\leq5,\\
+5, & X>5.
+\end{cases}
+\]
+
+Let \(F\) be the cumulative distribution function of \(X\). Find the
+cumulative distribution function of \(Y\) in terms of \(F\).
+\end{problem}
+\begin{solution}
+
+The random variable \(Y\) can be written as
+
+\[
+Y=\min(X,5).
+\]
+
+Let
+
+\[
+F_Y(y)=P(Y\leq y).
+\]
+
+If \(y<5\), then
+
+\[
+\{Y\leq y\}=\{X\leq y\},
+\]
+
+because whenever \(X>5\), we have \(Y=5>y\). Therefore,
+
+\[
+F_Y(y)=F(y),
+\qquad y<5.
+\]
+
+If \(y\geq5\), then \(Y\leq5\leq y\) for every outcome, so
+
+\[
+F_Y(y)=1.
+\]
+
+Hence,
+
+\[
+ {
+F_Y(y)=
+\begin{cases}
+F(y), & y<5,\\[1mm]
+1, & y\geq5.
+\end{cases}
+}
+\]
+
+Notice that \(Y\) has a point mass at \(5\) of size
+
+\[
+P(Y=5)
+=
+1-F(5^-).
+\]
+
+This mass includes both the event \(X=5\) and the event \(X>5\).
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 66  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Suppose the cumulative distribution function of \(X\) is
+
+\[
+F(x)=
+\begin{cases}
+0, & x<-2,\\[1mm]
+\dfrac12, & -2\leq x<2,\\[1mm]
+\dfrac35, & 2\leq x<4,\\[1mm]
+\dfrac89, & 4\leq x<6,\\[1mm]
+1, & x\geq6.
+\end{cases}
+\]
+
+Determine the probability mass function of \(X\) and describe its graph.
+\end{problem}
+\begin{solution}
+
+For a discrete random variable, the probability at a point is the size
+of the jump of the CDF:
+
+\[
+P(X=x)=F(x)-F(x^-).
+\]
+
+At \(x=-2\),
+
+\[
+P(X=-2)
+=
+\frac12-0
+=
+\frac12.
+\]
+
+At \(x=2\),
+
+\[
+P(X=2)
+=
+\frac35-\frac12
+=
+\frac1{10}.
+\]
+
+At \(x=4\),
+
+\[
+P(X=4)
+=
+\frac89-\frac35
+=
+\frac{40-27}{45}
+=
+\frac{13}{45}.
+\]
+
+At \(x=6\),
+
+\[
+P(X=6)
+=
+1-\frac89
+=
+\frac19.
+\]
+
+Therefore,
+
+\[
+ {
+p_X(x)=
+\begin{cases}
+\dfrac12, & x=-2,\\[1mm]
+\dfrac1{10}, & x=2,\\[1mm]
+\dfrac{13}{45}, & x=4,\\[1mm]
+\dfrac19, & x=6,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+}
+\]
+
+The probabilities sum to
+
+\[
+\frac12+\frac1{10}+\frac{13}{45}+\frac19
+=
+1.
+\]
+
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 67  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+For each of the following functions, determine the value of \(k\) for
+which \(p\) is a probability mass function.
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+\[
+p(x)=kx,
+\qquad x=1,2,3,4,5.
+\]
+
+\item
+\[
+p(x)=k(1+x)^2,
+\qquad x=-2,0,1,2.
+\]
+
+\item
+\[
+p(x)=k\left(\frac19\right)^x,
+\qquad x=1,2,3,\ldots
+\]
+
+\item
+\[
+p(x)=kx,
+\qquad x=1,2,\ldots,n.
+\]
+
+\item
+\[
+p(x)=kx^2,
+\qquad x=1,2,\ldots,n.
+\]
+
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\[
+1
+=
+k\sum_{x=1}^{5}x
+=
+k(1+2+3+4+5)
+=
+15k\Rightarrow  {k=\frac1{15}}.
+\]
+
+ 
+
+\item The values of \((1+x)^2\) are
+
+\[
+1,\quad1,\quad4,\quad9
+\]
+
+for \(x=-2,0,1,2\), respectively. Hence,
+
+\[
+1
+=
+k(1+1+4+9)
+=
+15k\Rightarrow  {k=\frac1{15}}.
+\]
+
+ 
+
+\item Using the geometric-series formula,
+
+\begin{align*}
+1
+&=
+k\sum_{x=1}^{\infty}\left(\frac19\right)^x\\
+&=
+k\frac{1/9}{1-1/9}\\
+&=
+\frac{k}{8} \Rightarrow k=8
+\end{align*}
+
+
+\item Since
+
+\[
+\sum_{x=1}^{n}x
+=
+\frac{n(n+1)}{2},
+\]
+
+we require
+
+\[
+1
+=
+k\frac{n(n+1)}{2} \Rightarrow k=\frac{2}{n(n+1)}.
+\]
+
+
+\item Since
+
+\[
+\sum_{x=1}^{n}x^2
+=
+\frac{n(n+1)(2n+1)}{6},
+\]
+
+we require
+
+\[
+1
+=
+k\frac{n(n+1)(2n+1)}{6}.
+\]
+
+Hence,
+
+\[
+ {
+k=\frac{6}{n(n+1)(2n+1)}.
+}
+\]
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 68  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) have probability mass function
+
+\[
+p(x)=
+\begin{cases}
+\dfrac{|x-3|+1}{28},
+&x=-3,-2,-1,0,1,2,3,\\[2mm]
+0,
+&\text{otherwise}.
+\end{cases}
+\]
+
+Find \(\operatorname{Var}(X)\).
+\end{problem}
+\begin{solution}
+
+The probabilities are
+
+\[
+\begin{array}{c|rrrrrrr}
+x&-3&-2&-1&0&1&2&3\\ \hline
+28p(x)&7&6&5&4&3&2&1.
+\end{array}
+\]
+
+First compute the mean:
+
+\begin{align*}
+E[X]
+&=
+\frac1{28}
+\left[
+(-3)(7)+(-2)(6)+(-1)(5)
++0(4)+1(3)+2(2)+3(1)
+\right]\\
+&=
+\frac{-28}{28}\\
+&=
+-1.
+\end{align*}
+
+Next,
+
+\begin{align*}
+E[X^2]
+&=
+\frac1{28}
+\left[
+9(7)+4(6)+1(5)+0(4)+1(3)+4(2)+9(1)
+\right]\\
+&=
+\frac{112}{28}\\
+&=
+4.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+\operatorname{Var}(X)
+&=
+E[X^2]-E[X]^2\\
+&=
+4-(-1)^2\\
+&=
+ {3}.
+\end{align*}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 69  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) have cumulative distribution function
+
+\[
+F(x)=
+\begin{cases}
+0, & x<-3,\\[1mm]
+\dfrac38, & -3\leq x<0,\\[1mm]
+\dfrac34, & 0\leq x<6,\\[1mm]
+1, & x\geq6.
+\end{cases}
+\]
+
+Find the variance and standard deviation of \(X\).
+\end{problem}
+\begin{solution}
+
+The probability masses are the jumps of \(F\):
+
+\[
+P(X=-3)=\frac38,
+\]
+
+\[
+P(X=0)=\frac34-\frac38=\frac38,
+\]
+
+and
+
+\[
+P(X=6)=1-\frac34=\frac14.
+\]
+
+Thus,
+
+\begin{align*}
+E[X]
+&=
+(-3)\frac38
++
+0\frac38
++
+6\frac14\\
+&=
+-\frac98+\frac{12}{8}\\
+&=
+\frac38.
+\end{align*}
+
+Also,
+
+\begin{align*}
+E[X^2]
+&=
+9\frac38
++
+0
++
+36\frac14\\
+&=
+\frac{27}{8}+9\\
+&=
+\frac{99}{8}.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+\operatorname{Var}(X)
+&=
+E[X^2]-E[X]^2\\
+&=
+\frac{99}{8}
+-
+\left(\frac38\right)^2\\
+&=
+\frac{792}{64}-\frac9{64}\\
+&=
+ {\frac{783}{64}}.
+\end{align*}
+
+The standard deviation is
+
+\[
+ {
+\sigma_X
+=
+\sqrt{\frac{783}{64}}
+=
+\frac{\sqrt{783}}{8}
+\approx3.4978.
+}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 70  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Suppose \(X\) is a discrete random variable satisfying
+
+\[
+E[X]=1
+\]
+
+and
+
+\[
+E[X(X-2)]=3.
+\]
+
+Find
+
+\[
+\operatorname{Var}(-3X+5).
+\]
+\end{problem}
+\begin{solution}
+
+Since
+
+\[
+X(X-2)=X^2-2X,
+\]
+
+we have
+
+\[
+E[X^2]-2E[X]=3.
+\]
+
+Using \(E[X]=1\),
+
+\[
+E[X^2]-2=3,
+\]
+
+so
+
+\[
+E[X^2]=5.
+\]
+
+Therefore,
+
+\[
+\operatorname{Var}(X)
+=
+E[X^2]-E[X]^2
+=
+5-1
+=
+4.
+\]
+
+Now use
+
+\[
+\operatorname{Var}(aX+b)
+=
+a^2\operatorname{Var}(X).
+\]
+
+Thus,
+
+\[
+\operatorname{Var}(-3X+5)
+=
+(-3)^2(4)
+=
+ {36}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 71  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) be the amount, in fluid ounces, in a randomly selected bottle
+from company \(A\), and let \(Y\) be the amount in a randomly selected
+bottle from company \(B\). Their distributions are
+
+\[
+\begin{array}{c|ccccc}
+x&15.85&15.9&16&16.1&16.2\\ \hline
+P(X=x)&0.15&0.21&0.35&0.15&0.14\\
+P(Y=x)&0.14&0.05&0.64&0.08&0.09
+\end{array}
+\]
+
+Find \(E[X]\), \(E[Y]\), \(\operatorname{Var}(X)\), and
+\(\operatorname{Var}(Y)\), and interpret the results.
+\end{problem}
+\begin{solution}
+
+For \(X\),
+
+\begin{align*}
+E[X]
+&=
+15.85(0.15)+15.9(0.21)+16(0.35)\\
+&\qquad
++16.1(0.15)+16.2(0.14)\\
+&=
+ {15.9995}.
+\end{align*}
+
+Similarly,
+
+\begin{align*}
+E[Y]
+&=
+15.85(0.14)+15.9(0.05)+16(0.64)\\
+&\qquad
++16.1(0.08)+16.2(0.09)\\
+&=
+ {16.0000}.
+\end{align*}
+
+The second moments are
+
+\[
+E[X^2]
+=
+\sum_xx^2P(X=x)
+=
+256. - \text{computed through the distribution},
+\]
+
+and
+
+\[
+E[Y^2]
+=
+\sum_xx^2P(Y=x).
+\]
+
+Using
+
+\[
+\operatorname{Var}(X)=E[X^2]-E[X]^2,
+\]
+
+the resulting variances are
+
+\[
+ {
+\operatorname{Var}(X)=0.01257475
+}
+\]
+
+and
+
+\[
+ {
+\operatorname{Var}(Y)=0.00805.
+}
+\]
+
+Thus, the standard deviations are approximately
+
+\[
+\sigma_X\approx0.1121
+\]
+
+and
+
+\[
+\sigma_Y\approx0.0897.
+\]
+
+Both companies fill their bottles with an average of approximately
+\(16\) fluid ounces. Company \(B\), however, has the smaller variance and
+standard deviation, so its bottle amounts are more tightly concentrated
+around \(16\) ounces. Company \(B\) is therefore more consistent.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 72  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+A couple wants to have at least a \(95\%\) probability of having at least
+one boy and at least one girl. Assume that the sexes of the children are
+independent and that a child is equally likely to be a boy or a girl.
+
+What is the minimum number of children they should plan to have?
+\end{problem}
+\begin{solution}
+
+For \(n\) children, the complement of having at least one boy and at
+least one girl is the event that all children have the same sex.
+
+Thus,
+
+\begin{align*}
+P(\text{at least one boy and one girl})
+&=
+1-P(\text{all boys or all girls})\\
+&=
+1-\left(\frac12\right)^n-\left(\frac12\right)^n\\
+&=
+1-2^{1-n}.
+\end{align*}
+
+We require
+
+\[
+1-2^{1-n}\geq0.95.
+\]
+
+Therefore,
+
+\[
+2^{1-n}\leq0.05.
+\]
+
+Testing integers,
+
+\[
+n=5:
+\qquad
+1-2^{1-5}
+=
+1-\frac1{16}
+=
+0.9375<0.95,
+\]
+
+whereas
+
+\[
+n=6:
+\qquad
+1-2^{1-6}
+=
+1-\frac1{32}
+=
+0.96875>0.95.
+\]
+
+Hence, the minimum number is
+
+\[
+ {6}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 73  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+A rare blood type occurs in \(0.05\%\) of the population. A group of
+\(3000\) people is selected independently from the population. Find the
+probability that at least two people in the group have the rare blood
+type.
+\end{problem}
+\begin{solution}
+
+Let \(X\) be the number of people with the rare blood type. Then
+
+\[
+X\sim\operatorname{Bin}(3000,0.0005).
+\]
+
+The desired probability is
+
+\begin{align*}
+P(X\geq2)
+&=
+1-P(X=0)-P(X=1)\\
+&=
+1-(1-0.0005)^{3000}\\
+&\qquad
+-3000(0.0005)(1-0.0005)^{2999}.
+\end{align*}
+
+Thus,
+
+\[
+ {
+P(X\geq2)
+\approx0.4422.
+}
+\]
+
+Because \(n\) is large and \(p\) is small, a Poisson approximation is
+also appropriate. Here,
+
+\[
+\lambda=np=3000(0.0005)=1.5.
+\]
+
+Thus,
+
+\begin{align*}
+P(X\geq2)
+&\approx
+1-P(Y=0)-P(Y=1)\\
+&=
+1-e^{-1.5}(1+1.5)\\
+&\approx
+0.4422,
+\end{align*}
+
+where \(Y\sim\operatorname{Pois}(1.5)\).
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 74  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Suppose \(X\) is a Poisson random variable satisfying
+
+\[
+P(X=1)=P(X=3).
+\]
+
+Find \(P(X=5)\).
+\end{problem}
+\begin{solution}
+
+Let
+
+\[
+X\sim\operatorname{Pois}(\lambda).
+\]
+
+Then
+
+\[
+P(X=k)
+=
+e^{-\lambda}\frac{\lambda^k}{k!}.
+\]
+
+The condition gives
+
+\[
+e^{-\lambda}\lambda
+=
+e^{-\lambda}\frac{\lambda^3}{3!}.
+\]
+
+For \(\lambda>0\), canceling \(e^{-\lambda}\lambda\) yields
+
+\[
+1=\frac{\lambda^2}{6}.
+\]
+
+Therefore,
+
+\[
+\lambda^2=6
+\]
+
+and
+
+\[
+\lambda=\sqrt6.
+\]
+
+Consequently,
+
+\begin{align*}
+P(X=5)
+&=
+e^{-\sqrt6}
+\frac{(\sqrt6)^5}{5!}\\
+&=
+e^{-\sqrt6}
+\frac{36\sqrt6}{120}\\
+&=
+ {
+\frac{3\sqrt6}{10}e^{-\sqrt6}.
+}
+\end{align*}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 75  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 76  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The duration \(X\) of a certain soap opera, measured in tens of hours,
+has cumulative distribution function
+
+\[
+F(x)=
+\begin{cases}
+0, & x<4,\\[1mm]
+1-\dfrac{16}{x^2}, & x\geq4.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find the probability density function of \(X\).
+    \item Describe the graphs of \(F\) and \(f\).
+    \item Find the probability that the soap opera lasts:
+    \begin{enumerate}[label=(\roman*)]
+        \item at most \(50\) hours;
+        \item at least \(60\) hours;
+        \item between \(50\) and \(70\) hours;
+        \item between \(10\) and \(35\) hours.
+    \end{enumerate}
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item For \(x>4\),
+
+\[
+f(x)=F'(x)
+=
+\frac{32}{x^3}.
+\]
+
+Thus,
+
+\[
+ {
+f(x)=
+\begin{cases}
+\dfrac{32}{x^3}, & x\geq4,\\[2mm]
+0, & x<4.
+\end{cases}
+}
+\]
+
+There is no point mass at \(4\), because
+
+\[
+F(4)=1-\frac{16}{16}=0.
+\]
+
+\item The CDF is zero for \(x<4\), begins at zero when \(x=4\), and
+increases continuously toward \(1\).
+
+The density is zero for \(x<4\), has value
+
+\[
+f(4)=\frac{32}{64}=\frac12,
+\]
+
+and decreases toward zero as \(x\to\infty\).
+
+\item Since \(X\) is measured in tens of hours, \(50\) hours corresponds
+to \(x=5\), \(60\) hours to \(x=6\), and so forth.
+
+\begin{enumerate}[label=(\roman*)]
+
+\item
+
+\[
+P(X\leq5)
+=
+F(5)
+=
+1-\frac{16}{25}
+=
+ {\frac9{25}}.
+\]
+
+\item Since the distribution is continuous,
+
+\begin{align*}
+P(X\geq6)
+&=
+1-F(6)\\
+&=
+\frac{16}{36}\\
+&=
+ {\frac49}.
+\end{align*}
+
+\item
+
+\begin{align*}
+P(5<X<7)
+&=
+F(7)-F(5)\\
+&=
+\left(1-\frac{16}{49}\right)
+-
+\left(1-\frac{16}{25}\right)\\
+&=
+\frac{16}{25}-\frac{16}{49}\\
+&=
+ {\frac{384}{1225}}.
+\end{align*}
+
+\item The support of \(X\) is \([4,\infty)\), corresponding to durations
+of at least \(40\) hours. Hence,
+
+\[
+ {P(1<X<3.5)=0}.
+\]
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 77  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The lifetime of a randomly selected used tire is \(10{,}000X\) miles,
+where \(X\) has density
+
+\[
+f(x)=
+\begin{cases}
+\dfrac{2}{x^2}, & 1<x<2,\\[2mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item What percentage of the tires last fewer than \(15{,}000\)
+    miles?
+    \item Among the tires lasting fewer than \(15{,}000\) miles, what
+    percentage last between \(10{,}000\) and \(12{,}500\) miles?
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+\begin{enumerate}[label=(\alph*)]
+
+\item A lifetime below \(15{,}000\) miles corresponds to
+
+\[
+X<1.5.
+\]
+
+Therefore,
+
+\begin{align*}
+P(X<1.5)
+&=
+\int_1^{3/2}\frac{2}{x^2}\,dx\\
+&=
+\left[-\frac2x\right]_1^{3/2}\\
+&=
+2-\frac43\\
+&=
+\frac23.
+\end{align*}
+
+Thus, $ {66\frac23\%}$ of the tires last fewer than \(15{,}000\) miles.
+
+\item The interval \(10{,}000\) to \(12{,}500\) miles corresponds to
+
+\[
+1<X<1.25=\frac54.
+\]
+
+The required conditional probability is
+
+\[
+P\left(
+1<X<\frac54
+\,\middle|\,
+X<\frac32
+\right).
+\]
+
+Since \(\{1<X<5/4\}\subseteq\{X<3/2\}\),
+
+\begin{align*}
+P\left(
+1<X<\frac54
+\,\middle|\,
+X<\frac32
+\right)
+&=
+\frac{
+P(1<X<5/4)
+}{
+P(X<3/2)
+}.
+\end{align*}
+
+Now,
+
+\begin{align*}
+P\left(1<X<\frac54\right)
+&=
+\int_1^{5/4}\frac2{x^2}\,dx\\
+&=
+2-\frac{8}{5}\\
+&=
+\frac25.
+\end{align*}
+
+Therefore, $\frac{2/5}{2/3}
+=
+\frac35.$ Thus, $ {60\%}$ of the tires lasting fewer than \(15{,}000\) miles last between
+\(10{,}000\) and \(12{,}500\) miles.
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 78  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) have CDF
+
+\[
+F(x)=
+\begin{cases}
+0, & x<4,\\[1mm]
+1-\dfrac{16}{x^2}, & x\geq4.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*)]
+    \item Find \(E[X]\).
+    \item Show that \(\operatorname{Var}(X)\) does not exist as a finite
+    number.
+\end{enumerate}
+\end{problem}
+\begin{solution}
+
+The density is
+
+\[
+f(x)=
+\frac{32}{x^3},
+\qquad x\geq4.
+\]
+
+\begin{enumerate}[label=(\alph*)]
+
+\item
+
+\begin{align*}
+E[X]
+&=
+\int_4^\infty x\frac{32}{x^3}\,dx\\
+&=
+32\int_4^\infty\frac1{x^2}\,dx\\
+&=
+32\left[-\frac1x\right]_4^\infty\\
+&=
+32\left(\frac14\right)\\
+&=
+ {8}.
+\end{align*}
+
+Because \(X\) is measured in tens of hours, the expected duration is
+
+\[
+ {80\text{ hours}}.
+\]
+
+\item
+
+\begin{align*}
+E[X^2]
+&=
+\int_4^\infty x^2\frac{32}{x^3}\,dx\\
+&=
+32\int_4^\infty\frac1x\,dx.
+\end{align*}
+
+The integral diverges, so
+
+\[
+E[X^2]=\infty.
+\]
+
+Therefore,
+
+\[
+ {\operatorname{Var}(X)\text{ is not finite}.}
+\]
+
+Although \(E[X]\) exists, the second moment and variance do not.
+
+\end{enumerate}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 79  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+The time \(X\), in hours, required for a student to finish an aptitude
+test has density
+
+\[
+f(x)=
+\begin{cases}
+6(x-1)(2-x), & 1<x<2,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Find the mean and standard deviation of \(X\).
+\end{problem}
+\begin{solution}
+
+The density is symmetric about \(x=3/2\), so we expect the mean to be
+\(3/2\). Directly,
+
+\begin{align*}
+E[X]
+&=
+\int_1^2x\,6(x-1)(2-x)\,dx\\
+&=
+ {\frac32}.
+\end{align*}
+
+Next,
+
+\begin{align*}
+E[X^2]
+&=
+\int_1^2x^2\,6(x-1)(2-x)\,dx\\
+&=
+\frac{23}{10}.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+\operatorname{Var}(X)
+&=
+E[X^2]-E[X]^2\\
+&=
+\frac{23}{10}
+-
+\left(\frac32\right)^2\\
+&=
+\frac{23}{10}-\frac94\\
+&=
+\frac{46-45}{20}\\
+&=
+\frac1{20}.
+\end{align*}
+
+Thus, the standard deviation is
+
+\[
+ {
+\sigma_X
+=
+\sqrt{\frac1{20}}
+=
+\frac1{2\sqrt5}
+\approx0.2236\text{ hours}.
+}
+\]
+
+The mean is
+
+\[
+ {E[X]=1.5\text{ hours}}.
+\]
+
+\end{solution}
+  
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 80  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) be a continuous random variable with density
+
+\[
+f(x)=
+\begin{cases}
+\dfrac{2}{x^2}, & 1<x<2,\\[2mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Find \(E[\ln X]\).
+\end{problem}
+\begin{solution}
+
+By definition,
+
+\[
+E[\ln X]
+=
+\int_{1}^{2}\ln(x)\frac{2}{x^2}\,dx.
+\]
+
+Integrate by parts. Let
+
+\[
+u=\ln x,
+\qquad
+dv=\frac{2}{x^2}\,dx.
+\]
+
+Then
+
+\[
+du=\frac1x\,dx,
+\qquad
+v=-\frac2x.
+\]
+
+Therefore,
+
+\begin{align*}
+E[\ln X]
+&=
+\left[
+-\frac{2\ln x}{x}
+\right]_{1}^{2}
++
+2\int_{1}^{2}\frac{1}{x^2}\,dx\\
+&=
+-\ln 2
++
+2\left[-\frac1x\right]_{1}^{2}\\
+&=
+-\ln 2
++
+2\left(1-\frac12\right)\\
+&=
+ {1-\ln 2}.
+\end{align*}
+
+Numerically,
+
+\[
+E[\ln X]\approx0.3069.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 81  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) have density
+
+\[
+f(x)=\frac12e^{-|x|},
+\qquad -\infty<x<\infty.
+\]
+
+Calculate \(\operatorname{Var}(X)\).
+\end{problem}
+\begin{solution}
+
+The density is symmetric about zero, so
+
+\[
+E[X]=0.
+\]
+
+Therefore,
+
+\[
+\operatorname{Var}(X)=E[X^2].
+\]
+
+Since \(x^2e^{-|x|}\) is an even function,
+
+\begin{align*}
+E[X^2]
+&=
+\frac12\int_{-\infty}^{\infty}x^2e^{-|x|}\,dx\\
+&=
+\int_{0}^{\infty}x^2e^{-x}\,dx.
+\end{align*}
+
+Using
+
+\[
+\int_{0}^{\infty}x^ne^{-x}\,dx=n!,
+\]
+
+we obtain
+
+\[
+E[X^2]=2!=2.
+\]
+
+Hence,
+
+\[
+ {\operatorname{Var}(X)=2}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 82  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 83  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let \(X\) have a gamma distribution with shape parameter \(r\) and rate
+parameter \(\lambda\), so that
+
+\[
+f(x)
+=
+\frac{\lambda^r}{\Gamma(r)}
+x^{r-1}e^{-\lambda x},
+\qquad x>0.
+\]
+
+Assume \(r>1\). Show that the density has a unique maximum at $\frac{r-1}{\lambda}.$
+\end{problem}
+\begin{solution}
+
+Because the multiplicative constant
+
+\[
+\frac{\lambda^r}{\Gamma(r)}
+\]
+
+is positive, it is enough to maximize
+
+\[
+g(x)=x^{r-1}e^{-\lambda x}.
+\]
+
+Take logarithms:
+
+\[
+\log g(x)
+=
+(r-1)\log x-\lambda x.
+\]
+
+Differentiate:
+
+\[
+\frac{d}{dx}\log g(x)
+=
+\frac{r-1}{x}-\lambda.
+\]
+
+The critical point satisfies
+
+\[
+\frac{r-1}{x}-\lambda=0,
+\]
+
+so
+
+\[
+x=\frac{r-1}{\lambda}.
+\]
+
+Moreover,
+
+\[
+\frac{d^2}{dx^2}\log g(x)
+=
+-\frac{r-1}{x^2}<0
+\]
+
+for \(x>0\). Thus \(\log g\), and hence \(g\), is strictly concave at the
+critical point.
+
+Also,
+
+\[
+\frac{r-1}{x}-\lambda>0
+\]
+
+when \(x<(r-1)/\lambda\), and it is negative when
+\(x>(r-1)/\lambda\). Therefore, the density increases before this point
+and decreases afterward.
+
+Hence the unique mode is
+
+\[
+ {\frac{r-1}{\lambda}}.
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 84  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+\textbf{* }Let \(X\) have a gamma distribution with shape parameter \(r\) and rate
+parameter \(\lambda\). Let \(c>0\), and define
+
+\[
+Y=cX.
+\]
+
+Find the distribution function and density of \(Y\).
+\end{problem}
+\begin{solution}
+
+For \(y\leq0\),
+
+\[
+F_Y(y)=0.
+\]
+
+For \(y>0\),
+
+\begin{align*}
+F_Y(y)
+&=
+P(Y\leq y)\\
+&=
+P(cX\leq y)\\
+&=
+P\left(X\leq\frac{y}{c}\right)\\
+&=
+F_X\left(\frac{y}{c}\right).
+\end{align*}
+
+Thus,
+
+\[
+ {
+F_Y(y)=
+\begin{cases}
+0, & y\leq0,\\[1mm]
+F_X\left(\dfrac{y}{c}\right), & y>0.
+\end{cases}
+}
+\]
+
+Using the change-of-variables formula,
+
+\begin{align*}
+f_Y(y)
+&=
+\frac1c
+f_X\left(\frac{y}{c}\right)\\
+&=
+\frac1c
+\frac{\lambda^r}{\Gamma(r)}
+\left(\frac{y}{c}\right)^{r-1}
+e^{-\lambda y/c}\\
+&=
+\frac{(\lambda/c)^r}{\Gamma(r)}
+y^{r-1}e^{-(\lambda/c)y},
+\qquad y>0.
+\end{align*}
+
+Therefore,
+
+\[
+ {
+Y\sim\operatorname{Gamma}
+\left(r,\frac{\lambda}{c}\right)
+}
+\]
+
+under the shape--rate parameterization.
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 85  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 86  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+Let
+
+\[
+f(x)
+=
+\begin{cases}
+\dfrac{\lambda^r}{\Gamma(r)}
+x^{r-1}e^{-\lambda x},
+& x>0,\\[3mm]
+0,
+& x\leq0,
+\end{cases}
+\]
+
+where \(r>0\) and \(\lambda>0\). Prove that
+
+\[
+\int_{-\infty}^{\infty}f(x)\,dx=1.
+\]
+\end{problem}
+\begin{solution}
+
+Because \(f(x)=0\) for \(x\leq0\),
+
+\[
+\int_{-\infty}^{\infty}f(x)\,dx
+=
+\frac{\lambda^r}{\Gamma(r)}
+\int_{0}^{\infty}
+x^{r-1}e^{-\lambda x}\,dx.
+\]
+
+Use the substitution
+
+\[
+u=\lambda x.
+\]
+
+Then
+
+\[
+x=\frac{u}{\lambda},
+\qquad
+dx=\frac{du}{\lambda}.
+\]
+
+Therefore,
+
+\begin{align*}
+\int_{-\infty}^{\infty}f(x)\,dx
+&=
+\frac{\lambda^r}{\Gamma(r)}
+\int_{0}^{\infty}
+\left(\frac{u}{\lambda}\right)^{r-1}
+e^{-u}\frac{du}{\lambda}\\
+&=
+\frac{\lambda^r}{\Gamma(r)}
+\frac{1}{\lambda^r}
+\int_{0}^{\infty}
+u^{r-1}e^{-u}\,du\\
+&=
+\frac{1}{\Gamma(r)}
+\Gamma(r)\\
+&=
+1.
+\end{align*}
+
+Thus,
+
+\[
+ {
+\int_{-\infty}^{\infty}f(x)\,dx=1.
+}
+\]
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 87  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* }Consider
+
+\[
+f(x)=
+\begin{cases}
+12x(1-x)^2, & 0<x<1,\\[1mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Determine whether \(f\) is the density of a beta random variable. If so,
+find \(E[X]\) and \(\operatorname{Var}(X)\).
+\end{problem}
+\begin{solution}
+
+A beta density with parameters \(\alpha,\beta>0\) has the form
+
+\[
+f(x)
+=
+\frac{1}{B(\alpha,\beta)}
+x^{\alpha-1}(1-x)^{\beta-1},
+\qquad 0<x<1.
+\]
+
+Here,
+
+\[
+x(1-x)^2
+=
+x^{2-1}(1-x)^{3-1},
+\]
+
+so the possible parameters are
+
+\[
+\alpha=2,
+\qquad
+\beta=3.
+\]
+
+The beta normalizing constant is
+
+\[
+\frac{1}{B(2,3)}
+=
+\frac{\Gamma(5)}{\Gamma(2)\Gamma(3)}
+=
+\frac{4!}{1!\,2!}
+=
+12.
+\]
+
+Thus \(f\) is exactly the density of a
+
+\[
+\operatorname{Beta}(2,3)
+\]
+
+random variable.
+
+For a beta random variable,
+
+\[
+E[X]=\frac{\alpha}{\alpha+\beta},
+\]
+
+so
+
+\[
+ {
+E[X]=\frac25.
+}
+\]
+
+Also,
+
+\[
+\operatorname{Var}(X)
+=
+\frac{\alpha\beta}
+{(\alpha+\beta)^2(\alpha+\beta+1)}.
+\]
+
+Therefore,
+
+\begin{align*}
+\operatorname{Var}(X)
+&=
+\frac{(2)(3)}
+{5^2(6)}\\
+&=
+ {\frac1{25}}.
+\end{align*}
+
+\end{solution}
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  PROBLEM 88  %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \newpage \begin{problem}
+
+\textbf{* }Determine whether
+
+\[
+f(x)=
+\begin{cases}
+120x^2(1-x)^4, & 0<x<1,\\[1mm]
+0, & \text{otherwise}
+\end{cases}
+\]
+
+is a probability density function.
+\end{problem}
+\begin{solution}
+
+The function is nonnegative. It remains to check whether it integrates to
+one.
+
+The kernel
+
+\[
+x^2(1-x)^4
+=
+x^{3-1}(1-x)^{5-1}
+\]
+
+corresponds to a beta distribution with parameters
+
+\[
+\alpha=3,
+\qquad
+\beta=5.
+\]
+
+Its required normalizing constant is
+
+\begin{align*}
+\frac{1}{B(3,5)}
+&=
+\frac{\Gamma(8)}
+{\Gamma(3)\Gamma(5)}\\
+&=
+\frac{7!}{2!\,4!}\\
+&=
+105.
+\end{align*}
+
+The proposed coefficient is \(120\), not \(105\).
+
+Indeed,
+
+\begin{align*}
+\int_{0}^{1}120x^2(1-x)^4\,dx
+&=
+120B(3,5)\\
+&=
+\frac{120}{105}\\
+&=
+\frac87.
+\end{align*}
+
+Since
+
+\[
+\frac87\neq1,
+\]
+
+the proposed function is not a probability density function.
+
+Thus,
+
+\[
+ {
+f\text{ is not a probability density function.}
+}
+\]
+
+Replacing \(120\) by \(105\) would produce the density of a
+\(\operatorname{Beta}(3,5)\) random variable.
+
+\end{solution}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BINOMIAL AND DISTRIBUTION-APPROXIMATION PROBLEMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+
+Suppose that
+\[
+X\sim\operatorname{Bin}(100,0.4).
+\]
+
+Use a Normal approximation, with an appropriate continuity correction, to
+approximate
+\[
+\mathbb{P}(35\leq X\leq45).
+\]
+
+Clearly verify that the conditions for the Normal approximation are satisfied
+and state the approximating Normal distribution.
+
+\end{problem}
+
+\begin{solution}
+
+We have
+\[
+X\sim\operatorname{Bin}(100,0.4).
+\]
+
+To check whether the Normal approximation is appropriate, we compute
+\[
+np=100(0.4)=40
+\]
+and
+\[
+n(1-p)=100(0.6)=60.
+\]
+
+Since both quantities are greater than \(10\), the Normal approximation is
+appropriate.
+
+The mean and variance are
+\[
+\mu=np=40
+\]
+and
+\[
+\sigma^2=np(1-p)=100(0.4)(0.6)=24.
+\]
+
+Therefore, we approximate \(X\) by
+\[
+Y\sim N(40,24).
+\]
+
+Using the continuity correction,
+\[
+\mathbb{P}(35\leq X\leq45)
+\approx
+\mathbb{P}(34.5<Y<45.5).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(34.5<Y<45.5)
+&=
+\mathbb{P}\left(
+\frac{34.5-40}{\sqrt{24}}
+<
+Z
+<
+\frac{45.5-40}{\sqrt{24}}
+\right)\\
+&=
+\mathbb{P}(-1.123<Z<1.123).
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\mathbb{P}(35\leq X\leq45)
+&\approx
+\Phi(1.123)-\Phi(-1.123)\\
+&=
+2\Phi(1.123)-1\\
+&\approx
+ {0.739}.
+\end{aligned}
+\]
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+
+The odds are \(1\) to \(5000\) in favor of a customer buying a particular
+fiction bestseller.
+
+Suppose that \(800\) customers enter a bookstore each day and that a month
+has \(30\) days.
+
+How many copies of the book should the bookstore stock each month so that,
+with probability greater than \(98\%\), it does not run out?
+
+Determine whether a Poisson approximation or a Normal approximation is more
+appropriate, and verify the required conditions before solving the problem.
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X=\text{the number of customers who buy the book during the month}.
+\]
+
+The total number of customers during the month is
+\[
+n=30(800)=24000.
+\]
+
+Because the odds in favor of buying the book are \(1\) to \(5000\), the
+probability that a customer buys the book is
+\[
+p=\frac{1}{1+5000}=\frac{1}{5001}.
+\]
+
+Therefore,
+\[
+X\sim\operatorname{Bin}\left(24000,\frac{1}{5001}\right).
+\]
+
+We first determine the appropriate approximation.
+
+The expected number of successes is
+\[
+np
+=
+24000\left(\frac{1}{5001}\right)
+\approx4.799.
+\]
+
+Although \(n\) is large,
+\[
+np\approx4.799<10,
+\]
+so the usual Normal approximation is not appropriate.
+
+However, \(n=24000\) is large and
+\[
+p=\frac{1}{5001}
+\]
+is very small. Therefore, the Poisson approximation is appropriate, with
+\[
+\lambda=np=\frac{24000}{5001}\approx4.799.
+\]
+
+Thus,
+\[
+X\approx W,
+\qquad
+W\sim\operatorname{Pois}(4.799).
+\]
+
+If the bookstore stocks \(m\) copies, then it does not run out when
+\[
+X\leq m.
+\]
+
+We seek the smallest integer \(m\) such that
+\[
+\mathbb{P}(X\leq m)>0.98.
+\]
+
+Using the Poisson approximation,
+\[
+\mathbb{P}(X\leq9)
+\approx
+\mathbb{P}(W\leq9)
+=
+\sum_{k=0}^{9}
+e^{-4.799}\frac{4.799^k}{k!}
+\approx0.9749.
+\]
+
+Since
+\[
+0.9749<0.98,
+\]
+stocking \(9\) copies is not sufficient.
+
+Next,
+\[
+\mathbb{P}(X\leq10)
+\approx
+\mathbb{P}(W\leq10)
+=
+\sum_{k=0}^{10}
+e^{-4.799}\frac{4.799^k}{k!}
+\approx0.9896.
+\]
+
+Since
+\[
+0.9896>0.98,
+\]
+the smallest satisfactory value is \(m=10\).
+
+Therefore, the bookstore should stock
+\[
+ {10\text{ copies}.}
+\]
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+
+Every day, a factory produces \(5000\) light bulbs, of which \(2500\) are
+Type I and \(2500\) are Type II.
+
+A sample of \(40\) light bulbs is selected uniformly at random without
+replacement.
+
+Approximate the probability that the sample contains at least \(18\) light
+bulbs of each type.
+
+Clearly explain and justify every approximation that you use.
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X=\text{the number of Type I bulbs in the sample}.
+\]
+
+Because the sample is selected without replacement, the exact distribution is
+\[
+X\sim\operatorname{Hypergeo}(5000,2500,40).
+\]
+
+The sampling fraction is
+\[
+\frac{40}{5000}=0.008.
+\]
+
+Since the sample size is very small relative to the population size, sampling
+without replacement is approximately equivalent to sampling with replacement.
+Therefore,
+\[
+X
+\approx
+\operatorname{Bin}\left(40,\frac{2500}{5000}\right)
+=
+\operatorname{Bin}\left(40,\frac12\right).
+\]
+
+For this Binomial distribution,
+\[
+np=40\left(\frac12\right)=20
+\]
+and
+\[
+n(1-p)=40\left(\frac12\right)=20.
+\]
+
+Since both quantities are greater than \(10\), the Normal approximation is
+appropriate.
+
+The mean and variance are
+\[
+\mu=np=20
+\]
+and
+\[
+\sigma^2=np(1-p)
+=
+40\left(\frac12\right)\left(\frac12\right)
+=
+10.
+\]
+
+Thus, we further approximate \(X\) by
+\[
+Y\sim N(20,10).
+\]
+
+If there are \(X\) Type I bulbs, then there are
+\[
+40-X
+\]
+Type II bulbs.
+
+The sample contains at least \(18\) bulbs of each type when
+\[
+X\geq18
+\]
+and
+\[
+40-X\geq18.
+\]
+
+The second inequality is equivalent to
+\[
+X\leq22.
+\]
+
+Therefore, the desired event is
+\[
+18\leq X\leq22.
+\]
+
+Using the continuity correction,
+\[
+\mathbb{P}(18\leq X\leq22)
+\approx
+\mathbb{P}(17.5<Y<22.5).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(17.5<Y<22.5)
+&=
+\mathbb{P}\left(
+\frac{17.5-20}{\sqrt{10}}
+<
+Z
+<
+\frac{22.5-20}{\sqrt{10}}
+\right)\\
+&=
+\mathbb{P}(-0.791<Z<0.791).
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\mathbb{P}(18\leq X\leq22)
+&\approx
+\Phi(0.791)-\Phi(-0.791)\\
+&=
+2\Phi(0.791)-1\\
+&\approx
+2(0.785)-1\\
+&=
+ {0.570}.
+\end{aligned}
+\]
+
+Thus, the approximate probability that the sample contains at least \(18\)
+bulbs of each type is \(0.570\).
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DIRECT NORMAL-DISTRIBUTION PROBLEMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+
+Suppose that the lifetimes of light bulbs produced by a company are Normally
+distributed with mean \(1000\) hours and standard deviation \(100\) hours.
+
+The company claims that \(95\%\) of its light bulbs last at least \(900\)
+hours.
+
+Is the company's claim correct? Justify your answer mathematically.
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X=\text{the lifetime of a randomly selected light bulb}.
+\]
+
+Then
+\[
+X\sim N(1000,100^2).
+\]
+
+The proportion of bulbs that last at least \(900\) hours is
+\[
+\mathbb{P}(X\geq900).
+\]
+
+Standardizing,
+\[
+\begin{aligned}
+\mathbb{P}(X\geq900)
+&=
+\mathbb{P}\left(
+Z\geq\frac{900-1000}{100}
+\right)\\
+&=
+\mathbb{P}(Z\geq-1).
+\end{aligned}
+\]
+
+By symmetry of the standard Normal distribution,
+\[
+\mathbb{P}(Z\geq-1)
+=
+\mathbb{P}(Z\leq1)
+=
+\Phi(1).
+\]
+
+Using the standard Normal table,
+\[
+\Phi(1)\approx0.8413.
+\]
+
+Therefore,
+\[
+\mathbb{P}(X\geq900)\approx0.8413.
+\]
+
+Thus, approximately \(84.13\%\), rather than \(95\%\), of the bulbs last at
+least \(900\) hours. Since
+\[
+0.8413<0.95,
+\]
+the company's claim is incorrect.
+
+\[
+ {\text{No, the company's claim is not correct.}}
+\]
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\begin{problem}
+
+The lifetime of a bulb produced by the first company is Normally distributed
+with mean \(1000\) hours and standard deviation \(100\) hours.
+
+The lifetime of a bulb produced by the second company is Normally distributed
+with mean \(900\) hours and standard deviation \(150\) hours.
+
+Howard buys one bulb from each company. Assuming that the two bulb lifetimes
+are independent, what is the probability that at least one of the bulbs lasts
+\(980\) hours or more?
+
+\end{problem}
+
+\begin{solution}
+
+Let
+\[
+X=\text{the lifetime of the bulb from the first company}
+\]
+and
+\[
+Y=\text{the lifetime of the bulb from the second company}.
+\]
+
+Then
+\[
+X\sim N(1000,100^2)
+\]
+and
+\[
+Y\sim N(900,150^2).
+\]
+
+We want
+\[
+\mathbb{P}(X\geq980\text{ or }Y\geq980).
+\]
+
+It is easier to use the complementary event:
+\[
+\mathbb{P}(X\geq980\text{ or }Y\geq980)
+=
+1-\mathbb{P}(X<980,\ Y<980).
+\]
+
+Because \(X\) and \(Y\) are independent,
+\[
+\mathbb{P}(X<980,\ Y<980)
+=
+\mathbb{P}(X<980)\mathbb{P}(Y<980).
+\]
+
+For the first bulb,
+\[
+\begin{aligned}
+\mathbb{P}(X<980)
+&=
+\mathbb{P}\left(
+Z<
+\frac{980-1000}{100}
+\right)\\
+&=
+\mathbb{P}(Z<-0.20)\\
+&=
+\Phi(-0.20)\\
+&\approx0.4207.
+\end{aligned}
+\]
+
+For the second bulb,
+\[
+\begin{aligned}
+\mathbb{P}(Y<980)
+&=
+\mathbb{P}\left(
+Z<
+\frac{980-900}{150}
+\right)\\
+&=
+\mathbb{P}(Z<0.533)\\
+&=
+\Phi(0.533)\\
+&\approx0.7031.
+\end{aligned}
+\]
+
+Therefore,
+\[
+\begin{aligned}
+\mathbb{P}(X<980,\ Y<980)
+&\approx
+(0.4207)(0.7031)\\
+&\approx
+0.2958.
+\end{aligned}
+\]
+
+Consequently,
+\[
+\begin{aligned}
+\mathbb{P}(X\geq980\text{ or }Y\geq980)
+&\approx
+1-0.2958\\
+&=
+ {0.7042}.
+\end{aligned}
+\]
+
+Thus, the probability that at least one of the two bulbs lasts \(980\) hours
+or more is approximately \(70.42\%\).
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+\newpage
+\section*{References}
+
+\begin{enumerate}
+    \item Sheldon Ross,
+    \textit{A First Course in Probability},
+    10th ed.,
+    Pearson, 2019.
+
+    \item Saeed Ghahramani,
+    \textit{Fundamentals of Probability with Stochastic Processes},
+    4th ed.,
+    Pearson, 2018.
+
+
+        \item Arman Jahangiri,
+    \textit{MATH 394: Probability I --- Lecture Notes},
+    Department of Mathematics,
+    University of Washington,
+    Summer 2026.
+
+    \item Arman Jahangiri,
+    \textit{MATH 394: Probability I --- Homework Problems and Solutions},
+    Department of Mathematics,
+    University of Washington,
+    Summer 2026.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

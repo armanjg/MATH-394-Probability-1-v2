@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Normal Approximation to the Binomial</title>
+<style>
+:root{--purple:#4B2E83;--gold:#B7A57A;--soft:#F4F1FA;--bg:#f7f7f4;--text:#222;--border:#d8d8d8;--blue:#2d5fb3;--red:#b22222}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,"Times New Roman",serif;background:var(--bg);color:var(--text)}
+header{background:var(--purple);color:#fff;padding:1.4rem;text-align:center}header h1{margin:0;font-size:clamp(1.5rem,3vw,2.3rem)}header p{margin:.4rem 0 0}
+main{width:min(1450px,96%);margin:1.2rem auto}.grid{display:grid;grid-template-columns:320px 1fr;gap:1rem;align-items:start}
+.panel{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+h2{color:var(--purple);font-size:1.2rem;margin:.2rem 0 .7rem}label{display:block;font-weight:bold;margin:.8rem 0 .2rem}
+input[type=range]{width:100%}.vals{display:flex;justify-content:space-between;color:#666;font-size:.9rem}
+button{width:100%;padding:.72rem;margin-top:.55rem;border-radius:7px;border:0;font-family:inherit;font-weight:bold;cursor:pointer}
+.primary{background:var(--purple);color:#fff}.secondary{background:var(--soft);color:var(--purple);border:1px solid #cfc3e6}
+.formulas{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}.formula{background:var(--soft);border-left:5px solid var(--purple);padding:.8rem 1rem;border-radius:7px}
+.formula strong{color:var(--purple)}.formula div{margin-top:.4rem;font-size:1.05rem}
+.chart-wrap{height:470px;border:1px solid var(--border);border-radius:8px;overflow:hidden}canvas{width:100%;height:100%;display:block}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;margin:.7rem 0}.legend span:before{content:"";display:inline-block;width:18px;height:4px;margin-right:.35rem;vertical-align:middle;background:var(--blue)}
+.legend .normal:before{background:var(--red)}.legend .mean:before{background:#222;height:2px}
+.status{margin-top:1rem;padding:.9rem;border:1px solid var(--border);border-radius:8px}.good{color:#236b2d;font-weight:bold}.warn{color:#9a3d00;font-weight:bold}
+table{width:100%;border-collapse:collapse;margin-top:1rem}th,td{border:1px solid var(--border);padding:.55rem;text-align:right}th:first-child,td:first-child{text-align:left}th{background:#f3f3f3}
+.prob{margin-top:1rem}.prob-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:.7rem;align-items:end}.prob input{width:100%;padding:.5rem;border:1px solid var(--border);border-radius:6px}.prob button{width:auto}
+.small{color:#666;font-size:.9rem}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.formulas{grid-template-columns:1fr}.chart-wrap{height:400px}}
+</style>
+</head>
+<body>
+<header><h1>Normal Approximation to the Binomial Distribution</h1><p>Why do we choose μ = np and σ² = np(1 − p)?</p></header>
+<main>
+<div class="grid">
+<aside class="panel">
+<h2>Binomial parameters</h2>
+<label>Number of trials, n</label><input id="n" type="range" min="10" max="300" value="100"><div class="vals"><span>10</span><b id="nv">100</b><span>300</span></div>
+<label>Success probability, p</label><input id="p" type="range" min=".02" max=".98" step=".01" value=".4"><div class="vals"><span>.02</span><b id="pv">.40</b><span>.98</span></div>
+<h2 style="margin-top:1.2rem">Chosen Normal parameters</h2>
+<label>Mean, μ</label><input id="mu" type="range" min="0" max="100" step=".5" value="40"><div class="vals"><span>0</span><b id="muv">40.0</b><span id="mumax">100</span></div>
+<label>Variance, σ²</label><input id="v" type="range" min=".1" max="100" step=".1" value="24"><div class="vals"><span>.1</span><b id="vv">24.0</b><span id="vmax">100</span></div>
+<button id="match" class="primary">Set μ = np and σ² = np(1 − p)</button>
+<button id="wrongm" class="secondary">Show a wrong mean</button>
+<button id="wrongv" class="secondary">Show a wrong variance</button>
+<p class="small">Changing μ shifts the Normal curve. Changing σ² changes its spread.</p>
+</aside>
+
+<section class="panel">
+<div class="formulas">
+<div class="formula"><strong>Binomial distribution</strong><div id="bf"></div><div id="bm"></div></div>
+<div class="formula"><strong>Chosen Normal distribution</strong><div id="nf"></div><div id="nm"></div></div>
+</div>
+<div class="chart-wrap"><canvas id="chart"></canvas></div>
+<div class="legend"><span>Binomial PMF</span><span class="normal">Normal interval probabilities</span><span class="mean">Binomial mean np</span></div>
+<div id="status" class="status"></div>
+<table><thead><tr><th>Quantity</th><th>Binomial</th><th>Chosen Normal</th><th>Difference</th></tr></thead><tbody id="tbl"></tbody></table>
+
+<div class="panel prob">
+<h2>Continuity correction</h2>
+<div class="prob-grid">
+<div><label>Lower integer a</label><input id="a" type="number" value="35" min="0"></div>
+<div><label>Upper integer b</label><input id="b" type="number" value="45" min="0"></div>
+<button id="calc" class="primary">Compute</button>
+</div>
+<div id="result" class="status"></div>
+</div>
+</section>
+</div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id), E={n:$("n"),p:$("p"),mu:$("mu"),v:$("v"),c:$("chart")};
+function lf(k){let s=0;for(let i=2;i<=k;i++)s+=Math.log(i);return s}
+function bpmf(k,n,p){if(k<0||k>n)return 0;return Math.exp(lf(n)-lf(k)-lf(n-k)+k*Math.log(p)+(n-k)*Math.log(1-p))}
+function erf(x){let s=x>=0?1:-1;x=Math.abs(x);let a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911,t=1/(1+p*x);return s*(1-(((((a5*t+a4)*t+a3)*t+a2)*t+a1)*t)*Math.exp(-x*x))}
+function ncdf(x,m,sd){return .5*(1+erf((x-m)/(sd*Math.SQRT2)))}
+function pars(){let n=+E.n.value,p=+E.p.value,mu=+E.mu.value,v=+E.v.value;return{n,p,mu,v,bm:n*p,bv:n*p*(1-p),bsd:Math.sqrt(n*p*(1-p)),sd:Math.sqrt(v)}}
+function nprob(k,m,sd){return ncdf(k+.5,m,sd)-ncdf(k-.5,m,sd)}
+function ranges(){let n=+E.n.value;E.mu.max=n;$("mumax").textContent=n;let vm=Math.max(10,n/2);E.v.max=vm;$("vmax").textContent=vm.toFixed(0);$("a").max=n;$("b").max=n}
+function text(){
+ let q=pars();$("nv").textContent=q.n;$("pv").textContent=q.p.toFixed(2);$("muv").textContent=q.mu.toFixed(1);$("vv").textContent=q.v.toFixed(1);
+ $("bf").textContent=`X ~ Bin(${q.n}, ${q.p.toFixed(2)})`;$("bm").textContent=`E(X) = np = ${q.bm.toFixed(2)}, Var(X) = np(1 − p) = ${q.bv.toFixed(2)}`;
+ $("nf").textContent=`Y ~ N(${q.mu.toFixed(2)}, ${q.v.toFixed(2)})`;$("nm").textContent=`E(Y) = ${q.mu.toFixed(2)}, Var(Y) = ${q.v.toFixed(2)}`;
+ $("tbl").innerHTML=`<tr><td>Mean</td><td>${q.bm.toFixed(3)}</td><td>${q.mu.toFixed(3)}</td><td>${(q.mu-q.bm).toFixed(3)}</td></tr><tr><td>Variance</td><td>${q.bv.toFixed(3)}</td><td>${q.v.toFixed(3)}</td><td>${(q.v-q.bv).toFixed(3)}</td></tr><tr><td>Standard deviation</td><td>${q.bsd.toFixed(3)}</td><td>${q.sd.toFixed(3)}</td><td>${(q.sd-q.bsd).toFixed(3)}</td></tr>`;
+ let mo=Math.abs(q.mu-q.bm)<Math.max(.25,.02*q.bsd),vo=Math.abs(q.v-q.bv)<Math.max(.25,.02*q.bv),shape=q.n*q.p>=10&&q.n*(1-q.p)>=10,msg="";
+ if(mo&&vo)msg='<span class="good">The Normal distribution matches both the center and spread of the Binomial distribution.</span>';
+ else if(!mo&&vo)msg='<span class="warn">The spreads match, but the centers do not. Set μ = np.</span>';
+ else if(mo&&!vo)msg='<span class="warn">The centers match, but the spreads do not. Set σ² = np(1 − p).</span>';
+ else msg='<span class="warn">Neither the center nor the spread matches.</span>';
+ msg+='<br><br>'+(shape?`<span class="good">Also, np = ${(q.n*q.p).toFixed(2)} and n(1 − p) = ${(q.n*(1-q.p)).toFixed(2)}, so the approximation is usually reasonable.</span>`:'<span class="warn">The Binomial may still be too skewed because np or n(1 − p) is below 10.</span>');
+ $("status").innerHTML=msg;
+}
+function draw(){
+ let q=pars(),cv=E.c,r=cv.getBoundingClientRect(),d=devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;let x=cv.getContext("2d");x.scale(d,d);
+ let W=r.width,H=r.height,m={l:60,r:20,t:25,b:50},pw=W-m.l-m.r,ph=H-m.t-m.b;
+ let lo=Math.max(0,Math.floor(Math.min(q.bm-4.5*q.bsd,q.mu-4.5*q.sd))),hi=Math.min(q.n,Math.ceil(Math.max(q.bm+4.5*q.bsd,q.mu+4.5*q.sd)));if(hi-lo<10)hi=Math.min(q.n,lo+10);
+ let data=[],ym=0;for(let k=lo;k<=hi;k++){let b=bpmf(k,q.n,q.p),z=nprob(k,q.mu,q.sd);data.push({k,b,z});ym=Math.max(ym,b,z)}ym*=1.15;
+ let X=z=>m.l+(z-lo)/(hi-lo)*pw,Y=z=>m.t+ph-z/ym*ph;x.clearRect(0,0,W,H);x.strokeStyle="#aaa";x.beginPath();x.moveTo(m.l,m.t);x.lineTo(m.l,m.t+ph);x.lineTo(m.l+pw,m.t+ph);x.stroke();
+ x.font="12px Georgia";for(let i=0;i<=5;i++){let val=ym*i/5,yy=Y(val);x.strokeStyle="#eee";x.beginPath();x.moveTo(m.l,yy);x.lineTo(m.l+pw,yy);x.stroke();x.fillStyle="#444";x.textAlign="right";x.fillText(val.toFixed(3),m.l-7,yy+4)}
+ let st=Math.max(1,Math.round((hi-lo)/8));for(let k=lo;k<=hi;k+=st){let xx=X(k);x.fillStyle="#444";x.textAlign="center";x.fillText(k,xx,m.t+ph+20)}
+ let bw=Math.max(1,pw/(hi-lo+1)*.72);x.fillStyle="rgba(45,95,179,.55)";data.forEach(o=>{let xx=X(o.k),yy=Y(o.b);x.fillRect(xx-bw/2,yy,bw,m.t+ph-yy)});
+ x.strokeStyle="#b22222";x.lineWidth=2.5;x.beginPath();data.forEach((o,i)=>{let xx=X(o.k),yy=Y(o.z);i?x.lineTo(xx,yy):x.moveTo(xx,yy)});x.stroke();
+ let mx=X(q.bm);x.strokeStyle="#222";x.setLineDash([6,5]);x.beginPath();x.moveTo(mx,m.t);x.lineTo(mx,m.t+ph);x.stroke();x.setLineDash([]);
+ x.fillStyle="#222";x.textAlign="center";x.font="14px Georgia";x.fillText("Number of successes, k",m.l+pw/2,H-12);
+}
+function calc(){let q=pars(),a=Math.round(+$("a").value),b=Math.round(+$("b").value);if(a>b)[a,b]=[b,a];a=Math.max(0,Math.min(q.n,a));b=Math.max(0,Math.min(q.n,b));let ex=0;for(let k=a;k<=b;k++)ex+=bpmf(k,q.n,q.p);let nc=ncdf(b+.5,q.mu,q.sd)-ncdf(a-.5,q.mu,q.sd),nn=ncdf(b,q.mu,q.sd)-ncdf(a,q.mu,q.sd);$("result").innerHTML=`<strong>P(${a} ≤ X ≤ ${b})</strong><br><br>Exact Binomial: <strong>${ex.toFixed(5)}</strong><br>Normal without correction: <strong>${nn.toFixed(5)}</strong><br>Normal with continuity correction P(${(a-.5).toFixed(1)} &lt; Y &lt; ${(b+.5).toFixed(1)}): <strong>${nc.toFixed(5)}</strong>`}
+function update(){ranges();text();draw();calc()}
+[E.n,E.p,E.mu,E.v].forEach(e=>e.addEventListener("input",update));
+$("match").onclick=()=>{let n=+E.n.value,p=+E.p.value;E.mu.value=n*p;E.v.value=n*p*(1-p);update()};
+$("wrongm").onclick=()=>{let n=+E.n.value,p=+E.p.value,v=n*p*(1-p);E.mu.value=Math.min(n,n*p+2*Math.sqrt(v));E.v.value=v;update()};
+$("wrongv").onclick=()=>{let n=+E.n.value,p=+E.p.value,v=n*p*(1-p);E.mu.value=n*p;E.v.value=Math.min(+E.v.max,3*v);update()};
+$("calc").onclick=calc;window.addEventListener("resize",draw);update();
+</script>
+</body>
+</html>

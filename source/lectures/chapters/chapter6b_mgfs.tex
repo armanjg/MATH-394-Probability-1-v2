@@ -1,0 +1,1029 @@
+\setcounter{framenumber}{0}
+%25
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item define the moment generating function (MGF);
+    \item compute MGFs of common distributions;
+    \item extract moments from MGFs;
+    \item understand how MGFs determine distributions;
+    \item compute distributions of sums using MGFs;
+    \item derive moments of Exponential and Normal distributions using MGFs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definition of the MGF}
+\begin{keybox}{Definition}
+The moment generating function (MGF) of $X$ is
+\[
+{
+M_X(t)=\mathbb{E}(e^{tX})
+}
+\]
+provided the expectation is finite in some open interval around $0$.
+
+\vspace{0.2cm}
+
+Equivalently,
+
+\[
+M_X(t)
+=
+\begin{cases}
+\displaystyle
+\sum_x e^{tx} p_X(x),
+& \text{if $X$ is discrete},\\[3ex]
+
+\displaystyle
+\int_{-\infty}^{\infty} e^{tx} f_X(x)\,dx,
+& \text{if $X$ is continuous}.
+\end{cases}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Quick check}
+Every valid MGF satisfies
+\[
+M_X(0)=1.
+\]
+\end{keybox}
+\end{frame}
+
+
+
+
+
+
+% Convention: q=1-p.
+% Geom(p): number of failures before the first success, so k=0,1,2,\dots
+% NegBin(r,p): number of failures before the r-th success.
+
+\begin{frame}{MGFs: Discrete Distributions I}
+\small
+\[
+M_X(t)=\mathbb{E}(e^{tX})=\sum_x e^{tx}p_X(x).
+\]
+
+\begin{keybox}{Bernoulli}
+If \(X\sim\operatorname{Bern}(p)\), then
+\[
+M_X(t)=e^{t\cdot 1}p+e^{t\cdot 0}(1-p)=pe^t+q.
+\]
+\end{keybox}
+
+\begin{keybox}{Discrete Uniform}
+If \(X\sim\operatorname{DUnif}\{1,\dots,m\}\), then
+\[
+M_X(t)=\frac1m\sum_{k=1}^m e^{tk}
+=\frac1m\left(e^t+e^{2t}+\cdots+e^{mt}\right)
+=\frac{e^t(e^{mt}-1)}{m(e^t-1)}.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{MGFs: Discrete Distributions II}
+
+\small
+
+\begin{keybox}{Binomial}
+If \(X\sim\operatorname{Bin}(n,p)\), then
+\[
+M_X(t)=\sum_{k=0}^n e^{tk}\binom{n}{k}p^kq^{n-k}
+=\sum_{k=0}^n \binom{n}{k}(pe^t)^kq^{n-k}
+=(q+pe^t)^n.
+\]
+\end{keybox}
+
+\begin{keybox}{Poisson}
+If \(X\sim\operatorname{Pois}(\lambda)\), then
+\[
+M_X(t)=\sum_{k=0}^{\infty} e^{tk}e^{-\lambda}\frac{\lambda^k}{k!}
+=e^{-\lambda}\sum_{k=0}^{\infty}\frac{(\lambda e^t)^k}{k!}
+=e^{-\lambda}e^{\lambda e^t}
+=e^{\lambda(e^t-1)}.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+\begin{frame}{MGFs: Discrete Distributions III}
+
+\small
+
+\begin{keybox}{Geometric}
+If \(X\sim\operatorname{Geom}(p)\), where \(X\) counts failures before the first success, then
+\[
+M_X(t)=\sum_{k=0}^{\infty} e^{tk}q^kp
+=p\sum_{k=0}^{\infty}(qe^t)^k
+=\frac{p}{1-qe^t},
+\qquad qe^t<1.
+\]
+\end{keybox}
+
+\begin{keybox}{Negative Binomial}
+If \(X\sim\operatorname{NegBin}(r,p)\), where \(X\) counts failures before the \(r\)-th success, then
+\[
+M_X(t)=\sum_{k=0}^{\infty}e^{tk}\binom{k+r-1}{k}p^rq^k
+=p^r\sum_{k=0}^{\infty}\binom{k+r-1}{k}(qe^t)^k
+=\left(\frac{p}{1-qe^t}\right)^r.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+\begin{frame}{MGFs: Discrete Distributions IV}
+
+\small
+
+\begin{keybox}{Hypergeometric}
+If
+\[
+X\sim\operatorname{HGeom}(w,b,n),
+\]
+then
+\[
+\Prob(X=k)=
+\frac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}},
+\]
+where
+\[
+\max(0,n-b)\le k\le \min(w,n).
+\]
+
+Therefore,
+\[
+M_X(t)
+=
+\sum_{k=\max(0,n-b)}^{\min(w,n)}
+e^{tk}
+\frac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}}.
+\]
+\end{keybox}
+
+\textbf{Note}: Unlike Binomial or Poisson, this MGF usually does not simplify to a nice elementary closed form.
+
+\end{frame}
+
+
+
+
+\begin{frame}{MGFs: Continuous Distributions I}
+
+\small
+
+\[
+M_X(t)=\mathbb{E}(e^{tX})=\int_{-\infty}^{\infty} e^{tx}f_X(x)\,dx.
+\]
+
+\begin{keybox}{Uniform}
+If \(X\sim\operatorname{Unif}(a,b)\), then
+\[
+M_X(t)=\int_a^b e^{tx}\frac1{b-a}\,dx
+=\frac1{b-a}\left[\frac{e^{tx}}{t}\right]_a^b
+=\frac{e^{tb}-e^{ta}}{t(b-a)},
+\qquad t\ne0.
+\]
+Also, \(M_X(0)=1\).
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{MGFs: Continuous Distributions II}
+
+\small
+
+\begin{keybox}{Exponential}
+If \(X\sim\operatorname{Exp}(\lambda)\), then
+\[
+M_X(t)=\int_0^\infty e^{tx}\lambda e^{-\lambda x}\,dx
+=\lambda\int_0^\infty e^{-(\lambda-t)x}\,dx
+=\frac{\lambda}{\lambda-t},
+\qquad t<\lambda.
+\]
+\end{keybox}
+
+\begin{keybox}{Gamma}
+If \(X\sim\operatorname{Gamma}(\alpha,\lambda)\), with shape \(\alpha\) and rate \(\lambda\), then
+\[
+M_X(t)
+=
+\int_0^\infty e^{tx}
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+x^{\alpha-1}e^{-\lambda x}\,dx
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\int_0^\infty x^{\alpha-1}e^{-(\lambda-t)x}\,dx.
+\]
+Let \(u=(\lambda-t)x\). Then \(x=u/(\lambda-t)\), \(dx=du/(\lambda-t)\), and
+\[
+M_X(t)
+=
+\frac{\lambda^\alpha}{\Gamma(\alpha)}
+\frac{1}{(\lambda-t)^\alpha}
+\underbrace{
+\int_0^\infty u^{\alpha-1}e^{-u}\,du
+}_{\Gamma(\alpha)}
+=
+\frac{\lambda^\alpha}{(\lambda-t)^\alpha}
+=
+\left(\frac{\lambda}{\lambda-t}\right)^\alpha,
+\qquad t<\lambda.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{MGF of $N(0,1)$}
+
+\small
+
+\begin{keybox}{Standard Normal}
+Let \(Z\sim N(0,1)\). Then
+\[
+M_Z(t)=\mathbb{E}(e^{tZ})
+=\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{tz}e^{-z^2/2}\,dz.
+\]
+Complete the square:
+\[
+tz-\frac{z^2}{2}
+=
+-\frac12(z^2-2tz)
+=
+-\frac12\bigl((z-t)^2-t^2\bigr)
+=
+-\frac{(z-t)^2}{2}+\frac{t^2}{2}.
+\]
+Therefore,
+\[
+M_Z(t)
+=
+\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+e^{-(z-t)^2/2}e^{t^2/2}\,dz
+=
+e^{t^2/2}
+\frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-(z-t)^2/2}\,dz.
+\]
+Since the last integral equals \(\sqrt{2\pi}\),
+\[
+{M_Z(t)=e^{t^2/2}}.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{MGF of $N(\mu,\sigma^2)$}
+
+\small
+
+\begin{keybox}{Normal}
+Let \(X\sim N(\mu,\sigma^2)\). Write
+\[
+X=\mu+\sigma Z,
+\qquad Z\sim N(0,1).
+\]
+Then
+\[
+M_X(t)
+=
+\mathbb{E}(e^{tX})
+=
+\mathbb{E}\left(e^{t(\mu+\sigma Z)}\right)
+=
+e^{\mu t}\mathbb{E}(e^{\sigma t Z}).
+\]
+Using
+\[
+M_Z(s)=e^{s^2/2},
+\]
+with \(s=\sigma t\), we get
+\[
+M_X(t)
+=
+e^{\mu t}M_Z(\sigma t)
+=
+e^{\mu t}e^{\sigma^2t^2/2}
+=
+{e^{\mu t+\frac12\sigma^2t^2}}.
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\lecturepart{Moments from MGFs}
+\begin{frame}{MGFs Generate Moments}
+\begin{keybox}{Theorem}
+The $n^{th}$ population moment is obtained by differentiating the MGF:
+\[
+\mathbb{E}(X^n)=M_X^{(n)}(0).
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+Examples:
+\[
+\mathbb{E}(X)=M_X'(0),
+\qquad
+\mathbb{E}(X^2)=M_X''(0).
+\]
+\end{frame}
+
+
+\begin{frame}{Proof: MGFs Generate Moments}
+Recall that the moment generating function is
+\[
+M_X(t)=\mathbb{E}(e^{tX}).
+\]
+
+Differentiate once:
+\[
+M_X'(t)
+=
+\frac{d}{dt}\mathbb{E}(e^{tX})
+=
+\mathbb{E}\left(\frac{d}{dt}e^{tX}\right)
+=
+\mathbb{E}(Xe^{tX}).
+\]
+
+Now plugging in $t=0$,
+\[
+M_X'(0)
+=
+\mathbb{E}(Xe^{0})
+=
+\mathbb{E}(X).
+\]
+
+Differentiate another time noting that $X$ is a constant w.r.t. $t$.
+\[
+M_X''(t)
+=
+\frac{d}{dt}\mathbb{E}(Xe^{tX})
+=
+\mathbb{E}\left(\frac{d}{dt}Xe^{tX}\right) = \mathbb{E}(X^2 e^{tX}).
+\]
+Plugging in $t=0$,
+\[
+M_X''(0)
+=
+\mathbb{E}(X^2 e^0)
+=
+\mathbb{E}(X^2).
+\]
+
+Similarly, differentiating $n$ times gives
+\[
+M_X^{(n)}(t)=\mathbb{E}(X^n e^{tX}).
+\]
+
+Therefore, at $t=0$,
+\[
+M_X^{(n)}(0)
+=
+\mathbb{E}(X^n e^0)
+=
+\mathbb{E}(X^n).
+\]
+\end{frame}
+
+
+
+%------------------------------------------------
+\begin{frame}{Taylor Expansion Around a Point}
+
+Let \(f\) be infinitely differentiable in a neighborhood of \(a\).
+Its \(n\)th-order Taylor polynomial around \(a\) is
+\[
+T_n(x)
+=
+\sum_{k=0}^{n}
+\frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]
+
+Taylor's theorem gives
+\[
+f(x)
+=
+\sum_{k=0}^{n}
+\frac{f^{(k)}(a)}{k!}(x-a)^k
++
+R_n(x),
+\]
+where, under the usual differentiability assumptions, the remainder can
+be written as
+\[
+R_n(x)
+=
+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}
+\]
+for some \(\xi\) between \(a\) and \(x\).
+
+\begin{keybox}{Infinite Taylor Series}
+If $R_n(x)\longrightarrow 0
+\qquad\text{as }n\to\infty,$ then
+\[
+f(x)
+=
+\sum_{k=0}^{\infty}
+\frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]
+\end{keybox}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Taylor Expansion of the Exponential Function}
+
+For
+\[
+f(u)=e^u,
+\]
+we have
+\[
+f^{(k)}(u)=e^u
+\qquad\text{for every }k\geq 0.
+\]
+
+Expanding around \(a=0\),
+\[
+f^{(k)}(0)=1,
+\]
+so
+\[
+e^u
+=
+\sum_{k=0}^{\infty}\frac{u^k}{k!}
+=
+1+u+\frac{u^2}{2!}+\frac{u^3}{3!}+\cdots.
+\]
+
+The exponential function is analytic on all of \(\mathbb{R}\), so this
+series converges to \(e^u\) for every \(u\in\mathbb{R}\).
+
+Now substitute
+\[
+u=tX.
+\]
+For every fixed realization of \(X\),
+\[
+e^{tX}
+=
+\sum_{k=0}^{\infty}\frac{(tX)^k}{k!}
+=
+1+tX+\frac{t^2X^2}{2!}
++\frac{t^3X^3}{3!}+\cdots.
+\]
+
+Thus, the identity holds \textbf{pointwise} for every value of \(X\).
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Taking Expectations: Why Is It Valid?}
+
+The moment-generating function of \(X\) is
+\[
+M_X(t)=\mathbb{E}\!\left(e^{tX}\right),
+\]
+provided this expectation is finite.
+
+Using the Taylor expansion,
+\[
+M_X(t)
+=
+\mathbb{E}\left[
+\sum_{k=0}^{\infty}\frac{t^kX^k}{k!}
+\right].
+\]
+
+To write
+\[
+\mathbb{E}\left[
+\sum_{k=0}^{\infty}\frac{t^kX^k}{k!}
+\right]
+=
+\sum_{k=0}^{\infty}
+\frac{t^k}{k!}\mathbb{E}(X^k),
+\]
+we must justify interchanging the expectation and the infinite sum.
+
+A sufficient condition is that, for some \(r>|t|\),
+\[
+\mathbb{E}\!\left(e^{r|X|}\right)<\infty.
+\]
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Moments as Taylor Coefficients of the MGF}
+ 
+
+Therefore,
+\[
+\boxed{
+M_X(t)
+=
+\sum_{k=0}^{\infty}
+\frac{\mathbb{E}(X^k)}{k!}t^k
+}
+\]
+whenever the required interchange is valid.
+
+Equivalently,
+\[
+M_X(t)
+=
+1
++t\mathbb{E}(X)
++\frac{t^2}{2!}\mathbb{E}(X^2)
++\frac{t^3}{3!}\mathbb{E}(X^3)
++\cdots.
+\]
+
+Comparing this with the Taylor expansion
+\[
+M_X(t)
+=
+\sum_{k=0}^{\infty}
+\frac{M_X^{(k)}(0)}{k!}t^k,
+\]
+we obtain
+\[
+\boxed{
+M_X^{(k)}(0)=\mathbb{E}(X^k)
+}
+\]
+whenever \(M_X\) exists in an open neighborhood of \(0\).
+
+\begin{keybox}{Main Idea}
+The \(k\)th raw moment of \(X\) is the \(k\)th derivative of its MGF
+evaluated at \(t=0\).
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Example: Bernoulli Moments}
+For
+\[
+M_X(t)=pe^t+q,
+\]
+we compute:
+\[
+M_X'(t)=pe^t.
+\]
+
+Thus:
+\[
+M_X'(0)=p.
+\]
+
+So
+\[
+{
+\mathbb{E}(X)=p.
+}
+\]
+\end{frame}
+\begin{frame}{MGF Uniqueness Theorem}
+
+\begin{keybox}{Theorem (Uniqueness of MGF)}
+Let $X$ and $Y$ be random variables. Suppose there exists some $h>0$ such that
+\[
+M_X(t)=\mathbb{E}(e^{tX})<\infty,
+\qquad
+M_Y(t)=\mathbb{E}(e^{tY})<\infty
+\]
+for every $t\in(-h,h)$.
+
+If
+\[
+M_X(t)=M_Y(t)
+\qquad \text{for all } t\in(-h,h),
+\]
+then
+\[
+X\overset{d}{=}Y,
+\]
+that is, $X$ and $Y$ have the same distribution.
+\end{keybox}
+
+\vspace{0.2cm}
+
+\textbf{Why is this useful?} If we want to determine the distribution of a random variable $X$:
+
+\[
+\boxed{
+\text{Find }M_X(t)
+\;\longrightarrow\;
+\text{recognize it as the MGF of a known distribution}
+\;\longrightarrow\;
+\text{identify the distribution of }X.
+}
+\]
+\end{frame}
+
+
+\begin{frame}{Using the MGF Uniqueness Theorem}
+
+Suppose we compute the MGF of a random variable $X$ and obtain
+\[
+M_X(t)
+=
+\exp\left(\mu t+\frac{\sigma^2t^2}{2}\right),
+\qquad t\in(-h,h)
+\]
+for some $h>0$.
+
+\vspace{0.2cm}
+
+We recognize this as the MGF of a normal random variable:
+\[
+Y\sim\mathcal N(\mu,\sigma^2)
+\qquad\Longrightarrow\qquad
+M_Y(t)
+=
+\exp\left(\mu t+\frac{\sigma^2t^2}{2}\right).
+\]
+
+Therefore,
+\[
+M_X(t)=M_Y(t)
+\qquad\text{for all }t\in(-h,h).
+\] a 
+
+By the \textbf{MGF Uniqueness Theorem},
+\[
+\boxed{X\overset{d}{=}Y}
+\qquad\Longrightarrow\qquad
+\boxed{X\sim\mathcal N(\mu,\sigma^2).}
+\]
+
+\vspace{0.3cm}
+
+\begin{keybox}{Key Idea}
+If the MGF of an unknown random variable matches the MGF of a known
+distribution on an interval containing $0$, then the random variable
+must have that distribution.
+\end{keybox}
+
+\end{frame}
+
+
+
+\lecturepart{MGFs of Sums}
+
+\begin{frame}{MGF of a Sum}
+\begin{keybox}{Theorem}
+If $X$ and $Y$ are independent, then
+\[
+{
+M_{X+Y}(t)
+=
+M_X(t)\times M_Y(t).
+}
+\]
+More generally, if $X_1,\dots, X_n$ are independent, then
+$$
+M_{\sum_{i=1}^n X_i}(t)
+=
+\prod_{i=1}^nM_{X_i}(t)
+$$
+\end{keybox}
+
+This is one of the main reasons MGFs are useful. Since using the MGF Uniqueness theorem, the MGF characterize the distribution in full.
+\end{frame}
+
+\begin{frame}{Binomial MGF}
+A Binomial random variable can be written as:
+\[
+X=I_1+\cdots+I_n,
+\]
+where the $I_j$ are independent Bernoulli$(p)$ random variables.
+
+\vspace{0.25cm}
+
+Since each Bernoulli MGF is
+\[
+pe^t+q,
+\]
+we get
+\[
+{
+M_X(t)
+=
+(pe^t+q)^n.
+}
+\]
+\end{frame}
+
+\begin{frame}{Negative Binomial MGF}
+If
+\[
+X\sim \operatorname{NBin}(r,p),
+\]
+then
+\[
+X
+=
+G_1+\cdots+G_r,
+\]
+where the $G_j$ are independent Geometric$(p)$ random variables.
+
+\vspace{0.25cm}
+
+Thus,
+\[
+{
+M_X(t)
+=
+\left(
+\frac{p}{1-qe^t}
+\right)^r.
+}
+\]
+\end{frame}
+
+
+
+\lecturepart{Sums via MGFs}
+
+\begin{frame}{Sum of Independent Poissons}
+If
+\[
+X\sim \operatorname{Pois}(\lambda),
+\qquad
+Y\sim \operatorname{Pois}(\mu),
+\]
+independently, then
+\[
+M_X(t)=e^{\lambda(e^t-1)},
+\]
+and
+\[
+M_Y(t)=e^{\mu(e^t-1)}.
+\]
+
+Therefore,
+\[
+M_{X+Y}(t)
+=
+e^{(\lambda+\mu)(e^t-1)}.
+\]
+
+Hence:
+\[
+{
+X+Y\sim \operatorname{Pois}(\lambda+\mu).
+}
+\]
+
+\textbf{Remark}: This can be generalized to $n$ independent Poisson r.v.s using induction.
+\end{frame}
+
+\begin{frame}{Sum of Independent Normals}
+If
+\[
+X_1\sim N(\mu_1,\sigma_1^2),
+\qquad
+X_2\sim N(\mu_2,\sigma_2^2),
+\]
+independently, then
+\[
+M_{X_1+X_2}(t)
+=
+e^{(\mu_1+\mu_2)t
++\frac12(\sigma_1^2+\sigma_2^2)t^2}.
+\]
+
+Thus,
+\[
+{
+X_1+X_2
+\sim
+N(\mu_1+\mu_2,\sigma_1^2+\sigma_2^2).
+}
+\]
+
+
+\textbf{Remark}: This can be generalized to $n$ independent Normal r.v.s using induction.
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Distributions Closed Under Addition \textbf{Under Independence}}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.45}
+\begin{tabular}{lll}
+\toprule
+\textbf{Distribution} & \textbf{Assumption} & \textbf{Sum Distribution} \\
+\midrule
+
+Bernoulli &
+$X_i\sim \operatorname{Bern}(p)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim \operatorname{Bin}(n,p)$
+\\
+
+Binomial &
+$X_i\sim \operatorname{Bin}(n_i,p)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+\operatorname{Bin}\!\left(\sum n_i,p\right)$
+\\
+
+Poisson &
+$X_i\sim \operatorname{Pois}(\lambda_i)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+\operatorname{Pois}\!\left(\sum \lambda_i\right)$
+\\
+
+Negative Binomial &
+$X_i\sim \operatorname{NegBin}(r_i,p)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+\operatorname{NegBin}\!\left(\sum r_i,p\right)$
+\\
+
+Geometric &
+$X_i\sim \operatorname{Geom}(p)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+\operatorname{NegBin}(n,p)$
+\\
+
+Normal &
+$X_i\sim N(\mu_i,\sigma_i^2)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+N\!\left(\sum \mu_i,\sum \sigma_i^2\right)$
+\\
+
+Gamma &
+$X_i\sim \operatorname{Gamma}(\alpha_i,\lambda)$ &
+$\displaystyle \sum_{i=1}^n X_i
+\sim
+\operatorname{Gamma}\!\left(\sum \alpha_i,\lambda\right)$
+\\
+
+Exponential &
+$X_i\sim \operatorname{Exp}(\lambda)$ &
+$\displaystyle \sum_{i=1}^nX_i
+\sim
+\operatorname{Gamma}(n,\lambda)$
+\\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.2cm}
+
+\small
+All random variables above are assumed independent.
+Some families additionally require a common parameter.
+
+\end{frame}
+
+
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item MGFs encode moments through derivatives.
+
+    \item MGFs determine distributions.
+
+    \item Independent sums correspond to products of MGFs.
+
+    \item MGFs simplify moment calculations dramatically.
+
+    \item The Normal and Exponential MGFs are especially important.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Next lecture}
+Joint distributions.
+\end{keybox}
+\end{frame}

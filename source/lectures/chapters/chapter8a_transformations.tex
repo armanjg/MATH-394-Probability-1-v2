@@ -1,0 +1,1040 @@
+\setcounter{framenumber}{0}
+%27
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item compute distributions of transformed random variables;
+    \item apply the change-of-variables formula;
+    \item define convolutions;
+    \item compute distributions of sums of independent random variables;
+\end{itemize}
+\end{frame}
+
+\lecturepart{Transformations of Random Variables}
+
+\begin{frame}{Why Transform Random Variables?}
+Transformations appear everywhere in probability and statistics.
+
+\vspace{0.25cm}
+
+Examples:
+\begin{itemize}
+    \item unit conversion;
+    \item standardization;
+    \item logarithms;
+    \item sums and averages;
+    \item squares and absolute values;
+    \item maxima and minima.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main question}
+If
+\[
+Y=g(X),
+\]
+what is the distribution of $Y$?
+\end{keybox}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Transformations in the Discrete Case}
+
+If $X$ is discrete and
+\[
+Y=g(X),
+\]
+then, for every possible value $y$ of $Y$,
+\[
+{
+\Prob(Y=y)
+=
+\Prob\!\left(X\in g^{-1}(\{y\})\right)
+=
+\sum_{x:\,g(x)=y}
+\Prob(X=x).
+}
+\]
+
+In words: find all values of $x$ that are mapped to $y$ by $g$, and add their probabilities.
+
+\vspace{0.25cm}
+
+\textbf{Example.}
+Suppose
+\[
+\Prob(X=-2)=0.1,\quad
+\Prob(X=-1)=0.2,\quad
+\Prob(X=0)=0.3,\quad
+\Prob(X=1)=0.25,\quad
+\Prob(X=2)=0.15,
+\]
+and let
+\[
+Y=X^2.
+\]
+
+Then $Y\in\{0,1,4\}$, and
+\[
+\begin{aligned}
+\Prob(Y=0)
+&=\Prob(X=0)=0.30,\\
+\Prob(Y=1)
+&=\Prob(X\in\{-1,1\})
+=\Prob(X=-1)+\Prob(X=1)=0.45,\\
+\Prob(Y=4)
+&=\Prob(X\in\{-2,2\})
+=\Prob(X=-2)+\Prob(X=2)=0.25.
+\end{aligned}
+\]
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%=========================================================
+\begin{frame}{Transformations of Continuous Random Variables}
+
+\small
+
+\begin{keybox}{Change of Variables Theorem (Univariate Case)}
+Let $X$ be a continuous random variable with PDF $f_X$ and support $S_X$,
+and let
+\[
+Y=g(X),
+\]
+where $g$ is differentiable and strictly monotone on $S_X$.
+
+Then $g$ has an inverse, and the support of $Y$ is
+\[
+S_Y=g(S_X).
+\]
+
+For $y\in S_Y$,
+\[
+{
+f_Y(y)
+=
+f_X\!\left(g^{-1}(y)\right)
+\left|
+\frac{d}{dy}g^{-1}(y)
+\right|
+}
+\]
+and $f_Y(y)=0$ for $y\notin S_Y$.
+\end{keybox}
+ 
+
+\textbf{How to use it:}
+solve for $x$ in terms of $y$, find $\left|dx/dy\right|$, substitute into
+$f_X(x)$, and determine the support of $Y$.
+
+\textbf{Note:} $x=g^{-1}(y)$, so by $\frac{dx}{dy}$, we mean $\frac{d}{dy}g^{-1}(y)$. 
+
+
+\begin{keybox}{Important}
+The theorem requires $g$ to be one-to-one on the support of $X$. When it is not, we can break the support into monotone cases, or follow the same steps of the proof and adjust the step for isolating $x$ appropriately (examples below).
+ 
+\end{keybox}
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Example 1: A Monotone Transformation}
+
+\small
+
+Let
+\[
+X\sim N(0,1),
+\qquad
+Y=e^X.
+\]
+
+Since
+\[
+g(x)=e^x
+\]
+is strictly increasing on $\mathbb R$, the change-of-variables theorem applies.
+
+\textbf{Step 1: Find the support of $Y$.}
+
+Since $e^x>0$ for every $x$,
+\[
+S_Y=(0,\infty).
+\]
+
+\textbf{Step 2: Solve $y=g(x)$ for $x$.}
+\[
+y=e^x
+\quad\Longrightarrow\quad
+x=\log y.
+\]
+
+Thus
+\[
+g^{-1}(y)=\log y,
+\qquad
+\left|\frac{dx}{dy}\right|=\frac{1}{y}.
+\]
+
+\textbf{Step 3: Apply the formula.}
+
+Since
+\[
+f_X(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},
+\]
+we obtain
+\[
+{
+f_Y(y)
+=f_X\!\left(g^{-1}(y)\right)
+\left|
+\frac{d}{dy}g^{-1}(y)
+\right|=
+\frac{1}{y\sqrt{2\pi}}
+\exp\left\{-\frac{(\log y)^2}{2}\right\},
+\qquad y>0.
+}
+\]
+
+For $y\le0$, $f_Y(y)=0$.
+
+This is the \textbf{log-normal distribution}.
+
+\end{frame}
+
+%=========================================================
+\begin{frame}{Example 2: When the Transformation Is Not One-to-One}
+
+\small
+
+Let
+\[
+X\sim N(0,1),
+\qquad
+Y=X^2.
+\]
+
+Here
+\[
+g(x)=x^2
+\]
+is \textbf{not one-to-one} on $\mathbb R$:
+\[
+g(-x)=g(x).
+\]
+Therefore, we cannot define a single inverse $g^{-1}$ on all of $\mathbb R$.
+Instead, use the \textbf{CDF method}.
+
+Since $Y=X^2\ge0$, the support is
+\[
+S_Y=[0,\infty).
+\]
+
+For $y>0$,
+\begin{equation}
+F_Y(y)
+=\Prob(Y\le y)
+=\Prob(X^2\le y)
+=\Prob(-\sqrt y\le X\le\sqrt y)
+=\Phi(\sqrt y)-\Phi(-\sqrt y)
+=2\Phi(\sqrt y)-1.
+\end{equation}
+
+Differentiate:
+\begin{equation}
+f_Y(y)
+=\frac{d}{dy}\left[2\Phi(\sqrt y)-1\right]
+=2\varphi(\sqrt y)\frac{1}{2\sqrt y}
+=\frac{\varphi(\sqrt y)}{\sqrt y},
+\qquad y>0.
+\end{equation}
+
+Therefore, using
+\[
+\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-x^2/2},
+\]
+the PDF of $Y$ is
+\[
+{
+f_Y(y)
+=
+\begin{cases}
+\displaystyle
+\frac{1}{\sqrt{2\pi y}}e^{-y/2},
+& y>0,\\[6pt]
+0,
+& y\le 0.
+\end{cases}
+}
+\]
+
+\end{frame}
+
+
+
+
+%=========================================================
+\begin{frame}{Transformations of Continuous Random Vectors}
+
+\small
+
+\begin{keybox}{Change of Variables Theorem (Multivariate Case)}
+Let $\mathbf X=(X_1,\ldots,X_n)^T$ be a continuous random vector with joint PDF $f_{\mathbf X}$ and support
+$S_{\mathbf X}\subseteq\mathbb R^n$. Define $\mathbf Y=g(\mathbf X),
+$ where $g:S_{\mathbf X}\to S_{\mathbf Y}$ is one-to-one and differentiable,
+with differentiable inverse $\mathbf x=g^{-1}(\mathbf y).
+$. Then the support of $\mathbf Y$ is $S_{\mathbf Y}=g(S_{\mathbf X}),
+$ and
+\[
+{
+f_{\mathbf Y}(\mathbf y)
+=
+f_{\mathbf X}\!\left(g^{-1}(\mathbf y)\right)
+\left|
+\det\!\left(
+\frac{\partial \mathbf x}{\partial \mathbf y}
+\right)
+\right|,
+\qquad \mathbf y\in S_{\mathbf Y}.
+}
+\]
+
+Here
+\[
+\frac{\partial \mathbf x}{\partial \mathbf y}
+=
+\begin{pmatrix}
+\dfrac{\partial x_1}{\partial y_1} & \cdots &
+\dfrac{\partial x_1}{\partial y_n}\\
+\vdots & \ddots & \vdots\\
+\dfrac{\partial x_n}{\partial y_1} & \cdots &
+\dfrac{\partial x_n}{\partial y_n}
+\end{pmatrix}
+\]
+is the \textbf{Jacobian matrix}. For $\mathbf y\notin S_{\mathbf Y}$,
+$f_{\mathbf Y}(\mathbf y)=0$.
+\end{keybox}
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Example: A Transformation of Two Variables}
+
+\small
+
+Let $X_1,X_2$ be independent $\operatorname{Exp}(1)$ random variables, so
+\[
+f_{X_1,X_2}(x_1,x_2)
+=
+e^{-(x_1+x_2)},
+\qquad x_1>0,\ x_2>0.
+\]
+
+Define
+\[
+Y_1=X_1+X_2,
+\qquad
+Y_2=\frac{X_1}{X_1+X_2}.
+\]
+
+\textbf{Question: What is $f_{Y_1,Y_2(y_1,y_2)}$}?
+
+Since
+\[
+y_2=\frac{x_1}{x_1+x_2}=\frac{x_1}{y_1},
+\]
+we obtain
+\[
+{
+x_1=y_1y_2,
+\qquad
+x_2=y_1(1-y_2).
+}
+\]
+
+We now find the support:
+ 
+Since $x_1>0$ and $x_2>0$, we have $y_1y_2>0,
+\qquad
+y_1(1-y_2)>0,$ which gives
+\[
+{
+y_1>0,
+\qquad
+0<y_2<1.
+}
+\]
+We now find the Jacobian: 
+
+\[
+\frac{\partial(x_1,x_2)}{\partial(y_1,y_2)}
+=
+\begin{pmatrix}
+y_2 & y_1\\
+1-y_2 & -y_1
+\end{pmatrix},
+\]
+so
+\[
+\left|
+\det\left(
+\frac{\partial(x_1,x_2)}{\partial(y_1,y_2)}
+\right)
+\right|
+=
+|-y_1|
+=
+y_1.
+\]
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Example: Finding the Joint PDF}
+
+\small
+
+By the change of variables theorem,
+\[
+f_{Y_1,Y_2}(y_1,y_2)
+=
+f_{X_1,X_2}
+\left(
+y_1y_2,\,
+y_1(1-y_2)
+\right)
+\left|
+\frac{\partial(x_1,x_2)}
+{\partial(y_1,y_2)}
+\right|.
+\]
+
+Since
+\[
+x_1+x_2
+=
+y_1y_2+y_1(1-y_2)
+=
+y_1,
+\]
+we have
+\[
+f_{X_1,X_2}
+\left(
+y_1y_2,\,
+y_1(1-y_2)
+\right)
+=
+e^{-y_1}.
+\]
+
+Therefore,
+\[
+{
+f_{Y_1,Y_2}(y_1,y_2)
+=
+\begin{cases}
+y_1e^{-y_1},
+& y_1>0,\quad 0<y_2<1,\\[4pt]
+0,
+& \text{otherwise}.
+\end{cases}
+}
+\]
+
+Notice that
+\[
+f_{Y_1,Y_2}(y_1,y_2)
+=
+\underbrace{y_1e^{-y_1}}_{f_{Y_1}(y_1)}
+\underbrace{1}_{f_{Y_2}(y_2)}.
+\]
+
+Hence,
+\[
+{
+Y_1\sim\operatorname{Gamma}(2,1),
+\qquad
+Y_2\sim\operatorname{Unif}(0,1),
+\qquad
+Y_1\perp Y_2.
+}
+\]
+
+\end{frame}
+
+
+
+
+
+
+
+\lecturepart{Convolutions}
+
+\begin{frame}{What Is a Convolution?}
+
+A convolution is the distribution of a sum of independent random variables.
+
+If
+\[
+T=X+Y,
+\]
+and $X,Y$ are independent, we want the distribution of $T$.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Why sums matter}
+Sums appear everywhere:
+\begin{itemize}
+    \item totals;
+    \item averages;
+    \item waiting times;
+    \item counting processes.
+\end{itemize}
+\end{keybox}
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Discrete Convolution Formula}
+
+\begin{keybox}{Theorem}
+If $X$ and $Y$ are independent discrete random variables and
+\[
+T=X+Y,
+\]
+then
+\[
+{
+\Prob(T=t)
+=
+\sum_x
+\Prob(X=x)\Prob(Y=t-x).
+}
+\]
+\end{keybox}
+
+\textbf{Proof.}
+
+For a fixed value $t$, the event
+\[
+\{X+Y=t\}
+\]
+can be written as the disjoint union
+\[
+\{X+Y=t\}
+=
+\bigcup_x
+\{X=x,\;Y=t-x\}.
+\]
+
+Therefore,
+\[
+\Prob(T=t)
+=
+\sum_x
+\Prob(X=x,\;Y=t-x).
+\]
+
+Since $X$ and $Y$ are independent,
+\[
+\Prob(X=x,\;Y=t-x)
+=
+\Prob(X=x)\Prob(Y=t-x).
+\]
+
+Hence,
+\[
+{
+\Prob(T=t)
+=
+\sum_x
+\Prob(X=x)\Prob(Y=t-x).
+}
+\]
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Continuous Convolution Formula}
+
+\begin{keybox}{Theorem}
+If $X$ and $Y$ are independent continuous random variables and
+\[
+T=X+Y,
+\]
+then
+\[
+{
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+}
+\]
+\end{keybox}
+
+\end{frame}
+
+
+
+
+
+
+
+
+%=========================================================
+\begin{frame}{Proof of the Continuous Convolution Formula}
+
+\small
+
+Since
+\[
+T=X+Y,
+\]
+the CDF of $T$ is
+\[
+F_T(t)
+=
+\Prob(T\le t)
+=
+\Prob(X+Y\le t).
+\]
+
+Using the joint density,
+\[
+F_T(t)
+=
+\iint_{\{(x,y):\,x+y\le t\}}
+f_{X,Y}(x,y)\,dx\,dy.
+\]
+
+For each fixed $x$, the condition
+\[
+x+y\le t
+\]
+is equivalent to
+\[
+y\le t-x.
+\]
+
+Therefore,
+\[
+F_T(t)
+=
+\int_{-\infty}^{\infty}
+\int_{-\infty}^{\,t-x}
+f_{X,Y}(x,y)\,dy\,dx.
+\]
+
+Since $X$ and $Y$ are independent,
+\[
+f_{X,Y}(x,y)=f_X(x)f_Y(y),
+\]
+so
+\[
+F_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)
+\left[
+\int_{-\infty}^{\,t-x}
+f_Y(y)\,dy
+\right]dx.
+\]
+
+Differentiating with respect to $t$,
+\[
+{
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+}
+\]
+
+\end{frame}
+
+
+
+
+%=========================================================
+\begin{frame}{Proof of Convolution Using the Jacobian Formula}
+
+\small
+
+Let
+\[
+T=X+Y,
+\qquad
+U=X.
+\]
+
+Then the transformation is
+\[
+t=x+y,
+\qquad
+u=x.
+\]
+
+Solving for the original variables gives
+\[
+{
+x=u,
+\qquad
+y=t-u.
+}
+\]
+
+The Jacobian of the inverse transformation is
+\[
+\frac{\partial(x,y)}{\partial(t,u)}
+=
+\begin{pmatrix}
+\dfrac{\partial x}{\partial t} &
+\dfrac{\partial x}{\partial u}\\[6pt]
+\dfrac{\partial y}{\partial t} &
+\dfrac{\partial y}{\partial u}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 1\\
+1 & -1
+\end{pmatrix},
+\]
+and therefore
+\[
+\left|
+\det\left(
+\frac{\partial(x,y)}{\partial(t,u)}
+\right)
+\right|
+=1.
+\]
+
+By the change-of-variables formula,
+\[
+f_{T,U}(t,u)
+=
+f_{X,Y}(u,t-u).
+\]
+
+Since $X$ and $Y$ are independent,
+\[
+f_{X,Y}(u,t-u)
+=
+f_X(u)f_Y(t-u).
+\]
+
+Hence,
+\[
+{
+f_{T,U}(t,u)
+=
+f_X(u)f_Y(t-u).
+}
+\]
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Proof of Convolution Using the Jacobian Formula (continued)}
+
+\small
+
+We have found the joint PDF
+\[
+f_{T,U}(t,u)
+=
+f_X(u)f_Y(t-u).
+\]
+
+To obtain the marginal PDF of
+\[
+T=X+Y,
+\]
+integrate out $U$:
+\[
+\begin{aligned}
+f_T(t)
+&=
+\int_{-\infty}^{\infty}
+f_{T,U}(t,u)\,du\\
+&=
+\int_{-\infty}^{\infty}
+f_X(u)f_Y(t-u)\,du.
+\end{aligned}
+\]
+
+Therefore,
+\[
+{
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(u)f_Y(t-u)\,du.
+}
+\]
+
+Renaming the dummy variable $u$ as $x$ gives the previous convolution formula:
+\[
+{
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+}
+\]
+
+\end{frame}
+
+
+
+%=========================================================
+\begin{frame}{Example 1: Sum of Two Exponential Random Variables}
+
+\small
+
+Let
+\[
+X,Y\overset{\text{i.i.d.}}{\sim}\operatorname{Exp}(\lambda),
+\qquad
+T=X+Y.
+\]
+
+Recall that
+\[
+f_X(x)=f_Y(x)
+=
+\begin{cases}
+\lambda e^{-\lambda x}, & x>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Since $X,Y>0$, we immediately know
+\[
+T=X+Y>0.
+\]
+
+For independent continuous random variables, the convolution formula is
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+\]
+
+For the integrand to be nonzero, we need \emph{both}
+\[
+x>0
+\qquad\text{and}\qquad
+t-x>0.
+\]
+
+Thus, $0<x<t,$ which is possible only when $t>0$.
+
+Therefore, for $t>0$,
+ 
+\begin{equation}
+f_T(t)
+=
+\int_0^t
+f_X(x)f_Y(t-x)\,dx =
+\int_0^t
+\lambda e^{-\lambda x}
+\lambda e^{-\lambda(t-x)}
+\,dx =
+\lambda^2e^{-\lambda t}\int_0^t dx =
+\lambda^2te^{-\lambda t}.
+\end{equation}
+ 
+
+Hence,
+\[
+f_T(t)
+=
+\begin{cases}
+\lambda^2te^{-\lambda t}, & t>0,\\
+0, & t\le0.
+\end{cases}
+\]
+ 
+Thus, $T=X+Y\sim\operatorname{Gamma}(2,\lambda).$
+ 
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Example 2: Sum of Two Uniform Random Variables}
+
+\small
+
+Let
+\[
+X,Y\overset{\text{i.i.d.}}{\sim}\operatorname{Unif}(0,1),
+\qquad
+T=X+Y.
+\]
+
+Recall that
+\[
+f_X(x)=f_Y(x)
+=
+\begin{cases}
+1, & 0<x<1,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Since
+\[
+0<X<1,
+\qquad
+0<Y<1,
+\]
+we know
+\[
+0<T<2.
+\]
+
+The convolution formula gives
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx.
+\]
+
+The integrand is nonzero exactly when
+\[
+0<x<1
+\qquad\text{and}\qquad
+0<t-x<1.
+\]
+
+The second inequality gives
+\[
+t-1<x<t.
+\]
+
+Hence $x$ must satisfy both
+\[
+0<x<1
+\qquad\text{and}\qquad
+t-1<x<t.
+\]
+
+Therefore,
+\[
+\max(0,t-1)<x<\min(1,t).
+\]
+
+So the integration bounds depend on $t$.
+
+\end{frame}
+
+
+%=========================================================
+\begin{frame}{Example 2: Determining the PDF}
+
+\small
+
+We found that
+\[
+f_T(t)
+=
+\int_{\max(0,t-1)}^{\min(1,t)}1\,dx,
+\qquad 0<t<2.
+\]
+
+Now consider the two possible regions.
+
+\textbf{Case 1: $0<t\le1$.}
+
+Then
+\[
+\max(0,t-1)=0,
+\qquad
+\min(1,t)=t,
+\]
+so
+\[
+f_T(t)
+=
+\int_0^t 1\,dx
+=
+t.
+\]
+
+\textbf{Case 2: $1<t<2$.}
+
+Then
+\[
+\max(0,t-1)=t-1,
+\qquad
+\min(1,t)=1,
+\]
+so
+\[
+f_T(t)
+=
+\int_{t-1}^1 1\,dx
+=
+2-t.
+\]
+
+Therefore,
+\[
+f_T(t)
+=
+\begin{cases}
+t, & 0<t\le1,\\[2mm]
+2-t, & 1<t<2,\\[2mm]
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+This is a \textbf{triangular distribution}: values near $1$ can be obtained
+from more pairs $(X,Y)$ than values near $0$ or $2$.
+
+\end{frame}
+
+
+
+
+
+
+ 

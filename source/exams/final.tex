@@ -1,0 +1,671 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.62in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+\usepackage{array}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Final Examination}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{policybox}{
+    breakable,
+    colback=softgold,
+    colframe=deepgold,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm
+}
+
+\newcommand{\workspace}[1]{%
+    \vspace{0.4cm}
+    \begin{tcolorbox}[
+        height=#1,
+        colback=white,
+        colframe=uwgold,
+        boxrule=0.5pt,
+        arc=1mm,
+        title={\small\textbf{Work space}},
+        coltitle=uwpurple,
+        colbacktitle=softpurple
+    ]
+    \end{tcolorbox}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{0.05cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{0.28cm}
+
+{\LARGE \color{uwpurple}\textbf{Final Examination}}\\[0.15cm]
+{\Large \textbf{\course}}\\[0.15cm]
+{\large Summer 2026 \quad | \quad Instructor: \instructor}
+
+\vspace{0.22cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{>{\bfseries}p{0.19\textwidth}p{0.68\textwidth}}
+Date: & August 21, 2026 \\
+Answering time: & 60 minutes \\
+Total points: & 60 \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.18cm}
+
+\begin{tcolorbox}[
+    width=0.94\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\bfseries}p{0.22\textwidth}p{0.67\textwidth}}
+Name: & \hrulefill \\
+Student ID: & \hrulefill \\
+Signature: & \hrulefill \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{0.15cm}
+
+\begin{policybox}
+\small
+\textbf{Instructions}
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.15em,parsep=0pt]
+    \item This examination contains \textbf{seven problems}. Verify that your copy is complete.
+    \item Show all work and justify your answers. Unsupported answers may receive little or no credit.
+    \item Clearly define any events or random variables that you introduce.
+    \item The estimated times are provided only as a guide for pacing.
+    \item Do not remove pages from the examination booklet.
+\end{itemize}
+
+\medskip
+\textbf{Permitted materials}
+
+Examinations are closed-book and closed-notes. Students may use:
+\begin{itemize}[leftmargin=*,itemsep=0.05em,topsep=0.12em,parsep=0pt]
+    \item one handwritten 8.5 $\times$ 11 inch reference sheet (front and back), and
+    \item a non-programmable non-graphing calculator capable of standard exponential and logarithmic computations (e.g. TI-30X IIS).
+\end{itemize}
+No other electronic devices, calculators, communication devices, or external resources may be used during examinations.
+\end{policybox}
+
+\vspace{0.10cm}
+
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{|>{\centering\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.16\textwidth}|}
+\hline
+\textbf{Problem} & \textbf{Score} \\
+\hline
+1 & /16 \\
+\hline
+2 & /8 \\
+\hline
+3 & /7 \\
+\hline
+4 & /7 \\
+\hline
+5 & /8 \\
+\hline
+6 & /8 \\
+\hline
+7 & /6 \\
+\hline
+\textbf{Total} & \textbf{/60} \\
+\hline
+\end{tabular}
+
+\vspace{0.08cm}
+{\footnotesize By signing above, you affirm that the work is your own and that you followed the examination rules.}
+\end{titlepage}
+
+
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 1.} 
+\hfill
+\textbf{Estimated time: 13 min}
+\qquad
+\textbf{16 points}
+\end{problemheader}
+
+Let the joint probability density function of random variables \(X\) and \(Y\)
+be given by
+\[
+f(x,y)
+=
+\begin{cases}
+x^2e^{-x(y+1)}, & x\geq0,\quad y\geq0,\\
+0, & \text{elsewhere}.
+\end{cases}
+\]
+
+The marginal probability density functions are
+\[
+f_X(x)
+=
+\begin{cases}
+xe^{-x}, & x\geq0,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+and
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac{2}{(1+y)^3}, & y\geq0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Calculate
+    \[
+    \operatorname{Cov}(X,Y).
+    \]
+    \hfill \textbf{(4 points)}
+
+    \item Calculate
+    \[
+    \operatorname{Cov}(3X+1,\,2X-4).
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item Are \(X\) and \(Y\) independent? Justify your answer.
+    \hfill \textbf{(2 points)}
+
+    \item Calculate the moment-generating function of \(X\), namely
+    \[
+    M_X(t)=E(e^{tX}).
+    \]
+    \hfill \textbf{(5 points)}
+
+    \item Using \(M_X(t)\), calculate \(E(X)\).
+    \hfill \textbf{(2 points)}
+
+\end{enumerate}
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 2.}
+\hfill
+\textbf{Estimated time: 9 min}
+\qquad
+\textbf{8 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be two positive independent continuous random variables
+with probability density functions \(f_1(x)\) and \(f_2(y)\), respectively.
+
+Find the probability density function of
+\[
+U=\frac{X}{Y}.
+\]
+
+\textit{Hint:} Let \(V=X\). Find the joint probability density function of
+\(U\) and \(V\) (Jacobian method), and then calculate the marginal probability
+density function of \(U\).
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 3.}
+\hfill
+\textbf{Estimated time: 5 min}
+\qquad
+\textbf{7 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be i.i.d.\ positive random variables. Assume that all expectations appearing below exist and are finite.
+
+For each part below, fill in the appropriate equality or inequality symbol.
+
+Write \(=\) if the two sides are always equal, \(\leq\) if the left-hand side
+is less than or equal to the right-hand side but not necessarily equal, and
+similarly for \(\geq\). If no relation holds in general, write \(?\).
+
+Justify each answer.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1.2em]
+
+    \item
+    \[
+    E(\log X)
+    \quad \underline{\hspace{1.2cm}} \quad
+    \log(E(X)).
+    \]
+    \hfill \textbf{(3 points)}
+
+    \item
+    \[
+    P(X\leq Y)
+    \quad \underline{\hspace{1.2cm}} \quad
+    P(X\geq Y).
+    \]
+    \hfill \textbf{(2 points)}
+
+    \item
+    \[
+    E(XY)
+    \quad \underline{\hspace{1.2cm}} \quad
+    \sqrt{E(X^2)E(Y^2)}.
+    \]
+    \hfill \textbf{(2 points)}
+
+\end{enumerate}
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 4.}
+\hfill
+\textbf{Estimated time: 8 min}
+\qquad
+\textbf{7 points}
+\end{problemheader}
+
+Suppose
+\[
+X_1,\ldots,X_n
+\]
+are independent Bernoulli random variables with unknown success probability
+\(p\), and define
+\[
+\widehat p
+=
+\frac1n\sum_{i=1}^n X_i.
+\]
+
+Let
+\[
+\varepsilon>0
+\qquad\text{and}\qquad
+0<\alpha<1.
+\]
+
+Using Chebyshev's inequality, derive a condition on the sample size \(n\) that
+guarantees
+\[
+P\left(|\widehat p-p|<\varepsilon\right)
+\geq
+1-\alpha
+\]
+for every
+\[
+0<p<1.
+\]
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 5.}
+\hfill
+\textbf{Estimated time: 7 min}
+\qquad
+\textbf{8 points}
+\end{problemheader}
+
+Let \(X\) and \(Y\) be independent exponential random variables with common
+parameter \(\lambda>0\):
+\[
+X,Y\overset{\mathrm{i.i.d.}}{\sim}\operatorname{Exp}(\lambda),
+\]
+with probability density function
+\[
+f(w)=
+\begin{cases}
+\lambda e^{-\lambda w}, & w>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+Define
+\[
+T=X+Y.
+\]
+
+Using the convolution formula
+\[
+f_T(t)
+=
+\int_{-\infty}^{\infty}
+f_X(x)f_Y(t-x)\,dx,
+\]
+find the probability density function of \(T\), including its support.
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 6.}
+\hfill
+\textbf{Estimated time: 5 min}
+\qquad
+\textbf{8 points}
+\end{problemheader}
+
+Let \(X,Y,Z\) be jointly continuous with joint probability density function
+\[
+f_{X,Y,Z}(x,y,z)
+=
+\begin{cases}
+x^2e^{-x(1+y+z)}, & x,y,z>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+The marginal probability density functions are
+\[
+f_X(x)
+=
+\begin{cases}
+e^{-x}, & x>0,\\
+0, & \text{otherwise},
+\end{cases}
+\]
+and
+\[
+f_Y(y)
+=
+\begin{cases}
+\dfrac{1}{(1+y)^2}, & y>0,\\
+0, & \text{otherwise},
+\end{cases}
+\qquad
+f_Z(z)
+=
+\begin{cases}
+\dfrac{1}{(1+z)^2}, & z>0,\\
+0, & \text{otherwise}.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=0.8em]
+
+    \item Are \(X,Y,Z\) pairwise independent? Justify your answer.
+    \hfill \textbf{(5 points)}
+
+    \item Are \(X,Y,Z\) mutually independent? Justify your answer.
+    \hfill \textbf{(3 points)}
+
+\end{enumerate}
+
+\hrule
+
+
+
+\newpage
+
+% ------------------------------------------------------------
+\begin{problemheader}
+\textbf{Problem 7.}
+\hfill
+\textbf{Estimated time: 4 min}
+\qquad
+\textbf{6 points}
+\end{problemheader}
+
+For each part below, select the \textbf{correct statement} of the indicated
+theorem. Only one choice is correct in each part.
+
+\begin{enumerate}[label=(\alph*),leftmargin=*,itemsep=1.2em]
+
+% ------------------------------------------------------------
+\item \textbf{Weak Law of Large Numbers (WLLN).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables with finite mean
+\[
+E(X_i)=\mu
+\]
+and finite variance
+\[
+\operatorname{Var}(X_i)=\sigma^2>0.
+\]
+Let
+\[
+\overline X_n=\frac1n\sum_{i=1}^n X_i.
+\]
+
+Which of the following is the conclusion of the Weak Law of Large Numbers?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)=0
+    \qquad
+    \text{for every }n.
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(z\in\mathbb R\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \leq z
+    \right)
+    =
+    \Phi(z).
+    \]
+
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\item \textbf{Strong Law of Large Numbers (SLLN).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables satisfying the same
+assumptions as in the Weak Law of Large Numbers, with
+\[
+E(X_i)=\mu
+\]
+and finite variance
+\[
+\operatorname{Var}(X_i)=\sigma^2>0.
+\]
+
+Which of the following is the conclusion of the Strong Law of Large Numbers?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+    \item
+    \[
+    \lim_{n\to\infty}
+    P(\overline X_n=\mu)
+    =1.
+    \]
+
+    \item
+    \[
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \xrightarrow[]{d}
+    N(0,1).
+    \]
+
+\end{enumerate}
+
+
+% ------------------------------------------------------------
+\item \textbf{Central Limit Theorem (CLT).}
+
+Let \(X_1,X_2,\ldots\) be i.i.d.\ random variables with
+\[
+E(X_i)=\mu,
+\qquad
+\operatorname{Var}(X_i)=0<\sigma^2<\infty.
+\]
+
+Which of the following is the conclusion of the Central Limit Theorem?
+\hfill \textbf{(2 points)}
+
+\begin{enumerate}[label=(\Alph*),leftmargin=2em,itemsep=0.5em]
+
+    \item
+    \[
+    \overline X_n
+    \xrightarrow[]{P}
+    N(\mu,\sigma^2).
+    \]
+
+    \item
+    \[
+    P\left(
+    \lim_{n\to\infty}\overline X_n=\mu
+    \right)=1.
+    \]
+
+    \item For every \(z\in\mathbb R\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    \frac{\overline X_n-\mu}{\sigma/\sqrt n}
+    \leq z
+    \right)
+    =
+    \Phi(z).
+    \]
+
+    \item For every \(\varepsilon>0\),
+    \[
+    \lim_{n\to\infty}
+    P\left(
+    |\overline X_n-\mu|>\varepsilon
+    \right)
+    =0.
+    \]
+
+\end{enumerate}
+
+\end{enumerate}
+
+\hrule
+
+
+
+\end{document}

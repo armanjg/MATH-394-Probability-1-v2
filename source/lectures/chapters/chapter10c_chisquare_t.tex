@@ -1,0 +1,554 @@
+\setcounter{framenumber}{0}
+%24
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Learning Goals}
+By the end of this lecture, students should be able to:
+\begin{itemize}
+    \item define the Chi-Square distribution;
+    \item understand the connection between Chi-Square and Gamma distributions;
+    \item compute means and variances of Chi-Square random variables;
+    \item understand why Chi-Square distributions appear in statistics;
+    \item define the Student \(t\)-distribution;
+    \item understand why \(t\)-distributions have heavier tails than Normal distributions;
+    \item understand convergence of the \(t\)-distribution to the Normal distribution.
+\end{itemize}
+\end{frame}
+
+\lecturepart{Chi-Square Distribution}
+
+\begin{frame}{Why Chi-Square Distributions Matter}
+Chi-Square distributions appear throughout statistics:
+\begin{itemize}
+    \item sample variance;
+    \item hypothesis testing;
+    \item confidence intervals;
+    \item goodness-of-fit tests;
+    \item contingency tables.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Main idea}
+Chi-Square distributions measure accumulated squared Normal variation.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Definition of the Chi-Square Distribution}
+\begin{keybox}{Definition}
+Suppose
+\[
+Z_1,\dots,Z_n
+\]
+are independent standard Normal random variables.
+
+Define
+\[
+X
+=
+Z_1^2+\cdots+Z_n^2.
+\]
+
+Then
+\[
+\boxed{
+X\sim \chi_n^2.
+}
+\]
+
+We say that \(X\) has a Chi-Square distribution with
+\[
+n
+\]
+degrees of freedom.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Why Squaring Matters}
+Each
+\[
+Z_i^2
+\]
+measures squared deviation from the mean.
+
+\vspace{0.25cm}
+
+Adding them gives a total amount of variation:
+\[
+Z_1^2+\cdots+Z_n^2.
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Interpretation}
+Chi-Square random variables measure total squared fluctuation.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Chi-Square and Gamma}
+Recall:
+if
+\[
+X\sim \operatorname{Gamma}(\alpha,\lambda),
+\]
+then
+\[
+f(x)
+=
+\frac{
+\lambda^\alpha
+}{
+\Gamma(\alpha)
+}
+x^{\alpha-1}e^{-\lambda x}.
+\]
+
+\vspace{0.25cm}
+
+A Chi-Square distribution is a special Gamma distribution:
+\[
+\boxed{
+\chi_n^2
+=
+\operatorname{Gamma}
+\left(
+\frac n2,
+\frac12
+\right).
+}
+\]
+\end{frame}
+
+\begin{frame}{PDF of the Chi-Square Distribution}
+Using the Gamma formula:
+\[
+\boxed{
+f(x)
+=
+\frac{
+1
+}{
+2^{n/2}\Gamma(n/2)
+}
+x^{n/2-1}e^{-x/2},
+\qquad x>0.
+}
+\]
+
+\vspace{0.25cm}
+
+The shape depends heavily on the degrees of freedom.
+\end{frame}
+
+\begin{frame}{Mean and Variance of Chi-Square}
+If
+\[
+X\sim \chi_n^2,
+\]
+then
+\[
+\boxed{
+\mathbb{E}(X)=n.
+}
+\]
+
+Also,
+\[
+\boxed{
+\operatorname{Var}(X)=2n.
+}
+\]
+
+\vspace{0.25cm}
+
+\begin{keybox}{Observation}
+Both the mean and variance grow linearly with the degrees of freedom.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Shape of Chi-Square Distributions}
+Small degrees of freedom:
+\begin{itemize}
+    \item strongly right-skewed;
+    \item concentrated near zero.
+\end{itemize}
+
+\vspace{0.25cm}
+
+Large degrees of freedom:
+\begin{itemize}
+    \item less skewed;
+    \item more symmetric;
+    \item approximately Normal.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Connection to CLT}
+A Chi-Square distribution becomes approximately Normal for large
+\[
+n.
+\]
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Sample Variance and Chi-Square}
+Suppose
+\[
+X_1,\dots,X_n
+\overset{\text{i.i.d.}}{\sim}
+N(\mu,\sigma^2).
+\]
+
+Recall the sample variance:
+\[
+S_n^2
+=
+\frac1{n-1}
+\sum_{j=1}^n
+(X_j-\bar X_n)^2.
+\]
+
+Then:
+\[
+\boxed{
+\frac{
+(n-1)S_n^2
+}{
+\sigma^2
+}
+\sim
+\chi_{n-1}^2.
+}
+\]
+
+\vspace{0.25cm}
+
+This is one of the most important results in classical statistics.
+\end{frame}
+
+\begin{frame}{Degrees of Freedom}
+Why do we get
+\[
+n-1
+\]
+degrees of freedom instead of
+\[
+n?
+\]
+
+\vspace{0.25cm}
+
+Because:
+\[
+\bar X_n
+\]
+has already been estimated from the data.
+
+\vspace{0.25cm}
+
+Once the sample mean is fixed,
+only
+\[
+n-1
+\]
+deviations can vary independently.
+\end{frame}
+
+\begin{frame}{Chi-Square Additivity}
+\begin{keybox}{Theorem}
+If
+\[
+X\sim \chi_m^2,
+\qquad
+Y\sim \chi_n^2,
+\]
+independently, then
+\[
+\boxed{
+X+Y
+\sim
+\chi_{m+n}^2.
+}
+\]
+\end{keybox}
+
+\vspace{0.25cm}
+
+This follows immediately from the Gamma representation.
+\end{frame}
+
+\lecturepart{Student \(t\)-Distribution}
+
+\begin{frame}{Why the \(t\)-Distribution?}
+Suppose:
+\begin{itemize}
+    \item the population is Normal;
+    \item the variance
+    \[
+    \sigma^2
+    \]
+    is unknown;
+    \item the sample size is small.
+\end{itemize}
+
+\vspace{0.25cm}
+
+Then the standard Normal approximation is no longer exact.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Solution}
+The Student \(t\)-distribution accounts for uncertainty in estimating the variance.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Definition of the Student \(t\)-Distribution}
+\begin{keybox}{Definition}
+Let
+\[
+Z\sim N(0,1),
+\]
+and
+\[
+V\sim \chi_n^2,
+\]
+independently.
+
+Define
+\[
+\boxed{
+T
+=
+\frac{
+Z
+}{
+\sqrt{V/n}
+}.
+}
+\]
+
+Then
+\[
+T
+\]
+has the Student \(t\)-distribution with
+\[
+n
+\]
+degrees of freedom.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Why the \(t\)-Distribution Has Heavy Tails}
+The denominator:
+\[
+\sqrt{V/n}
+\]
+is random.
+
+\vspace{0.25cm}
+
+Sometimes it becomes unusually small.
+
+\vspace{0.25cm}
+
+That makes:
+\[
+|T|
+\]
+occasionally very large.
+
+\vspace{0.25cm}
+
+\begin{keybox}{Consequence}
+The \(t\)-distribution has heavier tails than the Normal distribution.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Properties of the \(t\)-Distribution}
+The \(t\)-distribution is:
+\begin{itemize}
+    \item symmetric about
+    \[
+    0;
+    \]
+
+    \item bell-shaped;
+
+    \item heavier-tailed than the Normal distribution.
+\end{itemize}
+
+\vspace{0.25cm}
+
+As the degrees of freedom increase:
+\begin{itemize}
+    \item tails become lighter;
+    \item the distribution approaches the Normal distribution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convergence to the Normal Distribution}
+As
+\[
+n\to\infty,
+\]
+the Chi-Square random variable satisfies:
+\[
+\frac{V}{n}\to1.
+\]
+
+Therefore:
+\[
+T
+=
+\frac{
+Z
+}{
+\sqrt{V/n}
+}
+\approx Z.
+\]
+
+Thus:
+\[
+\boxed{
+t_n
+\to
+N(0,1).
+}
+\]
+\end{frame}
+
+\begin{frame}{The Cauchy Distribution}
+If
+\[
+n=1,
+\]
+then the \(t\)-distribution becomes the Cauchy distribution.
+
+\vspace{0.25cm}
+
+The Cauchy distribution has:
+\begin{itemize}
+    \item extremely heavy tails;
+    \item undefined mean;
+    \item undefined variance.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Important}
+Not every distribution has finite expectation or variance.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Confidence Intervals}
+The \(t\)-distribution is fundamental for confidence intervals.
+
+\vspace{0.25cm}
+
+For example:
+\[
+\bar X_n
+\pm
+t^\ast
+\frac{
+S_n
+}{
+\sqrt n
+}.
+\]
+
+\vspace{0.25cm}
+
+Here:
+\begin{itemize}
+    \item
+    \[
+    \bar X_n
+    \]
+    is the sample mean;
+
+    \item
+    \[
+    S_n
+    \]
+    estimates the standard deviation;
+
+    \item
+    \[
+    t^\ast
+    \]
+    comes from the \(t\)-distribution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal vs \(t\)-Distribution}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lll}
+\toprule
+Distribution & Tails & Variance known? \\
+\midrule
+Normal & lighter & yes \\
+Student \(t\) & heavier & no \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.25cm}
+
+\begin{keybox}{Interpretation}
+The heavier tails account for uncertainty in estimating the variance.
+\end{keybox}
+\end{frame}
+
+\begin{frame}{Big Picture}
+Three major distributions now fit together:
+
+\vspace{0.25cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{ccc}
+\toprule
+Distribution & Built From & Main Role \\
+\midrule
+Normal & sums/CLT & averages \\
+Chi-Square & squared Normals & variances \\
+Student \(t\) & Normal divided by Chi-Square & inference \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}
+    \item Chi-Square distributions are sums of squared standard Normals.
+
+    \item Chi-Square distributions are special Gamma distributions.
+
+    \item Sample variances naturally produce Chi-Square distributions.
+
+    \item Student \(t\)-distributions arise when variance is estimated.
+
+    \item \(t\)-distributions have heavier tails than Normals.
+
+    \item As degrees of freedom increase:
+    \[
+    t_n
+    \to
+    N(0,1).
+    \]
+\end{itemize}
+
+\vspace{0.25cm}
+
+\begin{keybox}{End of Probability I}
+The LLN, CLT, Chi-Square, and \(t\)-distributions form the mathematical foundation of classical statistics.
+\end{keybox}
+\end{frame}

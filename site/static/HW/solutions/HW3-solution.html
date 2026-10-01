@@ -1,0 +1,321 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW3-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW3-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 103 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 107 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 3 Solutions</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 127 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 129 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 141 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 143 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 151 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 153 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 162 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 164 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 166 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 174 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 176 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 178 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 189 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 191 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 196 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 1.</span>
+</p><!-- l. 200 --><p class='noindent'>A spam filter is designed by looking at commonly occurring phrases in spam. Suppose that \(80\%\) of email is spam.
+In \(10\%\) of the spam emails, the phrase “free money” is used, whereas this phrase is only used in \(1\%\) of non-spam
+emails. A new email has just arrived, which does mention “free money.” What is the probability that it is
+spam?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 226 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 203 --><p class='noindent'>Let \(S\) be the event that the email is spam, and let \(F\) be the event that the email contains the phrase
+“free money.” We are given \[ P(S)=0.80,\qquad P(F\mid S)=0.10,\qquad P(F\mid S^c)=0.01. \] Bayes’ rule gives \[ P(S\mid F) = \frac {P(F\mid S)P(S)}{P(F\mid S)P(S)+P(F\mid S^c)P(S^c)}. \] Substituting the given values, \[ P(S\mid F) = \frac {0.10\cdot 0.80}{0.10\cdot 0.80+0.01\cdot 0.20} = \frac {0.08}{0.082} = \frac {40}{41}. \] So even though the
+phrase is not especially common among spam emails, it is still strong evidence for spam because
+spam emails are much more common in the population.
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 232 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 6.</span>
+</p><!-- l. 236 --><p class='noindent'>A hat contains 100 coins, where 99 are fair but one is double-headed, always landing Heads. A
+coin is chosen uniformly at random. The chosen coin is flipped 7 times, and it lands Heads all 7
+times.
+</p><!-- l. 238 --><p class='noindent'>Given this information, what is the probability that the chosen coin is double-headed?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 271 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 241 --><p class='noindent'>Let \(D\) be the event that the selected coin is double-headed, and let \(H\) be the event that the seven
+flips all land Heads. The prior probability of selecting the double-headed coin is \[ P(D)=\frac {1}{100}. \] If the coin is
+double-headed, then seven Heads are certain, so \[ P(H\mid D)=1. \] If the selected coin is fair, then \[ P(H\mid D^c)=\left (\frac 12\right )^7=\frac {1}{128}. \] Bayes’ rule gives
+\[ P(D\mid H) = \frac {P(H\mid D)P(D)}{P(H\mid D)P(D)+P(H\mid D^c)P(D^c)}. \] Therefore \[ P(D\mid H) = \frac {1\cdot \frac {1}{100}}{1\cdot \frac {1}{100}+\frac {1}{128}\cdot \frac {99}{100}} = \frac {1}{1+\frac {99}{128}} = \frac {128}{227}. \] The seven Heads make the double-headed coin much more plausible, but the fair coins
+were so much more numerous at the start that the posterior probability is still not close to 1.
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 277 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 10.</span>
+</p><!-- l. 281 --><p class='noindent'>Fred is working on a major project. In planning the project, two milestones are set up, with dates by which
+they should be accomplished. This serves as a way to track Fred’s progress. Let \(A_1\) be the event that Fred
+completes the first milestone on time, \(A_2\) be the event that he completes the second milestone on time, and \(A_3\) be
+the event that he completes the project on time.
+</p><!-- l. 283 --><p class='noindent'>Suppose that \[ P(A_{j+1}\mid A_j)=0.8 \qquad \text {but}\qquad P(A_{j+1}\mid A_j^c)=0.3 \] for \(j=1,2\), since if Fred falls behind on his schedule it will be hard for him to get caught up. Also,
+assume that the second milestone supersedes the first, in the sense that once we know whether he is on time in
+completing the second milestone, it no longer matters what happened with the first milestone. We can express
+this by saying that \(A_1\) and \(A_3\) are conditionally independent given \(A_2\), and they are also conditionally independent
+given \(A_2^c\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the probability that Fred will finish the project on time, given that he completes the first
+    milestone on time. Also find the probability that Fred will finish the project on time, given that
+    he is late for the first milestone.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Suppose that \(P(A_1)=0.75\). Find the probability that Fred will finish the project on time.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 363 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 298 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Since the second milestone supersedes the first, once we know whether \(A_2\) occurred, the first
+milestone  no  longer  gives  additional  information  about  \(A_3\).  Thus  we  condition  on  whether  Fred
+completes the second milestone on time.
+</p><!-- l. 300 --><p class='noindent'>If Fred completes the first milestone on time, then \[ P(A_2\mid A_1)=0.8, \qquad P(A_2^c\mid A_1)=0.2. \] Also, \[ P(A_3\mid A_2)=0.8, \qquad P(A_3\mid A_2^c)=0.3. \] Therefore \[ P(A_3\mid A_1) = 0.8\cdot 0.8+0.3\cdot 0.2 = 0.64+0.06 = 0.70. \]
+</p><!-- l. 323 --><p class='noindent'>If Fred is late for the first milestone, then \[ P(A_2\mid A_1^c)=0.3, \qquad P(A_2^c\mid A_1^c)=0.7. \] Hence \[ P(A_3\mid A_1^c) = 0.8\cdot 0.3+0.3\cdot 0.7 = 0.24+0.21 = 0.45. \]
+</p><!-- l. 341 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now use the law of total probability with respect to whether the first milestone is completed
+on time. Since \(P(A_1)=0.75\), we have \(P(A_1^c)=0.25\). Thus \[ P(A_3) = P(A_3\mid A_1)P(A_1)+P(A_3\mid A_1^c)P(A_1^c). \] Using the values from part (a), \[ P(A_3) = 0.70\cdot 0.75+0.45\cdot 0.25 = 0.525+0.1125 = 0.6375. \] Equivalently, \[ 0.6375=\frac {51}{80}. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 369 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 20.</span>
+</p><!-- l. 373 --><p class='noindent'>The Jack of Spades, Jack of Hearts, Queen of Spades, and Queen of Hearts are taken from a deck of cards.
+These four cards are shuffled, and then two are dealt. Literary references to cider, tarts, and winks do not need
+to be considered when solving this problem.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the probability that both of these two cards are queens, given that the first card dealt is a
+    queen.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the probability that both are queens, given that at least one is a queen.
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Find the probability that both are queens, given that one is the Queen of Hearts.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 407 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 384 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>If the first card dealt is known to be a queen, then among the three remaining cards there is
+exactly one queen and two jacks. For both cards to be queens, the second card must be that one
+remaining queen. Therefore \[ P(\text {both queens}\mid \text {first card is a queen})=\frac 13. \]
+</p><!-- l. 391 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now condition only on the information that at least one of the two cards is a queen. The
+possible two-card hands from these four cards number \[ \binom {4}{2}=6. \] Only one of these hands contains no queen,
+namely the hand with the two jacks. Thus there are 5 hands with at least one queen. Among those
+5 hands, only one hand contains both queens. Hence \[ P(\text {both queens}\mid \text {at least one queen})=\frac 15. \]
+</p><!-- l. 402 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>If we are told that one of the two dealt cards is the Queen of Hearts, then the other card is
+equally likely to be any one of the remaining three cards. Exactly one of those three cards is the
+Queen of Spades. Thus \[ P(\text {both queens}\mid \text {one card is the Queen of Hearts})=\frac 13. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 413 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 30.</span>
+</p><!-- l. 417 --><p class='noindent'>A family has 3 children, creatively named \(A\), \(B\), and \(C\).
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Discuss intuitively, but clearly, whether the event “\(A\) is older than \(B\)” is independent of the event “\(A\) is
+    older than \(C\).”
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the probability that \(A\) is older than \(B\), given that \(A\) is older than \(C\).</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 458 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 426 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>These two events are not independent. Knowing that \(A\) is older than \(C\) makes it more plausible
+that \(A\) is relatively old among the three children. That information also makes it more likely that \(A\) is
+older than \(B\).
+</p><!-- l. 428 --><p class='noindent'>We can see this numerically by looking at the possible age orderings. Since all six orderings of \(A,B,C\) are
+equally likely, the event that \(A\) is older than both \(B\) and \(C\) has probability \(1/3\), because \(A\) must be the oldest
+child. But \[ P(A\text { older than }B)=\frac 12, \qquad P(A\text { older than }C)=\frac 12. \] If the two events were independent, the probability that both occur would be \(1/4\), not \(1/3\).
+Thus the events are not independent.
+</p><!-- l. 439 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Let \[ E=\{A\text { is older than }B\}, \qquad F=\{A\text { is older than }C\}. \] Then \[ P(E\mid F)=\frac {P(E\cap F)}{P(F)}. \] The event \(E\cap F\) says that \(A\) is older than both \(B\) and \(C\), so \(A\) is the oldest child. This has
+probability \(1/3\). Also, \(P(F)=1/2\). Therefore \[ P(E\mid F) = \frac {1/3}{1/2} = \frac 23. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 464 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 31.</span>
+</p><!-- l. 468 --><p class='noindent'>Is it possible that an event is independent of itself? If so, when is this the case?
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+<!-- l. 490 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 471 --><p class='noindent'>An event \(A\) is independent of itself exactly when \[ P(A\cap A)=P(A)P(A). \] But \(A\cap A=A\), so this condition becomes \[ P(A)=P(A)^2. \] If we write \(p=P(A)\), then
+this is \[ p=p^2, \] or \[ p(1-p)=0. \] Thus \(p=0\) or \(p=1\). Therefore an event can be independent of itself, but only in the degenerate
+cases where the event is impossible or certain.
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-15'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 496 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 7.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 2, Problem 35.</span>
+</p><!-- l. 500 --><p class='noindent'>You are going to play 2 games of chess with an opponent whom you have never played against before. Your
+opponent is equally likely to be a beginner, intermediate, or master. Depending on which, your chances of
+winning an individual game are \(90\%\), \(50\%\), or \(30\%\), respectively.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>What is your probability of winning the first game?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Congratulations: you won the first game! Given this information, what is the probability that you
+    will also win the second game, assuming that, given the skill level of your opponent, the outcomes
+    of the games are independent?
+    </dd><dt class='enumerate-enumitem'>
+ (c) </dt><dd class='enumerate-enumitem'>Explain the distinction between assuming that the outcomes of the games are independent and
+    assuming that they are conditionally independent given the opponent’s skill level. Which of these
+    assumptions seems more reasonable, and why?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-16'>     
+<div class='tcolorbox-title'>
+<!-- l. 552 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 511 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>Before any games have been played, the opponent is equally likely to be a beginner, intermediate
+player, or master. Therefore the probability of winning the first game is the average of the three
+conditional win probabilities: \[ P(W_1) = \frac 13(0.90)+\frac 13(0.50)+\frac 13(0.30) = \frac {1.70}{3} = \frac {17}{30}. \]
+</p><!-- l. 523 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Winning the first game gives information about the opponent’s likely strength. It makes it
+more likely that the opponent is a beginner and less likely that the opponent is a master.
+</p><!-- l. 525 --><p class='noindent'>Let the possible win probabilities be \[ 0.90, \qquad 0.50, \qquad 0.30. \] Since the three skill levels have equal prior probabilities,
+Bayes’ rule says that after observing a first-game win, the posterior weights are proportional to
+these three numbers. Therefore the probability of winning the second game is \[ \frac {0.90^2+0.50^2+0.30^2}{0.90+0.50+0.30}. \] Computing this gives
+\[ \frac {0.81+0.25+0.09}{1.70} = \frac {1.15}{1.70} = \frac {23}{34}. \]
+</p><!-- l. 548 --><p class='noindent'><span class='cmbx-10x-x-109'>(c) </span>Assuming that the two game outcomes are independent would mean that the result of the
+first game gives no information about the result of the second game. That is not a very reasonable
+assumption here, because both games are played against the same opponent, whose skill level is
+initially unknown.
+</p><!-- l. 550 --><p class='noindent'>The more reasonable assumption is conditional independence given the opponent’s skill level. Once
+we know whether the opponent is a beginner, intermediate player, or master, it is reasonable to
+model the two games as independent trials with the corresponding win probability. But before we
+know the opponent’s skill level, the game outcomes are dependent, because winning the first game
+changes our belief about the opponent and therefore changes our predicted chance of winning the
+second game.
+</p>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>

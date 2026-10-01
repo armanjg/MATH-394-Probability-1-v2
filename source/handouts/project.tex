@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Mini-Project}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{infobox}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Mini-Project}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.8\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Upload a PDF of your slides and either a working video link or an mp4 file on Canvas
+
+\textbf{Deadline:} Friday, August 14, 2026 at 10:00 PM Pacific Time
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This mini-project is worth \textbf{2\% bonus on top of the final course grade}.
+
+This is an \textbf{individual project}. The goal is to practice academic presentation and mathematical communication.
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Overview}
+
+For this mini-project, you will create a short recorded presentation in which you teach a probabilistic concept \textbf{not covered in our course}. You should imagine that you are teaching the topic to a classmate in MATH 394 who has the background of this course.
+
+
+\section*{Project Requirements}
+
+Please follow all of the requirements below:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Length.} Your video must be \textbf{at least 10 minutes} long.
+
+    \item \textbf{Individual work.} This is an \textbf{individual} project.
+
+    \item \textbf{Slides are required.} You should prepare slides and present by speaking over your slides.
+
+    \item \textbf{Presentation style.} Your presentation should mainly consist of \textbf{slides plus verbal explanation}. You should \textbf{not} rely on writing extensively on the slides while presenting. Brief annotation, circling, underlining, or pointing for clarity is fine.
+
+    \item \textbf{Recording method.} If you use macOS, I recommend recording with \textbf{QuickTime Player}. If you use another operating system, you may use any similar screen-recording app that allows you to record your screen and your voice. The recording should be of high quality and clear. Using cameras to externally record your screen is not accepted.
+
+    \item \textbf{Slides.} There is no restriction on the number of slides.
+
+    \item \textbf{Content.} Your presentation should include:
+    \begin{itemize}[leftmargin=*]
+        \item a short introduction and motivation,
+        \item a clear explanation of the main concept,
+        \item at least one worked example, application, or illustrative scenario,
+        \item a brief concluding summary.
+        \item citations
+    \end{itemize}
+
+    \item \textbf{Sources.} Your final slide should list the sources you used. Please use reliable sources and cite them clearly.
+\end{enumerate}
+
+\section*{Topic Selection}
+
+You must choose a topic that is \textbf{not covered in our course}. A list of suggested topics appears below.
+
+\begin{itemize}[leftmargin=*]
+    \item Each student should choose \textbf{one} topic.
+   \item Please submit your top five topic preferences (ranked from 1 to 5, where 1 is your most preferred topic and 5 is your least preferred) by completing \href{https://docs.google.com/forms/d/e/1FAIpQLSfvg6vvZpsOBwCKN4fDDVHS_JQB1ARy2ssWJn0CclUVMUgUgw/viewform?usp=dialog}{\textbf{this form}} no later than \textbf{July 15, 10:00 PM}. If no response is received by the deadline, it will be assumed that you do not wish to participate in this bonus project. After all responses are collected, you will receive your assigned topic. You can then choose to go with it, or in case it is not of your interest, you can choose a topic of your own not in the list.
+    \item If you would like to present on a different topic, that is fine, but you must get approval first.
+\end{itemize}
+
+\section*{Suggested Topics}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Birthday Paradox}
+    \item \textbf{The Banach Matchbox Problem}
+    \item \textbf{Coupon Collector Problem}
+    \item \textbf{Gambler's Ruin}
+    \item \textbf{Secretary Problem}
+    \item \textbf{Buffon's Needle}
+    \item \textbf{Benford's Law}
+    \item \textbf{Simpson's Paradox}
+    \item \textbf{St.\ Petersburg Paradox}
+    \item \textbf{Markov Chains}
+    \item \textbf{Random Walks}
+    \item \textbf{Poisson Processes}
+    \item \textbf{Branching Processes}
+    \item \textbf{Monte Carlo Methods}
+    \item \textbf{Capture--Recapture Estimation}
+    \item \textbf{Reservoir Sampling}
+    \item \textbf{Bloom Filters}
+    \item \textbf{PageRank}
+    \item \textbf{Reliability of Systems and Networks}
+    \item \textbf{Random Graphs (Erd\H{o}s--R\'enyi Model)}
+\end{enumerate}
+
+\section*{Submission Instructions}
+
+Please submit the following on \textbf{Canvas}:
+
+\begin{enumerate}[leftmargin=*]
+    \item a \textbf{PDF of your slides}, and
+    \item either:
+    \begin{itemize}[leftmargin=*]
+        \item an \textbf{mp4 file}, or
+        \item a \textbf{working  video link}.
+    \end{itemize}
+\item In the text prompt on Canvas, please answer Yes or No to the following two questions: \\ \textbf{Question 1: }Would you like your slides (not the video) to be used anonymously in the future on the instructor's website? 
+\\ \textbf{Questions 2:} Would you like your slides (not the video) to be shown anonymously as sample projects to the students taking this course in the future?\\
+
+        Your response should be one of the following: (Yes, Yes), (Yes, No), (No, Yes), (No, No).
+\end{enumerate}
+
+Please make sure that:
+\begin{itemize}[leftmargin=*]
+    \item your video link works,
+    \item your audio is clear,
+    \item your slides are readable,
+    \item your file names include your name.
+\end{itemize}
+
+\section*{Grading}
+
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Mathematical correctness and understanding} --- 40\%
+    \item \textbf{Clarity and organization of explanation} --- 30\%
+    \item \textbf{Quality of example or application} --- 20\%
+    \item \textbf{Professionalism and completion of instructions} --- 10\%
+\end{itemize}
+
+A strong project is one that explains one idea \textbf{clearly, correctly, and concisely}. 
+
+\section*{Late Policy}
+
+Because final grades are due very shortly after the end of the quarter, \textbf{late submissions cannot not be accepted}. 
+
+\section*{Note}
+
+This project is meant to be a useful opportunity to practice \textbf{learning by teaching}. Choose a topic that you find interesting, explain it carefully, and aim to teach it in a way that would  help one of your classmates understand it.
+
+If you have any questions, please email me at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu} or post it on Ed discussion.
+
+\end{document}

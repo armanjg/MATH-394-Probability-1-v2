@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=uwpurple,
+    urlcolor=uwpurple
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 2}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[1]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter 1, Problem #1.}}
+}
+
+\newcommand{\answerbox}{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\newcommand{\partanswerbox}[1]{%
+\begin{flushright}
+\begin{tcolorbox}[
+    width=0.36\textwidth,
+    height=2cm,
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.7pt,
+    arc=1mm
+]
+{\small\textbf{Final Answer for Part #1}}
+\end{tcolorbox}
+\end{flushright}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 2}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[
+    width=0.78\textwidth,
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.9pt,
+    arc=3mm
+]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[
+    width=0.86\textwidth,
+    colback=white,
+    colframe=uwgold,
+    boxrule=0.8pt,
+    arc=3mm
+]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1. }
+\end{problemheader}
+\source{8}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item How many ways are there to split a dozen people into 3 teams, where one team has 2 people, and the other two teams have 5 people each?
+
+    \item How many ways are there to split a dozen people into 3 teams, where each team has 4 people?
+\end{enumerate}
+
+\vfill
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.}
+\end{problemheader}
+\source{20}
+
+Show using a story proof that
+\[
+{ k \choose k}
++
+{ k+1 \choose k}
++
+{ k+2 \choose k}
++
+\cdots
++
+{ n \choose k}
+=
+{ n+1 \choose k+1},
+\]
+where $n$ and $k$ are positive integers with $n\ge k$. This is called the \emph{hockey stick identity}.
+
+\emph{Hint: Imagine arranging a group of people by age, and then think about the oldest person in a chosen subgroup.}
+
+\vfill
+ 
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3. }
+\end{problemheader}
+\source{43}
+
+Show that for any events $A$ and $B$,
+\[
+P(A)+P(B)-1
+\le
+P(A\cap B)
+\le
+P(A\cup B)
+\le
+P(A)+P(B).
+\]
+
+For each of these three inequalities, give a simple criterion for when the inequality is actually an equality. For example, give a simple condition such that $P(A\cap B)=P(A\cup B)$ if and only if the condition holds.
+
+\vfill
+ 
+ \newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4. }
+\end{problemheader}
+\source{44}
+
+Let $A$ and $B$ be events. The \emph{difference} $B-A$ is defined to be the set of all elements of $B$ that are not in $A$. Show that if $A\subseteq B$, then
+\[
+P(B-A)=P(B)-P(A),
+\]
+directly using the axioms of probability.
+
+\vfill
+ 
+ \newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{50}
+
+A card player is dealt a 13-card hand from a well-shuffled, standard deck of cards.
+
+What is the probability that the hand is void in at least one suit? Here, ``void in a suit'' means having no cards of that suit.
+
+\vfill
+ \newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6.}
+\end{problemheader}
+\source{55}
+
+A club consists of 10 seniors, 12 juniors, and 15 sophomores. An organizing committee of size 5 is chosen randomly, with all subsets of size 5 equally likely.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the probability that there are exactly 3 sophomores in the committee.
+
+    \item Find the probability that the committee has at least one representative from each of the senior, junior, and sophomore classes.
+\end{enumerate}
+
+\vfill
+ 
+
+\end{document}

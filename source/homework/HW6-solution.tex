@@ -1,0 +1,751 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\definecolor{uwpurple}{HTML}{4B2E83}
+\definecolor{uwgold}{HTML}{B7A57A}
+\definecolor{softpurple}{HTML}{F4F1FA}
+\definecolor{softgold}{HTML}{FBF7EA}
+\definecolor{deepgold}{HTML}{8A6F2A}
+
+\tcbuselibrary{breakable,skins}
+
+\newtcolorbox{solutionbox}[1][]{
+    breakable,
+    enhanced,
+    colback=softgold,
+    colframe=deepgold,
+    coltitle=white,
+    colbacktitle=uwpurple,
+    fonttitle=\bfseries,
+    title={Solution #1},
+    boxrule=0.85pt,
+    arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=1.5mm,
+    bottom=1.5mm,
+    attach boxed title to top left={xshift=2.5mm,yshift=-2mm},
+    boxed title style={
+        colback=uwpurple,
+        colframe=uwpurple,
+        arc=1.5mm,
+        boxrule=0pt,
+        left=1.6mm,
+        right=1.6mm,
+        top=0.6mm,
+        bottom=0.6mm
+    }
+}
+
+\newtcolorbox{finalanswerbox}[1][]{
+    colback=white,
+    colframe=uwpurple,
+    boxrule=0.75pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm,
+    title={\textbf{Final Answer #1}},
+    coltitle=uwpurple,
+    colbacktitle=softpurple,
+    fonttitle=\bfseries
+}
+
+\hypersetup{colorlinks=true, linkcolor=uwpurple, urlcolor=uwpurple}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{MATH 394: Probability I}}
+\rhead{\textbf{Homework 6 Solutions}}
+\cfoot{\thepage\ of \pageref{LastPage}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+
+\newcommand{\course}{MATH 394: Probability I}
+\newcommand{\instructor}{Arman Jahangiri}
+\newcommand{\department}{Department of Mathematics}
+\newcommand{\university}{University of Washington}
+
+\newtcolorbox{problemheader}{
+    colback=softpurple,
+    colframe=uwpurple,
+    boxrule=0.8pt,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newcommand{\source}[2]{%
+    \vspace{0.15cm}
+    {\small\textit{Source: Blitzstein and Hwang, \textit{Introduction to Probability}, Chapter #1, Problem #2.}}
+}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{1.2cm}
+
+{\Large \textbf{\university}}\\
+{\large \department}
+
+\vspace{1.5cm}
+
+{\Huge \color{uwpurple}\textbf{Homework 6 Solutions}}\\[0.25cm]
+{\Large \textbf{\course}}\\[0.25cm]
+{\large Instructor: Arman Jahangiri}
+
+\vspace{1cm}
+
+\begin{tcolorbox}[width=0.78\textwidth,colback=softpurple,colframe=uwpurple,boxrule=0.9pt,arc=3mm]
+\centering
+\textbf{Submission:} Single PDF on Gradescope
+
+\textbf{Deadline:} 10:00 PM Pacific Time on the listed due date
+\end{tcolorbox}
+
+\vspace{0.8cm}
+
+\begin{tcolorbox}[width=0.86\textwidth,colback=white,colframe=uwgold,boxrule=0.8pt,arc=3mm]
+This homework is worth \textbf{50 points}.
+
+Across the quarter, there are \textbf{eight homework assignments}, worth \textbf{400 points total}. Homework assignments together account for \textbf{40\%} of the final course grade. Further course policies can be seen in the \href{https://armanjg.github.io/MATH-394-Probability-1/}{\textbf{MATH 394 syllabus}.}
+\end{tcolorbox}
+
+\vfill
+\end{titlepage}
+
+\section*{Homework Policy}
+
+\subsection*{Submission and Deadline}
+
+Please:
+
+\begin{itemize}[leftmargin=*]
+    \item Submit homework as a single PDF on Gradescope by \textbf{10:00 PM (Pacific Time)} on the listed due date.
+    \item Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+    \item Write solutions clearly and legibly.
+    \item Typesetting solutions in LaTeX is encouraged, but not required.
+\end{itemize}
+
+\subsection*{Late Days}
+
+Each student is allotted \textbf{six late days} for the quarter. A late day extends a homework deadline by up to 24 hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and 10:00 PM the following day counts as one late day.
+
+The following rules apply:
+\begin{itemize}[leftmargin=*]
+   \item No explanation is required to use late days.
+   \item At most \textbf{two late days} may be used on any single homework assignment.
+   \item Late days may not be used on the final homework assignment or on any assignment for which solutions have already been released.
+   \item It is the student's responsibility to keep track of how many late days have been used during the quarter.
+\end{itemize}
+
+Once all late days have been exhausted, additional late submissions will incur a penalty of \textbf{10\% per day}, up to a maximum deduction of \textbf{50\%}. Assignments submitted more than five days late, or after solutions have been released, will not be accepted.
+
+\subsection*{Submission Issues and Technical Difficulties}
+
+If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their assignment by email to the instructor at \href{mailto:armanjg@uw.edu}{armanjg@uw.edu}. In such cases:
+
+\begin{itemize}[leftmargin=*]
+    \item The submission must consist of a \textbf{single PDF file}. The email subject line must follow the format:
+    \[
+    \texttt{HW\# Submission - FULL NAME - STUDENT ID}.
+    \]
+    \item Once the Gradescope issue has been resolved, the student must upload the \emph{exact same file} to Gradescope as soon as possible.
+    \item The student should clearly indicate in the Gradescope submission that the assignment was previously submitted by email before the deadline.
+\end{itemize}
+
+Email submissions are intended only for genuine technical emergencies and should not be used as a substitute for timely Gradescope submission.
+
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 1.}
+\end{problemheader}
+\source{5}{14}
+
+Let $U_1,\dots,U_n$ be i.i.d. $\operatorname{Unif}(0,1)$, and
+\[
+X=\max(U_1,\dots,U_n).
+\]
+What is the PDF of $X$? What is $E(X)$?
+
+\emph{Hint: Find the CDF of $X$ first, by translating the event $X\le x$ into an event involving $U_1,\dots,U_n$.}
+
+\begin{solutionbox}
+For $0\le x\le1$,
+\[
+F_X(x)=P(X\le x)=P(U_1\le x,\dots,U_n\le x)=x^n,
+\]
+since the $U_j$ are independent. Therefore
+\[
+F_X(x)=
+\begin{cases}
+0, & x<0,\\
+x^n, & 0\le x\le1,\\
+1, & x>1.
+\end{cases}
+\]
+Differentiating on $(0,1)$ gives
+\[
+f_X(x)=nx^{n-1}, \qquad 0<x<1.
+\]
+The expectation is
+\[
+E(X)=\int_0^1 x\,nx^{n-1}\,dx
+=n\int_0^1 x^n\,dx
+=\frac{n}{n+1}.
+\]
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+ 
+ 
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 2.}
+\end{problemheader}
+\source{5}{36}
+
+A post office has 2 clerks. Alice enters the post office while 2 other customers, Bob and Claire, are being served by the 2 clerks. She is next in line. Assume that the time a clerk spends serving a customer has an $\operatorname{Exp}(\lambda)$ distribution.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item What is the probability that Alice is the last of the 3 customers to be done being served?
+
+    \emph{Hint: No integrals are needed.}
+
+    \item What is the expected total time that Alice needs to spend at the post office?
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} By the memoryless property of the exponential distribution, once one of Bob or Claire finishes, Alice begins service while the other remaining original customer still has an exponential remaining service time with rate $\lambda$. At that moment Alice and the remaining customer are in a perfectly symmetric race, with independent $\operatorname{Exp}(\lambda)$ service times. Therefore Alice is last exactly if her own service time exceeds the other remaining service time, which has probability $1/2$.
+ 
+
+\textbf{(b)} Alice first waits until one of the two clerks becomes free. The minimum of two independent $\operatorname{Exp}(\lambda)$ random variables is $\operatorname{Exp}(2\lambda)$, so her expected waiting time is
+\[
+\frac{1}{2\lambda}.
+\]
+After that, Alice receives service, whose expected duration is
+\[
+\frac{1}{\lambda}.
+\]
+Hence her expected total time in the post office is
+\[
+\frac{1}{2\lambda}+\frac{1}{\lambda}=\frac{3}{2\lambda}.
+\]
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 3.}
+\end{problemheader}
+\source{5}{43}
+
+The Exponential is the analog of the Geometric in continuous time. This problem explores the connection between Exponential and Geometric in more detail, building up on what was taught in class, asking what happens to a Geometric in a limit where the Bernoulli trials are performed faster and faster but with smaller and smaller success probabilities.
+
+Suppose that Bernoulli trials are being performed in continuous time; rather than only thinking about first trial, second trial, etc., imagine that the trials take place at points on a timeline. Assume that the trials are at regularly spaced times
+\[
+0,\Delta t,2\Delta t,\dots,
+\]
+where $\Delta t$ is a small positive number. Let the probability of success of each trial be $\lambda \Delta t$, where $\lambda$ is a positive constant. Let $G$ be the number of failures before the first success in discrete time, and let $T$ be the time of the first success in continuous time.
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find a simple equation relating $G$ to $T$.
+
+    \emph{Hint: Draw a timeline and try out a simple example.}
+
+    \item Find the CDF of $T$.
+
+    \emph{Hint: First find $P(T>t)$.}
+
+    \item Show that as $\Delta t\to0$, the CDF of $T$ converges to the $\operatorname{Exp}(\lambda)$ CDF, evaluating all the CDFs at a fixed $t\ge0$.
+
+ 
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} If there are $G$ failures before the first success, then the first success occurs at the next trial time. Since trial times are spaced by $\Delta t$, we have
+\[
+T=G\Delta t.
+\]
+This convention regards the trial at time 0 as the first possible trial, so $G=0$ corresponds to success at time 0.
+ 
+
+\textbf{(b)} For a fixed $t\ge0$, the event $T>t$ means that all trials up to time $t$ have failed. The number of such trial opportunities is naturally written using $\lfloor t/\Delta t\rfloor+1$ under the convention that trials begin at time 0. Thus
+\[
+P(T>t)=\left(1-\lambda\Delta t\right)^{\lfloor t/\Delta t\rfloor+1}.
+\]
+Therefore
+\[
+F_T(t)=P(T\le t)=1-\left(1-\lambda\Delta t\right)^{\lfloor t/\Delta t\rfloor+1},
+\qquad t\ge0.
+\]
+For $t<0$, $F_T(t)=0$.
+ 
+
+\textbf{(c)} For fixed $t\ge0$, as $\Delta t\to0$,
+\[
+\left(1-\lambda\Delta t\right)^{\lfloor t/\Delta t\rfloor+1}
+\longrightarrow
+ e^{-\lambda t}.
+\]
+Hence
+\[
+F_T(t)
+\longrightarrow
+1-e^{-\lambda t},
+\]
+which is exactly the CDF of an $\operatorname{Exp}(\lambda)$ random variable.
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 4.}
+\end{problemheader}
+\source{6}{1--2}
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Let $U\sim\operatorname{Unif}(a,b)$. Find the median and mode of $U$.
+
+    \item Let $X\sim\operatorname{Exp}(\lambda)$. Find the median and mode of $X$.
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{(a)} The uniform distribution on $[a,b]$ is symmetric, and its CDF equals $1/2$ at the midpoint. Hence the median is
+\[
+\frac{a+b}{2}.
+\]
+The density is constant on the entire interval $[a,b]$, so every point in $[a,b]$ is a mode.
+ 
+
+\textbf{(b)} For $X\sim\operatorname{Exp}(\lambda)$, the median $m$ solves
+\[
+1-e^{-\lambda m}=\frac12.
+\]
+Thus
+\[
+e^{-\lambda m}=\frac12,
+\qquad
+m=\frac{\log 2}{\lambda}.
+\]
+The exponential density $\lambda e^{-\lambda x}$ is decreasing on $[0,\infty)$, so its maximum occurs at $x=0$.
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+ 
+
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 5. }
+\end{problemheader}
+\source{6}{21}
+
+Let
+\[
+X_n\sim\operatorname{Bin}(n,p_n)
+\]
+for all $n\ge1$, where $np_n$ is a constant $\lambda>0$ for all $n$, so that
+\[
+p_n=\frac{\lambda}{n}.
+\]
+Let
+\[
+X\sim\operatorname{Pois}(\lambda).
+\]
+
+Show that the MGF of $X_n$ converges to the MGF of $X$. This gives another way to see that the $\operatorname{Bin}(n,p)$ distribution can be well-approximated by the $\operatorname{Pois}(\lambda)$ distribution when $n$ is large, $p$ is small, and $\lambda=np$ is moderate.
+
+\begin{solutionbox}
+The MGF of a $\operatorname{Bin}(n,p_n)$ random variable is
+\[
+M_{X_n}(t)=\left(1-p_n+p_ne^t\right)^n.
+\]
+Since $p_n=\lambda/n$,
+\[
+M_{X_n}(t)
+=
+\left(1+\frac{\lambda}{n}(e^t-1)\right)^n.
+\]
+As $n\to\infty$, we use the standard limit
+\[
+\left(1+\frac{a}{n}\right)^n\to e^a.
+\]
+With $a=\lambda(e^t-1)$, this gives
+\[
+M_{X_n}(t)
+\to
+\exp\{\lambda(e^t-1)\}.
+\]
+But
+\[
+M_X(t)=\exp\{\lambda(e^t-1)\}
+\]
+is the MGF of $X\sim\operatorname{Pois}(\lambda)$.
+
+ 
+\end{solutionbox}
+\newpage
+
+% ------------------------------------------------------------
+
+
+
+
+
+
+
+ 
+% ------------------------------------------------------------
+
+\begin{problemheader}
+\textbf{Problem 6. }
+\end{problemheader}
+
+A student has developed a highly scientific method for deciding whether to
+complete an optional online practice module. They go to the roof of their
+apartment building and throw one of their shoes toward the ground.
+
+Let $X\in[0,1]$ be the proportion of the module that the student completes.
+Assume that, with probability \(p\), the shoe lands in a tree and becomes
+permanently stuck. In that case, the student spends the rest of the evening
+trying to recover it and completes none of the module, so \(X=0\).
+
+With probability \(1-p\), the shoe does not get stuck in the tree. The student
+then attempts the module, and the proportion \(X\) that they complete is
+uniformly distributed on \((0,1)\).
+
+Let
+\[
+I=
+\begin{cases}
+1, & \text{if the shoe gets stuck in the tree},\\
+0, & \text{otherwise},
+\end{cases}
+\qquad
+P(I=1)=p,
+\]
+where \(0<p<1\).
+
+Let
+\[
+U\sim\operatorname{Unif}(0,1),
+\]
+independently of \(I\). In this case, we have
+\[
+X=
+\begin{cases}
+0, & if \ I=1,\\
+U, & if \ I=0.
+\end{cases}
+\]
+
+\begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Find the CDF \(F_X(x)\), specifying it for all \(x\in\mathbb R\).\\
+    \textit{Hint: Problem 6 in HW4.}
+
+    \item Sketch the CDF and explain the meaning of its jump at \(x=0\).
+
+    \item Find \(P(X=x)\) for every \(x\in\mathbb R\). Explain why \(X\) is not
+    a discrete random variable.
+
+    \item Explain why \(X\) is not a continuous random variable.
+
+    \item Find
+    \[
+    P\left(X\leq\frac12\right),
+    \qquad
+    P\left(0<X\leq\frac12\right),
+    \qquad
+    P(X>0).
+    \]
+
+    \item Describe the distribution of \(X\) as a mixture of a point mass and a
+    continuous distribution.
+\end{enumerate}
+
+\begin{solutionbox}
+
+The random variable \(X\) has two components. If the shoe gets stuck in the
+tree, then \(X=0\). Otherwise, \(X\) has a
+\(\operatorname{Unif}(0,1)\) distribution. Such a random variable is called a
+\emph{mixed random variable}.
+
+\textbf{(a)} The CDF is
+\[
+F_X(x)=P(X\leq x).
+\]
+
+If \(x<0\), then \(X\geq0\), so
+\[
+F_X(x)=0.
+\]
+
+Now suppose that \(0\leq x<1\). The event \(X\leq x\) occurs in either of two
+disjoint ways:
+
+\begin{itemize}[leftmargin=*]
+    \item the shoe gets stuck in the tree, in which case \(X=0\leq x\);
+    \item the shoe does not get stuck in the tree and \(U\leq x\).
+\end{itemize}
+
+Therefore,
+\[
+\begin{aligned}
+F_X(x)
+&=P(I=1)+P(I=0,U\leq x)\\
+&=P(I=1)+P(I=0)P(U\leq x)\\
+&=p+(1-p)x,
+\end{aligned}
+\]
+where independence was used in the second line.
+
+If \(x\geq1\), then \(X\leq x\) with probability \(1\). Hence
+\[
+\boxed{
+F_X(x)=
+\begin{cases}
+0, & x<0,\\[1mm]
+p+(1-p)x, & 0\leq x<1,\\[1mm]
+1, & x\geq1.
+\end{cases}}
+\]
+
+\textbf{(b)} Immediately to the left of \(0\),
+\[
+F_X(0^-)
+=
+\lim_{x\uparrow0}F_X(x)
+=
+0.
+\]
+
+At \(x=0\),
+\[
+F_X(0)=p.
+\]
+
+Hence the CDF has a jump at \(0\) of size
+\[
+F_X(0)-F_X(0^-)=p.
+\]
+
+For any random variable,
+\[
+P(X=a)=F_X(a)-F_X(a^-).
+\]
+
+Therefore,
+\[
+P(X=0)=F_X(0)-F_X(0^-)=p.
+\]
+
+The jump in the CDF represents the probability mass concentrated at \(0\).
+
+After the jump, the CDF increases linearly from \(p\) to \(1\) on the interval
+\((0,1)\). The slope of this part is \(1-p\), representing the continuous
+uniform component of the distribution.
+
+\textbf{(c)} At \(x=0\),
+\[
+P(X=0)=P(I=1)=p.
+\]
+
+For every \(x\in(0,1)\),
+\[
+\begin{aligned}
+P(X=x)
+&=P(I=0,U=x)\\
+&=P(I=0)P(U=x)\\
+&=(1-p)\cdot0\\
+&=0,
+\end{aligned}
+\]
+because a continuous uniform random variable assigns probability \(0\) to
+every individual point.
+
+Also, \(P(X=x)=0\) for \(x\notin[0,1]\). Therefore,
+\[
+\boxed{
+P(X=x)=
+\begin{cases}
+p, & x=0,\\[1mm]
+0, & x\neq0.
+\end{cases}}
+\]
+
+These point probabilities do not account for the entire distribution, since
+\[
+\sum_{x\in\mathbb R}P(X=x)=p<1.
+\]
+
+The remaining probability \(1-p\) is spread continuously over \((0,1)\).
+Therefore, \(X\) is not a discrete random variable.
+
+More formally, let \(C\subseteq\mathbb R\) be any countable set. The uniform
+component assigns probability \(0\) to \(C\). Therefore,
+\[
+P(X\in C)
+=
+\begin{cases}
+p, & 0\in C,\\
+0, & 0\notin C.
+\end{cases}
+\]
+
+In either case,
+\[
+P(X\in C)\leq p<1.
+\]
+
+Thus there is no countable set that contains all the probability, so \(X\) is
+not discrete.
+
+\textbf{(d)} Suppose that \(X\) were an absolutely continuous random variable.
+Then there would exist an ordinary PDF \(f_X\) such that
+\[
+P(X\in A)=\int_A f_X(x)\,dx
+\]
+for every suitable set \(A\).
+
+In particular,
+\[
+P(X=0)
+=
+\int_{\{0\}}f_X(x)\,dx
+=
+0,
+\]
+because a single point has length \(0\).
+
+However,
+\[
+P(X=0)=p>0.
+\]
+
+This is a contradiction. Therefore, \(X\) cannot be described by an ordinary
+PDF alone and is not an absolutely continuous random variable.
+
+Hence \(X\) is neither discrete nor continuous.
+
+\textbf{(e)} Using the CDF,
+\[
+\begin{aligned}
+P\left(X\leq\frac12\right)
+&=F_X\left(\frac12\right)\\
+&=p+(1-p)\frac12\\
+&=\boxed{\frac{1+p}{2}}.
+\end{aligned}
+\]
+
+The event \(0<X\leq1/2\) requires that the shoe not get stuck in the tree and
+that \(U\in(0,1/2]\). Therefore,
+\[
+\begin{aligned}
+P\left(0<X\leq\frac12\right)
+&=P(I=0)P\left(0<U\leq\frac12\right)\\
+&=(1-p)\frac12\\
+&=\boxed{\frac{1-p}{2}}.
+\end{aligned}
+\]
+
+Finally, \(X>0\) whenever the shoe does not get stuck in the tree, except for
+the event \(U=0\), which has probability \(0\). Hence
+\[
+\boxed{P(X>0)=1-p}.
+\]
+
+Notice that
+\[
+\begin{aligned}
+P\left(X\leq\frac12\right)
+&=P(X=0)+P\left(0<X\leq\frac12\right)\\
+&=p+\frac{1-p}{2}\\
+&=\frac{1+p}{2}.
+\end{aligned}
+\]
+
+\textbf{(f)} Let \(\delta_0\) denote the probability distribution that places
+all its probability mass at \(0\). The distribution of \(X\) can be written as
+\[
+\boxed{
+P_X
+=
+p\delta_0
++
+(1-p)\operatorname{Unif}(0,1).
+}
+\]
+
+The first component places probability \(p\) at the single point \(0\), while
+the second component distributes probability \(1-p\) continuously and
+uniformly over \((0,1)\).
+
+Equivalently, for every measurable set \(A\subseteq\mathbb R\),
+\[
+\boxed{
+P(X\in A)
+=
+p\mathbf{1}_{\{0\in A\}}
++
+(1-p)\int_A\mathbf{1}_{(0,1)}(x)\,dx.
+}
+\]
+
+Thus the distribution consists of
+\[
+\underbrace{p\delta_0}_{\text{discrete component}}
+\qquad+\qquad
+\underbrace{(1-p)\operatorname{Unif}(0,1)}
+_{\text{continuous component}}.
+\]
+
+
+\end{solutionbox}
+
+  
+
+
+
+ 
+
+\end{document}

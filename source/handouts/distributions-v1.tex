@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.3in]{geometry}\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\definecolor{main}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{EEF6FF}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=main,
+    urlcolor=main
+}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newtcolorbox{distbox}[1]{
+    colback=softblue,
+    colframe=main,
+    title=\textbf{#1},
+    fonttitle=\large,
+    arc=3mm,
+    boxrule=0.8pt,
+    left=4mm,
+    right=4mm,
+    top=2mm,
+    bottom=1mm
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+% -------------------------------------------------
+% Header / Footer Style
+% -------------------------------------------------
+
+\pagestyle{fancy}
+
+\fancyhf{}
+
+\lhead{\small University of Washington}
+\chead{\small Department of Mathematics}
+\rhead{\small MATH 394: Probability I}
+
+\lfoot{\small Summer 2026}
+\cfoot{\small Arman Jahangiri}
+\rfoot{\small \thepage\ /\ \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{document}
+\begin{landscape}
+\begin{center}
+{\Large\bfseries Probability Distribution Reference Sheet}\\[-1mm]
+
+{\normalsize MATH 394: Probability I (Summer 2026)}\\[-1mm]
+
+{\small Instructor: Arman Jahangiri, Department of Mathematics @ University of Washington}
+\end{center}
+\vspace{-2mm}
+
+\begin{distbox}{Discrete Distributions}
+
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}L{2.3cm} L{2.6cm} L{4.8cm} C{2.4cm} C{2.2cm} C{5cm} L{5cm}@{}}\toprule
+\textbf{Name} & \textbf{Parameters} & \textbf{Probability Mass Function} & \textbf{Support} & \textbf{Mean} & \textbf{Variance} & \textbf{MGF} \\
+\midrule
+\endhead
+
+Bernoulli
+& $0\le p\le 1$
+& $P(X=k)=p^k(1-p)^{1-k}$
+& $x=0,1$
+& $p$
+& $p(1-p)$
+& $1-p+pe^t$
+\\[0.4cm]
+
+Binomial
+& $n\ge 1,\ 0\le p\le 1$
+& $P(X=k)=\binom{n}{k}p^k(1-p)^{n-k}$
+& $k=0,\dots,n$
+& $np$
+& $np(1-p)$
+& $(1-p+pe^t)^n$
+\\[0.4cm]
+
+Poisson
+& $\lambda>0$
+& $P(X=k)=e^{-\lambda}\dfrac{\lambda^k}{k!}$
+& $k=0,1,2,\dots$
+& $\lambda$
+& $\lambda$
+& $\exp\{\lambda(e^t-1)\}$
+\\[0.4cm]
+
+Geometric
+& $0<p\le 1$
+& $P(X=k)=p(1-p)^{k-1}$
+& $k=1,2,\dots$
+& $\dfrac{1}{p}$
+& $\dfrac{1-p}{p^2}$
+& $\dfrac{pe^t}{1-(1-p)e^t}$
+\\[0.5cm]
+
+Geometric, zero-based
+& $0<p\le 1$
+& $P(X=k)=p(1-p)^k$
+& $k=0,1,2,\dots$
+& $\dfrac{1-p}{p}$
+& $\dfrac{1-p}{p^2}$
+& $\dfrac{p}{1-(1-p)e^t}$
+\\[0.5cm]
+
+Negative Binomial
+& $r\ge 1,\ 0<p\le 1$
+& $P(X=k)=\binom{k-1}{r-1}p^r(1-p)^{k-r}$
+& $k=r,r+1,\dots$
+& $\dfrac{r}{p}$
+& $\dfrac{r(1-p)}{p^2}$
+& $\left(\dfrac{pe^t}{1-(1-p)e^t}\right)^r$
+\\[0.5cm]
+
+Negative Binomial, failures before $r$ successes
+& $r\ge 1,\ 0<p\le 1$
+& $P(X=k)=\binom{r+k-1}{r-1}p^r(1-p)^k$
+& $k=0,1,2,\dots$
+& $\dfrac{r(1-p)}{p}$
+& $\dfrac{r(1-p)}{p^2}$
+& $\left(\dfrac{p}{1-(1-p)e^t}\right)^r$
+\\[0.5cm]
+
+Hypergeometric
+& $w,b,n$
+& $P(X=k)=\dfrac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}}$
+& $\max(0,n-b)\le k\le \min(n,w)$
+& $\dfrac{nw}{w+b}$
+& $\dfrac{w+b-n}{w+b-1}\,n\dfrac{w}{w+b}\left(1-\dfrac{w}{w+b}\right)$
+& $\displaystyle
+\sum_k e^{tk}
+\dfrac{\binom{w}{k}\binom{b}{n-k}}{\binom{w+b}{n}}$
+\\[0.5cm]
+
+Negative Hypergeometric
+& $w,b,r$
+& $P(X=k)=\dfrac{\binom{r+k-1}{r-1}\binom{w+b-r-k}{w-r}}{\binom{w+b}{w}}$
+& $k=0,1,\dots,b$
+& $\dfrac{rb}{w+1}$
+& $\dfrac{rb(w+b+1)(w-r+1)}{(w+1)^2(w+2)}$
+& $\displaystyle
+\sum_{k=0}^{b} e^{tk}
+\dfrac{\binom{r+k-1}{r-1}\binom{w+b-r-k}{w-r}}{\binom{w+b}{w}}$
+\\
+
+\end{longtable}
+
+\end{distbox}
+
+
+
+\begin{center}
+{\footnotesize
+© 2026 Arman Jahangiri — Department of Mathematics @ University of Washington.\\
+For educational use in MATH 394: Probability I
+}
+\end{center}
+
+
+
+
+\end{landscape}
+
+\begin{landscape}
+
+\begin{distbox}{Continuous Distributions}
+
+\small
+\begin{longtable}{L{2.3cm} L{2.4cm} L{5.2cm} C{2.4cm} C{2.2cm} C{2.4cm} L{4.4cm}}
+\toprule
+\textbf{Name} & \textbf{Parameters} & \textbf{Probability Density Function} & \textbf{Support} & \textbf{Mean} & \textbf{Variance} & \textbf{MGF} \\
+\midrule
+\endhead
+
+Uniform
+& $a<b$
+& $f_X(x)=\dfrac{1}{b-a}$
+& $a<x<b$
+& $\dfrac{a+b}{2}$
+& $\dfrac{(b-a)^2}{12}$
+& $\dfrac{e^{tb}-e^{ta}}{t(b-a)}$
+\\[0.5cm]
+
+Normal
+& $\mu\in\mathbb{R},\ \sigma^2>0$
+& $f_X(x)=\dfrac{1}{\sqrt{2\pi\sigma^2}}\exp\left\{-\dfrac{(x-\mu)^2}{2\sigma^2}\right\}$
+& $-\infty<x<\infty$
+& $\mu$
+& $\sigma^2$
+& $\exp\left\{\mu t+\dfrac{\sigma^2t^2}{2}\right\}$
+\\[0.5cm]
+
+Log-Normal
+& $\mu\in\mathbb{R},\ \sigma^2>0$
+& $f_X(x)=\dfrac{1}{x\sigma\sqrt{2\pi}}\exp\left\{-\dfrac{(\log x-\mu)^2}{2\sigma^2}\right\}$
+& $x>0$
+& $e^{\mu+\sigma^2/2}$
+& $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$
+& DNE
+\\[0.5cm]
+
+Exponential
+& $\lambda>0$
+& $f_X(x)=\lambda e^{-\lambda x}$
+& $x\ge 0$
+& $\dfrac{1}{\lambda}$
+& $\dfrac{1}{\lambda^2}$
+& $\dfrac{\lambda}{\lambda-t}$
+\\[0.5cm]
+
+Gamma
+& $r>0,\ \lambda>0$
+& $f_X(x)=\dfrac{\lambda^r}{\Gamma(r)}x^{r-1}e^{-\lambda x}$
+& $x\ge 0$
+& $\dfrac{r}{\lambda}$
+& $\dfrac{r}{\lambda^2}$
+& $\left(\dfrac{\lambda}{\lambda-t}\right)^r$
+\\[0.5cm]
+
+Beta
+& $a,b>0$
+& $f_X(x)=\dfrac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}$
+& $0<x<1$
+& $\dfrac{a}{a+b}$
+& $\dfrac{ab}{(a+b)^2(a+b+1)}$
+& -- 
+\\[0.5cm]
+
+Weibull
+& $\alpha,\lambda>0$
+& $f_X(x)=\alpha\lambda x^{\alpha-1}e^{-\lambda x^\alpha}$
+& $x>0$
+& $\dfrac{\Gamma(1+1/\alpha)}{\lambda^{1/\alpha}}$
+& $\dfrac{\Gamma(1+2/\alpha)}{\lambda^{2/\alpha}}-\mu^2$
+& -- 
+\\[0.5cm]
+
+Chi-Square
+& $n>0$
+& $f_X(x)=\dfrac{1}{2^{n/2}\Gamma(n/2)}x^{n/2-1}e^{-x/2}$
+& $x>0$
+& $n$
+& $2n$
+& $(1-2t)^{-n/2}$
+\\[0.5cm]
+
+Student-$t$
+& $n>0$
+& $f_X(x)=\dfrac{\Gamma((n+1)/2)}{\sqrt{n\pi}\Gamma(n/2)}
+\left(1+\dfrac{x^2}{n}\right)^{-(n+1)/2}$
+& $-\infty<x<\infty$
+& $0,\ n>1$
+& $\dfrac{n}{n-2},\ n>2$
+& DNE
+\\
+
+
+\end{longtable}
+
+\end{distbox}
+
+\begin{distbox}{Moment-Generating Function}
+The moment-generating function is
+\[
+M_X(t)=\mathbb{E}(e^{tX}).
+\]
+When it exists near $t=0$, it can be used to compute moments:
+\[
+\mathbb{E}(X^n)=M_X^{(n)}(0),
+\]
+\end{distbox}
+
+
+
+\begin{center}
+{\footnotesize
+© 2026 Arman Jahangiri — Department of Mathematics @ University of Washington.\\
+For educational use in MATH 394: Probability I
+}
+\end{center}
+
+
+
+\end{landscape}
+
+
+
+
+
+\vfill
+
+
+
+
+
+
+
+\end{document}

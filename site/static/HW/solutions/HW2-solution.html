@@ -1,0 +1,266 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title></title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='HW2-solution.css' rel='stylesheet' type='text/css' /> 
+<meta content='HW2-solution.tex' name='src' /> 
+<script>window.MathJax = { tex: { tags: "ams", }, }; </script> 
+ <script async='async' id='MathJax-script' src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js' type='text/javascript'></script>  
+</head><body>
+<!-- l. 102 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p><!-- l. 106 --><p class='noindent'><span class='cmbx-12x-x-120'>University of Washington</span><br />
+<span class='cmr-12'>Department of Mathematics
+</span><span class='cmbx-12x-x-207'>Homework 2 Solution</span><br /><br />
+<span class='cmbx-12x-x-120'>MATH 394: Probability I</span><br /><br />
+<span class='cmr-12'>Instructor: Arman Jahangiri</span>
+</p>
+<div class='tcolorbox tcolorbox' id='tcolobox-1'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 125 --><p class='noindent'><span class='cmbx-10x-x-109'>Submission: </span>Single PDF on Gradescope
+</p><!-- l. 127 --><p class='noindent'><span class='cmbx-10x-x-109'>Deadline: </span>10:00 PM Pacific Time on the listed due date </p> 
+</div> 
+</div>
+<div class='tcolorbox tcolorbox' id='tcolobox-2'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 139 --><p class='noindent'>This homework is worth <span class='cmbx-10x-x-109'>50 points</span>.
+</p><!-- l. 141 --><p class='noindent'>Across the quarter, there are <span class='cmbx-10x-x-109'>eight homework assignments</span>, worth <span class='cmbx-10x-x-109'>400 points
+total</span>. Homework assignments together account for <span class='cmbx-10x-x-109'>40% </span>of the final course grade.
+Further course policies can be seen in the  <a href='https://armanjg.github.io/MATH-394-Probability-1/'><span class='cmbx-10x-x-109'>MATH 394 syllabus</span>.</a> </p> 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<h3 class='likesectionHead' id='homework-policy'><a id='x1-1000'></a>Homework Policy</h3>
+<!-- l. 149 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-and-deadline'><a id='x1-2000'></a>Submission and Deadline</h4>
+<!-- l. 151 --><p class='noindent'>Please:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>Submit homework as a single PDF on Gradescope by <span class='cmbx-10x-x-109'>10:00 PM (Pacific Time) </span>on the listed due
+  date.
+  </li>
+  <li class='itemize'>Begin each problem on a new page, and ensure that pages are correctly tagged in Gradescope.
+  </li>
+  <li class='itemize'>Write solutions clearly and legibly.
+  </li>
+  <li class='itemize'>Typesetting solutions in LaTeX is encouraged, but not required.</li></ul>
+<!-- l. 160 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='late-days'><a id='x1-3000'></a>Late Days</h4>
+<!-- l. 162 --><p class='noindent'>Each student is allotted <span class='cmbx-10x-x-109'>six late days </span>for the quarter. A late day extends a homework deadline by up to 24
+hours without penalty. For example, submitting an assignment anytime between 10:01 PM on the due date and
+10:00 PM the following day counts as one late day.
+</p><!-- l. 164 --><p class='noindent'>The following rules apply: </p>
+  <ul class='itemize1'>
+  <li class='itemize'>No explanation is required to use late days.
+  </li>
+  <li class='itemize'>At most <span class='cmbx-10x-x-109'>two late days </span>may be used on any single homework assignment.
+                                                                                              
+                                                                                              
+  </li>
+  <li class='itemize'>Late days may not be used on the final homework assignment or on any assignment for which solutions
+  have already been released.
+  </li>
+  <li class='itemize'>It is the student’s responsibility to keep track of how many late days have been used during the
+  quarter.</li></ul>
+<!-- l. 172 --><p class='noindent'>Once all late days have been exhausted, additional late submissions will incur a penalty of <span class='cmbx-10x-x-109'>10% per day</span>, up
+to a maximum deduction of <span class='cmbx-10x-x-109'>50%</span>. Assignments submitted more than five days late, or after solutions have
+been released, will not be accepted.
+</p><!-- l. 174 --><p class='noindent'>
+</p>
+<h4 class='likesubsectionHead' id='submission-issues-and-technical-difficulties'><a id='x1-4000'></a>Submission Issues and Technical Difficulties</h4>
+<!-- l. 176 --><p class='noindent'>If a serious technical issue prevents a timely Gradescope submission, students may temporarily submit their
+assignment by email to the instructor at  <a href='mailto:armanjg@uw.edu'>armanjg@uw.edu</a>. In such cases:
+</p>
+  <ul class='itemize1'>
+  <li class='itemize'>The submission must consist of a <span class='cmbx-10x-x-109'>single PDF file</span>. The email subject line must follow the format: \[ \texttt {HW\# Submission - FULL NAME - STUDENT ID}. \]
+  </li>
+  <li class='itemize'>Once  the  Gradescope  issue  has  been  resolved,  the  student  must  upload  the  <span class='cmti-10x-x-109'>exact  same  file  </span>to
+  Gradescope as soon as possible.
+  </li>
+  <li class='itemize'>The student should clearly indicate in the Gradescope submission that the assignment was previously
+  submitted by email before the deadline.</li></ul>
+<!-- l. 187 --><p class='noindent'>Email submissions are intended only for genuine technical emergencies and should not be used as a substitute
+for timely Gradescope submission.
+</p><!-- l. 189 --><p class='noindent'>
+                                                                                              
+                                                                                              
+</p>
+<div class='tcolorbox problemheader' id='tcolobox-3'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 194 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 1.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 8.</span>
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>How many ways are there to split a dozen people into 3 teams, where one team has 2 people, and
+    the other two teams have 5 people each?
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>How many ways are there to split a dozen people into 3 teams, where each team has 4 people?</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-4'>     
+<div class='tcolorbox-title'>
+<!-- l. 234 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 205 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>First choose the team of 2 people. This can be done in \[ \binom {12}{2} \] ways. After those two people have been
+chosen, there are 10 people left, and we need to divide them into two teams of 5. If we choose 5 of
+them for one team, the remaining 5 automatically form the other team. This gives \(\binom {10}{5}\) choices, but the
+two teams of size 5 have no labels, so this counts each split twice. Therefore the number of possible
+splits is \[ \binom {12}{2}\frac {\binom {10}{5}}{2} = 66\cdot \frac {252}{2} = 8316. \]
+</p><!-- l. 220 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now all three teams have the same size, so none of the teams is distinguished by its size. If
+the teams were labeled, we could choose 4 people for the first team, then 4 of the remaining 8 for
+the second team, and then the last 4 people would form the third team. This gives \[ \binom {12}{4}\binom {8}{4}\binom {4}{4}. \] Since the three
+teams are not labeled, each actual split has been counted \(3!\) times. Thus the desired number is \[ \frac {1}{3!}\binom {12}{4}\binom {8}{4}\binom {4}{4} = \frac {12!}{(4!)^3 3!} = 5775. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-5'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 240 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 2.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 20.</span>
+</p><!-- l. 244 --><p class='noindent'>Show using a story proof that \[ { k \choose k} + { k+1 \choose k} + { k+2 \choose k} + \cdots + { n \choose k} = { n+1 \choose k+1}, \] where \(n\) and \(k\) are positive integers with \(n\ge k\). This is called the <span class='cmti-10x-x-109'>hockey stick
+identity</span>.
+</p><!-- l. 260 --><p class='noindent'><span class='cmti-10x-x-109'>Hint: Imagine arranging a group of people by age, and then think about the oldest person in a chosen
+subgroup.</span>
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-6'>     
+<div class='tcolorbox-title'>
+<!-- l. 287 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 263 --><p class='noindent'>Imagine \(n+1\) people arranged from youngest to oldest. We want to choose a subgroup of \(k+1\) people. If we
+ignore the order of the people, the number of possible subgroups is simply \[ \binom {n+1}{k+1}. \]
+</p><!-- l. 268 --><p class='noindent'>Now count the same subgroups according to who the oldest chosen person is. If the oldest chosen
+person is the \((j+1)\)-st person in the age order, then the remaining \(k\) members of the subgroup must all be
+chosen from the \(j\) people younger than that person. This can be done in \[ \binom {j}{k} \] ways. The oldest chosen
+person must have at least \(k\) people younger than them, and can range up to the oldest person in
+the whole group. Hence \(j\) ranges from \(k\) to \(n\). Summing over all possible choices of the oldest selected
+person gives \[ \binom {k}{k} + \binom {k+1}{k} + \binom {k+2}{k} + \cdots + \binom {n}{k}. \]
+</p><!-- l. 285 --><p class='noindent'>Both expressions count the same collection of subgroups of size \(k+1\). Therefore
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-7'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 293 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 3.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 43.</span>
+</p><!-- l. 297 --><p class='noindent'>Show that for any events \(A\) and \(B\), \[ P(A)+P(B)-1 \le P(A\cap B) \le P(A\cup B) \le P(A)+P(B). \]
+</p><!-- l. 308 --><p class='noindent'>For each of these three inequalities, give a simple criterion for when the inequality is actually an equality. For
+example, give a simple condition such that \(P(A\cap B)=P(A\cup B)\) if and only if the condition holds.
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-8'>     
+<div class='tcolorbox-title'>
+<!-- l. 358 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 311 --><p class='noindent'>The addition rule gives \[ P(A\cup B)=P(A)+P(B)-P(A\cap B). \] Since \(P(A\cup B)\le 1\), this identity implies \[ P(A)+P(B)-P(A\cap B)\le 1. \] Rearranging gives \[ P(A)+P(B)-1\le P(A\cap B). \] Equality holds here exactly
+when \(P(A\cup B)=1\), meaning that \(A\cup B\) occurs with probability one.
+</p><!-- l. 325 --><p class='noindent'>Next, since \[ A\cap B\subseteq A\cup B, \] monotonicity of probability gives \[ P(A\cap B)\le P(A\cup B). \] Equality holds exactly when the part of \(A\cup B\) outside \(A\cap B\)
+has probability zero. This part is the symmetric difference \[ (A-B)\cup (B-A). \] Thus equality holds exactly when \[ P\big ((A-B)\cup (B-A)\big )=0. \]
+</p><!-- l. 342 --><p class='noindent'>Finally, from the addition rule and the fact that \(P(A\cap B)\ge 0\), we get \[ P(A\cup B) = P(A)+P(B)-P(A\cap B) \le P(A)+P(B). \] Equality holds exactly when \[ P(A\cap B)=0. \]
+</p><!-- l. 355 --><p class='noindent'>Therefore all three inequalities hold, and the equality cases are as described above.
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-9'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 364 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 4.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 44.</span>
+</p><!-- l. 368 --><p class='noindent'>Let \(A\) and \(B\) be events. The <span class='cmti-10x-x-109'>difference</span> \(B-A\) is defined to be the set of all elements of \(B\) that are not in \(A\). Show that if \(A\subseteq B\),
+then \[ P(B-A)=P(B)-P(A), \] directly using the axioms of probability.
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-10'>     
+<div class='tcolorbox-title'>
+<!-- l. 395 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 375 --><p class='noindent'>Since \(A\subseteq B\), the event \(B\) can be decomposed into two disjoint pieces, \[ B=A\cup (B-A). \] These two events are disjoint because
+\(B-A\) consists exactly of the outcomes in \(B\) that are not in \(A\). Therefore, by finite additivity, \[ P(B) = P(A\cup (B-A)) = P(A)+P(B-A). \] Rearranging
+this identity gives \[ P(B-A)=P(B)-P(A). \]
+</p><!-- l. 392 --><p class='noindent'>This proves the desired formula directly from the additivity axiom of probability.
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-11'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 401 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 5.</span> </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 50.</span>
+</p><!-- l. 405 --><p class='noindent'>A card player is dealt a 13-card hand from a well-shuffled, standard deck of cards.
+</p><!-- l. 407 --><p class='noindent'>What is the probability that the hand is void in at least one suit? Here, “void in a suit” means having no cards
+of that suit.
+</p>
+<div class='tcolorbox solutionbox' id='tcolobox-12'>     
+<div class='tcolorbox-title'>
+<!-- l. 462 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 410 --><p class='noindent'>There are \[ \binom {52}{13} \] equally likely 13-card hands. For each suit \(s\), let \(A_s\) be the event that the hand has no cards
+of suit \(s\). We want \[ P(A_{\spadesuit }\cup A_{\heartsuit }\cup A_{\diamondsuit }\cup A_{\clubsuit }). \]
+</p><!-- l. 419 --><p class='noindent'>We count this union by inclusion-exclusion. If one specified suit is missing, then all 13 cards must
+come from the remaining 39 cards, giving \[ \binom {39}{13} \] hands. There are 4 choices for the missing suit.
+</p><!-- l. 425 --><p class='noindent'>If two specified suits are missing, then all 13 cards must come from the remaining 26 cards, giving
+\[ \binom {26}{13} \] hands. There are \(\binom {4}{2}\) choices for the two missing suits.
+</p><!-- l. 431 --><p class='noindent'>If three specified suits are missing, then all 13 cards must come from a single suit. This is possible
+in \[ \binom {13}{13}=1 \] way for each choice of the three missing suits. There are \(\binom {4}{3}\) such choices. It is impossible for all
+four suits to be missing, since the hand has 13 cards.
+</p><!-- l. 437 --><p class='noindent'>Therefore the probability that the hand is void in at least one suit is \[ \frac { 4\binom {39}{13} - \binom {4}{2}\binom {26}{13} + \binom {4}{3}\binom {13}{13} }{ \binom {52}{13} }. \] Equivalently, \[ \frac { 4\binom {39}{13} - 6\binom {26}{13} + 4 }{ \binom {52}{13} }. \]
+</p>
+ 
+</div> 
+</div>
+                                                                                              
+                                                                                              
+<div class='tcolorbox problemheader' id='tcolobox-13'>     
+<div class='tcolorbox-title'>
+</div> 
+<div class='tcolorbox-content'><!-- l. 468 --><p class='noindent'><span class='cmbx-10x-x-109'>Problem 6.</span>  </p> 
+</div> 
+</div>                                                                              <p><span class='cmti-10'>Source:
+Blitzstein and Hwang, Introduction to Probability, Chapter 1, Problem 55.</span>
+</p><!-- l. 472 --><p class='noindent'>A club consists of 10 seniors, 12 juniors, and 15 sophomores. An organizing committee of size 5 is chosen
+randomly, with all subsets of size 5 equally likely.
+    </p><dl class='enumerate-enumitem'><dt class='enumerate-enumitem'>
+ (a) </dt><dd class='enumerate-enumitem'>Find the probability that there are exactly 3 sophomores in the committee.
+    </dd><dt class='enumerate-enumitem'>
+ (b) </dt><dd class='enumerate-enumitem'>Find the probability that the committee has at least one representative from each of the senior,
+    junior, and sophomore classes.</dd></dl>
+<div class='tcolorbox solutionbox' id='tcolobox-14'>     
+<div class='tcolorbox-title'>
+<!-- l. 548 --><p class='noindent'>Solution</p></div> 
+<div class='tcolorbox-content'><!-- l. 481 --><p class='noindent'>There are \(10+12+15=37\) students in the club, so the total number of possible committees of size 5 is \[ \binom {37}{5}. \]
+</p><!-- l. 486 --><p class='noindent'><span class='cmbx-10x-x-109'>(a) </span>To have exactly 3 sophomores, we choose 3 of the 15 sophomores and then choose the remaining
+2 committee members from the 22 students who are not sophomores. This gives \[ \binom {15}{3}\binom {22}{2} \] committees. Hence
+the desired probability is \[ \frac {\binom {15}{3}\binom {22}{2}}{\binom {37}{5}}. \]
+</p><!-- l. 497 --><p class='noindent'><span class='cmbx-10x-x-109'>(b) </span>Now the committee must contain at least one senior, at least one junior, and at least one
+sophomore. We count by the triple \[ (s,j,p), \] where \(s\), \(j\), and \(p\) are the numbers of seniors, juniors, and sophomores
+on the committee. We need \[ s+j+p=5, \qquad s,j,p\ge 1. \] Thus the favorable committees are counted by \[ \sum _{\substack {s+j+p=5\\ s,j,p\ge 1}} \binom {10}{s}\binom {12}{j}\binom {15}{p}. \] Writing this out
+explicitly gives \[ \binom {10}{1}\binom {12}{1}\binom {15}{3} + \binom {10}{1}\binom {12}{2}\binom {15}{2} + \binom {10}{1}\binom {12}{3}\binom {15}{1} \] \[ + \binom {10}{2}\binom {12}{1}\binom {15}{2} + \binom {10}{2}\binom {12}{2}\binom {15}{1} + \binom {10}{3}\binom {12}{1}\binom {15}{1}. \] Dividing by the total number of committees gives the probability \[ \frac { \binom {10}{1}\binom {12}{1}\binom {15}{3} + \binom {10}{1}\binom {12}{2}\binom {15}{2} + \binom {10}{1}\binom {12}{3}\binom {15}{1} + \binom {10}{2}\binom {12}{1}\binom {15}{2} + \binom {10}{2}\binom {12}{2}\binom {15}{1} + \binom {10}{3}\binom {12}{1}\binom {15}{1} }{ \binom {37}{5} }. \]
+</p>
+ 
+</div> 
+</div>
+ 
+</body> 
+</html>
