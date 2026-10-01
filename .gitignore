@@ -1,0 +1,33 @@
+# OS/editor noise
+.DS_Store
+*.swp
+*.swo
+*~
+
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+
+# Local temporary build directory
+chapter_build/
+.build/
+
+# make4ht/TeX4ht intermediates
+*.4ct
+*.4tc
+*.dvi
+*.idv
+*.lg
+*.tmp
+*.xref
+
+# Generated GitHub Pages output
+docs/*
+!docs/.gitkeep
