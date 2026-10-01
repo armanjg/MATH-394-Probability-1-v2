@@ -1,65 +1,36 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-rm -rf docs
-mkdir -p docs chapter_build docs/Figures docs/Annotated
+rm -rf docs chapter_build
+mkdir -p docs docs/Figures docs/Annotated chapter_build
 
-# Seed small prebuilt HTML/CSS fallbacks, then overwrite what can be regenerated.
+compile_pdf() {
+  local src="$1"
+  local outdir="$2"
+  pdflatex -interaction=nonstopmode -halt-on-error -output-directory="$outdir" "$src" >/dev/null
+  # Second pass resolves page counts, references, and outlines used by several handouts/exams.
+  pdflatex -interaction=nonstopmode -halt-on-error -output-directory="$outdir" "$src" >/dev/null
+}
+
+# Seed prebuilt HTML/CSS fallbacks. PDF files are rebuilt below.
 cp -R site/static/. docs/ 2>/dev/null || true
 cp site/index.html docs/index.html
-cp assets/annotated/*.pdf docs/Annotated/
-cp assets/figures/* docs/Figures/
+cp assets/annotated/*.pdf docs/Annotated/ 2>/dev/null || true
+cp -R assets/figures/. docs/Figures/
 
+# Syllabus
+compile_pdf source/syllabus.tex docs
 
- 
-
-
-latexmk -pdf -f \
-  -interaction=nonstopmode \
-  -output-directory=docs \
-  source/syllabus.tex
-(cd source && make4ht -u -d ../docs syllabus.tex "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
-
-
-
-for dist in distributions-v1 distributions-v2; do
-  latexmk -pdf -f \
-    -interaction=nonstopmode \
-    -output-directory=docs \
-    "source/handouts/${dist}.tex"
-
-  (cd source/handouts && make4ht -u -d ../../docs "${dist}.tex" "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
+# Handouts
+for handout in distributions-v1 distributions-v2 normal-table project sup; do
+  compile_pdf "source/handouts/${handout}.tex" docs
 done
 
+# The complete lecture deck is intentionally not rebuilt for the website.
+# The site links to individual chapter PDFs. Overleaf can compile
+# source/lectures/main.tex whenever the full deck is needed.
 
-
-
-latexmk -pdf -f \
-  -interaction=nonstopmode \
-  -output-directory=docs \
-  source/handouts/normal-table.tex
-(cd source/handouts && make4ht -u -d ../../docs normal-table.tex "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
-
-
-
-# MINI-PROJECT INSTRUCTIONS
-latexmk -pdf -f \
-  -interaction=nonstopmode \
-  -output-directory=docs \
-  source/handouts/project.tex
-
-(cd source/handouts && make4ht -u -d ../../docs project.tex "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
-
-
-
-# Full PDF
-latexmk -pdf -f \
-  -interaction=nonstopmode \
-  -output-directory=docs \
-  source/lectures/main.tex
-
- 
 # Individual chapter PDFs
 for chapter in source/lectures/chapters/*.tex; do
   name=$(basename "$chapter" .tex)
@@ -114,46 +85,45 @@ for chapter in source/lectures/chapters/*.tex; do
       title="Chapter 10B: Limit Theorems"
       ;;
     chapter10c_chisquare_t)
-      title="Chapter 10C: Chi-Square and Student \(t\)-Distributions"
+      title="Chapter 10C: Chi-Square and Student \\(t\\)-Distributions"
+      ;;
+    *)
+      title="$name"
       ;;
   esac
 
   cat > "chapter_build/${name}_standalone.tex" <<EOF
-\documentclass[aspectratio=169,9pt]{beamer}
+\\documentclass[aspectratio=169,9pt]{beamer}
 
-\input{../source/lectures/theme.tex}
-\input{../source/lectures/macros.tex}
+\\input{source/lectures/theme.tex}
+\\input{source/lectures/macros.tex}
 
-\title{$title}
-\subtitle{MATH/STAT 394: Probability I}
-\author{Arman Jahangiri}
-\institute{University of Washington \\ Department of Mathematics}
-\date{Summer 2026}
+\\title{$title}
+\\subtitle{MATH/STAT 394: Probability I}
+\\author{Arman Jahangiri}
+\\institute{University of Washington \\\\ Department of Mathematics}
+\\date{Summer 2026}
 
-\begin{document}
+\\begin{document}
 
-\input{../$chapter}
+\\input{$chapter}
 
-\end{document}
+\\end{document}
 EOF
 
-  latexmk -pdf -f \
+  # A single pdflatex pass is sufficient for these standalone slide PDFs and
+  # avoids latexmk repeatedly recompiling large Beamer chapters.
+  pdflatex \
     -interaction=nonstopmode \
+    -halt-on-error \
     -output-directory=chapter_build \
-    "chapter_build/${name}_standalone.tex"
+    "chapter_build/${name}_standalone.tex" >/dev/null
 
   cp "chapter_build/${name}_standalone.pdf" "docs/${name}.pdf"
-  # HTML for chapters is disabled for now.
-  # (cd chapter_build && make4ht -u "${name}_standalone.tex" "mathjax")
-  # cp "chapter_build/${name}_standalone.html" "docs/${name}.html"
 done
 
-
-# EXAMS
-
+# Exams
 mkdir -p docs/Exams
-
-# Public exam materials linked from the course website.
 for exam in \
   midterm \
   midterm_solution \
@@ -164,59 +134,27 @@ for exam in \
   final_solution \
   final-question-bank; do
 
-  latexmk -pdf -f \
-    -interaction=nonstopmode \
-    -output-directory=docs/Exams \
-    "source/exams/${exam}.tex"
-
-  (cd source/exams && make4ht -u -d ../../docs/Exams "${exam}.tex" "mathjax") || {
-    echo "WARNING: HTML conversion failed for ${exam}; keeping existing published HTML if available." >&2
-  }
+  compile_pdf "source/exams/${exam}.tex" docs/Exams
 done
 
+# Homeworks
+mkdir -p docs/HW docs/HW/solutions
 
-# HOMEWORKS
-# HOMEWORKS
-
-mkdir -p docs/HW
-mkdir -p docs/HW/solutions
-
-# Regular homework PDFs
 for homework in source/homework/HW[0-9]*.tex; do
   name=$(basename "$homework" .tex)
-
-  # Skip solution files here
   if [[ "$name" == *-solution ]]; then
     continue
   fi
 
-  latexmk -pdf -f \
-    -interaction=nonstopmode \
-    -output-directory=docs/HW \
-    "$homework"
-    
-  (cd source/homework && make4ht -u -d ../../docs/HW "$(basename "$homework")" "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
+  compile_pdf "$homework" docs/HW
 done
 
-# Homework solution PDFs
 for solution in source/homework/HW*-solution.tex; do
-  name=$(basename "$solution" .tex)
-
-  latexmk -pdf -f \
-    -interaction=nonstopmode \
-    -output-directory=docs/HW/solutions \
-    "$solution"
-    
-  (cd source/homework && make4ht -u -d ../../docs/HW/solutions "$(basename "$solution")" "mathjax") || { echo "WARNING: HTML conversion failed; keeping existing published HTML if available." >&2; }
+  compile_pdf "$solution" docs/HW/solutions
 done
-
-
 
 # Clean temporary files
 rm -rf chapter_build
-
-
-# Remove LaTeX/TeX4ht intermediates after the build.
 find . -type f \
   \( -name '*.aux' -o -name '*.log' -o -name '*.fls' -o -name '*.fdb_latexmk' \
      -o -name '*.out' -o -name '*.toc' -o -name '*.nav' -o -name '*.snm' \
